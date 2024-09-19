@@ -1,10 +1,9 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# CycleShop
 
-# This template has been deprecated
+## Project Overview
+CycleShop is an e-commerce application for cycling products. Built using Django, it integrates Stripe for payments and provides a user-friendly, full-stack solution for managing an online store.
 
-Please use (and bookmark) this template instead: [CI Full Template](https://github.com/Code-Institute-Org/ci-full-template)
-
-Any projects built using the old template will continue to work. For all new projects, please use the **CI Full Template**, which will be updated more frequently.
-
----
-Happy coding!
+## Setup Instructions
+1. Clone the repository.
+2. Create and activate a virtual environment.
+3. Run `python manage.py runserver` to start the application.
