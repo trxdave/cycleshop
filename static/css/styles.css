@@ -142,12 +142,58 @@ header {
 }
 
 /* Footer */
-footer {
-    background-color: #397367;
-    padding: 20px;
-    text-align: center;
+.footer {
+    background-color: #35393C;
     color: #F0F0F0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+}
+
+.footer h5 {
+    color: #63CCCA;
+}
+
+.footer ul {
+    padding: 0;
+}
+
+.footer ul li {
+    margin-bottom: 10px;
+}
+
+.footer ul li a {
+    color: #F0F0F0;
+    text-decoration: none;
+}
+
+.footer ul li a:hover {
+    color: #63CCCA;
+}
+
+.footer input[type="email"] {
+    background-color: #5DA399;
+    color: #F0F0F0;
+    border: none;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.footer input[type="email"]::placeholder {
+    color: #F0F0F0;
+}
+
+.footer button[type="submit"] {
+    background-color: #63CCCA;
+    border: none;
+    padding: 10px;
+    color: #35393C;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.footer button[type="submit"]:hover {
+    background-color: #42858C;
+    color: #F0F0F0;
+}
+
+.footer hr {
+    border-top: 1px solid #5DA399;
 }
