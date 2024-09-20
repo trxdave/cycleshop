@@ -2,66 +2,90 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}CycleShop{% endblock %}</title>
-    
+
     {% load static %}
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@600&display=swap"
+        rel="stylesheet">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Link to Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Link to your custom CSS -->
 </head>
+
 <body>
 
     <!-- Header with Navbar -->
-        <!-- Header with Navbar -->
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
-                <div class="container">
-                    <!-- Logo / Brand -->
-                    <a class="navbar-brand fw-bold fs-3" href="{% url 'home' %}">
-                        <span>CycleShop</span>
-                    </a>
-                    <!-- Navbar Toggler for Mobile View -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-    
-                    <!-- Navbar Links -->
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'home' %}">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'products:product_list' %}">Products</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
-                            </li>
-    
-                            <!-- Authentication Links -->
-                            <li class="nav-item">
-                                <a class="btn btn-primary ms-2" href="#">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="btn btn-primary ms-2" href="#">Sign Up</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
+            <div class="container">
+                <!-- Logo / Brand -->
+                <a class="navbar-brand fw-bold fs-3" href="{% url 'home' %}">
+                    <span>CycleShop</span>
+                </a>
+                <!-- Navbar Toggler for Mobile View -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-    <!-- Hero Section -->
-     <section class="hero-image-container">
+                <!-- Navbar Links (Center) -->
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Products
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url 'products:product_list' %}">All Products</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#">Mountain Bikes</a></li>
+                                <li><a class="dropdown-item" href="#">Electric Bikes</a></li>
+                                <li><a class="dropdown-item" href="#">Kids Bikes</a></li>
+                                <li><a class="dropdown-item" href="#">Clothing</a></li>
+                                <li><a class="dropdown-item" href="#">Accessories</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">FAQ</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Search Box -->
+                <form class="d-flex mx-3" role="search" method="get" action="#">
+                    <input class="form-control me-2 search-input" type="search" placeholder="Search" aria-label="Search"
+                        name="q">
+                    <button class="btn btn-primary search-btn" type="submit">Search</button>
+                </form>
+
+                <!-- Authentication Links -->
+                <div class="d-flex">
+                    <a class="btn btn-primary ms-2 action-btn" href="#">Login</a>
+                    <a class="btn btn-primary ms-2 action-btn" href="#">Sign Up</a>
+                </div>
+            </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Overlay Intro -->
+    <section class="hero-image-container">
         <img src="{% static 'images/hero-image.jpg' %}" class="hero-image img-fluid" alt="CycleShop Hero Image">
         <div class="hero-overlay">
             <div class="intro">
@@ -70,7 +94,7 @@
                 <a href="{% url 'products:product_list' %}" class="btn btn-primary">Shop Now</a>
             </div>
         </div>
-     </section>
+    </section>
 
     <main>
         <div class="container my-5">
@@ -84,13 +108,14 @@
         <div class="container">
             <div class="row">
                 <!-- Column 1: Logo and Description -->
-                 <div class="col-md-3">
+                <div class="col-md-3">
                     <h5 class="fw-bold text-uppercase">CycleShop</h5>
-                    <p>Your one-stop shop for all cycling needs. Quality bikes, accessories, and top-tier customer support.</p>
-                 </div>
+                    <p>Your one-stop shop for all cycling needs. Quality bikes, accessories, and top-tier customer
+                        support.</p>
+                </div>
 
                 <!-- Column 2: My Account Links -->
-                 <div class="col-md-3">
+                <div class="col-md-3">
                     <h5 class="fw-bold text-uppercase">My Account</h5>
                     <ul class="list-unstyled">
                         <li><a href="#" class="text-light">Login</a></li>
@@ -98,8 +123,8 @@
                         <li><a href="#" class="text-light">My Orders</a></li>
                         <li><a href="#" class="text-light">Wishlist</a></li>
                     </ul>
-                 </div>
-                
+                </div>
+
                 <!-- Column 3: Customer Services Links -->
                 <div class="col-md-3">
                     <h5 class="fw-bold text-uppercase">Customer Services</h5>
@@ -133,4 +158,5 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
