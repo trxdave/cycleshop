@@ -49,7 +49,7 @@
     
                             <!-- Authentication Links -->
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Login</a>
+                                <a class="btn btn-primary ms-2" href="#">Login</a>
                             </li>
                             <li class="nav-item">
                                 <a class="btn btn-primary ms-2" href="#">Sign Up</a>
@@ -63,6 +63,13 @@
     <!-- Hero Section -->
      <section class="hero-image-container">
         <img src="{% static 'images/hero-image.jpg' %}" class="hero-image img-fluid" alt="CycleShop Hero Image">
+        <div class="hero-overlay">
+            <div class="intro">
+                <h2>Welcome to CycleShop!</h2>
+                <p>Your one-stop-shop for all cycling needs.</p>
+                <a href="{% url 'products:product_list' %}" class="btn btn-primary">Shop Now</a>
+            </div>
+        </div>
      </section>
 
     <main>

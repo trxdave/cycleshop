@@ -9,13 +9,13 @@ body {
 /* Logo */
 .logo-text {
     font-family: 'Montserrat', sans-serif;
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 700;
     color: #63CCCA;
     text-transform: uppercase;
     letter-spacing: 2px;
     background: linear-gradient(90deg, #63CCCA, #5DA399);
-    -webkit-background-clip: text;
+    
     -webkit-text-fill-color: transparent;
 }
 
@@ -44,7 +44,7 @@ header {
 }
 
 .nav-link {
-    color: #F0F0F0 !important;
+    color: #0a0a0a !important;
     font-size: 1.1rem;
 }
 
@@ -67,15 +67,57 @@ header {
 
 /* Hero Image Styles */
 .hero-image-container {
-    width: 100%;
     position: relative;
+    width: 100%;
+    height: 500px;
     overflow: hidden;
 }
 
 .hero-image {
     width: 100%;
-    max-height: 500%;
+    height: 100%;
     object-fit: cover;
+    filter: brightness(70%); /* Darken the image for better contrast with text */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Transparent black background over image */
+}
+
+.hero-overlay .intro h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #63CCCA; /* Use the primary color for headings */
+}
+
+.hero-overlay .intro p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: #F0F0F0; /* Light color for the description */
+}
+
+.hero-overlay .intro .btn {
+    font-size: 1.2rem;
+    padding: 10px 30px;
+    background-color: #42858C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.hero-overlay .intro .btn:hover {
+    background-color: #63CCCA;
+    color: #35393C;
 }
 
 /* Content Styles */
