@@ -2,24 +2,31 @@
 
 {% block title %}Products - CycleShop{% endblock %}
 
+{% block hero %}{% endblock %}
+
 {% block content %}
-    <div class="container">
+    <div class="container my-5">
         <h1 class="mb-4">Our Products</h1>
 
-        <!-- Example Product List -->
+        <!-- Product List -->
         <div class="row">
             {% for product in products %}
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.name }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ product.name }}</h5>
-                        <p class="card-text">{{ product.description }}</p>
-                        <p class="card-text"><strong>${{ product.price }}</strong></p>
-                        <a href="#" class="btn btn-primary">View Product</a>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <!-- Product Image -->
+                        <img src="{{ product.image_url }}" class="card-img-top img-fluid" alt="{{ product.name }}">
+
+                        <!-- Product Details -->
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                            <p class="card-text"><strong>Price: €{{ product.price }}</strong></p>
+
+                            <!-- Button to View More Details or Add to Cart -->
+                            <a href="#" class="btn btn-primary">View Product</a>
+                        </div>
                     </div>
                 </div>
-            </div>
             {% endfor %}
         </div>
     </div>

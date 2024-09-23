@@ -101,6 +101,7 @@
     </header>
 
     <!-- Hero Section with Overlay Intro -->
+    {% block hero %}
     <section class="hero-image-container">
         <img src="{% static 'images/hero-image.jpg' %}" class="hero-image img-fluid" alt="CycleShop Hero Image">
         <div class="hero-overlay">
@@ -111,11 +112,11 @@
             </div>
         </div>
     </section>
+    {% endblock %}
 
     <main>
+        <div class="container my-5">
         {% block content %}
-
-
         {% endblock %}
         </div>
     </main>
