@@ -65,6 +65,10 @@ header {
     background-color: #63CCCA;
 }
 
+.navbar-btn {
+    min-width: 100px;
+}
+
 /* Search bar and Buttons */
 .search-input, .search-btn, .action-btn {
     height: 38px;
