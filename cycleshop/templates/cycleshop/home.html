@@ -6,6 +6,20 @@
 {% block content %}
 <div class="container my-5">
     <div class="row text-center">
+
+        <!-- Road Bikes -->
+        <div class="col-md-4 mb-4">
+            <a href="{% url 'products:product_category' 'road-bikes' %}">
+                <div class="category-card position-relative">
+                    <img src="{% static 'images/road_bikes.jpg' %}" class="img-fluid category-img"
+                        alt="Road Bikes">
+                    <div class="category-text">
+                        <h5>Road Bikes</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+
         <!-- Mountain Bikes -->
         <div class="col-md-4 mb-4">
             <a href="{% url 'products:product_category' 'mountain-bikes' %}">
