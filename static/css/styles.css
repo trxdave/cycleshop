@@ -159,6 +159,7 @@ header {
 
 /* Category Cards */
 .category-card {
+    position: relative;
     border: 1px solid #ddd;
     border-radius: 5px;
     overflow: hidden;
@@ -176,10 +177,21 @@ header {
     object-fit: cover;
 }
 
+.category-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
 .category-card h5 {
-    margin-top: 15px;
-    font-size: 1.2rem;
-    color: #35393C;
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 /* Content Styles */
