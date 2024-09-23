@@ -23,6 +23,11 @@
 
 <body>
 
+    <!-- Free Delivery Banner -->
+    <div class="free-delivery-banner text-center py-2">
+        <p>Free Delivery on Orders Over €500!</p>
+    </div>
+
     <!-- Header with Navbar -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
@@ -97,9 +102,9 @@
     </section>
 
     <main>
-        <div class="container my-5">
-            {% block content %}
-            <!-- Page-specific content will go here -->
+        {% block content %}
+        
+    
             {% endblock %}
         </div>
     </main>

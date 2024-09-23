@@ -1,7 +1,60 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Home | CycleShop{% endblock %}
 
 {% block content %}
+<div class="container my-5">
+    <div class="row text-center">
+        <!-- Mountain Bikes -->
+        <div class="col-md-4 mb-4">
+            <a href="{% url 'products:product_category' 'mountain-bikes' %}">
+                <div class="category-card">
+                    <img src="{% static 'images/mountain_bikes.jpg' %}" class="img-fluid category-img" alt="Mountain Bikes">
+                    <h5 class="mt-2">Mountain Bikes</h5>
+                </div>
+            </a>
+        </div>
 
+        <!-- Electric Bikes -->
+        <div class="col-md-4 mb-4">
+            <a href="{% url 'products:product_category' 'electric-bikes' %}">
+                <div class="category-card">
+                    <img src="{% static 'images/electric_bikes.jpg' %}" class="img-fluid category-img" alt="Electric Bikes">
+                    <h5 class="mt-2">Electric Bikes</h5>
+                </div>
+            </a>
+        </div>
+
+        <!-- Kids Bikes -->
+        <div class="col-md-4 mb-4">
+            <a href="{% url 'products:product_category' 'kids-bikes' %}">
+                <div class="category-card">
+                    <img src="{% static 'images/kids_bikes.jpg' %}" class="img-fluid category-img" alt="Kids Bikes">
+                    <h5 class="mt-2">Kids Bikes</h5>
+                </div>
+            </a>
+        </div>
+
+        <!-- Clothing -->
+        <div class="col-md-4 mb-4">
+            <a href="{% url 'products:product_category' 'clothing' %}">
+                <div class="category-card">
+                    <img src="{% static 'images/clothing.jpg' %}" class="img-fluid category-img" alt="Clothing">
+                    <h5 class="mt-2">Clothing</h5>
+                </div>
+            </a>
+        </div>
+
+        <!-- Accessories -->
+        <div class="col-md-4 mb-4">
+            <a href="{% url 'products:product_category' 'accessories' %}">
+                <div class="category-card">
+                    <img src="{% static 'images/accessories.jpg' %}" class="img-fluid category-img" alt="Accessories">
+                    <h5 class="mt-2">Accessories</h5>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
 {% endblock %}

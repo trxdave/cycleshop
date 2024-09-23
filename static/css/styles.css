@@ -90,6 +90,18 @@ header {
     background-color: #63CCCA;
 }
 
+/* Free Delivery Banner */
+.free-delivery-banner {
+    background-color: #42858C;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.free-delivery-banner p {
+    margin: 0;
+}
+
 /* Hero Image Styles */
 .hero-image-container {
     position: relative;
@@ -145,9 +157,33 @@ header {
     color: #35393C;
 }
 
+/* Category Cards */
+.category-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.category-card:hover {
+    transform: scale(1.05);
+}
+
+.category-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.category-card h5 {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    color: #35393C;
+}
+
 /* Content Styles */
 .container {
-    margin-top: 40px;
     padding: 20px;
 }
 
