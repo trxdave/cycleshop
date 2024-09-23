@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}Products - CycleShop{% endblock %}
 
 {% block hero %}{% endblock %}
@@ -14,7 +16,11 @@
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <!-- Product Image -->
-                        <img src="{{ product.image_url }}" class="card-img-top img-fluid" alt="{{ product.name }}">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.name }}">
+                        {% else %}
+                            <img src="{% static 'images/default_product.jpg' %}" class="card-img-top img-fluid" alt="{{ product.name }}">
+                        {% endif %}
 
                         <!-- Product Details -->
                         <div class="card-body">
