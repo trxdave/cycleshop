@@ -25,11 +25,15 @@ SECRET_KEY = 'django-insecure-st7^iy4uyns2y9&=@5-g1&)c@f0h+hh@gg0*512*5)5%$$0w5g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-trxdave-cycleshop-vyexqtilgnu.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = ['8000-trxdave-cycleshop-jymgoncav68.ws.codeinstitute-ide.net']
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-trxdave-cycleshop-vyexqtilgnu.ws.codeinstitute-ide.net'
+    "https://*.gitpod.io",
+    "https://*.herokuapp.com",
+    "https://*.codeinstitute-ide.net",
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 # Application definition
 
@@ -43,12 +47,15 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'cycleshop',
     'products',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -126,6 +133,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

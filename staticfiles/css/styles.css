@@ -1,0 +1,278 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #35393C;
+    color: #F0F0F0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Logo */
+.logo-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #63CCCA;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #63CCCA, #5DA399);
+    
+    -webkit-text-fill-color: transparent;
+}
+
+.logo-text:hover {
+    text-decoration: none;
+    color: #5DA399;  /* Slightly darker shade on hover */
+}
+
+
+/* Header and Navbar */
+header {
+    background-color: #397367;
+}
+
+.navbar {
+    background-color: #397367; /* Updated to match the header */
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    color: #63CCCA;
+}
+
+.navbar-brand img {
+    margin-right: 10px;
+}
+
+.nav-link {
+    color: #0a0a0a !important;
+    font-size: 1.1rem;
+}
+
+.nav-link:hover {
+    color: #63CCCA !important; /* Hover effect for links */
+}
+
+.btn-primary {
+    background-color: #42858C;
+    border: none;
+    color: #F0F0F0;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #63CCCA;
+}
+
+.navbar-btn {
+    min-width: 100px;
+}
+
+/* Search bar and Buttons */
+.search-input, .search-btn, .action-btn {
+    height: 38px;
+    padding: 6px 12px;
+}
+
+.search-btn {
+    background-color: #42858C;
+    border: none;
+    color: white;
+}
+
+.search-btn:hover {
+    background-color: #63CCCA;
+}
+
+.action-btn {
+    background-color: #42858C;
+    border: none;
+}
+
+.action-btn:hover {
+    background-color: #63CCCA;
+}
+
+/* Free Delivery Banner */
+.free-delivery-banner {
+    background-color: #42858C;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.free-delivery-banner p {
+    margin: 0;
+}
+
+/* Hero Image Styles */
+.hero-image-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(70%);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hero-overlay .intro h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #63CCCA;
+}
+
+.hero-overlay .intro p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: #F0F0F0;
+}
+
+.hero-overlay .intro .btn {
+    font-size: 1.2rem;
+    padding: 10px 30px;
+    background-color: #42858C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.hero-overlay .intro .btn:hover {
+    background-color: #63CCCA;
+    color: #35393C;
+}
+
+/* Category Cards */
+.category-card {
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.category-card:hover .category-img {
+    transform: scale(1.05);
+}
+
+.category-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.category-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.category-card h5 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Content Styles */
+.container {
+    padding: 20px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #42858C;
+    color: #F0F0F0;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #63CCCA;
+    color: #35393C;
+}
+
+/* Footer */
+.footer {
+    background-color: #35393C;
+    color: #F0F0F0;
+}
+
+.footer h5 {
+    color: #63CCCA;
+}
+
+.footer ul {
+    padding: 0;
+}
+
+.footer ul li {
+    margin-bottom: 10px;
+}
+
+.footer ul li a {
+    color: #F0F0F0;
+    text-decoration: none;
+}
+
+.footer ul li a:hover {
+    color: #63CCCA;
+}
+
+.footer input[type="email"] {
+    background-color: #5DA399;
+    color: #F0F0F0;
+    border: none;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.footer input[type="email"]::placeholder {
+    color: #F0F0F0;
+}
+
+.footer button[type="submit"] {
+    background-color: #63CCCA;
+    border: none;
+    padding: 10px;
+    color: #35393C;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.footer button[type="submit"]:hover {
+    background-color: #42858C;
+    color: #F0F0F0;
+}
+
+.footer hr {
+    border-top: 1px solid #5DA399;
+}

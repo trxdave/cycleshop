@@ -10,3 +10,8 @@ def product_category(request, category):
     category_obj = get_object_or_404(Category, name=category)
     products = Product.objects.filter(category=category)
     return render(request, 'products/product_list.html', {'products': products, 'category': category})
+
+
+def product_detail(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    return render(request, 'products/product_detail.html', {'product': product})

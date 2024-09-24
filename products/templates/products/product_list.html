@@ -7,33 +7,35 @@
 {% block hero %}{% endblock %}
 
 {% block content %}
-    <div class="container my-5">
-        <h1 class="mb-4">Our Products</h1>
+<div class="container my-5">
+    <h1 class="mb-4">Our Products</h1>
 
-        <!-- Product List -->
-        <div class="row">
-            {% for product in products %}
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <!-- Product Image -->
-                        {% if product.image %}
-                            <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.name }}">
-                        {% else %}
-                            <img src="{% static 'images/default_product.jpg' %}" class="card-img-top img-fluid" alt="{{ product.name }}">
-                        {% endif %}
+    <!-- Product List -->
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <!-- Product Image -->
+                <a href="{% url 'products:product_detail' product.id %}">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.name }}">
+                    {% else %}
+                        <img src="{% static 'images/default_product.jpg' %}" class="card-img-top img-fluid" alt="{{ product.name }}">
+                    {% endif %}
+                </a>
 
-                        <!-- Product Details -->
-                        <div class="card-body">
-                            <h5 class="card-title">{{ product.name }}</h5>
-                            <p class="card-text">{{ product.description }}</p>
-                            <p class="card-text"><strong>Price: €{{ product.price }}</strong></p>
+                <!-- Product Details -->
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.description }}</p>
+                    <p class="card-text"><strong>Price: €{{ product.price }}</strong></p>
 
-                            <!-- Button to View More Details or Add to Cart -->
-                            <a href="#" class="btn btn-primary">View Product</a>
-                        </div>
-                    </div>
+                    <!-- Button to View More Details or Add to Cart -->
+                    <a href="#" class="btn btn-primary">View Product</a>
                 </div>
-            {% endfor %}
+            </div>
         </div>
+        {% endfor %}
     </div>
+</div>
 {% endblock %}
