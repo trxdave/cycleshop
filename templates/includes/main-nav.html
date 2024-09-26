@@ -43,45 +43,54 @@
 
             <!-- Search Box -->
             <form class="d-flex mx-3" role="search" method="get" action="#">
-                <input class="form-control me-2 search-input" type="search" placeholder="Search" aria-label="Search" name="q">
+                <input class="form-control me-2 search-input" type="search" placeholder="Search" aria-label="Search"
+                    name="q">
                 <button class="btn btn-primary search-btn" type="submit">Search</button>
             </form>
 
             <!-- Authentication Links -->
             <div class="d-flex align-items-center ms-auto">
                 {% if user.is_authenticated %}
-                    <!-- Product Management (for superusers only) -->
-                    {% if user.is_superuser %}
-                        <a href="" class="btn btn-secondary ms-2">Product Management</a>
-                    {% endif %}
-
-                    <!-- Log out Button -->
-                    <a class="btn btn-primary ms-2 action-btn" href="{% url 'account_logout' %}">Logout</a>
-                {% else %}
-                    <!-- Login Button -->
-                    <a class="btn btn-primary ms-2 action-btn" href="{% url 'account_login' %}">Login</a>
-
-                    <!-- Sign Up Button -->
-                    <a class="btn btn-primary ms-2 action-btn" href="{% url 'account_signup' %}">Sign Up</a>
-                {% endif %}
-                
-                <!-- Shopping Cart Button with Total Price in € -->
-                <div class="ms-3">
-                    <a class="nav-link {% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %}"
-                        href="">
-                        <div class="text-center">
-                            <div><i class="fa-solid fa-basket-shopping"></i></div>
-                            <p class="my-0">
-                                {% if grand_total %}
-                                    €{{ grand_total|floatformat:2 }}
-                                {% else %}
-                                    €0.00
-                                {% endif %}
-                            </p>
-                        </div>
+                <!-- Profile Dropdown -->
+                <div class="dropdown ms-2">
+                    <a class="btn btn-primary dropdown-toggle" href="#" id="profileDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        My Profile
                     </a>
+                    <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                        <li><a class="dropdown-item" href="#">View Profile</a></li>
+                        {% if user.is_superuser %}
+                        <li><a class="dropdown-item" href="#">Product Management</a></li>
+                        {% endif %}
+                        <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                    </ul>
                 </div>
+                {% else %}
+                <!-- Login Button -->
+                <a class="btn btn-primary ms-2 action-btn" href="{% url 'account_login' %}">Login</a>
+
+                <!-- Sign Up Button -->
+                <a class="btn btn-primary ms-2 action-btn" href="{% url 'account_signup' %}">Sign Up</a>
+                {% endif %}
             </div>
+
+            <!-- Shopping Cart Button with Total Price in € -->
+            <div class="ms-3">
+                <a class="nav-link {% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %}"
+                    href="">
+                    <div class="text-center">
+                        <div><i class="fa-solid fa-basket-shopping"></i></div>
+                        <p class="my-0">
+                            {% if grand_total %}
+                            €{{ grand_total|floatformat:2 }}
+                            {% else %}
+                            €0.00
+                            {% endif %}
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
         </div>
     </nav>
 </header>
