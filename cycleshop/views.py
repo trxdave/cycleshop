@@ -4,6 +4,8 @@ from .forms import ContactForm
 # Create your views here.
 
 def home(request):
+    """ A view to return the home page """
+    
     return render(request, 'cycleshop/home.html')
 
 

@@ -4,9 +4,12 @@
 <html lang="en">
 
 <head>
+    {% block meta %}
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% endblock %}
+
     <title>{% block title %}CycleShop{% endblock %}</title>
 
     {% load static %}
@@ -15,8 +18,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@600&display=swap"
         rel="stylesheet">
 
+    {% block corecss %}
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    {% endblock %}
+
+    {% block corejs %}
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {% endblock %}
 
     <!-- Link to Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
@@ -87,20 +97,37 @@
                 <!-- Authentication Links -->
                 <div class="d-flex align-items-center ms-auto">
                     {% if user.is_authenticated %}
+                    <!-- Product Management (for superusers only) -->
+                    {% if user.is_superuser %}
+                    <a href="" class="btn btn-secondary ms-2">Product Management</a>
+                    {% endif %}
+
                     <!-- Log out Button -->
                     <a class="btn btn-primary ms-2 action-btn" href="{% url 'account_logout' %}">Logout</a>
                     {% else %}
                     <!-- Login Button -->
                     <a class="btn btn-primary ms-2 action-btn" href="{% url 'account_login' %}">Login</a>
-                    
+
                     <!-- Sign Up Button -->
                     <a class="btn btn-primary ms-2 action-btn" href="{% url 'account_signup' %}">Sign Up</a>
                     {% endif %}
 
-                    <!-- Shopping Cart Button -->
-                    <button type="button" class="btn btn-primary ms-3" data-bs-toggle="toast" data-bs-target="#cartToast">
-                        <i class="fa-solid fa-basket-shopping"></i> Basket
-                    </button>
+                    <!-- Shopping Cart Button with Total Price in € -->
+                    <li class="list-inline-item ms-3">
+                        <a class="nav-link {% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %}"
+                            href="">
+                            <div class="text-center">
+                                <div><i class="fa-solid fa-basket-shopping"></i></div>
+                                <p class="my-0">
+                                    {% if grand_total %}
+                                    €{{ grand_total|floatformat:2 }}
+                                    {% else %}
+                                    €0.00
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </a>
+                    </li>
                 </div>
             </div>
         </nav>
@@ -122,8 +149,8 @@
 
     <main>
         <div class="container my-5">
-        {% block content %}
-        {% endblock %}
+            {% block content %}
+            {% endblock %}
         </div>
     </main>
 
@@ -141,8 +168,8 @@
                 <div class="col-md-3">
                     <h5 class="fw-bold text-uppercase">My Account</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-light">Login</a></li>
-                        <li><a href="#" class="text-light">Register</a></li>
+                        <li><a href="{% url 'account_login' %}" class="text-light">Login</a></li>
+                        <li><a href="{% url 'account_signup' %}" class="text-light">Register</a></li>
                         <li><a href="#" class="text-light">My Orders</a></li>
                         <li><a href="#" class="text-light">Wishlist</a></li>
                     </ul>
@@ -152,7 +179,7 @@
                 <div class="col-md-3">
                     <h5 class="fw-bold text-uppercase">Customer Services</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-light">Contact Us</a></li>
+                        <li><a href="{% url 'contact' %}" class="text-light">Contact Us</a></li>
                         <li><a href="#" class="text-light">Shipping Information</a></li>
                         <li><a href="#" class="text-light">Return & Exchanges</a></li>
                         <li><a href="#" class="text-light">FAQs</a></li>
@@ -177,9 +204,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Toast JavaScript -->
     <script>
