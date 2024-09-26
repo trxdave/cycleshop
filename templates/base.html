@@ -4,6 +4,7 @@
 <html lang="en">
 
 <head>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}CycleShop{% endblock %}</title>
@@ -85,12 +86,17 @@
 
                 <!-- Authentication Links -->
                 <div class="d-flex align-items-center ms-auto">
+                    {% if user.is_authenticated %}
+                    <!-- Log out Button -->
+                    <a class="btn btn-primary ms-2 action-btn" href="{% url 'account_logout' %}">Logout</a>
+                    {% else %}
                     <!-- Login Button -->
                     <a class="btn btn-primary ms-2 action-btn" href="{% url 'account_login' %}">Login</a>
                     
                     <!-- Sign Up Button -->
                     <a class="btn btn-primary ms-2 action-btn" href="{% url 'account_signup' %}">Sign Up</a>
-                    
+                    {% endif %}
+
                     <!-- Shopping Cart Button -->
                     <button type="button" class="btn btn-primary ms-3" data-bs-toggle="toast" data-bs-target="#cartToast">
                         <i class="fa-solid fa-basket-shopping"></i> Basket
