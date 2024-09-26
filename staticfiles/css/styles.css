@@ -277,3 +277,17 @@ header {
 .footer hr {
     border-top: 1px solid #5DA399;
 }
+
+/* Hide mobile header on larger screens */
+@media (min-width: 768px) {
+    .mobile-header {
+        display: none;
+    }
+}
+
+/* Hide desktop header on smaller screens */
+@media (max-width: 767px) {
+    .desktop-header {
+        display: none;
+    }
+}

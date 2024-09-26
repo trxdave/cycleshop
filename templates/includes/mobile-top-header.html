@@ -1,0 +1,42 @@
+<!-- Mobile Navbar -->
+<header class="mobile-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
+        <!-- Brand / Logo -->
+        <a class="navbar-brand fw-bold fs-1" href="{% url 'home' %}">CycleShop</a>
+
+        <!-- Toggle Button for Collapsible Navbar -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNavbar"
+            aria-controls="mobileNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible Navbar Content -->
+        <div class="collapse navbar-collapse" id="mobileNavbar">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="mobileProductsDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">Products</a>
+                    <ul class="dropdown-menu" aria-labelledby="mobileProductsDropdown">
+                        <li><a class="dropdown-item" href="{% url 'products:product_list' %}">All Products</a></li>
+                        <li><a class="dropdown-item" href="#">Mountain Bikes</a></li>
+                        <li><a class="dropdown-item" href="#">Electric Bikes</a></li>
+                        <li><a class="dropdown-item" href="#">Kids Bikes</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">FAQ</a>
+                </li>
+            </ul>
+            <form class="d-flex" method="GET" action="#">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+</header>
