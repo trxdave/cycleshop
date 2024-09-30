@@ -87,6 +87,11 @@ def delete_product(request, product_id):
     return redirect(reverse('products:product_list'))
 
 
+def road_bikes(request):
+    products = Product.objects.filter(category__name='Road Bikes')
+    return render(request, 'products/category_products.html', {'products': products, 'category_name': 'Road Bikes'})
+
+
 def mountain_bikes(request):
     products = Product.objects.filter(category__name='Mountain Bikes')
     return render(request, 'products/category_products.html', {'products': products, 'category_name': 'Mountain Bikes'})
