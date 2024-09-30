@@ -3,6 +3,8 @@ from .models import Product, Category
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from .models import Wishlist
+from products.models import Product
 
 def product_list(request):
     products = Product.objects.all()
@@ -10,9 +12,9 @@ def product_list(request):
 
 
 def product_category(request, category):
-    category_obj = get_object_or_404(Category, name=category)
-    products = Product.objects.filter(category=category)
-    return render(request, 'products/product_list.html', {'products': products, 'category': category})
+    category_obj = get_object_or_404(Category, slug=category)
+    products = Product.objects.filter(category=category_obj)
+    return render(request, 'products/product_list.html', {'products': products, 'category': category_obj.name})
 
 
 def product_detail(request, product_id):
@@ -22,9 +24,8 @@ def product_detail(request, product_id):
 
 @login_required
 def add_product(request):
-    """ Add a product to the store """
     if not request.user.is_superuser:
-        message.error(request, 'Sorry, only store owners can do that.')
+        messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
 
     if request.method == 'POST':
@@ -48,7 +49,6 @@ def add_product(request):
 
 @login_required
 def edit_product(request, product_id):
-    """ Edit a product in the store """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
@@ -77,7 +77,6 @@ def edit_product(request, product_id):
 
 @login_required
 def delete_product(request, product_id):
-    """ Delete a product from the store """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
@@ -111,3 +110,37 @@ def clothing(request):
 def accessories(request):
     products = Product.objects.filter(category__name='Accessories')
     return render(request, 'products/category_products.html', {'products': products, 'category_name': 'Accessories'})
+
+
+@login_required
+def view_wishlist(request):
+    wishlist, created = Wishlist.objects.get_or_create(user=request.user)
+    return render(request, 'products/wishlist.html', {'wishlist': wishlist})
+
+
+@login_required
+def add_to_wishlist(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    wishlist, created = Wishlist.objects.get_or_create(user=request.user)
+
+    if product in wishlist.products.all():
+        messages.info(request, "Product already in wishlist.")
+    else:
+        wishlist.products.add(product)
+        messages.success(request, "Product added to wishlist.")
+
+    return redirect('products:product_detail', product_id=product_id)
+
+
+@login_required
+def remove_from_wishlist(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    wishlist = get_object_or_404(Wishlist, user=request.user)
+
+    if product in wishlist.products.all():
+        wishlist.products.remove(product)
+        messages.success(request, "Product removed from wishlist.")
+    else:
+        messages.info(request, "Product was not in your wishlist.")
+
+    return redirect('products:view_wishlist')

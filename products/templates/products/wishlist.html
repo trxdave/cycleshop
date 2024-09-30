@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}My Wishlist - CycleShop{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="mb-4">My Wishlist</h1>
+
+    {% if wishlist.products.all %}
+        <div class="row">
+            {% for product in wishlist.products.all %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <!-- Product Image -->
+                        {% if product.image %}
+                        <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.name }}">
+                        {% else %}
+                        <img src="{% static 'images/default_product.jpg' %}" class="card-img-top img-fluid"
+                            alt="{{ product.name }}">
+                        {% endif %}
+
+                        <!-- Product Details -->
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                            <p class="card-text"><strong>Price: €{{ product.price }}</strong></p>
+
+                            <!-- Button to View Product -->
+                            <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">View Product</a>
+
+                            <!-- Button to Remove from Wishlist -->
+                            <form action="{% url 'remove_from_wishlist' product.id %}" method="post" class="mt-2">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Remove from Wishlist</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Your wishlist is empty.</p>
+    {% endif %}
+</div>
+{% endblock %}
