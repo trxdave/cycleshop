@@ -9,6 +9,11 @@ urlpatterns = [
     path('', views.product_list, name='product_list'),
     path('<int:product_id>/', views.product_detail, name='product_detail'),
     path('category/<str:category>/', views.product_category, name='product_category'),
+    path('mountain-bikes/', views.mountain_bikes, name='mountain_bikes'),
+    path('electric-bikes/', views.electric_bikes, name='electric_bikes'),
+    path('kids-bikes/', views.kids_bikes, name='kids_bikes'),
+    path('clothing/', views.clothing, name='clothing'),
+    path('accessories/', views.accessories, name='accessories'),
 ]
 
 if settings.DEBUG:

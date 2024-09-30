@@ -86,3 +86,28 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products:product_list'))
+
+
+def mountain_bikes(request):
+    products = Product.objects.filter(category__name='Mountain Bikes')
+    return render(request, 'products/category_products.html', {'products': products, 'category_name': 'Mountain Bikes'})
+
+
+def electric_bikes(request):
+    products = Product.objects.filter(category__name='Electric Bikes')
+    return render(request, 'products/category_products.html', {'products': products, 'category_name': 'Electric Bikes'})
+
+
+def kids_bikes(request):
+    products = Product.objects.filter(category__name='Kids Bikes')
+    return render(request, 'products/category_products.html', {'products': products, 'category_name': 'Kids Bikes'})
+
+
+def clothing(request):
+    products = Product.objects.filter(category__name='Clothing')
+    return render(request, 'products/category_products.html', {'products': products, 'category_name': 'Clothing'})
+
+
+def accessories(request):
+    products = Product.objects.filter(category__name='Accessories')
+    return render(request, 'products/category_products.html', {'products': products, 'category_name': 'Accessories'})
