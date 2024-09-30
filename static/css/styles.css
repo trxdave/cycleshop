@@ -37,6 +37,7 @@ header {
 .navbar-brand {
     font-size: 1.5rem;
     color: #63CCCA;
+    text-transform: uppercase;
 }
 
 .navbar-brand img {
@@ -225,10 +226,6 @@ header {
     max-width: 500px;
     margin: 0;
     padding: 50px 0;
-}
-
-.btn {
-    width: 100%;
 }
 
 /* Footer */
