@@ -228,6 +228,57 @@ header {
     padding: 50px 0;
 }
 
+/* FAQ Page */
+
+.accordion-item {
+    border: none;
+    border-bottom: 1px solid #ccc;
+}
+
+.accordion-header button {
+    background-color: #397367;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-header button:hover {
+    background-color: #63CCCA;
+}
+
+.accordion-button::after {
+    font-size: 1.3rem;
+}
+
+.accordion-body {
+    background-color: #f9f9f9;
+    color: #35393C;
+    padding: 20px;
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: background-color 0.3s ease;
+}
+
+. accordion-button:not(.collapsed) {
+    background-color: #5DA399;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+.accordion-collapse {
+    transition: all 0.3s ease;
+}
+
+.accordion-button::after {
+    color: #fff;
+}
+
+
+
+
 /* Footer */
 .footer {
     background-color: #35393C;
@@ -283,4 +334,16 @@ header {
 
 .footer hr {
     border-top: 1px solid #5DA399;
+}
+
+/* For small devices, adjust padding/margins */
+@media only screen and (max-width: 600px) {
+    .accordion-header button {
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+    .accordion-body {
+        padding: 15px;
+    }
 }

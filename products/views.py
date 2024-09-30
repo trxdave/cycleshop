@@ -117,6 +117,10 @@ def accessories(request):
     return render(request, 'products/category_products.html', {'products': products, 'category_name': 'Accessories'})
 
 
+def faq(request):
+    return render(request, 'products/faq.html')
+
+
 @login_required
 def view_wishlist(request):
     wishlist, created = Wishlist.objects.get_or_create(user=request.user)
