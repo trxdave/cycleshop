@@ -41,3 +41,9 @@ CycleShop is an e-commerce application for cycling products. Built using Django,
 
 ## Setup Instructions
 
+## Credits
+
+Accordian - https://djangosnippets.org/snippets/10658/
+
+Wishlist - https://pythongeeks.org/python-django-wishlist-project/
+
