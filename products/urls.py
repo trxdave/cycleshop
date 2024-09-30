@@ -15,6 +15,7 @@ urlpatterns = [
     path('kids-bikes/', views.kids_bikes, name='kids_bikes'),
     path('clothing/', views.clothing, name='clothing'),
     path('accessories/', views.accessories, name='accessories'),
+    path('return-exchange/', views.return_exchange, name='return_exchange'),
     path('faq/', views.faq, name='faq'),
 ]
 

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import ContactForm
+from . import views
 
 # Create your views here.
 
@@ -19,3 +20,5 @@ def contact(request):
         form = ContactForm()
 
     return render(request, 'cycleshop/contact.html', {'form': form})
+
+

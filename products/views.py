@@ -121,6 +121,10 @@ def faq(request):
     return render(request, 'products/faq.html')
 
 
+def return_exchange(request):
+    return render(request, 'products/return_exchange.html')
+
+
 @login_required
 def view_wishlist(request):
     wishlist, created = Wishlist.objects.get_or_create(user=request.user)

@@ -276,8 +276,27 @@ header {
     color: #fff;
 }
 
+/* Return & Exchange */
+.card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
 
+ul.list-unstyled, ol.list-unstyled {
+    padding-left: 20px;
+    line-height: 1.8;
+}
 
+h3, h4 {
+    color: #397367;
+    font-weight: bold;
+}
+
+a.text-primary:hover {
+    color: #63CCCA;
+}
 
 /* Footer */
 .footer {
