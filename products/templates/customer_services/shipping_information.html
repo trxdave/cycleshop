@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Shipping Information | CycleShop{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="mb-4">Shipping Information</h1>
+
+    <!-- Free Delivery Banner -->
+    <div class="alert alert-success text-center">
+        <strong>Free delivery on all orders over €500!</strong>
+    </div>
+
+    <!-- Domestic Shopping -->
+     <div class="card shadow-sm mb-5">
+        <div class="card-body">
+            <h3 class="card-title">Domestic Shipping</h3>
+            <p>We offer free domestic shipping on all orders over <strong>€500</strong>. For orders under €500, a flat shipping rate of <strong>€15</strong> applies.</p>
+
+            <h4>Delivery Time:</h4>
+            <ul class="list-unstyled">
+                <li>- Standard shipping: 3-5 business days</li>
+                <li>- Express shipping: 1-2 business days (additional €10 charge)</li>
+            </ul>
+        </div>
+     </div>
+
+    <!-- International Shipping -->
+    <div class="card shadow-sm mb-5">
+        <div class="card-body">
+            <h3 class="card-title">International Shipping</h3>
+            <p>We ship to over 50 countries worldwide. International shipping rates are calculated at checkout based on destination and weight of the order.</p>
+
+            <h4>Delivery Time:</h4>
+            <ul class="list-unstyled">
+                <li>- Standard shipping: 7-14 business days</li>
+                <li>- Express shipping: 3-7 business days</li>
+            </ul>
+
+            <p><strong>Note:</strong> Customs duties and taxes may apply depending on your country's regulations. Customers are responsible for these fees.</p>
+        </div>
+    </div>
+
+    <!-- Tracking Information -->
+    <div class="card shadow-sm mb-5">
+        <div class="card-body">
+            <h3 class="card-title">Tracking Your Order</h3>
+            <p>Once your order is shipped, we will send you a tracking number via email. You can use this number to track your package on our website or the courier's tracking page.</p>
+        </div>
+    </div>
+
+    <!-- Additional Information -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h3 class="card-title">Additional Information</h3>
+            <ul class="list-unstyled">
+                <li>- Shipping times may vary due to public holidays or natural delays.</li>
+                <li>- For any shipping inquiries, feel free to <a href="{% url 'contact' %}" class="text-primary">contact us</a>.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

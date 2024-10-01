@@ -16,6 +16,8 @@ urlpatterns = [
     path('clothing/', views.clothing, name='clothing'),
     path('accessories/', views.accessories, name='accessories'),
     path('return-exchange/', views.return_exchange, name='return_exchange'),
+    path('shipping-information/', views.shipping_information, name='shipping_information'),
+    path('wishlist/', views.view_wishlist, name='wishlist'),
     path('faq/', views.faq, name='faq'),
 ]
 

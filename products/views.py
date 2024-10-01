@@ -122,7 +122,11 @@ def faq(request):
 
 
 def return_exchange(request):
-    return render(request, 'products/return_exchange.html')
+    return render(request, 'customer_services/return_exchange.html')
+
+
+def shipping_information(request):
+    return render(request, 'customer_services/shipping_information.html')
 
 
 @login_required
