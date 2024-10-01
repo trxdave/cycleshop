@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'cycleshop',
     'products',
+    'bag',
 ]
 
 MIDDLEWARE = [
@@ -82,6 +83,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'bag.context_processors.bag_contents',
             ],
         },
     },
@@ -169,3 +171,10 @@ LOGIN_REDIRECT_URL = '/'
 
 # Email verification options (optional)
 ACCOUNT_EMAIL_REQUIRED = True
+
+# Stripe
+FREE_DELIVERY_THRESHOLD = 500
+STANDARD_DELIVERY_PERCENTAGE = 10
+STRIPE_CURRENCY = 'eu'
+STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY")
+STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")

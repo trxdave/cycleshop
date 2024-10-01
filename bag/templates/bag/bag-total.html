@@ -1,0 +1,6 @@
+<div class="bag-total-container">
+    <h5>Your Bag</h5>
+    <p>Total Items: {{ bag|length }}</p>
+    <p>Total Price: €{{ bag_total|floatformat:2 }}</p>
+    <a href="{% url 'bag:bag' %}" class="btn btn-primary">View Bag</a>
+</div>
