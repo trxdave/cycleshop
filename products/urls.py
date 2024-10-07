@@ -8,7 +8,8 @@ app_name = 'products'
 urlpatterns = [
     path('', views.product_list, name='product_list'),
     path('<int:product_id>/', views.product_detail, name='product_detail'),
-    path('category/<str:category>/', views.product_category, name='product_category'),
+    path('category/<str:category>/',
+         views.product_category, name='product_category'),
     path('road-bikes/', views.road_bikes, name='road_bikes'),
     path('mountain-bikes/', views.mountain_bikes, name='mountain_bikes'),
     path('electric-bikes/', views.electric_bikes, name='electric_bikes'),
@@ -16,10 +17,12 @@ urlpatterns = [
     path('clothing/', views.clothing, name='clothing'),
     path('accessories/', views.accessories, name='accessories'),
     path('return-exchange/', views.return_exchange, name='return_exchange'),
-    path('shipping-information/', views.shipping_information, name='shipping_information'),
+    path('shipping-information/', views.shipping_information,
+         name='shipping_information'),
     path('wishlist/', views.view_wishlist, name='wishlist'),
     path('faq/', views.faq, name='faq'),
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

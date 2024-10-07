@@ -27,6 +27,7 @@ urlpatterns = [
     path('products/', include('products.urls')),
     path('accounts/', include('allauth.urls')),
     path('bag/', include('bag.urls', namespace='bag')),
+    path('search/', views.search_request, name='search_results'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

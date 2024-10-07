@@ -4,9 +4,9 @@ from . import views
 
 # Create your views here.
 
+
 def home(request):
     """ A view to return the home page """
-    
     return render(request, 'cycleshop/home.html')
 
 
@@ -22,3 +22,7 @@ def contact(request):
     return render(request, 'cycleshop/contact.html', {'form': form})
 
 
+def search_request(request):
+    query = request.GET.get('q')
+
+    return render(request, 'products/search_results.html', {'products': products, 'query': query})
