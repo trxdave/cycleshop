@@ -11,6 +11,7 @@ def home(request):
 
 
 def contact(request):
+    """ A view to handle the contact form submission and display the contact page """
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -23,6 +24,7 @@ def contact(request):
 
 
 def search_request(request):
+    """ A view to handle search queries and return search results """
     query = request.GET.get('q')
 
     return render(request, 'products/search_results.html', {'products': products, 'query': query})
