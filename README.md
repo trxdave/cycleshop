@@ -66,17 +66,16 @@ CycleShop is an e-commerce application for cycling products. Built using Django,
 
 Create an env.py file with the following contents:
 
-import os
+- import os
 
-os.environ['SECRET_KEY'] = 'your_secret_key'
-os.environ['DATABASE_URL'] = 'your_database_url'
-os.environ['STRIPE_PUBLIC_KEY'] = 'your_stripe_public_key'
-os.environ['STRIPE_SECRET_KEY'] = 'your_stripe_secret_key'
+- os.environ['SECRET_KEY'] = 'your_secret_key'
+- os.environ['DATABASE_URL'] = 'your_database_url'
+- os.environ['STRIPE_PUBLIC_KEY'] = 'your_stripe_public_key'
+- os.environ['STRIPE_SECRET_KEY'] = 'your_stripe_secret_key'
 
 ### Run Migrations:
 
 python manage.py migrate
-
 
 ### Create a Superuser:
 
@@ -91,4 +90,8 @@ python manage.py runserver
 Accordian - https://djangosnippets.org/snippets/10658/
 
 Wishlist - https://pythongeeks.org/python-django-wishlist-project/
+
+Perplexity - https://perplexity.ai
+
+
 
