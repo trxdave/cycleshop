@@ -61,7 +61,7 @@
                     <ul class="dropdown-menu" aria-labelledby="profileDropdown">
                         <li><a class="dropdown-item" href="#">View Profile</a></li>
                         {% if user.is_superuser %}
-                        <li><a class="dropdown-item" href="#">Product Management</a></li>
+                        <li><a class="dropdown-item" href="{% url 'products:manage_products' %}">Product Management</a></li>
                         {% endif %}
                         <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
                     </ul>

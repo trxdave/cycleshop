@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from .models import Wishlist
 from products.models import Product
+from .forms import ProductForm
 
 
 def product_list(request):
@@ -32,6 +33,17 @@ def product_detail(request, product_id):
     return render(
         request, 'products/product_detail.html', {'product': product}
     )
+
+
+@login_required
+def manage_products(request):
+    """ A view to manage all products """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can access this page.')
+        return redirect('home')
+
+    products = Product.objects.all()
+    return render(request, 'products/manage_products.html', {'products': products})
 
 
 @login_required
