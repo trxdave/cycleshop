@@ -4,6 +4,8 @@
 
 {% block title %}{{ category_name }} - CycleShop{% endblock %}
 
+{% block hero %}{% endblock %}
+
 {% block content %}
 <div class="container my-5">
     <h1 class="mb-4">{{ category_name }}</h1>
@@ -25,12 +27,12 @@
                         </div>
                     {% endif %}
                 </a>
-
+    
                 <!-- Product Details -->
                 <div class="card-body text-center">
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p class="card-text"><strong>€{{ product.price }}</strong></p>
-                    <a href="{% url 'products:product_detail' product.id %}" class="btn btn-primary">View Product</a>
+                    <a href="{% url 'products:product_detail' product.id %}" class="btn btn-primary mt-auto">View Product</a>
                 </div>
             </div>
         </div>

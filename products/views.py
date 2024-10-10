@@ -26,9 +26,14 @@ def product_category(request, category):
     """ A view to return products filtered by category """
     category_obj = get_object_or_404(Category, slug=category)
     products = Product.objects.filter(category=category_obj)
+
+    paginator = Paginator(products, 8)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     return render(
-        request, 'products/product_list.html', {
-            'products': products,
+        request, 'products/category_products.html', {
+            'products': page_obj,
             'category': category_obj.name,
         })
 

@@ -10,17 +10,23 @@ urlpatterns = [
     path('<int:product_id>/', views.product_detail, name='product_detail'),
     path('category/<str:category>/',
          views.product_category, name='product_category'),
+
+    # Categories     
     path('road-bikes/', views.road_bikes, name='road_bikes'),
     path('mountain-bikes/', views.mountain_bikes, name='mountain_bikes'),
     path('electric-bikes/', views.electric_bikes, name='electric_bikes'),
     path('kids-bikes/', views.kids_bikes, name='kids_bikes'),
     path('clothing/', views.clothing, name='clothing'),
     path('accessories/', views.accessories, name='accessories'),
+
+    # Information pages
     path('return-exchange/', views.return_exchange, name='return_exchange'),
     path('shipping-information/', views.shipping_information,
          name='shipping_information'),
     path('wishlist/', views.view_wishlist, name='wishlist'),
     path('faq/', views.faq, name='faq'),
+
+    # Product Management
     path('manage_products/', views.manage_products, name='manage_products'),
     path('add_products/', views.add_product, name='add_product'),
     path('edit_product/<int:product_id>/', views.edit_product, name='edit_product'),
