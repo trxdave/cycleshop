@@ -20,31 +20,31 @@
                 </tr>
             </thead>
             <tbody>
-                {% for item in bag %}
+                {% for product_id, item in bag.items %}
                 <tr>
                     <td>{{ item.product.name }}</td>
-                    <td>{{ item.product.price|floatformat:2 }}</td>
-                <td>
-                    <form method="post" action="{% url 'bag:update_quantity' item.product %}">
-                        {% csrf_token %}
-                        <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
-                        <button type="submit" class="btn btn-primary">Update</button>
-                    </form>
-                </td>
-                <td>€{{ item.total_price|floatformat:2 }}</td>
-                <td>
-                    <form method="post" action="{% url 'bag:remove_item' item.product.id %}">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Remove</button>
-                    </form>
-                </td>
+                    <td>€{{ item.price|floatformat:2 }}</td>
+                    <td>
+                        <form method="post" action="{% url 'update_quantity' product_id %}">
+                            {% csrf_token %}
+                            <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="form-control d-inline-block w-25">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </form>
+                    </td>
+                    <td>€{{ item.price|floatformat:2 }}</td>
+                    <td>
+                        <form method="post" action="{% url 'remove_from_bag' product_id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Remove</button>
+                        </form>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
 
-        <div class="bag-summary">
-            <h4>Total Price: €{{ bag_total|floatformat:2 }}</h4>
+        <div class="bag-summary mt-4">
+            <h4>Total Price: €{{ total|floatformat:2 }}</h4>
             <a href="{% url 'checkout' %}" class="btn btn-success">Proceed to Checkout</a>
         </div>
     {% else %}
