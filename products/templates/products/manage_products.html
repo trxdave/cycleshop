@@ -23,8 +23,8 @@
             <td>€{{ product.price }}</td>
             <td>{{ product.stock }}</td>
             <td>
-                <a href="{% url 'edit_product' product.id %}" class="btn btn-warning">Edit</a>
-                <a href="{% url 'delete_product' product.id %}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                <a href="{% url 'products:edit_product' product.id %}" class="btn btn-warning">Edit</a>
+                <a href="{% url 'products:delete_product' product.id %}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
             </td>
         </tr>
         {% endfor %}
