@@ -2,17 +2,15 @@
 
 {% load static %}
 
-{% block hero %}{% endblock %}
-
 {% block title %}Return & Exchanges | CycleShop{% endblock %}
 
 {% block content %}
 <div class="container my-5">
     <h1 class="mb-4">Return & Exchanges</h1>
     
-    <div class="card shadow-sm mb-5">
-        <div class="card-body">
-            <h3 class="card-title">Our Return Policy</h3>
+    <div class="return-card shadow-sm mb-5">
+        <div class="return-card-body">
+            <h3 class="return-card-title">Our Return Policy</h3>
             <p>At CycleShop, we prioritize customer satisfaction. If you're not happy with your purchase, you can return or exchange the item within <strong>30 days</strong> of delivery.</p>
             
             <h4>Conditions:</h4>
@@ -23,9 +21,9 @@
         </div>
     </div>
 
-    <div class="card shadow-sm mb-5">
-        <div class="card-body">
-            <h3 class="card-title">Return Process</h3>
+    <div class="return-card shadow-sm mb-5">
+        <div class="return-card-body">
+            <h3 class="return-card-title">Return Process</h3>
             <ol class="list-unstyled mb-4">
                 <li>1. Contact our <a href="{% url 'contact' %}" class="text-primary">customer support</a> to initiate the return.</li>
                 <li>2. You will receive a return authorization and shipping label via email.</li>
@@ -35,9 +33,9 @@
         </div>
     </div>
 
-    <div class="card shadow-sm">
-        <div class="card-body">
-            <h3 class="card-title">Exchange Process</h3>
+    <div class="return-card shadow-sm">
+        <div class="return-card-body">
+            <h3 class="return-card-title">Exchange Process</h3>
             <ol class="list-unstyled mb-4">
                 <li>1. Contact our customer support to arrange for an exchange.</li>
                 <li>2. Follow the same steps as the return process.</li>

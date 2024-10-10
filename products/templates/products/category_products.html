@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %}{{ category_name }} - Cycleshop{% endblock %}
+{% block title %}{{ category_name }} - CycleShop{% endblock %}
 
 {% block content %}
 <div class="container my-5">
@@ -11,20 +11,59 @@
     <!-- Product List -->
     <div class="row">
         {% for product in products %}
-        <div class="col-md-4">
-            <!-- Product Image -->
-            <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.name }}">
+        <div class="col-md-4 d-flex align-items-stretch">
+            <div class="card product-card mb-4 shadow-sm">
+                <!-- Product Image -->
+                <a href="{% url 'products:product_detail' product.id %}">
+                    {% if product.image %}
+                        <div class="product-image-container">
+                            <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.name }}">
+                        </div>
+                    {% else %}
+                        <div class="product-image-container">
+                            <img src="{% static 'images/default_product.jpg' %}" class="card-img-top img-fluid" alt="{{ product.name }}">
+                        </div>
+                    {% endif %}
+                </a>
 
-            <!-- Product Details -->
-            <div class="card-body">
-                <h5 class="card-title">{{ product.name }}</h5>
-                <p class="card-text">{{ product.description }}</p>
-                <p class="card-text"><strong>Price: €{{ product.price }}</strong></p>
-                <a href="#" class="btn btn-primary">View Product</a>
+                <!-- Product Details -->
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text"><strong>€{{ product.price }}</strong></p>
+                    <a href="{% url 'products:product_detail' product.id %}" class="btn btn-primary">View Product</a>
+                </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
+
+    <!-- Pagination Controls -->
+    <div class="pagination-container text-center mt-4">
+        <ul class="pagination justify-content-center">
+            {% if products.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ products.previous_page_number }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo; Previous</span>
+                </a>
+            </li>
+            {% endif %}
+
+            {% for num in products.paginator.page_range %}
+                {% if products.number == num %}
+                <li class="page-item active"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                {% else %}
+                <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                {% endif %}
+            {% endfor %}
+
+            {% if products.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ products.next_page_number }}" aria-label="Next">
+                    <span aria-hidden="true">Next &raquo;</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
 </div>
 {% endblock %}

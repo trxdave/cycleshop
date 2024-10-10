@@ -6,11 +6,17 @@ from django.urls import reverse
 from .models import Wishlist
 from products.models import Product
 from .forms import ProductForm
+from django.core.paginator import Paginator
 
 
 def product_list(request):
     """ A view to return the list of all products """
-    products = Product.objects.all()
+    product_list = Product.objects.all()
+    paginator = Product.objects.all()
+    paginator = Paginator(product_list, 6)
+    page_number = request.GET.get('page')
+    products = paginator.get_page(page_number)
+
     return render(
         request, 'products/product_list.html', {'products': products}
     )

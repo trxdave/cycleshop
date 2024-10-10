@@ -2,44 +2,40 @@
 
 {% load static %}
 
-{% block title %}{{ product.name }} - CycleShop{% endblock %}
+{% block title %}Products - CycleShop{% endblock %}
 
 {% block hero %}{% endblock %}
 
 {% block content %}
 <div class="container my-5">
+    <h1 class="mb-4">Our Products</h1>
+
+    <!-- Product List -->
     <div class="row">
-        <!-- Product Image -->
-        <div class="col-md-6">
-            {% if product.image %}
-                <img src="{{ product.image.url }}" class="img-fluid" alt="{{ product.name }}">
-            {% else %}
-                <img src="{% static 'images/default_product.jpg' %}" class="img-fluid" alt="{{ product.name }}">
-            {% endif %}
-        </div>
+        {% for product in products %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <!-- Product Image -->
+                <a href="{% url 'products:product_detail' product.id %}">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.name }}">
+                    {% else %}
+                        <img src="{% static 'images/default_product.jpg' %}" class="card-img-top img-fluid" alt="{{ product.name }}">
+                    {% endif %}
+                </a>
 
-        <!-- Product Details -->
-        <div class="col-md-6">
-            <h1>{{ product.name }}</h1>
-            <p><strong>Price:</strong> €{{ product.price }}</p>
-            <p>{{ product.description }}</p>
+                <!-- Product Details -->
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.description|truncatewords:10 }}</p>
+                    <p class="card-text"><strong>Price: €{{ product.price }}</strong></p>
 
-            <form method="post" action="#">
-                {% csrf_token %}
-                <div class="mb-3">
-                    <label for="quantity" class="form-label">Quantity</label>
-                    <input type="number" class="form-control" id="quantity" name="quantity" value="1" min="1">
+                    <!-- Button to View More Details or Add to Cart -->
+                    <a href="{% url 'products:product_detail' product.id %}" class="btn btn-primary">View Product</a>
                 </div>
-
-                <button type="submit" class="btn btn-primary">Add to Cart</button>
-            </form>
-
-            <hr>
-
-            <p><strong>SKU:</strong> {{ product.sku }}</p>
-            <p><strong>Rating:</strong> {{ product.rating }} / 5</p>
-            <p><strong>Stock:</strong> {{ product.stock }} available</p>
+            </div>
         </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
