@@ -390,6 +390,10 @@ header {
     font-weight: bold;
 }
 
+.return-text {
+    color: black;
+}
+
 /* Footer */
 .footer {
     background-color: #35393C;
