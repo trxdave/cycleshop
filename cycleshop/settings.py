@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-trxdave-cycleshop-2jmq427baxm.ws-us116.gitpod.io', 
+    '8000-trxdave-cycleshop-wsn832sw3lu.ws-eu116.gitpod.io', 
     'cycleshop-b289044df6ec.herokuapp.com', 'localhost'
     ]
 
