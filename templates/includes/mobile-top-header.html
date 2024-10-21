@@ -8,9 +8,18 @@
         <div class="d-flex align-items-center">
             {% if user.is_authenticated %}
             <!-- User Profile Icon (Visible on Mobile) -->
-            <a href="#" class="btn btn-primary d-lg-none me-3">
+            <a href="#" class="btn btn-primary d-lg-none me-3" data-bs-toggle="dropdown">
                 <i class="fas fa-user"></i>
             </a>
+
+            <!-- Mobile Profile Dropdown -->
+            <div class="dropdown-menu dropdown-menu-end">
+                <a class="dropdown-item" href="{% url 'view_profile' %}">View Profile</a>
+                {% if user.is_superuser %}
+                <a class="dropdown-item" href="{% url 'products:manage_products' %}">Product Management</a>
+                {% endif %}
+                <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
+            </div>
             {% endif %}
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNavbar"
                 aria-controls="mobileNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,10 +61,10 @@
                     <button class="btn btn-outline-primary" type="submit">Search</button>
                 </form>
 
-            <!-- Shopping Cart Icon for Mobile -->
-            <a href="{% url 'bag:bag' %}" class="btn btn-primary d-lg-none">
-                <i class="fas fa-shopping-cart"></i>
-            </a>
+                <!-- Shopping Cart Icon for Mobile -->
+                <a href="{% url 'bag:bag' %}" class="btn btn-primary d-lg-none">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
             </div>
         </div>
     </nav>
