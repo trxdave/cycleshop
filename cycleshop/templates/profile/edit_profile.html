@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% block hero %}{% endblock hero %}
+
+{% block title %}Edit Profile{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Edit Your Profile</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ user_form|crispy }}
+        </div>
+        <div class="form-group">
+            {{ profile_form|crispy }}
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+</div>
+{% endblock %}

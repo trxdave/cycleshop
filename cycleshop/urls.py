@@ -19,6 +19,9 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
+from .models import Profile
+
+admin.site.register(Profile)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,6 +31,10 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('bag/', include('bag.urls', namespace='bag')),
     path('search/', views.search_request, name='search_results'),
+    path('profile/', views.view_profile, name='view_profile'),
+    path('profile/edit/', views.edit_profile, name='edit_profile'),
+    path('profile/delete/', views.delete_profile, name='delete_profile'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

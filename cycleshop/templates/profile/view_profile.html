@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block hero %}{% endblock hero %}
+
+{% block title %}Profile - CycleShop{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1>Profile Details</h1>
+    <p><strong>Username:</strong> {{ profile.user.username }}</p>
+    <p><strong>Email:</strong> {{ profile.user.email }}</p>
+    <p><strong>Location:</strong> {{ profile.location }}</p>
+    <p><strong>Birth Date:</strong> {{ profile.birth_date }}</p>
+    <p><strong>Bio:</strong> {{ profile.bio }}</p>
+    
+    <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+    <a href="{% url 'delete_profile' %}" class="btn btn-danger">Delete Profile</a>
+</div>
+{% endblock %}
