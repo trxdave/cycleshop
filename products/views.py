@@ -199,7 +199,7 @@ def accessories(request):
 
 def faq(request):
     """ A view to return the FAQ page """
-    return render(request, 'products/faq.html')
+    return render(request, 'customer_services/faq.html')
 
 
 def return_exchange(request):

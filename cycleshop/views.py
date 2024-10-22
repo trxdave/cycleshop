@@ -16,8 +16,11 @@ def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            
+            # Actions like sending an email or saving the form data
+            messages.success(request, 'Your message has been successfully sent. We will get back to you soon!')
             return render(request, 'cycleshop/contact.html')
+        else:
+            messages.error(request, 'There was an error with your submission. Please try again.')
     else:
         form = ContactForm()
 
