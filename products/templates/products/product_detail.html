@@ -24,7 +24,8 @@
             <p><strong>Price:</strong> €{{ product.price }}</p>
             <p>{{ product.description }}</p>
 
-            <form method="post" action="#">
+            <!-- Form to Add Product to Cart -->
+            <form method="post" action="{% url 'bag:add_to_bag' product.id %}">
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="quantity" class="form-label">Quantity</label>

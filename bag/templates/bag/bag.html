@@ -2,11 +2,22 @@
 
 {% load static %}
 
-{% block title %}Shopping bag | CycleShop{% endblock %}
+{% block title %}Shopping Bag | CycleShop{% endblock %}
 
 {% block content %}
 <div class="container my-5">
     <h1 class="mb-4">Your Shopping Bag</h1>
+
+    <!-- Alert messages for success, info, and error handling -->
+    {% if messages %}
+        <div class="container">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} mt-3">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 
     {% if bag %}
         <table class="table table-bordered">
@@ -25,17 +36,17 @@
                     <td>{{ item.product.name }}</td>
                     <td>€{{ item.price|floatformat:2 }}</td>
                     <td>
-                        <form method="post" action="{% url 'update_quantity' product_id %}">
+                        <form method="post" action="{% url 'bag:update_quantity' product_id %}">
                             {% csrf_token %}
-                            <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="form-control d-inline-block w-25">
-                            <button type="submit" class="btn btn-primary">Update</button>
+                            <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="form-control d-inline-block w-50">
+                            <button type="submit" class="btn btn-primary mt-2">Update</button>
                         </form>
                     </td>
                     <td>€{{ item.price|floatformat:2 }}</td>
                     <td>
-                        <form method="post" action="{% url 'remove_from_bag' product_id %}">
+                        <form method="post" action="{% url 'bag:remove_from_bag' product_id %}">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-danger">Remove</button>
+                            <button type="submit" class="btn btn-danger mt-2">Remove</button>
                         </form>
                     </td>
                 </tr>
@@ -45,7 +56,7 @@
 
         <div class="bag-summary mt-4">
             <h4>Total Price: €{{ total|floatformat:2 }}</h4>
-            <a href="{% url 'checkout' %}" class="btn btn-success">Proceed to Checkout</a>
+            <!-- <a href="{% url 'checkout' %}" class="btn btn-success">Proceed to Checkout</a> -->
         </div>
     {% else %}
         <p>Your bag is currently empty.</p>

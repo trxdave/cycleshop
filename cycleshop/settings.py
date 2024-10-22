@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-trxdave-cycleshop-wsn832sw3lu.ws-eu116.gitpod.io', 
+    '8000-trxdave-cycleshop-ilf96jp8tgy.ws-eu116.gitpod.io', 
     'cycleshop-b289044df6ec.herokuapp.com', 'localhost'
     ]
 
@@ -88,6 +88,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'bag.context_processors.bag_contents',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'bag.context_processors.bag_contents',

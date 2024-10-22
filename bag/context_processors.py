@@ -1,9 +1,21 @@
-def bag_contents(request):
-    bag = request.session.get('bag', {})
-    bag_items_count = sum(item['quantity'] for item in bag.values())
-    bag_total = sum(item['price'] * item['quanity'] for item in bag.values())
+from decimal import Decimal
+from django.conf import settings
 
-    return {
-        'bag_items_count': bag_items_count,
+def bag_contents(request):
+    """
+    The shopping bag's contents
+    """
+    bag = request.session.get('bag', {})
+    bag_total = 0
+    bag_items_count = 0
+
+    for item_id, item in bag.items():
+        bag_total += item['price'] * item['quantity']
+        bag_items_count += item['quantity']
+
+    context = {
         'bag_total': bag_total,
+        'bag_items_count': bag_items_count,
     }
+
+    return context
