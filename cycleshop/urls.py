@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 from .models import Profile
+from .views import subscribe_newsletter
 
 admin.site.register(Profile)
 
@@ -34,7 +35,7 @@ urlpatterns = [
     path('profile/', views.view_profile, name='view_profile'),
     path('profile/edit/', views.edit_profile, name='edit_profile'),
     path('profile/delete/', views.delete_profile, name='delete_profile'),
-    path('subscribe', views.subscribe_newsletter, name='subscribe_newsletter'),
+    path('subscribe', subscribe_newsletter, name='subscribe_newsletter'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

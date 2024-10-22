@@ -51,6 +51,18 @@
     {% include 'includes/main-nav.html' %}
     </div>
 
+    <!-- Flash Messages (Success, etc)-->
+    {% if messages %}
+        <div class="container mt-4">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
     <!-- Hero Section with Overlay Intro -->
     {% block hero %}
     <section class="hero-image-container">
