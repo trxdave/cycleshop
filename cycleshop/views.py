@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ContactForm, UserForm, ProfileForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Profile
+from .models import Profile, NewsletterSubscriber
 
 # Create your views here.
 
@@ -72,3 +72,24 @@ def delete_profile(request):
         return redirect('home')
 
     return render(request, 'profile/delete_profile.html')
+
+
+def subscribe_newsletter(request):
+    """ View to handle newsletter subscriptions. """
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        
+        # Check if the email is already subscribed
+        if not NewsletterSubscriber.objects.filter(email=email).exists():
+            # Create a new subscription
+            NewsletterSubscriber.objects.create(email=email)
+            messages.success(request, 'You have successfully subscribed to our newsletter.')
+            
+            # Redirect to a confirmation page after successful subscription
+            return render(request, 'newsletter/newsletter_subscribe_success.html')
+        else:
+            # Inform the user they are already subscribed
+            messages.info(request, 'You are already subscribed to our newsletter.')
+    
+    # If the request method is GET or invalid POST data, redirect to home or subscription form
+    return redirect('home')

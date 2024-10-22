@@ -107,9 +107,10 @@
                 <!-- Column 4: Subscribe to Newsletter -->
                 <div class="col-md-3">
                     <h5 class="fw-bold text-uppercase">Subscribe to Our Newsletter</h5>
-                    <form action="#" method="post">
+                    <form action="{% url 'subscribe_newsletter' %}" method="post">
+                        {% csrf_token %}
                         <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Enter your email" required>
+                            <input type="email" class="form-control" placeholder="Enter your email" name="email" required>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Subscribe</button>
                     </form>
