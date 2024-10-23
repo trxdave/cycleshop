@@ -62,7 +62,17 @@ def update_quantity(request, product_id):
 
 def checkout(request):
     """ View to handle the checkout process """
-    return render(request, 'checkout/checkout.html')
+    intent = stripe.PaymentIntent.create(
+        amount=calculate_order_total(request),
+        currency='eur',
+    )
+    
+    context = {
+        'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
+        'client_secret': intent.client_secret,
+    }
+    
+    return render(request, 'checkout/checkout.html', context)
 
 
 def remove_from_bag(request, product_id):
