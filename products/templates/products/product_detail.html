@@ -31,7 +31,6 @@
                     <label for="quantity" class="form-label">Quantity</label>
                     <input type="number" class="form-control" id="quantity" name="quantity" value="1" min="1">
                 </div>
-
                 <button type="submit" class="btn btn-primary">Add to Cart</button>
             </form>
 
@@ -40,6 +39,38 @@
             <p><strong>SKU:</strong> {{ product.sku }}</p>
             <p><strong>Rating:</strong> {{ product.rating }} / 5</p>
             <p><strong>Stock:</strong> {{ product.stock }} available</p>
+        </div>
+    </div>
+
+    <!-- Customer Reviews Section -->
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <h3>Customer Reviews</h3>
+            <ul class="list-unstyled">
+                {% for review in reviews %}
+                    <li>
+                        <strong>{{ review.user.username }}</strong> ({{ review.date_created|date:"d M Y" }}):
+                        <p>Rating: {{ review.rating }} / 5</p>
+                        <p>{{ review.comment }}</p>
+                    </li>
+                {% empty %}
+                    <p>No reviews yet. Be the first to review!</p>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Review Form for Logged-In Users -->
+        <div class="col-md-6">
+            {% if user.is_authenticated %}
+                <h4>Leave a Review</h4>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Submit Review</button>
+                </form>
+            {% else %}
+                <p><a href="{% url 'account_login' %}">Login</a> to leave a review.</p>
+            {% endif %}
         </div>
     </div>
 </div>
