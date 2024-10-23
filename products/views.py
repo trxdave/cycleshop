@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from .models import Wishlist
 from products.models import Product
-from .forms import ProductForm
+from .forms import ProductForm, RatingForm
 from django.core.paginator import Paginator
 
 
@@ -41,33 +41,34 @@ def product_category(request, category):
 def product_detail(request, product_id):
     """ A view to return the details of a single product """
     product = get_object_or_404(Product, id=product_id)
-    reviews = product.reviews.all()
 
     if request.method == 'POST':
-        form = ReviewForm(request.POST)
+        form = RatingForm(request.POST)
         if form.is_valid():
-            review = form.save(commit=False)
-            review.product = product
-            review.user = request.user
-            review.save()
+            rating = form.cleaned_data['rating']
+            # Assuming you're updating the rating here.
+            product.rating = rating
+            product.save()
+
+            messages.success(
+                request, 'Your rating has been successfully submitted!')
             return redirect('products:product_detail', product_id=product.id)
     else:
-        form = ReviewForm()
+        form = RatingForm()
 
     context = {
         'product': product,
-        'reviews': reviews,
         'form': form,
     }
-    return render(
-        request, 'products/product_detail.html', context)
+    return render(request, 'products/product_detail.html', context)
 
 
 @login_required
 def manage_products(request):
     """ A view to manage all products """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owners can access this page.')
+        messages.error(
+            request, 'Sorry, only store owners can access this page.')
         return redirect('home')
 
     products = Product.objects.all()

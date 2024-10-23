@@ -7,28 +7,13 @@ class ProductForm(forms.ModelForm):
         fields = ['name', 'description', 'price', 'stock', 'available', 'sku', 'rating', 'image', 'category']
 
 
-class ReviewForm(forms.ModelForm):
-    class Meta:
-        model = Review
-        fields = ['rating', 'comment']
+class RatingForm(forms.Form):
+    RATING_CHOICES = [
+        (1, '1 - Very Poor'),
+        (2, '2 - Poor'),
+        (3, '3 - Average'),
+        (4, '4 - Good'),
+        (5, '5 - Excellent'),
+    ]
 
-    rating = forms.IntegerField(min_value=1, max_value=5,
-        widget=forms.NumberInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'Rating (1 to 5)'
-        })
-    )
-
-    comment = forms.CharField(
-        widget=forms.Textarea(attrs={
-            'class': 'form-control',
-            'placeholder': 'Write your review here...',
-            'rows': 4
-        })
-    )
-
-    def clean_rating(self):
-        rating = self.cleaned_data.get('rating')
-        if rating < 1 or rating > 5:
-            raise forms.ValidationError("Rating must be between 1 and 5.")
-        return rating
+    rating = forms.ChoiceField(choices=RATING_CHOICES, widget=forms.RadioSelect)

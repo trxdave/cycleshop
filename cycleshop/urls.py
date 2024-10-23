@@ -22,8 +22,6 @@ from . import views
 from .models import Profile
 from .views import subscribe_newsletter
 
-admin.site.register(Profile)
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),

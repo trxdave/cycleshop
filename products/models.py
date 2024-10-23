@@ -29,12 +29,20 @@ class Product(models.Model):
     available = models.BooleanField(default=True)
     sku = models.CharField(max_length=50, unique=True)
     rating = models.DecimalField(max_digits=3, decimal_places=2, default=0)
+    total_ratings = models.IntegerField(default=0)
+    rating_count = models.IntegerField(default=0)
     image = models.ImageField(upload_to='products/', null=True, blank=True)
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
 
+    def update_rating(self, new_rating):
+        """ Update the average rating when a new rating is submitted """
+        self.total_ratings += new_rating
+        self.rating_count += 1
+        self.rating = self.total_ratings / self.rating_count
+        self.save()
+
     def __str__(self):
-        """ String representation of the Product model, returns the name of the product """
         return self.name
 
 
@@ -46,15 +54,3 @@ class Wishlist(models.Model):
     def __str__(self):
         """ String representation of the Wishlist model, returns the user's wishlist """
         return f"{self.user.username}'s Wishlist"
-
-
-class Review(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    rating = models.IntegerField()
-    comment = models.TextField()
-    date_created = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        """ Review model, returns the user's review """
-        return f"Review by {self.user.username} for {self.product.name}"
