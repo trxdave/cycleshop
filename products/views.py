@@ -232,36 +232,53 @@ def shipping_information(request):
 
 @login_required
 def view_wishlist(request):
-    """ A view to return the user's wishlist """
+    """ View to display user's wishlist """
     wishlist, created = Wishlist.objects.get_or_create(user=request.user)
     return render(request, 'products/wishlist.html', {'wishlist': wishlist})
 
 
 @login_required
 def add_to_wishlist(request, product_id):
-    """ A view to add a product to the user's wishlist """
+    """ View to add a product to the wishlist """
     product = get_object_or_404(Product, id=product_id)
     wishlist, created = Wishlist.objects.get_or_create(user=request.user)
-
-    if product in wishlist.products.all():
-        messages.info(request, "Product already in wishlist.")
-    else:
+    if product not in wishlist.products.all():
         wishlist.products.add(product)
-        messages.success(request, "Product added to wishlist.")
-
-    return redirect('products:product_detail', product_id=product_id)
-
+        messages.success(request, f'{product.name} added to your wishlist.')
+    else:
+        messages.info(request, f'{product.name} is already in your wishlist.')
+    return redirect('products:product_detail', product_id=product.id)
 
 @login_required
 def remove_from_wishlist(request, product_id):
-    """ A view to remove a product from the user's wishlist """
+    """ View to remove a product from the wishlist """
     product = get_object_or_404(Product, id=product_id)
-    wishlist = get_object_or_404(Wishlist, user=request.user)
+    wishlist, created = Wishlist.objects.get_or_create(user=request.user)
+    if product in wishlist.products.all():
+        wishlist.products.remove(product)
+        messages.success(request, f'{product.name} removed from your wishlist.')
+    else:
+        messages.info(request, f'{product.name} is not in your wishlist.')
+    return redirect('products:view_wishlist')
+
+@login_required
+def toggle_wishlist(request, product_id):
+    """ Add or remove a product from the user's wishlist """
+    product = get_object_or_404(Product, id=product_id)
+    profile = request.user.profile
+
+    # If the user does not have a wishlist, create one
+    if not profile.wishlist:
+        profile.wishlist = Wishlist.objects.create(user=request.user)
+        profile.save()
+
+    wishlist = profile.wishlist
 
     if product in wishlist.products.all():
         wishlist.products.remove(product)
-        messages.success(request, "Product removed from wishlist.")
+        messages.info(request, f"{product.name} removed from your wishlist.")
     else:
-        messages.info(request, "Product was not in your wishlist.")
+        wishlist.products.add(product)
+        messages.success(request, f"{product.name} added to your wishlist.")
 
-    return redirect('products:view_wishlist')
+    return redirect('products:product_detail', product_id=product_id)

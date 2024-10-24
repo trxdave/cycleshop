@@ -37,9 +37,15 @@ def search_request(request):
 
 @login_required
 def view_profile(request):
-    """View to display the user's profile."""
-    profile, created = Profile.objects.get_or_create(user=request.user)
-    return render(request, 'profile/view_profile.html', {'profile': profile})
+    """ View the user's profile """
+    profile = request.user.profile
+    wishlist = profile.wishlist if profile.wishlist else None
+
+    context = {
+        'profile': profile,
+        'wishlist': wishlist,
+    }
+    return render(request, 'profile/view_profile.html', context)
 
 
 @login_required

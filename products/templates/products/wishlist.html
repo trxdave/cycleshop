@@ -8,6 +8,17 @@
 <div class="container my-5">
     <h1 class="mb-4">My Wishlist</h1>
 
+    <!-- Alert messages for success, etc -->
+    {% if messages %}
+        <div class="container">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} mt-3">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
     {% if wishlist.products.all %}
         <div class="row">
             {% for product in wishlist.products.all %}
@@ -24,14 +35,14 @@
                         <!-- Product Details -->
                         <div class="card-body">
                             <h5 class="card-title">{{ product.name }}</h5>
-                            <p class="card-text">{{ product.description }}</p>
+                            <p class="card-text">{{ product.description|truncatewords:20 }}</p>
                             <p class="card-text"><strong>Price: €{{ product.price }}</strong></p>
 
                             <!-- Button to View Product -->
-                            <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">View Product</a>
+                            <a href="{% url 'products:product_detail' product.id %}" class="btn btn-primary">View Product</a>
 
                             <!-- Button to Remove from Wishlist -->
-                            <form action="{% url 'remove_from_wishlist' product.id %}" method="post" class="mt-2">
+                            <form action="{% url 'products:remove_from_wishlist' product.id %}" method="post" class="mt-2">
                                 {% csrf_token %}
                                 <button type="submit" class="btn btn-danger">Remove from Wishlist</button>
                             </form>
@@ -42,6 +53,7 @@
         </div>
     {% else %}
         <p>Your wishlist is empty.</p>
+        <a href="{% url 'products:product_list' %}" class="btn btn-primary">Browse Products</a>
     {% endif %}
 </div>
 {% endblock %}

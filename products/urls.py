@@ -11,7 +11,7 @@ urlpatterns = [
     path('category/<str:category>/',
          views.product_category, name='product_category'),
 
-    # Categories     
+    # Categories
     path('road-bikes/', views.road_bikes, name='road_bikes'),
     path('mountain-bikes/', views.mountain_bikes, name='mountain_bikes'),
     path('electric-bikes/', views.electric_bikes, name='electric_bikes'),
@@ -29,8 +29,19 @@ urlpatterns = [
     # Product Management
     path('manage_products/', views.manage_products, name='manage_products'),
     path('add_products/', views.add_product, name='add_product'),
-    path('edit_product/<int:product_id>/', views.edit_product, name='edit_product'),
-    path('delete_product/<int:product_id>/', views.delete_product, name='delete_product'),
+    path('edit_product/<int:product_id>/',
+         views.edit_product, name='edit_product'),
+    path('delete_product/<int:product_id>/',
+         views.delete_product, name='delete_product'),
+
+    # Wishlist
+    path('wishlist/', views.view_wishlist, name='view_wishlist'),
+    path('wishlist/add/<int:product_id>/',
+         views.add_to_wishlist, name='add_to_wishlist'),
+    path('wishlist/remove/<int:product_id>/',
+         views.remove_from_wishlist, name='remove_from_wishlist'),
+    path('toggle_wishlist/<int:product_id>/',
+         views.toggle_wishlist, name='toggle_wishlist'),
 ]
 
 if settings.DEBUG:

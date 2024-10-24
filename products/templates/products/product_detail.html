@@ -34,7 +34,22 @@
                 <button type="submit" class="btn btn-primary">Add to Cart</button>
             </form>
 
+            <!-- Wishlist Add/Remove Button -->
+            {% if user.is_authenticated %}
+                <form method="post" action="{% url 'products:toggle_wishlist' product.id %}" class="mt-3">
+                    {% csrf_token %}
+                    {% if product in user.profile.wishlist.products.all %}
+                        <button type="submit" class="btn btn-danger">Remove from Wishlist</button>
+                    {% else %}
+                        <button type="submit" class="btn btn-warning">Add to Wishlist</button>
+                    {% endif %}
+                </form>
+            {% else %}
+                <p>You need to <a href="{% url 'account_login' %}">log in</a> to add this product to your wishlist.</p>
+            {% endif %}
+
             <hr>
+
         {% if user.is_authenticated %}
             <!-- Rating Form -->
             <h3>Rate this product:</h3>

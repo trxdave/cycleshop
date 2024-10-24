@@ -14,7 +14,41 @@
     <p><strong>Location:</strong> {{ profile.location }}</p>
     <p><strong>Birth Date:</strong> {{ profile.birth_date }}</p>
     <p><strong>Bio:</strong> {{ profile.bio }}</p>
-    
+
+    <hr>
+
+    <h2>My Wishlist</h2>
+
+    {% if wishlist and wishlist.products.all %}
+        <div class="row">
+            {% for product in wishlist.products.all %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.name }}">
+                        {% else %}
+                            <img src="{% static 'images/default_product.jpg' %}" class="card-img-top img-fluid" alt="{{ product.name }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p><strong>Price: €{{ product.price }}</strong></p>
+                            <!-- Button to view product -->
+                            <a href="{% url 'products:product_detail' product.id %}" class="btn btn-primary">View Product</a>
+
+                            <!-- Button to delete from wishlist -->
+                            <form action="{% url 'products:toggle_wishlist' product.id %}" method="post" class="mt-2">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Remove from Wishlist</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Your wishlist is empty.</p>
+    {% endif %}
+
     <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
     <a href="{% url 'delete_profile' %}" class="btn btn-danger">Delete Profile</a>
 </div>

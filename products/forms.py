@@ -17,3 +17,9 @@ class RatingForm(forms.Form):
     ]
 
     rating = forms.ChoiceField(choices=RATING_CHOICES, widget=forms.RadioSelect)
+
+
+class AddToWishlistForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = []
