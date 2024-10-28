@@ -1,6 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from products.models import Product
 from django.contrib import messages
+from django.conf import settings
+import stripe
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 # View to display the user's shopping bag
 def view_bag(request):
@@ -9,11 +13,24 @@ def view_bag(request):
     total = sum(item['price'] * item['quantity'] for item in bag.values())
     bag_items_count = sum(item['quantity'] for item in bag.values())
 
+    if total >= settings.DELIVERY_THRESHOLD:
+        delivery = 0
+        free_delivery = True
+    else:
+        delivery = settings.DELIVERY_FEE
+        free_delivery = False
+
+    grand_total = total + delivery
+
     context = {
         'bag': bag,
         'total': total,
+        'delivery': delivery,
+        'free_delivery': free_delivery,
+        'grand_total': grand_total,
         'bag_items_count': bag_items_count,
     }
+
     return render(request, 'bag/bag.html', context)
 
 

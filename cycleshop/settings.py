@@ -30,8 +30,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-trxdave-cycleshop-hybudx1fqr1.ws-eu116.gitpod.io', 
-    'cycleshop-b289044df6ec.herokuapp.com', 'localhost'
+    '8000-trxdave-cycleshop-hd3chztpn2x.ws-eu116.gitpod.io',
+    'cycleshop-b289044df6ec.herokuapp.com', 'localhost',
     ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -188,7 +188,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 
 # Stripe
 FREE_DELIVERY_THRESHOLD = 500
-STANDARD_DELIVERY_PERCENTAGE = 10
+STANDARD_DELIVERY_PERCENTAGE = 20
 STRIPE_CURRENCY = 'eu'
 STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY")
 STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
