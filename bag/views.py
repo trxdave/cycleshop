@@ -2,7 +2,10 @@ from django.shortcuts import render, get_object_or_404, redirect
 from products.models import Product
 from django.contrib import messages
 from django.conf import settings
+from django.http import JsonResponse
 import stripe
+from django.utils.formats import number_format
+from django.views.decorators.http import require_POST
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -13,21 +16,22 @@ def view_bag(request):
     total = sum(item['price'] * item['quantity'] for item in bag.values())
     bag_items_count = sum(item['quantity'] for item in bag.values())
 
-    if total >= settings.DELIVERY_THRESHOLD:
+    if total >= settings.FREE_DELIVERY_THRESHOLD:
         delivery = 0
-        free_delivery = True
     else:
-        delivery = settings.DELIVERY_FEE
-        free_delivery = False
+        delivery = settings.STANDARD_DELIVERY_PERCENTAGE
 
     grand_total = total + delivery
 
+    # Format total and grand_total with commas
+    formatted_total = number_format(total, decimal_pos=2, use_l10n=True)
+    formatted_grand_total = number_format(grand_total, decimal_pos=2, use_l10n=True)
+
     context = {
         'bag': bag,
-        'total': total,
+        'total': formatted_total,
         'delivery': delivery,
-        'free_delivery': free_delivery,
-        'grand_total': grand_total,
+        'grand_total': formatted_grand_total,
         'bag_items_count': bag_items_count,
     }
 
@@ -79,14 +83,31 @@ def update_quantity(request, product_id):
 
 def checkout(request):
     """ View to handle the checkout process """
+    # Calculate total and delivery based on bag contents
+    bag = request.session.get('bag', {})
+    total = sum(item['price'] * item['quantity'] for item in bag.values())
+    
+    # Apply delivery fee if total is below the free delivery threshold
+    if total >= settings.FREE_DELIVERY_THRESHOLD:
+        delivery = 0
+    else:
+        delivery = settings.STANDARD_DELIVERY_PERCENTAGE
+
+    # Calculate the grand total and convert to cents for Stripe
+    grand_total = int((total + delivery) * 100)
+
+    # Create Stripe payment intent
     intent = stripe.PaymentIntent.create(
-        amount=calculate_order_total(request),
-        currency='eur',
+        amount=grand_total,
+        currency=settings.STRIPE_CURRENCY,
     )
     
     context = {
         'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
         'client_secret': intent.client_secret,
+        'total': total,
+        'delivery': delivery,
+        'grand_total': grand_total / 100,
     }
     
     return render(request, 'checkout/checkout.html', context)
@@ -105,3 +126,51 @@ def remove_from_bag(request, product_id):
         messages.warning(request, "Product not found in your bag.")
 
     return redirect('bag:view_bag')
+
+
+
+def calculate_order_total(request):
+    bag = request.session.get('bag', {})
+    total = sum(item['price'] * item['quantity'] for item in bag.values())
+
+    if total >= settings.FREE_DELIVERY_THRESHOLD:
+        delivery = 0
+    else:
+        delivery = settings.STANDARD_DELIVERY_PERCENTAGE
+
+    grand_total = total + delivery
+    return int(grand_total * 100)
+
+
+
+@require_POST
+def create_checkout_session(request):
+    try:
+        # Retrieve the bag and calculate total, delivery, and grand total
+        bag = request.session.get('bag', {})
+        total = sum(item['price'] * item['quantity'] for item in bag.values())
+        delivery = settings.STANDARD_DELIVERY_PERCENTAGE if total < settings.FREE_DELIVERY_THRESHOLD else 0
+        grand_total = int((total + delivery) * 100)  # Convert to cents
+
+        # Create the Stripe checkout session
+        session = stripe.checkout.Session.create(
+            payment_method_types=['card'],
+            line_items=[{
+                'price_data': {
+                    'currency': settings.STRIPE_CURRENCY,
+                    'product_data': {
+                        'name': 'Total Order',
+                    },
+                    'unit_amount': grand_total,
+                },
+                'quantity': 1,
+            }],
+            mode='payment',
+            success_url=request.build_absolute_uri('/success/'),
+            cancel_url=request.build_absolute_uri('/cancel/'),
+        )
+
+        return JsonResponse({'sessionId': session.id})
+        
+    except Exception as e:
+        return JsonResponse({'error': str(e)})
