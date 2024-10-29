@@ -3,6 +3,7 @@ from .forms import ContactForm, UserForm, ProfileForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Profile, NewsletterSubscriber
+from products.models import Product
 
 # Create your views here.
 
@@ -29,10 +30,19 @@ def contact(request):
 
 def search_request(request):
     """A view to handle search queries and return search results."""
-    query = request.GET.get('q')
+    query = request.GET.get('q', '')
+
+    if query:
+        products = Product.objects.filter(name__icontains=query)
+    else:
+        products = Product.objects.all()
+
+    context = {
+        'products': products,
+        'query': query,
+    }
     
-    products = Product.objects.filter(name__icontains=query)
-    return render(request, 'products/search_results.html', {'products': products, 'query': query})
+    return render(request, 'cycleshop/search_results.html', context)
 
 
 @login_required
