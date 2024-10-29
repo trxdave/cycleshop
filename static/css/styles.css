@@ -49,6 +49,11 @@ header {
     font-size: 1.1rem;
 }
 
+.navbar-nav .form-control {
+    max-width: 150px;
+    margin-right: 1rem;
+}
+
 .nav-link:hover {
     color: #63CCCA !important; /* Hover effect for links */
 }

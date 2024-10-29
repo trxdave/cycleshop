@@ -4,23 +4,25 @@
         <!-- Brand / Logo -->
         <a class="navbar-brand fw-bold fs-1" href="{% url 'home' %}">CycleShop</a>
 
-        <!-- Toggle Button for Collapsible Navbar and Profile Icon -->
+        <!-- Toggle Button and User Profile Icon for Mobile -->
         <div class="d-flex align-items-center">
             {% if user.is_authenticated %}
-            <!-- User Profile Icon (Visible on Mobile) -->
-            <a href="#" class="btn btn-primary d-lg-none me-3" data-bs-toggle="dropdown">
-                <i class="fas fa-user"></i>
-            </a>
+                <!-- User Profile Icon (Visible on Mobile) -->
+                <a href="#" class="btn btn-primary d-lg-none me-3" data-bs-toggle="dropdown">
+                    <i class="fas fa-user"></i>
+                </a>
 
-            <!-- Mobile Profile Dropdown -->
-            <div class="dropdown-menu dropdown-menu-end">
-                <a class="dropdown-item" href="{% url 'view_profile' %}">View Profile</a>
-                {% if user.is_superuser %}
-                <a class="dropdown-item" href="{% url 'products:manage_products' %}">Product Management</a>
-                {% endif %}
-                <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
-            </div>
+                <!-- Mobile Profile Dropdown -->
+                <div class="dropdown-menu dropdown-menu-end">
+                    <a class="dropdown-item" href="{% url 'view_profile' %}">View Profile</a>
+                    {% if user.is_superuser %}
+                        <a class="dropdown-item" href="{% url 'products:manage_products' %}">Product Management</a>
+                    {% endif %}
+                    <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
+                </div>
             {% endif %}
+            
+            <!-- Navbar Toggle Button for Collapsible Content -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNavbar"
                 aria-controls="mobileNavbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -28,8 +30,8 @@
         </div>
 
         <!-- Collapsible Navbar Content -->
-        <div class="collapse navbar-collapse" id="mobileNavbar">
-            <ul class="navbar-nav me-auto">
+        <div class="collapse navbar-collapse justify-content-end" id="mobileNavbar">
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'home' %}">Home</a>
                 </li>
@@ -54,10 +56,11 @@
                 </li>
             </ul>
 
-            <!-- User Authentication and Search Form -->
-            <div class="d-flex align-items-center">
+            <!-- User Authentication, Search Form, and Cart Icon -->
+            <div class="d-flex align-items-center ms-3">
+                <!-- Search Form -->
                 <form class="d-flex me-3" method="GET" action="{% url 'search_results' %}">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
                     <button class="btn btn-outline-primary" type="submit">Search</button>
                 </form>
 
