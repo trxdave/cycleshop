@@ -47,6 +47,8 @@ header {
 .nav-link {
     color: #0a0a0a !important;
     font-size: 1.1rem;
+    text-align: right;
+    margin-right: 30px;
 }
 
 .navbar-nav .form-control {
@@ -378,6 +380,18 @@ header {
 
 .accordion-button::after {
     color: #fff;
+}
+
+/* Contact */
+.btn-contact {
+    display: inline;
+    padding: 10px 20px;
+    background-color: #42858C;
+    color: #F0F0F0;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 100%;
+
 }
 
 /* Return & Exchange */
