@@ -1,0 +1,60 @@
+/* Base styling for Stripe Elements and input fields */
+.StripeElement,
+.stripe-style-input {
+    box-sizing: border-box;
+    height: 40px;
+    padding: 10px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    transition: box-shadow 150ms ease, border-color 150ms ease;
+    font-size: 16px;
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+/* Focus and Active States for Stripe Elements */
+.StripeElement--focus,
+.stripe-style-input:focus,
+.stripe-style-input:active {
+    box-shadow: 0 1px 3px 0 #cfd7df;
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Autofill background for better visibility */
+.StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+}
+
+/* Placeholder text styling */
+.stripe-style-input::placeholder {
+    color: #aab7c4;
+}
+
+/* Additional form control styling for improved readability */
+#payment-form .form-control,
+#card-element {
+    color: #212529;
+    border: 1px solid #000;
+    border-radius: 4px;
+}
+
+/* Fieldset Label */
+.fieldset-label {
+    position: relative;
+    right: 0.5rem;
+    font-weight: bold;
+    color: #495057;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .StripeElement,
+    .stripe-style-input {
+        height: 48px;
+        font-size: 14px;
+    }
+}

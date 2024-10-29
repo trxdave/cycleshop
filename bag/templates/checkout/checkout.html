@@ -2,25 +2,56 @@
 
 {% block title %}Checkout - CycleShop{% endblock %}
 
+{% load static %}
+
+{% block hero %}{% endblock %}
+
 {% block content %}
 <div class="container my-5">
     <h1>Checkout</h1>
     <p>Proceed to payment.</p>
 
+    <!-- Check if user is authenticated -->
+    {% if user.is_authenticated %}
+        <p>Hello, {{ user.username }}!</p>
+    {% else %}
+        <div class="alert alert-info">
+            Please <a href="{% url 'account_login' %}">log in</a> or <a href="{% url 'account_signup' %}">sign up</a> to save your details for future purchases.
+        </div>
+    {% endif %}
+
     <!-- Order Summary -->
     <div class="order-summary card shadow-lg p-4 mb-4">
         <h4 class="card-title">Order Summary</h4>
         <hr>
-        
-        <!-- Total Row -->
+
+        <!-- Loop through each item in the bag -->
+        {% for item in bag_items %}
+        <div class="d-flex align-items-center mb-3">
+            <div class="order-image me-3">
+                {% if item.product.image %}
+                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="img-thumbnail" style="width: 80px; height: auto;">
+                {% else %}
+                    <img src="{% static 'images/default_product.jpg' %}" alt="Default Image" class="img-thumbnail" style="width: 80px; height: auto;">
+                {% endif %}
+            </div>
+            <div class="order-details flex-grow-1">
+                <p class="mb-1"><strong>{{ item.product.name }}</strong></p>
+                <p class="mb-1">Quantity: {{ item.quantity }}</p>
+                <p class="mb-0">€{{ item.product.price|floatformat:2 }}</p>
+            </div>
+        </div>
+        <hr>
+        {% endfor %}
+
+        <!-- Total, Delivery, and Grand Total -->
         <div class="d-flex align-items-center justify-content-between mb-3">
             <p class="mb-0"><strong>Total:</strong></p>
             <p class="mb-0 ms-auto text-end">€{{ total|floatformat:2 }}</p>
         </div>
-        
+
         <hr>
-        
-        <!-- Delivery Row -->
+
         <div class="d-flex align-items-center justify-content-between mb-3">
             <p class="mb-0"><strong>Delivery:</strong></p>
             <p class="mb-0 ms-auto text-end">
@@ -31,10 +62,9 @@
                 {% endif %}
             </p>
         </div>
-        
+
         <hr>
-        
-        <!-- Grand Total Row -->
+
         <div class="d-flex align-items-center justify-content-between">
             <p class="mb-0"><strong>Grand Total:</strong></p>
             <p class="mb-0 ms-auto text-end"><strong>€{{ grand_total|floatformat:2 }}</strong></p>
@@ -45,13 +75,9 @@
     <div class="card shadow-lg p-4">
         <form id="payment-form" action="{% url 'bag:create_checkout_session' %}" method="POST">
             {% csrf_token %}
-            
-            <!-- Stripe Card Element -->
+            {{ form.as_p }}
             <div id="card-element" class="mt-3"></div>
-            
-            <!-- Display form errors -->
             <div id="card-errors" class="text-danger mt-3" role="alert"></div>
-            
             <button type="submit" id="checkout-button" class="btn btn-primary btn-block mt-3">Pay Now</button>
         </form>
     </div>
@@ -60,63 +86,43 @@
 
 {% block postloadjs %}
 {{ block.super }}
-
-{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<link rel="stylesheet" href="{% static 'css/checkout.css' %}">
 <script src="https://js.stripe.com/v3/"></script>
+<script src="{% static 'js/stripe_elements.js' %}"></script>
 
 <script>
-    const stripe = Stripe(document.getElementById('id_stripe_public_key').textContent);
-
+    const stripe = Stripe('{{ stripe_public_key }}');
     const elements = stripe.elements();
     const card = elements.create('card', { style: { base: { fontSize: '16px' } } });
     card.mount('#card-element');
 
     card.on('change', function(event) {
-        const displayError = document.getElementById('card-errors');
-        if (event.error) {
-            displayError.textContent = event.error.message;
-        } else {
-            displayError.textContent = '';
-        }
+        document.getElementById('card-errors').textContent = event.error ? event.error.message : '';
     });
 
     document.getElementById('payment-form').addEventListener('submit', function(event) {
         event.preventDefault();
-
-        stripe.createPaymentMethod({
-            type: 'card',
-            card: card,
-        }).then(function(result) {
-            if (result.error) {
-                document.getElementById('card-errors').textContent = result.error.message;
-            } else {
-                fetch("{% url 'bag:create_checkout_session' %}", {
-                    method: "POST",
-                    headers: {
-                        "X-CSRFToken": "{{ csrf_token }}",
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        paymentMethodId: result.paymentMethod.id
+        stripe.createPaymentMethod({ type: 'card', card: card })
+            .then(result => {
+                if (result.error) {
+                    document.getElementById('card-errors').textContent = result.error.message;
+                } else {
+                    fetch("{% url 'bag:create_checkout_session' %}", {
+                        method: "POST",
+                        headers: { "X-CSRFToken": "{{ csrf_token }}", "Content-Type": "application/json" },
+                        body: JSON.stringify({ paymentMethodId: result.paymentMethod.id })
                     })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.error) {
-                        document.getElementById('card-errors').textContent = data.error;
-                    } else {
-                        stripe.confirmCardPayment(data.clientSecret).then(function(result) {
-                            if (result.error) {
-                                document.getElementById('card-errors').textContent = result.error.message;
-                            } else {
-                                // Redirect to success page
-                                window.location.href = "{% url 'checkout_success' %}";
-                            }
-                        });
-                    }
-                });
-            }
-        });
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            document.getElementById('card-errors').textContent = data.error;
+                        } else {
+                            stripe.redirectToCheckout({ sessionId: data.sessionId });
+                        }
+                    });
+                }
+            });
     });
 </script>
 {% endblock %}

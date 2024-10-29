@@ -6,6 +6,7 @@ from django.http import JsonResponse
 import stripe
 from django.utils.formats import number_format
 from django.views.decorators.http import require_POST
+from .forms import OrderForm
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -101,8 +102,11 @@ def checkout(request):
         amount=grand_total,
         currency=settings.STRIPE_CURRENCY,
     )
+
+    form = OrderForm()
     
     context = {
+        'form': form,
         'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
         'client_secret': intent.client_secret,
         'total': total,
