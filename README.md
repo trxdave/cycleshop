@@ -228,6 +228,58 @@ As a Site Administrator, I want to moderate customer reviews so that I can maint
 As a Site Administrator, I want to manage user accounts so that I can handle customer service issues efficiently.
 
 
+# Wireframes
+
+- Wireframes were created to visualize the layout and design of the CycleShop.
+
+## Desktop Wireframes
+
+| **Page** | **Wireframes** | **Pass** |
+| --- | --- | :---: |
+| Home | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Product | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Contact | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| FAQ | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Login | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Register | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| My Orders | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Wishlist | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Shipping Information | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Return & Exchanges | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Road Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Mountain Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Electric Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Kids Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Clothing | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Accessories | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Your Shopping Bag | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Road Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+
+
+## Mobile Wireframes
+
+| **Page** | **Wireframes** | **Pass** |
+| --- | --- | :---: |
+| Home | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Product | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Contact | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| FAQ | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Login | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Register | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| My Orders | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Wishlist | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Shipping Information | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Return & Exchanges | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Road Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Mountain Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Electric Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Kids Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Clothing | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Accessories | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Your Shopping Bag | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Road Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+
+
 ## Technologies Used
 
 - **Frontend**: 
