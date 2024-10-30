@@ -18,6 +18,60 @@ Here's deployed site: [Am I Responsive](https://ui.dev/amiresponsive?url=https:/
 1. **Chrome Extension**: Install Igorne X-Frame headers for chrome to bypass this security restrisction temporarily. Then reload the responsive preview page to view site across devices.
 2. **Gitpod Solution**: Run project in Gitpod and, once active, navigate to the Ports tab. Make port 8000 public by clicking the padlock icon, then use the live preview URL in the responsive tool for an accurate preview.
 
+# Setup Instructions
+
+## Set up Environment Variables
+
+
+- Create an env.py file (touch env.py) in the project root with the following contents:
+
+import os
+
+- #Secret Key
+os.environ['SECRET_KEY'] = 'Put secret Key here'
+
+- #Database URL
+os.environ['DATABASE_URL'] = 'Put Postgres Key here'
+
+- #Email
+os.environ['EMAIL_USER'] = 'Put email address here'
+os.environ['EMAIL_PASSWORD'] = 'Put email password here'
+
+- #Stripe Keys
+os.environ['STRIPE_PUBLIC_KEY'] = 'Put Public Key here'
+os.environ['STRIPE_SECRET_KEY'] = 'Put Secret Key here'
+
+### Run Migrations:
+
+Run the following command to set up the database:
+
+- python manage.py migrate
+
+### Create a Superuser:
+
+To access the Django admin panel, create a superuser:
+
+- python manage.py createsuperuser
+
+### Run the Application:
+
+Start the server with
+
+- python manage.py runserver
+
+# Color scheme
+
+The CycleShop project employs a balanced and professional color scheme to reflect the brand's identity while ensuring accessibility and user-friendliness across all pages. The color choices aim to create a modern and inviting look, enhancing readability and aesthetic appeal.
+
+| **Color Name** | **Hex Code** | **Usage** | **Color** |
+--- | --- | :---: |
+| Dark Teal | #397367 | Primary color for buttons, links, and headers | ![alt text](documentatiom/images/397367.png) |
+| Light Aqua | #63CCCA | Accent color for interactive elements like hover effects | ![alt text](documentatiom/images/63CCCA.png) |
+| Muted Green | #5DA399 | Background hightlights and icons | ![alt text](documentatiom/images/5DA399.png) |
+| Steel Blue | #42858C | Subtle color accents for secondary buttons and cards | ![alt text](documentatiom/images/42858C.png) |
+| Charcoal | #35393C | Used for body text, footer, and darker backgrounds | ![alt text](documentatiom/images/35393C.png) |
+
+
 # User Experience (UX)
 
 The CycleShop project is designed to offer a streamlined and engaging user experience, focused on accessibility, simplicity, and ease of navigation.
@@ -54,10 +108,7 @@ The CycleShop project is designed to offer a streamlined and engaging user exper
 - **The footer serves as and essential guide**, offering users access to account management, customer services links, and company information. The **My Account** and **Customer Services** sections support quick navigation to key pages like **login**, **Wishlist**, **Contact Us**, and **FAQ**.
 - User can subscribe to the CycleShop newsletter directly from the footer, enhancing engagement with on going updates and promotions.
 
-## Setup Instructions
-1. Clone the repository.
-2. Create and activate a virtual environment.
-3. Run `python manage.py runserver` to start the application.
+
 
 # Features
 
@@ -114,39 +165,7 @@ The CycleShop project is designed to offer a streamlined and engaging user exper
 
 ## Setup Instructions
 
-### Set up Environment Variables
 
-- Create an env.py file in the project root with the following contents:
-
-import os
-
-- #Secret Key
-os.environ['SECRET_KEY'] = 'Put secret Key here'
-
-- #Database URL
-os.environ['DATABASE_URL'] = 'Put Postgres Key here'
-
-- #Email
-os.environ['EMAIL_USER'] = 'Put email address here'
-os.environ['EMAIL_PASSWORD'] = 'Put email password here'
-
-- #Stripe Keys
-os.environ['STRIPE_PUBLIC_KEY'] = 'Put Public Key here'
-os.environ['STRIPE_SECRET_KEY'] = 'Put Secret Key here'
-
-### The Repository
-
-### Run Migrations:
-
-python manage.py migrate
-
-### Create a Superuser:
-
-python manage.py createsuperuser
-
-### Run the Application:
-
-python manage.py runserver
 
 ## Credits
 
