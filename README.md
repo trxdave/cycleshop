@@ -11,7 +11,7 @@ CycleShop is an e-commerce application for cycling products. Built using Django,
 
 Here's deployed site: [Am I Responsive](https://ui.dev/amiresponsive?url=https://cycleshop-b289044df6ec.herokuapp.com/)
 
-![alt text](documentatiom/images/amiresponsive.png)
+![alt text](documentation/image/amiresponsive.png)
 
 ## Ignore X-Frame Headers for Site Mockups (Django Projects)
 
@@ -67,11 +67,11 @@ I used [coolors.co](https://coolors.co/) to generate my color palette.
 
 | **Color Name** | **Hex Code** | **Usage** | **Color** |
 | --- | --- | --- | --- |
-| Dark Teal | #397367 | Primary color for buttons, links, and headers | ![alt text](documentatiom/images/397367.png) |
-| Light Aqua | #63CCCA | Accent color for interactive elements like hover effects | ![alt text](documentatiom/images/63CCCA.png) |
-| Muted Green | #5DA399 | Background hightlights and icons | ![alt text](documentatiom/images/5DA399.png) |
-| Steel Blue | #42858C | Subtle color accents for secondary buttons and cards | ![alt text](documentatiom/images/42858C.png) |
-| Charcoal | #35393C | Used for body text, footer, and darker backgrounds | ![alt text](documentatiom/images/35393C.png) |
+| Dark Teal | #397367 | Primary color for buttons, links, and headers | ![alt text](documentation/image/397367.png) |
+| Light Aqua | #63CCCA | Accent color for interactive elements like hover effects | ![alt text](documentation/image/63CCCA.png) |
+| Muted Green | #5DA399 | Background hightlights and icons | ![alt text](documentation/image/5DA399.png) |
+| Steel Blue | #42858C | Subtle color accents for secondary buttons and cards | ![alt text](documentation/image/42858C.png) |
+| Charcoal | #35393C | Used for body text, footer, and darker backgrounds | ![alt text](documentation/image/35393C.png) |
 
 
 # User Experience (UX)
@@ -154,7 +154,7 @@ The CycleShop project is designed to offer a streamlined and engaging user exper
 - Basic SEO practices are implemented, such as meta tags and alt text for images, to improve the site's discoverability on search engines.
 
 5. **Google Analytics Integration**:
-- Google Analytics is set up for tracking user behavior and gaining insights on popular products and pages, allowing future data-driven improvements.
+- 
 
 6. **Cross-Browser Compatibility**:
 - Tested across major browsers (Chrome, Firefox, Safari) to ensure consistent performance and visual experience.
@@ -347,8 +347,17 @@ As a Site Administrator, I want to manage user accounts so that I can handle cus
 14. Customized Product Recommendations:
 - Leverage specifications like material and size to make more personalized recommendations based on user preferences.
 
+# Entity-Relationship Diagram (ERD)
 
-## Technologies Used
+**User and Profile**: A one-to-one relationship where each user has an associated profile, storing additional details.
+**Profile and Wishlist**: The Profile table has an optional one-to-one link to Wishlist.
+**Product and Category**: Products belong to categories, allowing for product classification.
+**Wishlist and Products**: A many-to-many relationship through the WishlistProducts table, allowing users to add multiple products to their wishlist.
+**Order and BagItem**: An order can contain multiple BagItems, with each item linked to a specific product and quantity.
+
+![alt text](documentation/erd/database-erdiagram-cycleshop-1.png)
+
+# Technologies Used
 
 - **Frontend**: 
   - HTML, CSS (Bootstrap 5)
@@ -368,8 +377,7 @@ As a Site Administrator, I want to manage user accounts so that I can handle cus
   **Payment Gateway**: Stripe API
 
 
-
-## Credits
+# Credits
 
 Accordian - https://djangosnippets.org/snippets/10658/
 
