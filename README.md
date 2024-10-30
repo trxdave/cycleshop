@@ -139,6 +139,29 @@ The CycleShop project is designed to offer a streamlined and engaging user exper
 
 **Newsletter Subscription**: Users can subscribe to the newsletter.
 
+# Miscellaneous
+
+1. **Automated Alert Messages**:
+- Integrated alert messages for actions like adding to cart, updating quantity, and deleting items. This improves the UX by confirming users actions in real-time.
+
+2. **Footer with Essential Link**:
+- The footer includes links for quick access to important sections like account management, customer service, and newsletter subscription. It provides easy navigation and enhances user engagement.
+
+3. **Image Optimization for Faster Loading**:
+- All images are optimized to ensure faster loading times, which contributes to a smoother user experience, particularly on mobile.
+
+4. **SEO Optimization**:
+- Basic SEO practices are implemented, such as meta tags and alt text for images, to improve the site's discoverability on search engines.
+
+5. **Google Analytics Integration**:
+- Google Analytics is set up for tracking user behavior and gaining insights on popular products and pages, allowing future data-driven improvements.
+
+6. **Cross-Browser Compatibility**:
+- Tested across major browsers (Chrome, Firefox, Safari) to ensure consistent performance and visual experience.
+
+7. **Accessibility Features**:
+- Designed with accessibility in mind, including ARIA labels and color contrasts that comply with WCAG standards, ensuring that CycleShop is accessible to all users.
+
 
 # Typography
 
