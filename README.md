@@ -280,6 +280,51 @@ As a Site Administrator, I want to manage user accounts so that I can handle cus
 | Road Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
 
 
+# Future Features
+
+1. User-Generated Reviews and Ratings:
+- Allow users to leave reviews and rate products, providing valuable feedback for other customers.
+
+2. Product Recommendations:
+- Implement a recommendation engine that suggests products based on browsing history or purchase history to enhance the shopping experience.
+
+3. Enhanced Order Tracking:
+- Provide users with real-time order tracking to follow their purchases from confirmation to delivery.
+
+4. Discount Codes and Promotions:
+- Add a feature to apply discount codes or run promotional events to boost sales and improve customer retention.
+
+5. Admin Analytics Dashboard:
+- Include a dashboard for site administrators to monitor sales metrics, user activity, and popular products.
+
+6. Multi-Language Support:
+- Extend the app to support multiple languages for a more inclusive, global user experience.
+
+7. Blog Section:
+- Add a blog for sharing cycling tips, maintenance guides, and news related to biking to boost site engagement.
+
+8. Saved Payment Methods:
+- Allow registered users to save preferred payment methods to streamline future checkouts.
+
+9. AI Chatbot for Customer Support:
+- Integrate an AI chatbot to assist users with common questions and site navigation.
+
+10. Detailed Product Specifications:
+- Include sections for product specifications such as weight, material, and size to give users more comprehensive information for their purchase decisions.
+
+11. Unsubcribe Feature for Newsletter:
+- Allow users to easily unsubscribe from the newsletter, providing a more flexible and user-friendly experience.
+
+12. Enhanced Filter Options:
+- Add filtering by specifications like weight, material, and size to help users narrow down options effectively.
+
+13. Product Comparision:
+- Enable a comparision feature for users to view multiple products side-by-side, focusing on details like weight, material, and size.
+
+14. Customized Product Recommendations:
+- Leverage specifications like material and size to make more personalized recommendations based on user preferences.
+
+
 ## Technologies Used
 
 - **Frontend**: 
@@ -298,8 +343,6 @@ As a Site Administrator, I want to manage user accounts so that I can handle cus
   - PostgresSQL
 
   **Payment Gateway**: Stripe API
-
-## Setup Instructions
 
 
 
