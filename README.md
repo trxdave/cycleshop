@@ -163,10 +163,69 @@ The CycleShop project leverages clean and modern fonts to enhance readability an
 - Use: Provides universally recognized icons that enhance usability and provide visual guidance to users.
 - Reasoning: Using icons from Font Awesome simplifies navigation and adds a polished look to the interface.
 
+# User Stories
 
+### Development Plan: MoSCoW Prioritization and Agile Methodology
+In this project, I implemented an Agile approach combined with MoSCoW prioritization to ensure an organized, user-centered development process. This approach allowed me to focus on delivering essential features first, followed by desirable enhancements, while maintaining flexibility for future improvements.
 
+Using **MoSCoW prioritization** within my GitHub Kanban board, I categorized each user story into four levels:
 
+**Must Have:** Core features necessary for the project’s functionality, such as product browsing, shopping cart management, and secure checkout.
+**Should Have:** Important but non-essential features like search filtering, wishlist functionality, and newsletter subscription.
+**Could Have:** Features that enhance the user experience, such as order history and promotional banners.
+**Won’t Have:** Additional features that, while valuable, are not prioritized for the current scope.
 
+This Agile setup with MoSCoW in my Kanban board allowed me to track progress, iterate effectively, and remain adaptable to feedback. By managing development in this way, I focused on delivering a minimum viable product (MVP) quickly, then gradually expanding functionality to enrich the user experience without compromising on quality or project timelines.
+
+## As a User
+
+### Homepage Experience
+
+- As a User, I want to easily access and navigate the homepage so that I can see clear and well-organized sections of the site.
+
+### Product Browsing and Details
+
+As a User, I want to view all available products so that I can browse through the items offered in each category.
+As a User, I want to view the details of a product so that I can make an informed decision before purchasing.
+
+### User Account and Authentication
+
+As a User, I want to register for an account so that I can save my shipping details for future purchases.
+As a Registered User, I want to log in so that I can access my previous orders and saved preferences.
+As a Registered User, I want to reset my password so that I can regain access to my account if I forget it.
+
+### Shopping Cart and Checkout
+
+As a User, I want to add products to my shopping cart so that I can purchase multiple items at once.
+As a User, I want to remove items from my cart so that I can modify my order before checkout.
+As a User, I want to update the quantity of items in my cart so that I can adjust my order.
+As a User, I want to securely check out and make a payment so that I can complete my purchase.
+
+### Search and Filtering
+
+As a User, I want to search for products by category or keyword so that I can easily find the items I need.
+As a User, I want to filter products by price or availability so that I can narrow down my choices.
+
+### Post-Purchase Communication
+
+As a User, I want to receive a confirmation email after a successful purchase so that I know my order was processed.
+
+### Wishlist and Notifications
+
+As a User, I want to save items to a wishlist so that I can purchase them at a later date.
+As a User, I want to subscribe to the newsletter so that I can receive updates about new products and promotions.
+As a Site Administrator
+
+### Product Management
+
+As a Site Administrator, I want to add new products so that I can keep my product catalog up to date.
+As a Site Administrator, I want to edit product details so that I can correct mistakes or update pricing.
+As a Site Administrator, I want to delete products from the catalog so that I can remove discontinued items.
+
+### Customer Interaction
+
+As a Site Administrator, I want to moderate customer reviews so that I can maintain the quality of feedback on my site.
+As a Site Administrator, I want to manage user accounts so that I can handle customer service issues efficiently.
 
 
 ## Technologies Used
