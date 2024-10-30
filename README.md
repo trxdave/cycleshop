@@ -64,7 +64,7 @@ Start the server with
 The CycleShop project employs a balanced and professional color scheme to reflect the brand's identity while ensuring accessibility and user-friendliness across all pages. The color choices aim to create a modern and inviting look, enhancing readability and aesthetic appeal.
 
 | **Color Name** | **Hex Code** | **Usage** | **Color** |
---- | --- | :---: |
+| --- | --- | --- | --- |
 | Dark Teal | #397367 | Primary color for buttons, links, and headers | ![alt text](documentatiom/images/397367.png) |
 | Light Aqua | #63CCCA | Accent color for interactive elements like hover effects | ![alt text](documentatiom/images/63CCCA.png) |
 | Muted Green | #5DA399 | Background hightlights and icons | ![alt text](documentatiom/images/5DA399.png) |
