@@ -63,6 +63,8 @@ Start the server with
 
 The CycleShop project employs a balanced and professional color scheme to reflect the brand's identity while ensuring accessibility and user-friendliness across all pages. The color choices aim to create a modern and inviting look, enhancing readability and aesthetic appeal.
 
+I used [coolors.co](https://coolors.co/) to generate my color palette.
+
 | **Color Name** | **Hex Code** | **Usage** | **Color** |
 | --- | --- | --- | --- |
 | Dark Teal | #397367 | Primary color for buttons, links, and headers | ![alt text](documentatiom/images/397367.png) |
@@ -109,7 +111,6 @@ The CycleShop project is designed to offer a streamlined and engaging user exper
 - User can subscribe to the CycleShop newsletter directly from the footer, enhancing engagement with on going updates and promotions.
 
 
-
 # Features
 
 ## Current Features:
@@ -137,6 +138,30 @@ The CycleShop project is designed to offer a streamlined and engaging user exper
 **Free Delivery Banner**: Offers free delivery for orders over €500.
 
 **Newsletter Subscription**: Users can subscribe to the newsletter.
+
+
+# Typography
+
+The CycleShop project leverages clean and modern fonts to enhance readability and provide a professional aesthetic. Consistent typography helps reinforce the brand identity across the application.
+
+## Fonts Used
+
+1. **Primary Font** - Roboto
+- *Roboto* is used across most of the text elements in the application, including body text and headings, to provide a clear and modern look.
+- Style: Sans-serif
+- Use: General text, paragraphs, and form inputs.
+- Reasoning: *Roboto* is chosen for its reaadability and clean design, making it suitable for both mobile and desktop screens.
+
+2. **Secondary Font** - Oswald
+- *Oswald* is used for specific headings, titles, and highlighted text.
+- Style: Sans-serif
+- Use: Key headers and section titles.
+- Reasoning: *Oswald* adds contrast to the primary font, creating a more dynamic hierarchy for importment text.
+
+## Icon Library
+- **Font Awesome** icons are used across the application for user interface elements like shopping cart, user profile, search, and social media links.
+- Use: Provides universally recognized icons that enhance usability and provide visual guidance to users.
+- Reasoning: Using icons from Font Awesome simplifies navigation and adds a polished look to the interface.
 
 
 
