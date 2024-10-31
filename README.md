@@ -465,6 +465,18 @@ In this section, I outline the various tools and technologies that were essentia
 
 <hr>
 
+# Forking
+
+- Forking the GitHub repository allows you to make a copy of the original repository on your own GitHub account. This way, you can view, edit, or experiment with changes without impacting the original repository.
+
+## **To fork this repository, follow these steps**:
+
+- Log in to your GitHub account and go to the CycleShop GitHub Repository.
+- At the top of the repository page (above the "Settings" button), click the Fork button.
+- After clicking the Fork button, you will now have your own copy of the original repository in your GitHub account!
+
+<hr>
+
 # API
 
 ## **Gmail API**
@@ -472,10 +484,11 @@ In this section, I outline the various tools and technologies that were essentia
 This project uses Gmail to manage email communication, such as account verification and order confirmation notifications to users.
 
 - ## **Steps to Connect Your Project with Gmail**:
-- Set Up Your Gmail Account:
 
-- ## **Sign in to your Gmail account.**
-- Enable 2-Step Verification:
+- Set Up Your Gmail Account:
+- Sign in to your Gmail account.
+
+- ## **Enable 2-Step Verification**:
 
 - Click on the Account Settings (cog icon) in the top-right corner of Gmail.
 - Go to the Accounts and Import tab.
