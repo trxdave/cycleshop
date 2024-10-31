@@ -18,6 +18,8 @@ Here's deployed site: [Am I Responsive](https://ui.dev/amiresponsive?url=https:/
 1. **Chrome Extension**: Install Igorne X-Frame headers for chrome to bypass this security restrisction temporarily. Then reload the responsive preview page to view site across devices.
 2. **Gitpod Solution**: Run project in Gitpod and, once active, navigate to the Ports tab. Make port 8000 public by clicking the padlock icon, then use the live preview URL in the responsive tool for an accurate preview.
 
+<hr>
+
 # Setup Instructions
 
 ## Set up Environment Variables
@@ -58,6 +60,21 @@ To access the Django admin panel, create a superuser:
 Start the server with
 
 - python manage.py runserver
+
+<hr>
+
+The live deployed application can be found on [Heroku](https://cycleshop-b289044df6ec.herokuapp.com).
+
+# PostgreSQL Database
+- This project uses a [Code Institute PostgreSQL Database](https://dbs.ci-dbs.net/) for reliable and efficient data storage.
+
+**Steps to Obtain and Set Up the Database**:
+
+- Signed in to the CI LMS (Learning Management System) using my email address.
+- Received an email from Code Institute with the connection details for my PostgreSQL Database.
+- Configured the database URL in my project’s environment variables to establish a secure connection between the application and the database.
+
+<hr>
 
 # Color scheme
 
