@@ -90,6 +90,7 @@ I used [coolors.co](https://coolors.co/) to generate my color palette.
 | Steel Blue | #42858C | Subtle color accents for secondary buttons and cards | ![alt text](documentation/image/42858C.png) |
 | Charcoal | #35393C | Used for body text, footer, and darker backgrounds | ![alt text](documentation/image/35393C.png) |
 
+<hr>
 
 # User Experience (UX)
 
@@ -127,6 +128,7 @@ The CycleShop project is designed to offer a streamlined and engaging user exper
 - **The footer serves as and essential guide**, offering users access to account management, customer services links, and company information. The **My Account** and **Customer Services** sections support quick navigation to key pages like **login**, **Wishlist**, **Contact Us**, and **FAQ**.
 - User can subscribe to the CycleShop newsletter directly from the footer, enhancing engagement with on going updates and promotions.
 
+<hr>
 
 # Features
 
@@ -156,6 +158,8 @@ The CycleShop project is designed to offer a streamlined and engaging user exper
 
 - **Newsletter Subscription**: Users can subscribe to the newsletter.
 
+<hr>
+
 # Miscellaneous
 
 1. **Automated Alert Messages**:
@@ -179,6 +183,7 @@ The CycleShop project is designed to offer a streamlined and engaging user exper
 7. **Accessibility Features**:
 - Designed with accessibility in mind, including ARIA labels and color contrasts that comply with WCAG standards, ensuring that CycleShop is accessible to all users.
 
+<hr>
 
 # Typography
 
@@ -202,6 +207,8 @@ The CycleShop project leverages clean and modern fonts to enhance readability an
 - **Font Awesome** icons are used across the application for user interface elements like shopping cart, user profile, search, and social media links.
 - Use: Provides universally recognized icons that enhance usability and provide visual guidance to users.
 - Reasoning: Using icons from Font Awesome simplifies navigation and adds a polished look to the interface.
+
+<hr>
 
 # User Stories
 
@@ -267,6 +274,8 @@ This Agile setup with MoSCoW in my Kanban board allowed me to track progress, it
 - As a Site Administrator, I want to moderate customer reviews so that I can maintain the quality of feedback on my site.
 - As a Site Administrator, I want to manage user accounts so that I can handle customer service issues efficiently.
 
+<hr>
+
 ### GitHub Issues
 
 [GitHub Issues](https://github.com/trxdave/cycleshop/issues) served as an additional Agile tool for effective project management. Using my custom User Story Template, I documented and managed user stories efficiently. This approach enabled structured and clear tracking of user requirements, bug fixes, and feature requests.
@@ -281,6 +290,8 @@ Furthermore, GitHub Issues facilitated the iterative development process by alig
 
 - Closed Issues
 
+<hr>
+
 # Ecommerce Business Model
 This site operates under a Business to Customer (B2C) model, where it sells cycling goods directly to individual customers. The focus is on straightforward individual transactions, without the need for subscription-based models such as monthly or annual plans.
 
@@ -288,6 +299,8 @@ Despite being in the early stages of development, the site already includes feat
 
 - **Social Media Marketing**: Leveraging large platforms like Facebook can help build a community around the business, increase brand awareness, and drive traffic to the site.
 - **Newsletter**: The email subscription feature allows the business to share regular updates with users, such as special offers, new product launches, changes to business hours, event notifications, and more.
+
+<hr>
 
 # Newsletter Marketing
 I have implemented a custom newsletter sign-up feature within my Django application. This allows users to provide their email addresses to receive updates about new products, offers, and other announcements.
@@ -314,6 +327,8 @@ I have implemented a custom newsletter sign-up feature within my Django applicat
 - **User Feedback**: Users are shown success or informational messages using Django's messaging framework.
 
 - **Redirection**: Successful subscriptions are followed by a redirect to a confirmation page, while repeated subscriptions or invalid requests redirect users to the home page.
+
+<hr>
 
 # Wireframes
 
@@ -365,6 +380,8 @@ I have implemented a custom newsletter sign-up feature within my Django applicat
 | Your Shopping Bag | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
 | Road Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
 
+<hr>
+
 # Future Features
 
 1. User-Generated Reviews and Ratings:
@@ -409,6 +426,8 @@ I have implemented a custom newsletter sign-up feature within my Django applicat
 14. Customized Product Recommendations:
 - Leverage specifications like material and size to make more personalized recommendations based on user preferences.
 
+<hr>
+
 # Entity-Relationship Diagram (ERD)
 
 - **User and Profile**: A one-to-one relationship where each user has an associated profile, storing additional details.
@@ -418,6 +437,8 @@ I have implemented a custom newsletter sign-up feature within my Django applicat
 - **Order and BagItem**: An order can contain multiple BagItems, with each item linked to a specific product and quantity.
 
 ![alt text](documentation/erd/database-erdiagram-cycleshop-1.png)
+
+<hr>
 
 # Technologies Used
 
@@ -442,6 +463,7 @@ In this section, I outline the various tools and technologies that were essentia
 - **Lucidchart**: [Lucidchart](https://www.lucidchart.com/pages)is used to design and visualize the database schema.
 - **Am I Responsive**: [Am I Responsive](https://ui.dev/amiresponsive) is used to test and showcase how the website looks on different devices.
 
+<hr>
 
 # Credits
 
