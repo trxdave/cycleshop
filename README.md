@@ -359,22 +359,26 @@ As a Site Administrator, I want to manage user accounts so that I can handle cus
 
 # Technologies Used
 
-- **Frontend**: 
-  - HTML, CSS (Bootstrap 5)
-  - JavaScript
+In this section, I outline the various tools and technologies that were essential in the development of CycleShop. Each technology played a specific role, from enabling efficient back-end development to ensuring an intuitive and responsive user interface.
 
-- **Backend**:
-  - Django 5.1.1 (Python)
-  - SQLite (Development)
-  - PostgresSQL
-  - Django AllAuth (User Authentication)
-  - Django Forms for handing user inputs
-
-- **Database**: 
-  - SQLite for development
-  - PostgresSQL
-
-  **Payment Gateway**: Stripe API
+- **Python**: [Python](https://www.python.org/) is the core programming language used for building the back-end functionality in Django, handling business logic, and managing data.
+- **Django**: [Django](https://www.djangoproject.com/) is a high-level Python web framework used to build the entire CycleShop application, offering features such as ORM, authentication, and admin interfaces.
+- **HTML5**: [HTML5](https://developer.mozilla.org/en-US/docs/Glossary/HTML5) forms the backbone of the front-end, defining the structure and layout of the web pages.
+- **CSS3**: [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS) is used to style the HTML elements, providing an aesthetically pleasing and responsive design.
+- **Bootstrap 5**: [Bootstrap](https://getbootstrap.com/) is a CSS framework used for responsive design, helping with layout and component styling.
+- **JavaScript**: [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) is used to add interactivity to the front-end, especially for search features and form validation.
+- **jQuery**: [jQuery](https://jquery.com/) is used for DOM manipulation, simplifying JavaScript code.
+- **Font Awesome**: [Font Awesome](https://fontawesome.com/) is used for iconography, adding icons to buttons, links, and other elements throughout the site.
+- **Google Fonts**: [Google Fonts](https://fonts.google.com/) is used to import fonts, enhancing the website’s typography.
+- **PostgreSQL**: [PostgreSQL](https://dbs.ci-dbs.net/) is the database used in production to store and manage data efficiently.
+- **SQLite**: [SQLite](https://www.sqlite.org/) is used for local development, as it is easy to set up and configure with Django.
+- **Stripe API**: [Stripe](https://stripe.com/ie) is used to handle secure payment processing.
+- **Git**: [Git](https://git-scm.com/) is a version control system used to track changes and manage project history.
+- **GitHub**: [GitHub](https://github.com/) is used to host the project repository and for version control collaboration.
+- **GitPod**: [GitPod](https://www.gitpod.io/) is used as an online IDE for developing and testing the project efficiently.
+- **AWS S3**: [Amazon S3](https://aws.amazon.com/s3/) is used for media storage, handling image uploads for products and other assets.
+- **Lucidchart**: [Lucidchart](https://www.lucidchart.com/pages)is used to design and visualize the database schema.
+- **Am I Responsive**: [Am I Responsive](https://ui.dev/amiresponsive) is used to test and showcase how the website looks on different devices.
 
 
 # Credits
