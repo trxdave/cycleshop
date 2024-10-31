@@ -250,6 +250,12 @@ This Agile setup with MoSCoW in my Kanban board allowed me to track progress, it
 - As a Site Administrator, I want to moderate customer reviews so that I can maintain the quality of feedback on my site.
 - As a Site Administrator, I want to manage user accounts so that I can handle customer service issues efficiently.
 
+### GitHub Issues
+
+[GitHub Issues](https://github.com/trxdave/cycleshop/issues) served as an additional Agile tool for effective project management. Using my custom User Story Template, I documented and managed user stories efficiently. This approach enabled structured and clear tracking of user requirements, bug fixes, and feature requests.
+
+Furthermore, GitHub Issues facilitated the iterative development process by aligning user stories with specific milestones. I used weekly iterations to track progress and adjust the project roadmap accordingly.
+
 
 # Wireframes
 
