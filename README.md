@@ -272,6 +272,32 @@ Despite being in the early stages of development, the site already includes feat
 - **Social Media Marketing**: Leveraging large platforms like Facebook can help build a community around the business, increase brand awareness, and drive traffic to the site.
 - **Newsletter**: The email subscription feature allows the business to share regular updates with users, such as special offers, new product launches, changes to business hours, event notifications, and more.
 
+# Newsletter Marketing
+I have implemented a custom newsletter sign-up feature within my Django application. This allows users to provide their email addresses to receive updates about new products, offers, and other announcements.
+
+## **Implementation Details**
+
+**Custom Newsletter Model**:
+
+- I created a NewsletterSubscriber model to store the email addresses of users who wish to receive newsletters.
+
+**Subscription View**:
+- The subscribe_newsletter view handles both new subscriptions and cases where an email is already subscribed.
+- Users are provided with appropriate feedback through messages, ensuring a user-friendly experience.
+
+**Code Snippet**
+- Below is the view code that handles newsletter subscriptions:
+
+![alt text](documentation/image/newsletter.png)
+
+## **How It Works**
+
+- **Subscription Check**: The code checks if the provided email is already subscribed to avoid duplicate entries.
+
+- **User Feedback**: Users are shown success or informational messages using Django's messaging framework.
+
+- **Redirection**: Successful subscriptions are followed by a redirect to a confirmation page, while repeated subscriptions or invalid requests redirect users to the home page.
+
 # Wireframes
 
 - Wireframes were created to visualize the layout and design of the CycleShop.
@@ -299,7 +325,6 @@ Despite being in the early stages of development, the site already includes feat
 | Your Shopping Bag | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
 | Road Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
 
-
 ## Mobile Wireframes
 
 | **Page** | **Wireframes** | **Pass** |
@@ -322,7 +347,6 @@ Despite being in the early stages of development, the site already includes feat
 | Accessories | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
 | Your Shopping Bag | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
 | Road Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-
 
 # Future Features
 
