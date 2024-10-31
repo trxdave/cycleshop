@@ -338,24 +338,25 @@ I have implemented a custom newsletter sign-up feature within my Django applicat
 
 | **Page** | **Wireframes** | **Pass** |
 | --- | --- | :---: |
-| Home | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Product | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Contact | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| FAQ | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Login | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Register | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Home | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/homepage.png)</details>| :white_check_mark:|
+| Product | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/all-products.png)</details>| :white_check_mark:|
+| View Product | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/view-product.png)</details>| :white_check_mark:|
+| Road Bikes | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/road-bikes.png)</details>| :white_check_mark:|
+| Mountain Bikes | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/mountain-bikes.png)</details>| :white_check_mark:|
+| Electric Bikes | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/electric-bikes.png)</details>| :white_check_mark:|
+| Kids Bikes | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/kid-bikes.png)</details>| :white_check_mark:|
+| Clothing | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/clothing.png)</details>| :white_check_mark:|
+| Accessories | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/accessories.png)</details>| :white_check_mark:|
+| Contact | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/contact-us.png)</details>| :white_check_mark:|
+| FAQ | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/faqs.png)</details>| :white_check_mark:|
+| Login | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/sign-in.png)</details>| :white_check_mark:|
+| Register | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/sign-up.png)</details>| :white_check_mark:|
 | My Orders | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
 | Wishlist | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Shipping Information | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Return & Exchanges | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Road Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Mountain Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Electric Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Kids Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Clothing | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Accessories | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Your Shopping Bag | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Road Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Shipping Information | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/shipping-information.png)</details>| :white_check_mark:|
+| Return & Exchanges | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/return-exchanges.png)</details>| :white_check_mark:|
+| Your Shopping Bag | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/your-shopping-bag.png)</details>| :white_check_mark:|
+
 
 ## Mobile Wireframes
 
