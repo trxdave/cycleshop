@@ -256,6 +256,13 @@ This Agile setup with MoSCoW in my Kanban board allowed me to track progress, it
 
 Furthermore, GitHub Issues facilitated the iterative development process by aligning user stories with specific milestones. I used weekly iterations to track progress and adjust the project roadmap accordingly.
 
+[![GitHub issues](https://img.shields.io/github/issues/trxdave/cycleshop)](https://github.com/trxdave/cycleshop/issues)
+
+- Open Issues
+![alt text](documentation/image/issues1.png)
+![alt text](documentation/image/issues2.png)
+
+- Closed Issues
 
 # Wireframes
 
