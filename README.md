@@ -115,29 +115,29 @@ The CycleShop project is designed to offer a streamlined and engaging user exper
 
 ## Current Features:
 
-**Product Listing**: Users can view a list of products, including product names, descriptions, prices, and stock availability.
+- **Product Listing**: Users can view a list of products, including product names, descriptions, prices, and stock availability.
 
-**Product Details**: Users can click on individual products to view more detailed information.
+- **Product Details**: Users can click on individual products to view more detailed information.
 
-**Admin Panel**: Site administrators can add, edit, and delete products from the catalog using Django's admin interface.
+- **Admin Panel**: Site administrators can add, edit, and delete products from the catalog using Django's admin interface.
 
-**Responsive Design**: The site is fully responsive, built using Bootstrap for an optimal experience on all devices.
+- **Responsive Design**: The site is fully responsive, built using Bootstrap for an optimal experience on all devices.
 
-**Product Categories**: Products are categorized into Road Bikes, Mountain Bikes, Electric Bikes, Kids Bikes, Clothing, and Accessories.
+- **Product Categories**: Products are categorized into Road Bikes, Mountain Bikes, Electric Bikes, Kids Bikes, Clothing, and Accessories.
 
-**Shopping Cart**: Add items to a cart (toast notification) and track them throughout the session.
+- **Shopping Cart**: Add items to a cart (toast notification) and track them throughout the session.
 
-**User Authentication**: Users can register, log in, and manage their accounts.
+- **User Authentication**: Users can register, log in, and manage their accounts.
 
-**Search Functionality**: Users can search for products using the search bar.
+- **Search Functionality**: Users can search for products using the search bar.
 
-**Wishlist**: Users can save items to their wishlist for future purchase consideration.
+- **Wishlist**: Users can save items to their wishlist for future purchase consideration.
 
-**Responsive Design**: Fully responsive layout using Bootstrap.
+- **Responsive Design**: Fully responsive layout using Bootstrap.
 
-**Free Delivery Banner**: Offers free delivery for orders over €500.
+- **Free Delivery Banner**: Offers free delivery for orders over €500.
 
-**Newsletter Subscription**: Users can subscribe to the newsletter.
+- **Newsletter Subscription**: Users can subscribe to the newsletter.
 
 # Miscellaneous
 
@@ -193,10 +193,10 @@ In this project, I implemented an Agile approach combined with MoSCoW prioritiza
 
 Using **MoSCoW prioritization** within my GitHub Kanban board, I categorized each user story into four levels:
 
-**Must Have:** Core features necessary for the project’s functionality, such as product browsing, shopping cart management, and secure checkout.
-**Should Have:** Important but non-essential features like search filtering, wishlist functionality, and newsletter subscription.
-**Could Have:** Features that enhance the user experience, such as order history and promotional banners.
-**Won’t Have:** Additional features that, while valuable, are not prioritized for the current scope.
+- **Must Have:** Core features necessary for the project’s functionality, such as product browsing, shopping cart management, and secure checkout.
+- **Should Have:** Important but non-essential features like search filtering, wishlist functionality, and newsletter subscription.
+- **Could Have:** Features that enhance the user experience, such as order history and promotional banners.
+- **Won’t Have:** Additional features that, while valuable, are not prioritized for the current scope.
 
 This Agile setup with MoSCoW in my Kanban board allowed me to track progress, iterate effectively, and remain adaptable to feedback. By managing development in this way, I focused on delivering a minimum viable product (MVP) quickly, then gradually expanding functionality to enrich the user experience without compromising on quality or project timelines.
 
@@ -208,47 +208,47 @@ This Agile setup with MoSCoW in my Kanban board allowed me to track progress, it
 
 ### Product Browsing and Details
 
-As a User, I want to view all available products so that I can browse through the items offered in each category.
-As a User, I want to view the details of a product so that I can make an informed decision before purchasing.
+- As a User, I want to view all available products so that I can browse through the items offered in each category.
+- As a User, I want to view the details of a product so that I can make an informed decision before purchasing.
 
 ### User Account and Authentication
 
-As a User, I want to register for an account so that I can save my shipping details for future purchases.
-As a Registered User, I want to log in so that I can access my previous orders and saved preferences.
-As a Registered User, I want to reset my password so that I can regain access to my account if I forget it.
+- As a User, I want to register for an account so that I can save my shipping details for future purchases.
+- As a Registered User, I want to log in so that I can access my previous orders and saved preferences.
+- As a Registered User, I want to reset my password so that I can regain access to my account if I forget it.
 
 ### Shopping Cart and Checkout
 
-As a User, I want to add products to my shopping cart so that I can purchase multiple items at once.
-As a User, I want to remove items from my cart so that I can modify my order before checkout.
-As a User, I want to update the quantity of items in my cart so that I can adjust my order.
-As a User, I want to securely check out and make a payment so that I can complete my purchase.
+- As a User, I want to add products to my shopping cart so that I can purchase multiple items at once.
+- As a User, I want to remove items from my cart so that I can modify my order before checkout.
+- As a User, I want to update the quantity of items in my cart so that I can adjust my order.
+- As a User, I want to securely check out and make a payment so that I can complete my purchase.
 
 ### Search and Filtering
 
-As a User, I want to search for products by category or keyword so that I can easily find the items I need.
-As a User, I want to filter products by price or availability so that I can narrow down my choices.
+- As a User, I want to search for products by category or keyword so that I can easily find the items I need.
+- As a User, I want to filter products by price or availability so that I can narrow down my choices.
 
 ### Post-Purchase Communication
 
-As a User, I want to receive a confirmation email after a successful purchase so that I know my order was processed.
+- As a User, I want to receive a confirmation email after a successful purchase so that I know my order was processed.
 
 ### Wishlist and Notifications
 
-As a User, I want to save items to a wishlist so that I can purchase them at a later date.
-As a User, I want to subscribe to the newsletter so that I can receive updates about new products and promotions.
-As a Site Administrator
+- As a User, I want to save items to a wishlist so that I can purchase them at a later date.
+- As a User, I want to subscribe to the newsletter so that I can receive updates about new products and promotions.
+- As a Site Administrator
 
 ### Product Management
 
-As a Site Administrator, I want to add new products so that I can keep my product catalog up to date.
-As a Site Administrator, I want to edit product details so that I can correct mistakes or update pricing.
-As a Site Administrator, I want to delete products from the catalog so that I can remove discontinued items.
+- As a Site Administrator, I want to add new products so that I can keep my product catalog up to date.
+- As a Site Administrator, I want to edit product details so that I can correct mistakes or update pricing.
+- As a Site Administrator, I want to delete products from the catalog so that I can remove discontinued items.
 
 ### Customer Interaction
 
-As a Site Administrator, I want to moderate customer reviews so that I can maintain the quality of feedback on my site.
-As a Site Administrator, I want to manage user accounts so that I can handle customer service issues efficiently.
+- As a Site Administrator, I want to moderate customer reviews so that I can maintain the quality of feedback on my site.
+- As a Site Administrator, I want to manage user accounts so that I can handle customer service issues efficiently.
 
 
 # Wireframes
@@ -349,11 +349,11 @@ As a Site Administrator, I want to manage user accounts so that I can handle cus
 
 # Entity-Relationship Diagram (ERD)
 
-**User and Profile**: A one-to-one relationship where each user has an associated profile, storing additional details.
-**Profile and Wishlist**: The Profile table has an optional one-to-one link to Wishlist.
-**Product and Category**: Products belong to categories, allowing for product classification.
-**Wishlist and Products**: A many-to-many relationship through the WishlistProducts table, allowing users to add multiple products to their wishlist.
-**Order and BagItem**: An order can contain multiple BagItems, with each item linked to a specific product and quantity.
+- **User and Profile**: A one-to-one relationship where each user has an associated profile, storing additional details.
+- **Profile and Wishlist**: The Profile table has an optional one-to-one link to Wishlist.
+- **Product and Category**: Products belong to categories, allowing for product classification.
+- **Wishlist and Products**: A many-to-many relationship through the WishlistProducts table, allowing users to add multiple products to their wishlist.
+- **Order and BagItem**: An order can contain multiple BagItems, with each item linked to a specific product and quantity.
 
 ![alt text](documentation/erd/database-erdiagram-cycleshop-1.png)
 
@@ -383,11 +383,11 @@ In this section, I outline the various tools and technologies that were essentia
 
 # Credits
 
-Accordian - https://djangosnippets.org/snippets/10658/
+- Accordian - https://djangosnippets.org/snippets/10658/
 
-Wishlist - https://pythongeeks.org/python-django-wishlist-project/
+- Wishlist - https://pythongeeks.org/python-django-wishlist-project/
 
-Perplexity - https://perplexity.ai
+- Perplexity - https://perplexity.ai
 
 
 
