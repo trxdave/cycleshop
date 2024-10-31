@@ -125,7 +125,7 @@ The CycleShop project is designed to offer a streamlined and engaging user exper
 
 - **Product Categories**: Products are categorized into Road Bikes, Mountain Bikes, Electric Bikes, Kids Bikes, Clothing, and Accessories.
 
-- **Shopping Cart**: Add items to a cart (toast notification) and track them throughout the session.
+- **Shopping Cart**: Add items to a cart and track them throughout the session.
 
 - **User Authentication**: Users can register, log in, and manage their accounts.
 
@@ -263,6 +263,14 @@ Furthermore, GitHub Issues facilitated the iterative development process by alig
 ![alt text](documentation/image/issues2.png)
 
 - Closed Issues
+
+# Ecommerce Business Model
+This site operates under a Business to Customer (B2C) model, where it sells cycling goods directly to individual customers. The focus is on straightforward individual transactions, without the need for subscription-based models such as monthly or annual plans.
+
+Despite being in the early stages of development, the site already includes features such as a newsletter and links for social media marketing. These tools lay the groundwork for growing the business's online presence and fostering customer engagement.
+
+- **Social Media Marketing**: Leveraging large platforms like Facebook can help build a community around the business, increase brand awareness, and drive traffic to the site.
+- **Newsletter**: The email subscription feature allows the business to share regular updates with users, such as special offers, new product launches, changes to business hours, event notifications, and more.
 
 # Wireframes
 
