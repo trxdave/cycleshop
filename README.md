@@ -465,6 +465,40 @@ In this section, I outline the various tools and technologies that were essentia
 
 <hr>
 
+# API
+
+## **Gmail API**
+
+This project uses Gmail to manage email communication, such as account verification and order confirmation notifications to users.
+
+- ## **Steps to Connect Your Project with Gmail**:
+- Set Up Your Gmail Account:
+
+- ## **Sign in to your Gmail account.**
+- Enable 2-Step Verification:
+
+- Click on the Account Settings (cog icon) in the top-right corner of Gmail.
+- Go to the Accounts and Import tab.
+- Under "Change account settings," click on Other Google Account settings.
+- In the new page, select Security from the left menu.
+- Click 2-Step Verification and follow the instructions to enable it.
+- Once verified, turn on 2FA (Two-Factor Authentication).
+
+- ## **Generate an App Password**:
+
+- Return to the Security page, and a new option called App passwords will be available.
+- You may be prompted to confirm your password and account again.
+- Choose Mail for the app type.
+- Select Other (Custom name) for the device, and enter a name like "Django" or "CycleShop."
+- Generate the password, and you will be given a 16-character key (API key).
+
+- ## **Store the App Password and User Email**:
+
+- Save the 16-character password securely as it cannot be retrieved later.
+- Use these environment variables in your project:
+- EMAIL_HOST_USER: Your Gmail email address.
+- EMAIL_HOST_PASS: The 16-character app password.
+
 # Credits
 
 - Accordian - https://djangosnippets.org/snippets/10658/
