@@ -11,47 +11,84 @@
     <h1 class="mb-4">Your Shopping Bag</h1>
 
     {% if bag %}
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">Product</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Total</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for product_id, item in bag.items %}
-                <tr>
-                    <td>{{ item.product.name }}</td>
-                    <td>€{{ item.price|floatformat:2 }}</td>
-                    <td>
-                        <form method="post" action="{% url 'bag:update_quantity' product_id %}">
-                            {% csrf_token %}
-                            <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="form-control d-inline-block w-50">
-                            <button type="submit" class="btn btn-primary mt-2">Update</button>
-                        </form>
-                    </td>
-                    <td>€{{ item.price|floatformat:2 }}</td>
-                    <td>
-                        <form method="post" action="{% url 'bag:remove_from_bag' product_id %}">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-danger mt-2">Remove</button>
-                        </form>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in bag %}
+            <tr>
+                <td>{{ item.product.name }}</td>
+                <td class="price">€{{ item.price|floatformat:2 }}</td>
+                <td>
+                    <form method="post" action="{% url 'bag:update_quantity' item.product.id %}">
+                        {% csrf_token %}
+                        <input type="number" name="quantity" class="quantity form-control d-inline-block w-50"
+                            value="{{ item.quantity }}" min="1">
+                        <button type="submit" class="btn btn-primary mt-2">Update</button>
+                    </form>
+                </td>
+                <td>€{{ item.subtotal|floatformat:2 }}</td>
+                <td>
+                    <form method="post" action="{% url 'bag:remove_from_bag' item.product.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger mt-2">Remove</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
-        <div class="bag-summary mt-4">
-            <h4>Total Price: €{{ total|floatformat:2 }}</h4>
-            <a href="{% url 'bag:checkout' %}" class="btn btn-success">Proceed to Checkout</a>
-        </div>
+    <div class="bag-summary mt-4">
+        <h4>Total Price: €{{ total|floatformat:2 }}</h4>
+        <a href="{% url 'bag:checkout' %}" class="btn btn-success">Proceed to Checkout</a>
+    </div>
     {% else %}
-        <p>Your bag is currently empty.</p>
-        <a href="{% url 'products:product_list' %}" class="btn btn-primary">Continue Shopping</a>
+    <p>Your bag is currently empty.</p>
+    <a href="{% url 'products:product_list' %}" class="btn btn-primary">Continue Shopping</a>
     {% endif %}
 </div>
 {% endblock %}
+
+<script>
+    // Function to calculate and update the total
+    function updateTotal() {
+        let total = 0;
+        // Select all rows in the bag table
+        const rows = document.querySelectorAll('tbody tr');
+
+        rows.forEach(row => {
+            // Get the price and quantity elements
+            const priceElement = row.querySelector('.price');
+            const quantityElement = row.querySelector('.quantity');
+
+            if (priceElement && quantityElement) {
+                const price = parseFloat(priceElement.textContent.replace('€', ''));
+                const quantity = parseInt(quantityElement.value, 10);
+
+                // Check if values are valid before adding to total
+                if (!isNaN(price) && !isNaN(quantity)) {
+                    total += price * quantity;
+                }
+            }
+        });
+
+        // Update the total in the DOM
+        document.querySelector('#total').textContent = `€${total.toFixed(2)}`;
+    }
+
+    // Add event listeners to each quantity input
+    document.querySelectorAll('.quantity').forEach(input => {
+        input.addEventListener('input', updateTotal);
+    });
+
+    // Initial total calculation
+    updateTotal();
+</script>

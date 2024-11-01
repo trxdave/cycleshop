@@ -11,12 +11,27 @@ from .forms import OrderForm
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 # View to display the user's shopping bag
+""" A view to display the user's shopping bag """
 def view_bag(request):
-    """ A view to display the user's shopping bag """
     bag = request.session.get('bag', {})
-    total = sum(item['price'] * item['quantity'] for item in bag.values())
-    bag_items_count = sum(item['quantity'] for item in bag.values())
+    bag_items = []
+    total = 0
+    bag_items_count = 0
 
+    # Iterate through the bag items to calculate subtotal and total
+    for product_id, item in bag.items():
+        product = get_object_or_404(Product, id=product_id)
+        subtotal = item['price'] * item['quantity']
+        total += subtotal
+        bag_items_count += item['quantity']
+        bag_items.append({
+            'product': product,
+            'price': item['price'],
+            'quantity': item['quantity'],
+            'subtotal': subtotal,
+        })
+
+    # Calculate delivery
     if total >= settings.FREE_DELIVERY_THRESHOLD:
         delivery = 0
     else:
@@ -29,7 +44,7 @@ def view_bag(request):
     formatted_grand_total = number_format(grand_total, decimal_pos=2, use_l10n=True)
 
     context = {
-        'bag': bag,
+        'bag': bag_items,  # Pass the detailed bag items with subtotals
         'total': formatted_total,
         'delivery': delivery,
         'grand_total': formatted_grand_total,
