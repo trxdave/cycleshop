@@ -21,7 +21,7 @@ body {
 
 .logo-text:hover {
     text-decoration: none;
-    color: #5DA399;  /* Slightly darker shade on hover */
+    color: #5DA399;
 }
 
 
@@ -31,7 +31,7 @@ header {
 }
 
 .navbar {
-    background-color: #397367; /* Updated to match the header */
+    background-color: #397367;
 }
 
 .navbar-brand {
@@ -57,9 +57,26 @@ header {
 }
 
 .nav-link:hover {
-    color: #63CCCA !important; /* Hover effect for links */
+    color: #63CCCA !important;
 }
 
+/* Mobile Navbar Button Styles (Mobile Navbar) */
+.navbar-nav .nav-link.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white !important;
+    background-color: #42858C !important;
+    border: 1px solid #42858C !important;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar-nav .nav-link.btn:hover {
+    background-color: #63CCCA !important;
+    color: #35393C !important;
+}
+
+/* Primary Button Styling */
 .btn-primary {
     background-color: #42858C;
     border: none;
@@ -67,6 +84,7 @@ header {
     font-size: 1rem;
     padding: 0.5rem 1rem;
     border-radius: 5px;
+    text-align: center;
 }
 
 .btn-primary:hover {
@@ -79,14 +97,11 @@ header {
 
 /* Search bar and Buttons */
 .form-control {
-    border-radius: 0.25rem;
-    border: 1px solid #ced4da;
-    padding: 0.5rem;
+    padding: 0.375rem 0.75rem;
 }
 
-/* Customize the search button with icon */
 .input-group-text {
-    cursor: pointer;
+    padding: 0.375rem 0.5rem;
     border-radius: 0.25rem;
     background-color: #42858C;
     color: #F0F0F0;
