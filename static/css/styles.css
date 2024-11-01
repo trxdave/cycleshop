@@ -267,6 +267,24 @@ header {
     color: #35393C;
 }
 
+/* Product Details */
+.btn-add {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #42858C;
+    color: #F0F0F0;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-add:hover {
+    background-color: #63CCCA;
+    color: #35393C;
+}
+
 .card {
     display: flex;
     flex-direction: column;
@@ -396,7 +414,25 @@ header {
 }
 
 .btn-proceed:hover {
-    background-color: #397367
+    background-color: #63CCCA;
+    color: #35393C;
+}
+
+.btn-continue {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #42858C;
+    color: #F0F0F0;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-continue:hover {
+    background-color: #63CCCA;
+    color: #35393C;
 }
 
 /* Contact */

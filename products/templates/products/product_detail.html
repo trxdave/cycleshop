@@ -31,9 +31,9 @@
                     <label for="quantity" class="form-label">Quantity</label>
                     <input type="number" class="form-control" id="quantity" name="quantity" value="1" min="1">
                 </div>
-                <button type="submit" class="btn btn-primary">Add to Cart</button>
+                <button type="submit" class="btn-add">Add to Cart</button>
             </form>
-
+<br>
             <!-- Wishlist Add/Remove Button -->
             {% if user.is_authenticated %}
                 <form method="post" action="{% url 'products:toggle_wishlist' product.id %}" class="mt-3">
