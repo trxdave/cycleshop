@@ -42,6 +42,9 @@ urlpatterns = [
          views.remove_from_wishlist, name='remove_from_wishlist'),
     path('toggle_wishlist/<int:product_id>/',
          views.toggle_wishlist, name='toggle_wishlist'),
+
+     # Order
+     path('order-history/', views.order_history, name='order_history'),
 ]
 
 if settings.DEBUG:

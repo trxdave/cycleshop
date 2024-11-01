@@ -1,12 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Product, Category
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
-from .models import Wishlist
-from products.models import Product
-from .forms import ProductForm, RatingForm
 from django.core.paginator import Paginator
+from .models import Product, Category, Wishlist
+from bag.models import Order
+from .forms import ProductForm, RatingForm
 
 
 def product_list(request):
@@ -249,6 +248,7 @@ def add_to_wishlist(request, product_id):
         messages.info(request, f'{product.name} is already in your wishlist.')
     return redirect('products:product_detail', product_id=product.id)
 
+
 @login_required
 def remove_from_wishlist(request, product_id):
     """ View to remove a product from the wishlist """
@@ -256,23 +256,18 @@ def remove_from_wishlist(request, product_id):
     wishlist, created = Wishlist.objects.get_or_create(user=request.user)
     if product in wishlist.products.all():
         wishlist.products.remove(product)
-        messages.success(request, f'{product.name} removed from your wishlist.')
+        messages.success(
+            request, f'{product.name} removed from your wishlist.')
     else:
         messages.info(request, f'{product.name} is not in your wishlist.')
     return redirect('products:view_wishlist')
+
 
 @login_required
 def toggle_wishlist(request, product_id):
     """ Add or remove a product from the user's wishlist """
     product = get_object_or_404(Product, id=product_id)
-    profile = request.user.profile
-
-    # If the user does not have a wishlist, create one
-    if not profile.wishlist:
-        profile.wishlist = Wishlist.objects.create(user=request.user)
-        profile.save()
-
-    wishlist = profile.wishlist
+    wishlist, created = Wishlist.objects.get_or_create(user=request.user)
 
     if product in wishlist.products.all():
         wishlist.products.remove(product)
@@ -282,3 +277,13 @@ def toggle_wishlist(request, product_id):
         messages.success(request, f"{product.name} added to your wishlist.")
 
     return redirect('products:product_detail', product_id=product_id)
+
+
+@login_required
+def order_history(request):
+    """ View to display the user's order history """
+    orders = Order.objects.filter(user=request.user).order_by('-created_at')
+    context = {
+        'orders': orders
+    }
+    return render(request, 'customer_services/order_history.html')
