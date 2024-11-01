@@ -78,28 +78,24 @@ header {
 }
 
 /* Search bar and Buttons */
-.search-input, .search-btn, .action-btn {
-    height: 38px;
-    padding: 6px 12px;
+.form-control {
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+    padding: 0.5rem;
 }
 
-.search-btn {
+/* Customize the search button with icon */
+.input-group-text {
+    cursor: pointer;
+    border-radius: 0.25rem;
     background-color: #42858C;
-    border: none;
-    color: white;
+    color: #F0F0F0;
+    transition: background-color 0.3s;
 }
 
-.search-btn:hover {
+.input-group-text:hover {
     background-color: #63CCCA;
-}
-
-.action-btn {
-    background-color: #42858C;
-    border: none;
-}
-
-.action-btn:hover {
-    background-color: #63CCCA;
+    color: #35393C;
 }
 
 /* Free Delivery Banner */

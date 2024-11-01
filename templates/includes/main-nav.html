@@ -4,13 +4,13 @@
         <div class="container">
             <!-- Brand / Logo -->
             <a class="navbar-brand fw-bold fs-1" href="{% url 'home' %}">CycleShop</a>
-    
+
             <!-- Navbar Toggler for Mobile View -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-    
+
             <!-- Collapsible Navbar Content -->
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
@@ -25,8 +25,10 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url 'products:product_list' %}">All Products</a></li>
                             <li><a class="dropdown-item" href="{% url 'products:road_bikes' %}">Road Bikes</a></li>
-                            <li><a class="dropdown-item" href="{% url 'products:mountain_bikes' %}">Mountain Bikes</a></li>
-                            <li><a class="dropdown-item" href="{% url 'products:electric_bikes' %}">Electric Bikes</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products:mountain_bikes' %}">Mountain Bikes</a>
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'products:electric_bikes' %}">Electric Bikes</a>
+                            </li>
                             <li><a class="dropdown-item" href="{% url 'products:kids_bikes' %}">Kids Bikes</a></li>
                             <li><a class="dropdown-item" href="{% url 'products:clothing' %}">Clothing</a></li>
                             <li><a class="dropdown-item" href="{% url 'products:accessories' %}">Accessories</a></li>
@@ -40,46 +42,48 @@
                     </li>
                 </ul>
             </div>
-    
+
             <!-- Search Form and Authentication Links -->
-            <div class="d-flex align-items-center ms-auto">
-                <!-- Search Form -->
-                <form class="d-flex me-3" method="GET" action="{% url 'search_results' %}">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
-                    <button class="btn btn-outline-primary" type="submit">Search</button>
-                </form>
-    
-                <!-- User Authentication Links -->
-                {% if user.is_authenticated %}
-                <div class="dropdown ms-2">
-                    <a class="btn btn-primary dropdown-toggle" href="#" id="profileDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        My Profile
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-                        <li><a class="dropdown-item" href="{% url 'view_profile' %}">View Profile</a></li>
-                        {% if user.is_superuser %}
-                        <li><a class="dropdown-item" href="{% url 'products:manage_products' %}">Product Management</a></li>
-                        {% endif %}
-                        <li><a class="dropdown-item" href="{% url 'products:order_history' %}">My Orders</a></li>
-                        <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
-                    </ul>
+            <form class="d-flex me-3" method="GET" action="{% url 'search_results' %}">
+                <div class="input-group">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="q">
+                    <button class="btn input-group-text bg-primary text-white border-0" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </div>
-                {% else %}
-                <a class="btn btn-primary ms-2" href="{% url 'account_login' %}">Login</a>
-                <a class="btn btn-primary ms-2" href="{% url 'account_signup' %}">Sign Up</a>
-                {% endif %}
-    
-                <!-- Shopping Cart Button (Always Visible) -->
-                <a href="{% url 'bag:view_bag' %}" class="btn btn-primary ms-3 position-relative">
-                    <i class="fas fa-shopping-cart"></i>
-                    {% if bag_items_count > 0 %}
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                            {{ bag_items_count }}
-                        </span>
-                    {% endif %}
+            </form>
+
+            <!-- User Authentication Links -->
+            {% if user.is_authenticated %}
+            <div class="dropdown ms-2">
+                <a class="btn btn-primary dropdown-toggle" href="#" id="profileDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    My Profile
                 </a>
+                <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                    <li><a class="dropdown-item" href="{% url 'view_profile' %}">View Profile</a></li>
+                    {% if user.is_superuser %}
+                    <li><a class="dropdown-item" href="{% url 'products:manage_products' %}">Product Management</a></li>
+                    {% endif %}
+                    <li><a class="dropdown-item" href="{% url 'products:order_history' %}">My Orders</a></li>
+                    <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                </ul>
             </div>
+            {% else %}
+            <a class="btn btn-primary ms-2" href="{% url 'account_login' %}">Login</a>
+            <a class="btn btn-primary ms-2" href="{% url 'account_signup' %}">Sign Up</a>
+            {% endif %}
+
+            <!-- Shopping Cart Button (Always Visible) -->
+            <a href="{% url 'bag:view_bag' %}" class="btn btn-primary ms-3 position-relative">
+                <i class="fas fa-shopping-cart"></i>
+                {% if bag_items_count > 0 %}
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {{ bag_items_count }}
+                </span>
+                {% endif %}
+            </a>
+        </div>
         </div>
     </nav>
 </header>
