@@ -48,7 +48,7 @@
 
     <div class="bag-summary mt-4">
         <h4>Total Price: €{{ total|floatformat:2 }}</h4>
-        <a href="{% url 'bag:checkout' %}" class="btn btn-success">Proceed to Checkout</a>
+        <a href="{% url 'bag:checkout' %}" class="btn-proceed">Proceed to Checkout</a>
     </div>
     {% else %}
     <p>Your bag is currently empty.</p>
