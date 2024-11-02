@@ -263,8 +263,9 @@ header {
 
 .product-image {
     width: 100%;
-    height: 250px;
+    height: auto;
     object-fit: cover;
+    max-height: 250px;
 }
 
 .product-card-body {
@@ -294,6 +295,7 @@ header {
     margin-top: auto;
     background-color: #42858C;
     color: #F0F0F0;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .product-card .btn:hover {
