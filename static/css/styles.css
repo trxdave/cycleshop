@@ -175,7 +175,7 @@ header {
     align-items: center;
     color: white;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .hero-overlay .intro h2 {
