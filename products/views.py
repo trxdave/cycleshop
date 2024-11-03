@@ -64,13 +64,19 @@ def product_detail(request, product_id):
 
 @login_required
 def manage_products(request):
-    """ A view to manage all products """
+    """ A view to manage all products with pagination """
     if not request.user.is_superuser:
-        messages.error(
-            request, 'Sorry, only store owners can access this page.')
+        messages.error(request, 'Sorry, only store owners can access this page.')
         return redirect('home')
 
-    products = Product.objects.all()
+    # Define products_list correctly
+    products_list = Product.objects.all()
+    
+    # Setup pagination with 10 products per page
+    paginator = Paginator(products_list, 10)
+    page_number = request.GET.get('page')
+    products = paginator.get_page(page_number)
+
     return render(request, 'products/manage_products.html', {'products': products})
 
 
