@@ -38,6 +38,7 @@ header {
     font-size: 1.5rem;
     color: #63CCCA;
     text-transform: uppercase;
+    margin-left: 30px;
 }
 
 .navbar-brand img {
@@ -99,12 +100,11 @@ header {
 .form-control {
     padding: 0.375rem 0.75rem;
     border-radius: 0.25rem;
-    margin-top: 7px;
 }
 
-.btn-search {
-    width: 40px;
-    height: 40px;
+.btn-search-custom {
+    width: 35px;
+    height: 35px;
     padding: 0;
     display: flex;
     align-items: center;
@@ -114,10 +114,9 @@ header {
     border: none;
     border-radius: 0.25rem;
     transition: background-color 0.3s;
-    margin-top: 7px;
 }
 
-.btn-search:hover {
+.btn-search-custom:hover {
     background-color: #63CCCA;
     color: #35393C;
 }
@@ -623,5 +622,13 @@ header {
 
     .accordion-body {
         padding: 15px;
+    }
+}
+
+/* Larger Screens */
+@media (min-width: 1200px) {
+    input-group {
+        max-width: 400px;
+        margin:0 auto;
     }
 }

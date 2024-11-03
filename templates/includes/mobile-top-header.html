@@ -2,17 +2,16 @@
 <header class="mobile-header">
     <nav class="navbar navbar-light bg-light py-3">
         <div class="container-fluid d-flex flex-column align-items-center">
-            <!-- Brand / Logo (Centered at the Top) -->
             <a class="navbar-brand fw-bold fs-1 mb-2" href="{% url 'home' %}">CycleShop</a>
 
-            <!-- Shopping Cart and Toggle Button (Together at the Bottom) -->
+            <!-- Shopping Cart and Toggle Button -->
             <div class="d-flex align-items-center">
-                <!-- Shopping Cart Icon for Mobile -->
+                <!-- Shopping Cart Icon -->
                 <a href="{% url 'bag:view_bag' %}" class="btn btn-primary me-2">
                     <i class="fas fa-shopping-cart"></i>
                 </a>
 
-                <!-- Navbar Toggle Button for Collapsible Content -->
+                <!-- Navbar Toggle Button -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNavbar"
                     aria-controls="mobileNavbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -29,8 +28,9 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link btn btn-outline-primary my-1 dropdown-toggle" href="#"
-                            id="mobileProductsDropdown" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">Products</a>
+                            id="mobileProductsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Products
+                        </a>
                         <ul class="dropdown-menu text-center" aria-labelledby="mobileProductsDropdown">
                             <li><a class="dropdown-item" href="{% url 'products:product_list' %}">All Products</a></li>
                             <li><a class="dropdown-item" href="{% url 'products:road_bikes' %}">Road Bikes</a></li>
@@ -49,11 +49,11 @@
                     </li>
                 </ul>
 
-                <!-- User Authentication, Search Form -->
-                <form class="d-flex mb-3" method="GET" action="{% url 'search_results' %}">
+                <!-- Search Form -->
+                <form class="d-flex me-2 mb-2 mb-lg-0" method="GET" action="{% url 'search_results' %}">
                     <div class="input-group">
                         <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="q">
-                        <button class="btn btn-primary" type="submit">
+                        <button class="btn-search-custom" type="submit">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>

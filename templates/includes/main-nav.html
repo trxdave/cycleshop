@@ -1,7 +1,7 @@
 <!-- Header with Navbar -->
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
-        <div class="container">
+        <div class="container-fluid">
             <!-- Brand / Logo -->
             <a class="navbar-brand fw-bold fs-1" href="{% url 'home' %}">CycleShop</a>
 
@@ -12,8 +12,9 @@
             </button>
 
             <!-- Collapsible Navbar Content -->
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav">
+            <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarNav">
+                <!-- Centered Navbar Links -->
+                <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'home' %}">Home</a>
                     </li>
@@ -25,10 +26,8 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url 'products:product_list' %}">All Products</a></li>
                             <li><a class="dropdown-item" href="{% url 'products:road_bikes' %}">Road Bikes</a></li>
-                            <li><a class="dropdown-item" href="{% url 'products:mountain_bikes' %}">Mountain Bikes</a>
-                            </li>
-                            <li><a class="dropdown-item" href="{% url 'products:electric_bikes' %}">Electric Bikes</a>
-                            </li>
+                            <li><a class="dropdown-item" href="{% url 'products:mountain_bikes' %}">Mountain Bikes</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products:electric_bikes' %}">Electric Bikes</a></li>
                             <li><a class="dropdown-item" href="{% url 'products:kids_bikes' %}">Kids Bikes</a></li>
                             <li><a class="dropdown-item" href="{% url 'products:clothing' %}">Clothing</a></li>
                             <li><a class="dropdown-item" href="{% url 'products:accessories' %}">Accessories</a></li>
@@ -41,49 +40,51 @@
                         <a class="nav-link" href="{% url 'products:faq' %}">FAQ</a>
                     </li>
                 </ul>
-            </div>
 
-            <!-- Search Form and Authentication Links -->
-            <form class="d-flex mb-2" method="GET" action="{% url 'search_results' %}">
-                <div class="input-group">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="q">
-                    <button class="btn-search" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </form>
+                <!-- Right Side: Search Form and Authentication Links -->
+                <div class="d-flex flex-wrap align-items-center justify-content-end">
+                    <!-- Search Form -->
+                    <form class="d-flex me-2 mb-2 mb-lg-0" method="GET" action="{% url 'search_results' %}">
+                        <div class="input-group">
+                            <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="q">
+                            <button class="btn-search-custom" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
 
-            <!-- User Authentication Links -->
-            {% if user.is_authenticated %}
-            <div class="dropdown ms-2">
-                <a class="btn btn-primary dropdown-toggle" href="#" id="profileDropdown" role="button"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    My Profile
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-                    <li><a class="dropdown-item" href="{% url 'view_profile' %}">View Profile</a></li>
-                    {% if user.is_superuser %}
-                    <li><a class="dropdown-item" href="{% url 'products:manage_products' %}">Product Management</a></li>
+                    <!-- User Authentication Links -->
+                    {% if user.is_authenticated %}
+                    <div class="dropdown me-2 mb-2 mb-lg-0">
+                        <a class="btn btn-primary dropdown-toggle" href="#" id="profileDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            My Profile
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item" href="{% url 'view_profile' %}">View Profile</a></li>
+                            {% if user.is_superuser %}
+                            <li><a class="dropdown-item" href="{% url 'products:manage_products' %}">Product Management</a></li>
+                            {% endif %}
+                            <li><a class="dropdown-item" href="{% url 'products:order_history' %}">My Orders</a></li>
+                            <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                        </ul>
+                    </div>
+                    {% else %}
+                    <a class="btn btn-primary me-2 mb-2 mb-lg-0" href="{% url 'account_login' %}">Login</a>
+                    <a class="btn btn-primary me-2 mb-2 mb-lg-0" href="{% url 'account_signup' %}">Sign Up</a>
                     {% endif %}
-                    <li><a class="dropdown-item" href="{% url 'products:order_history' %}">My Orders</a></li>
-                    <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
-                </ul>
-            </div>
-            {% else %}
-            <a class="btn btn-primary ms-2" href="{% url 'account_login' %}">Login</a>
-            <a class="btn btn-primary ms-2" href="{% url 'account_signup' %}">Sign Up</a>
-            {% endif %}
 
-            <!-- Shopping Cart Button) -->
-            <a href="{% url 'bag:view_bag' %}" class="btn btn-primary ms-3 position-relative">
-                <i class="fas fa-shopping-cart"></i>
-                {% if bag_items_count > 0 %}
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                    {{ bag_items_count }}
-                </span>
-                {% endif %}
-            </a>
-        </div>
+                    <!-- Shopping Cart Button -->
+                    <a href="{% url 'bag:view_bag' %}" class="btn btn-primary position-relative mb-2 mb-lg-0">
+                        <i class="fas fa-shopping-cart"></i>
+                        {% if bag_items_count > 0 %}
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            {{ bag_items_count }}
+                        </span>
+                        {% endif %}
+                    </a>
+                </div>
+            </div>
         </div>
     </nav>
 </header>
