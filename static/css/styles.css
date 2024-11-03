@@ -98,7 +98,8 @@ header {
 /* Search bar and Buttons */
 .form-control {
     padding: 0.375rem 0.75rem;
-    border-radius: 0.25rem; /* Added consistent border-radius */
+    border-radius: 0.25rem;
+    margin-top: 7px;
 }
 
 .btn-search {
@@ -113,6 +114,7 @@ header {
     border: none;
     border-radius: 0.25rem;
     transition: background-color 0.3s;
+    margin-top: 7px;
 }
 
 .btn-search:hover {
@@ -196,7 +198,9 @@ header {
     color: white;
     border: none;
     border-radius: 5px;
-    width: 100%;
+    display: inline-block;
+    width: auto;
+    text-align: center;
 }
 
 .hero-overlay .intro .btn:hover {
@@ -595,6 +599,19 @@ header {
 
 .footer hr {
     border-top: 1px solid #5DA399;
+}
+
+/* Social Media Icons Styling */
+.footer .social-icons a {
+    font-size: 1.8rem;
+    margin-right: 15px;
+    color: #f0f0f0;
+    transition: color 0.3s;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #63CCCA;
 }
 
 /* For small devices, adjust padding/margins */
