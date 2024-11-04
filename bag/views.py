@@ -11,14 +11,13 @@ from .forms import OrderForm
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 # View to display the user's shopping bag
-""" A view to display the user's shopping bag """
 def view_bag(request):
     bag = request.session.get('bag', {})
     bag_items = []
     total = 0
     bag_items_count = 0
 
-    # Iterate through the bag items to calculate subtotal and total
+    # Calculate the subtotal, total, and item count
     for product_id, item in bag.items():
         product = get_object_or_404(Product, id=product_id)
         subtotal = item['price'] * item['quantity']
@@ -32,31 +31,24 @@ def view_bag(request):
         })
 
     # Calculate delivery
-    if total >= settings.FREE_DELIVERY_THRESHOLD:
-        delivery = 0
-    else:
-        delivery = settings.STANDARD_DELIVERY_PERCENTAGE
-
+    delivery = 0 if total >= settings.FREE_DELIVERY_THRESHOLD else total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
     grand_total = total + delivery
 
-    # Format total and grand_total with commas
-    formatted_total = number_format(total, decimal_pos=2, use_l10n=True)
-    formatted_grand_total = number_format(grand_total, decimal_pos=2, use_l10n=True)
+    # Store the total price in the session for Stripe payments
+    request.session['total_price'] = total
 
     context = {
-        'bag': bag_items,  # Pass the detailed bag items with subtotals
-        'total': formatted_total,
-        'delivery': delivery,
-        'grand_total': formatted_grand_total,
+        'bag': bag_items,
+        'total': number_format(total, decimal_pos=2, use_l10n=True),
+        'delivery': number_format(delivery, decimal_pos=2, use_l10n=True),
+        'grand_total': number_format(grand_total, decimal_pos=2, use_l10n=True),
         'bag_items_count': bag_items_count,
     }
 
     return render(request, 'bag/bag.html', context)
 
-
 # View to add a product to the shopping bag
 def add_to_bag(request, product_id):
-    """ A View to add a product to the shopping bag """
     product = get_object_or_404(Product, id=product_id)
     quantity = int(request.POST.get('quantity', 1))
 
@@ -76,15 +68,14 @@ def add_to_bag(request, product_id):
     request.session['bag'] = bag
     return redirect('bag:view_bag')
 
-
+# View to update the quantity of a specific item in the bag
 def update_quantity(request, product_id):
-    """A view to update the quantity of a specific item in the bag"""
     quantity = int(request.POST.get('quantity'))
 
     if quantity <= 0:
         messages.error(request, 'Quantity must be a positive number.')
         return redirect('bag:view_bag')
-        
+
     bag = request.session.get('bag', {})
 
     if str(product_id) in bag:
@@ -96,90 +87,61 @@ def update_quantity(request, product_id):
     request.session['bag'] = bag
     return redirect('bag:view_bag')
 
-
+# View to handle the checkout process
 def checkout(request):
-    """ View to handle the checkout process """
-    # Calculate total and delivery based on bag contents
     bag = request.session.get('bag', {})
     total = sum(item['price'] * item['quantity'] for item in bag.values())
-    
-    # Apply delivery fee if total is below the free delivery threshold
-    if total >= settings.FREE_DELIVERY_THRESHOLD:
-        delivery = 0
-    else:
-        delivery = settings.STANDARD_DELIVERY_PERCENTAGE
-
-    # Calculate the grand total and convert to cents for Stripe
+    delivery = 0 if total >= settings.FREE_DELIVERY_THRESHOLD else total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
     grand_total = int((total + delivery) * 100)
 
-    # Create Stripe payment intent
+    # Create Stripe PaymentIntent
     intent = stripe.PaymentIntent.create(
         amount=grand_total,
         currency=settings.STRIPE_CURRENCY,
     )
 
     form = OrderForm()
-    
+
     context = {
         'form': form,
         'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
         'client_secret': intent.client_secret,
-        'total': total,
-        'delivery': delivery,
-        'grand_total': grand_total / 100,
+        'total': number_format(total, decimal_pos=2, use_l10n=True),
+        'delivery': number_format(delivery, decimal_pos=2, use_l10n=True),
+        'grand_total': number_format(grand_total / 100, decimal_pos=2, use_l10n=True),
     }
-    
+
     return render(request, 'checkout/checkout.html', context)
 
-
+# View to remove a product from the shopping bag
 def remove_from_bag(request, product_id):
-    """A view to remove a product from the shopping bag"""
     bag = request.session.get('bag', {})
     product = get_object_or_404(Product, id=product_id)
 
     if str(product_id) in bag:
         del bag[str(product_id)]
-        request.session['bag'] = bag
         messages.success(request, f"{product.name} removed from your bag.")
     else:
         messages.warning(request, "Product not found in your bag.")
 
+    request.session['bag'] = bag
     return redirect('bag:view_bag')
 
-
-
-def calculate_order_total(request):
-    bag = request.session.get('bag', {})
-    total = sum(item['price'] * item['quantity'] for item in bag.values())
-
-    if total >= settings.FREE_DELIVERY_THRESHOLD:
-        delivery = 0
-    else:
-        delivery = settings.STANDARD_DELIVERY_PERCENTAGE
-
-    grand_total = total + delivery
-    return int(grand_total * 100)
-
-
-
+# View to create a Stripe checkout session
 @require_POST
 def create_checkout_session(request):
     try:
-        # Retrieve the bag and calculate total, delivery, and grand total
         bag = request.session.get('bag', {})
         total = sum(item['price'] * item['quantity'] for item in bag.values())
-        delivery = settings.STANDARD_DELIVERY_PERCENTAGE if total < settings.FREE_DELIVERY_THRESHOLD else 0
-        grand_total = int((total + delivery) * 100)  # Convert to cents
+        delivery = 0 if total >= settings.FREE_DELIVERY_THRESHOLD else total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
+        grand_total = int((total + delivery) * 100)
 
-        # Create the Stripe checkout session
         session = stripe.checkout.Session.create(
             payment_method_types=['card'],
             line_items=[{
                 'price_data': {
                     'currency': settings.STRIPE_CURRENCY,
-                    'product_data': {
-                        'name': 'Total Order',
-                    },
+                    'product_data': {'name': 'Total Order'},
                     'unit_amount': grand_total,
                 },
                 'quantity': 1,
@@ -190,6 +152,37 @@ def create_checkout_session(request):
         )
 
         return JsonResponse({'sessionId': session.id})
-        
     except Exception as e:
         return JsonResponse({'error': str(e)})
+
+
+
+def checkout_view(request):
+    # Get the bag from the session
+    bag = request.session.get('bag', {})
+    
+    # Calculate total and delivery
+    total = sum(item['price'] * item['quantity'] for item in bag.values())
+    delivery = 0 if total >= settings.FREE_DELIVERY_THRESHOLD else total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
+    grand_total = total + delivery
+
+    # Convert the total to cents for Stripe (since Stripe uses the smallest currency unit)
+    grand_total_cents = int(grand_total * 100)
+
+    # Create a PaymentIntent
+    intent = stripe.PaymentIntent.create(
+        amount=grand_total_cents,
+        currency=settings.STRIPE_CURRENCY,
+    )
+
+    # Pass the client secret to the template
+    context = {
+        'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
+        'client_secret': intent.client_secret,
+        'bag_items': bag,  # Pass your bag items for display
+        'total': total,
+        'delivery': delivery,
+        'grand_total': grand_total,
+    }
+
+    return render(request, 'checkout/checkout.html', context)

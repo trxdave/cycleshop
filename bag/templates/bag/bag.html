@@ -2,8 +2,6 @@
 
 {% load static %}
 
-{% block hero %}{% endblock %}
-
 {% block title %}Shopping Bag | CycleShop{% endblock %}
 
 {% block content %}
@@ -46,49 +44,14 @@
         </tbody>
     </table>
 
-    <div class="bag-summary mt-4">
+    <div class="d-flex justify-content-between align-items-center mt-4">
         <h4>Total Price: €{{ total|floatformat:2 }}</h4>
-        <a href="{% url 'bag:checkout' %}" class="btn-proceed">Proceed to Checkout</a>
+        <a href="{% url 'bag:checkout' %}" class="btn btn-success">Proceed to Checkout</a>
     </div>
+
     {% else %}
     <p>Your bag is currently empty.</p>
-    <a href="{% url 'products:product_list' %}" class="btn-continue">Continue Shopping</a>
+    <a href="{% url 'products:product_list' %}" class="btn btn-secondary">Continue Shopping</a>
     {% endif %}
 </div>
 {% endblock %}
-
-<script>
-    // Function to calculate and update the total
-    function updateTotal() {
-        let total = 0;
-        // Select all rows in the bag table
-        const rows = document.querySelectorAll('tbody tr');
-
-        rows.forEach(row => {
-            // Get the price and quantity elements
-            const priceElement = row.querySelector('.price');
-            const quantityElement = row.querySelector('.quantity');
-
-            if (priceElement && quantityElement) {
-                const price = parseFloat(priceElement.textContent.replace('€', ''));
-                const quantity = parseInt(quantityElement.value, 10);
-
-                // Check if values are valid before adding to total
-                if (!isNaN(price) && !isNaN(quantity)) {
-                    total += price * quantity;
-                }
-            }
-        });
-
-        // Update the total in the DOM
-        document.querySelector('#total').textContent = `€${total.toFixed(2)}`;
-    }
-
-    // Add event listeners to each quantity input
-    document.querySelectorAll('.quantity').forEach(input => {
-        input.addEventListener('input', updateTotal);
-    });
-
-    // Initial total calculation
-    updateTotal();
-</script>

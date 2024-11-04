@@ -1,60 +1,108 @@
-/* Base styling for Stripe Elements and input fields */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #333;
+}
+
+/* Styles for Stripe Elements and Input Fields */
 .StripeElement,
 .stripe-style-input {
     box-sizing: border-box;
-    height: 40px;
-    padding: 10px 12px;
+    height: 40px; /* Consistent height */
+    padding: 10px 12px; /* Ensure even padding */
     border: 1px solid #ced4da;
     border-radius: 4px;
-    background-color: white;
-    box-shadow: 0 1px 3px 0 #e6ebf1;
-    transition: box-shadow 150ms ease, border-color 150ms ease;
-    font-size: 16px;
-    font-family: 'Helvetica Neue', Helvetica, sans-serif;
+    background-color: #fff;
+    font-size: 16px; /* Match font size */
+    color: #495057;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: border-color 150ms ease, box-shadow 150ms ease;
 }
 
-/* Focus and Active States for Stripe Elements */
+/* Focus and Active Styles for Input Fields */
 .StripeElement--focus,
 .stripe-style-input:focus,
 .stripe-style-input:active {
-    box-shadow: 0 1px 3px 0 #cfd7df;
     border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
     outline: none;
 }
 
-/* Autofill background for better visibility */
+/* Autofill Styles */
 .StripeElement--webkit-autofill {
     background-color: #fefde5 !important;
 }
 
-/* Placeholder text styling */
+/* Placeholder Text Styling */
 .stripe-style-input::placeholder {
     color: #aab7c4;
 }
 
-/* Additional form control styling for improved readability */
-#payment-form .form-control,
-#card-element {
-    color: #212529;
-    border: 1px solid #000;
+/* Styling for Card Elements */
+#card-number-element,
+#card-expiry-element,
+#card-cvc-element {
+    height: 40px; /* Ensure consistent height */
+    padding: 10px; /* Match padding */
+    border: 1px solid #ced4da;
     border-radius: 4px;
-}
-
-/* Fieldset Label */
-.fieldset-label {
-    position: relative;
-    right: 0.5rem;
-    font-weight: bold;
+    background-color: #fff;
+    font-size: 16px;
+    box-sizing: border-box;
     color: #495057;
-    margin-bottom: 0.5rem;
-    display: inline-block;
 }
 
-/* Responsive adjustments */
+/* Error Message Styling */
+#card-errors {
+    font-size: 14px;
+    color: #dc3545;
+    margin-top: 10px;
+}
+
+/* Styling for Fieldset and Legend */
+fieldset {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.fieldset-label {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+    padding: 0 5px;
+}
+
+/* Form Labels */
+.form-label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Submit Button Styling */
+button.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+button.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-    .StripeElement,
-    .stripe-style-input {
-        height: 48px;
-        font-size: 14px;
+    .container {
+        padding: 15px;
+    }
+
+    .order-summary {
+        margin-bottom: 20px;
     }
 }
