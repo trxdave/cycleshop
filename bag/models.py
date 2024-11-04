@@ -5,7 +5,13 @@ from django.contrib.auth.models import User
 class Order(models.Model):
     """ Model representing an order """
     id = models.BigAutoField(primary_key=True)
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.ForeignKey(
+        User, 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True, 
+        related_name='bag_orders'
+    )
     full_name = models.CharField(max_length=100)
     email = models.EmailField()
     phone_number = models.CharField(max_length=20)

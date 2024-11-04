@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'cycleshop',
     'products',
     'bag',
+    'checkout',
 ]
 
 MIDDLEWARE = [

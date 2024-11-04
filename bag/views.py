@@ -6,7 +6,7 @@ from django.http import JsonResponse
 import stripe
 from django.utils.formats import number_format
 from django.views.decorators.http import require_POST
-from .forms import OrderForm
+
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -158,31 +158,23 @@ def create_checkout_session(request):
 
 
 def checkout_view(request):
-    # Get the bag from the session
     bag = request.session.get('bag', {})
-    
-    # Calculate total and delivery
     total = sum(item['price'] * item['quantity'] for item in bag.values())
-    delivery = 0 if total >= settings.FREE_DELIVERY_THRESHOLD else total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
-    grand_total = total + delivery
+    delivery = 0 if total >= 500 else total * 0.1
+    grand_total = int((total + delivery) * 100)
 
-    # Convert the total to cents for Stripe (since Stripe uses the smallest currency unit)
-    grand_total_cents = int(grand_total * 100)
-
-    # Create a PaymentIntent
     intent = stripe.PaymentIntent.create(
-        amount=grand_total_cents,
-        currency=settings.STRIPE_CURRENCY,
+        amount=grand_total,
+        currency='eur',
     )
 
-    # Pass the client secret to the template
     context = {
         'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
         'client_secret': intent.client_secret,
-        'bag_items': bag,  # Pass your bag items for display
+        'bag_items': bag,
         'total': total,
         'delivery': delivery,
-        'grand_total': grand_total,
+        'grand_total': grand_total / 100,
     }
 
     return render(request, 'checkout/checkout.html', context)
