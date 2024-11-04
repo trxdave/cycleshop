@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'css/checkout.css' %}">
-
 {% block title %}Checkout - CycleShop{% endblock %}
 
 {% block content %}
@@ -71,18 +69,18 @@
             </div>
             <div class="mb-3">
                 <label for="card-number-element" class="form-label">Card Number</label>
-                <div id="card-number-element" class="form-control"></div>
+                <div id="card-number-element" class="StripeElement form-control"></div>
             </div>
             <div class="mb-3">
                 <label for="card-expiry-element" class="form-label">Expiry Date</label>
-                <div id="card-expiry-element" class="form-control"></div>
+                <div id="card-expiry-element" class="StripeElement form-control"></div>
             </div>
             <div class="mb-3">
                 <label for="card-cvc-element" class="form-label">CVV</label>
-                <div id="card-cvc-element" class="form-control"></div>
+                <div id="card-cvc-element" class="StripeElement form-control"></div>
             </div>
-            <div id="card-errors" role="alert"></div>
             <button type="submit" class="btn btn-primary">Submit Payment</button>
+            <div id="card-errors" role="alert"></div>
         </form>
     </div>
 </div>
@@ -91,53 +89,59 @@
 {% block postloadjs %}
 <script src="https://js.stripe.com/v3/"></script>
 <script>
-// Initialize Stripe with your public key
+// Initialize Stripe
 var stripe = Stripe('{{ stripe_public_key }}');
 var elements = stripe.elements();
 
 // Custom styling for Stripe Elements
 var style = {
-    base: {
-        color: '#32325d',
-        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-        fontSize: '16px',
-        '::placeholder': { color: '#aab7c4' }
-    },
-    invalid: { color: '#fa755a', iconColor: '#fa755a' }
+  base: {
+    color: '#495057',
+    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+    fontSmoothing: 'antialiased',
+    fontSize: '16px',
+    '::placeholder': {
+      color: '#aab7c4'
+    }
+  },
+  invalid: {
+    color: '#dc3545',
+    iconColor: '#dc3545'
+  }
 };
 
-// Create instances for Card Number, Expiry, and CVV
+// Create Stripe Elements
 var cardNumber = elements.create('cardNumber', { style: style });
 var cardExpiry = elements.create('cardExpiry', { style: style });
 var cardCvc = elements.create('cardCvc', { style: style });
 
-// Mount elements to their respective divs
+// Mount Elements to the DOM
 cardNumber.mount('#card-number-element');
 cardExpiry.mount('#card-expiry-element');
 cardCvc.mount('#card-cvc-element');
 
 // Handle real-time validation errors
-cardNumber.addEventListener('change', function(event) {
-    var errorElement = document.getElementById('card-errors');
-    errorElement.textContent = event.error ? event.error.message : '';
+cardNumber.on('change', function(event) {
+  var displayError = document.getElementById('card-errors');
+  displayError.textContent = event.error ? event.error.message : '';
 });
 
 // Handle form submission
 var form = document.getElementById('payment-form');
 form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    stripe.confirmCardPayment('{{ client_secret }}', {
-        payment_method: {
-            card: cardNumber,
-            billing_details: { name: document.getElementById('name-on-card').value }
-        }
-    }).then(function(result) {
-        if (result.error) {
-            document.getElementById('card-errors').textContent = result.error.message;
-        } else if (result.paymentIntent.status === 'succeeded') {
-            form.submit();
-        }
-    });
+  event.preventDefault();
+  stripe.confirmCardPayment('{{ client_secret }}', {
+    payment_method: {
+      card: cardNumber,
+      billing_details: { name: document.getElementById('name-on-card').value }
+    }
+  }).then(function(result) {
+    if (result.error) {
+      document.getElementById('card-errors').textContent = result.error.message;
+    } else if (result.paymentIntent.status === 'succeeded') {
+      form.submit();
+    }
+  });
 });
 </script>
 {% endblock %}
