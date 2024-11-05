@@ -6,64 +6,74 @@
     https://stripe.com/docs/stripe-js
 */
 
-// Get the Stripe public key from the HTML
-var stripePublicKey = document.getElementById('id_stripe_public_key').textContent.trim();
-var clientSecret = document.getElementById('id_client_secret').textContent.trim();
+document.addEventListener('DOMContentLoaded', function() {
+  var stripePublicKeyElement = document.getElementById('id_stripe_public_key');
+  var clientSecretElement = document.getElementById('id_client_secret');
 
-// Initialize Stripe
-var stripe = Stripe('{{ stripe_public_key }}');
-var elements = stripe.elements();
+  var stripePublicKey = stripePublicKeyElement ? stripePublicKeyElement.textContent.trim() : null;
+  var clientSecret = clientSecretElement ? clientSecretElement.textContent.trim() : null;
 
-// Custom styling for the card element
-var style = {
-  base: {
-    color: '#32325d',
-    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-    fontSmoothing: 'antialiased',
-    fontSize: '16px',
-    '::placeholder': { color: '#aab7c4' }
-  },
-  invalid: { color: '#fa755a', iconColor: '#fa755a' }
-};
-
-// Create card elements
-var card = elements.create('card', { style: style });
-card.mount('#card-number-element');
-
-// Handle real-time validation errors
-card.on('change', function(event) {
-  var errorDiv = document.getElementById('card-errors');
-  if (event.error) {
-    errorDiv.textContent = event.error.message;
-  } else {
-    errorDiv.textContent = '';
+  if (!stripePublicKey || !clientSecret) {
+      console.error("Stripe public key or client secret is missing!");
+      return;
   }
-});
 
-// Handle form submission
-var form = document.getElementById('payment-form');
-form.addEventListener('submit', function(event) {
-  event.preventDefault();
+  var stripe = Stripe(stripePublicKey);
+  var elements = stripe.elements();
 
-  stripe.confirmCardPayment('{{ client_secret }}', {
-    payment_method: {
-      card: card,
-      billing_details: {
-        name: document.getElementById('name-on-card').value,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone-number').value,
+  var style = {
+      base: {
+          color: '#000000',
+          fontFamily: '"Arial", sans-serif',
+          fontSize: '16px',
+          '::placeholder': {
+              color: '#aab7c4'
+          }
+      },
+      invalid: {
+          color: '#dc3545',
+          iconColor: '#dc3545'
       }
-    }
-  }).then(function(result) {
-    if (result.error) {
-      // Display error message
+  };
+
+  var card = elements.create('card', { style: style });
+  card.mount('#card-number-element');
+
+  card.addEventListener('change', function(event) {
       var errorDiv = document.getElementById('card-errors');
-      errorDiv.textContent = result.error.message;
-    } else {
-      if (result.paymentIntent.status === 'succeeded') {
-        // Redirect to the success page
-        window.location.href = "{% url 'checkout_success %}";
+      if (event.error) {
+          errorDiv.textContent = event.error.message;
+      } else {
+          errorDiv.textContent = '';
       }
-    }
+  });
+
+  var form = document.getElementById('payment-form');
+  form.addEventListener('submit', function(ev) {
+      ev.preventDefault();
+
+      stripe.confirmCardPayment(clientSecret, {
+          payment_method: {
+              card: card,
+              billing_details: {
+                  name: document.getElementById('name-on-card').value,
+                  email: document.getElementById('email').value,
+                  phone: document.getElementById('phone').value,
+                  address: {
+                      line1: document.getElementById('address').value,
+                      city: document.getElementById('city').value,
+                      country: document.getElementById('location').value
+                  }
+              }
+          }
+      }).then(function(result) {
+          if (result.error) {
+              window.location.href = "/checkout_failure/";
+          } else {
+              if (result.paymentIntent.status === 'succeeded') {
+                  window.location.href = "/checkout_success/";
+              }
+          }
+      });
   });
 });

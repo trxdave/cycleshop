@@ -34,7 +34,7 @@ urlpatterns = [
     path('profile/edit/', views.edit_profile, name='edit_profile'),
     path('profile/delete/', views.delete_profile, name='delete_profile'),
     path('subscribe', subscribe_newsletter, name='subscribe_newsletter'),
-    path('checkout', include('checkout.urls')),
+    path('checkout/', include('checkout.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

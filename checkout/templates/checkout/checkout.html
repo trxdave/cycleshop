@@ -2,17 +2,19 @@
 
 {% load static %}
 
-{% block hero %}{% endblock %}
-
 {% block blockcss %}
 <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
 {% endblock %}
+
+{% block hero %}{% endblock hero %}
 
 {% block content %}
 <div class="container-checkout my-5">
     <h1>Checkout</h1>
 
-    <!-- Display sign in or sign up message for unauthenticated users -->
+    <span id="id_stripe_public_key" style="display:none;">{{ stripe_public_key }}</span>
+    <span id="id_client_secret" style="display:none;">{{ client_secret }}</span>
+
     {% if not user.is_authenticated %}
         <div class="alert alert-info">
             Please <a href="{% url 'account_login' %}">log in</a> or <a href="{% url 'account_signup' %}">sign up</a> to save your details for future purchases.
@@ -21,31 +23,31 @@
 
     <form id="payment-form" method="post">
         {% csrf_token %}
-
-        <!-- Name, Email, Phone, and Address Fields -->
+        
+        <!-- Full Name, Email, Phone, Address Fields -->
         <div class="mb-3">
             <label for="name" class="form-label">Full Name</label>
-            <input type="text" id="name" name="name" class="form-control" autocomplete="name" required>
+            <input type="text" id="name" name="name" class="form-control" required>
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Email Address</label>
-            <input type="email" id="email" name="email" class="form-control" autocomplete="email" required>
+            <input type="email" id="email" name="email" class="form-control" required>
         </div>
         <div class="mb-3">
             <label for="phone" class="form-label">Phone Number</label>
-            <input type="tel" id="phone" name="phone" class="form-control" autocomplete="tel" required>
+            <input type="tel" id="phone" name="phone" class="form-control" required>
         </div>
         <div class="mb-3">
             <label for="address" class="form-label">Address</label>
-            <input type="text" id="address" name="address" class="form-control" autocomplete="street-address" required>
+            <input type="text" id="address" name="address" class="form-control" required>
         </div>
         <div class="mb-3">
             <label for="city" class="form-label">City</label>
-            <input type="text" id="city" name="city" class="form-control" autocomplete="address-level2" required>
+            <input type="text" id="city" name="city" class="form-control" required>
         </div>
         <div class="mb-3">
             <label for="location" class="form-label">Country/Location</label>
-            <input type="text" id="location" name="location" class="form-control" autocomplete="country" required>
+            <input type="text" id="location" name="location" class="form-control" required>
         </div>
 
         <!-- Stripe Elements Fields -->

@@ -3,6 +3,7 @@ from django.conf import settings
 from django.shortcuts import render, redirect
 from .models import Order
 from .forms import OrderForm
+from django.contrib import messages
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -51,7 +52,9 @@ def create_payment_intent(request):
 
 
 def checkout_success(request):
+    messages.success(request, "Your payment was successful! Thank you for your order.")
     return render(request, 'checkout/checkout_success.html')
 
 def checkout_failure(request):
+    messages.error(request, "Your payment failed. Please try again or contact support.")
     return render(request, 'checkout/checkout_failure.html')
