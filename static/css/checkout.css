@@ -10,7 +10,7 @@ body {
 .container-checkout {
     max-width: 800px;
     margin: 50px auto;
-    background-color: #35393C;
+    background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 30px;
@@ -30,7 +30,7 @@ h1 {
     font-weight: 500;
     margin-bottom: 5px;
     display: block;
-    color: #F0F0F0;
+    color: black;
 }
 
 /* Form Control Styles */
@@ -39,7 +39,7 @@ h1 {
     padding: 10px;
     border: 1px solid #5DA399;
     border-radius: 4px;
-    background-color: #35393C;
+    background-color: #def3f9;
     color: #F0F0F0;
     font-size: 14px;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -60,7 +60,7 @@ h1 {
     padding: 10px;
     border: 1px solid #5DA399;
     border-radius: 4px;
-    background-color: #35393C;
+    background-color: #f4f9bd;
     color: #F0F0F0;
     font-size: 16px;
 }
@@ -95,8 +95,8 @@ h1 {
 /* Alert Styles */
 .alert {
     font-size: 14px;
-    background-color: #dc3545;
-    color: #F0F0F0;
+    background-color: #63CCCA;
+    color: #35393C;
     border: none;
     border-radius: 4px;
     padding: 10px 15px;

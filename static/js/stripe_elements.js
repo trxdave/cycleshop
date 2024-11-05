@@ -6,6 +6,10 @@
     https://stripe.com/docs/stripe-js
 */
 
+// Get the Stripe public key from the HTML
+var stripePublicKey = document.getElementById('id_stripe_public_key').textContent.trim();
+var clientSecret = document.getElementById('id_client_secret').textContent.trim();
+
 // Initialize Stripe
 var stripe = Stripe('{{ stripe_public_key }}');
 var elements = stripe.elements();
