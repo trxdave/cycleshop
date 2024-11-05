@@ -7,6 +7,7 @@ django-crispy-forms==2.3
 gunicorn==23.0.0
 pillow==10.4.0
 psycopg2==2.9.9
+python-dotenv==1.0.1
 sqlparse==0.5.1
 stripe==11.1.1
 whitenoise==6.7.0

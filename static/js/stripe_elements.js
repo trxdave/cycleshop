@@ -45,7 +45,9 @@ form.addEventListener('submit', function(event) {
     payment_method: {
       card: card,
       billing_details: {
-        name: document.getElementById('name-on-card').value
+        name: document.getElementById('name-on-card').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone-number').value,
       }
     }
   }).then(function(result) {

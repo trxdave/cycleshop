@@ -10,6 +10,9 @@ from .forms import ProductForm, RatingForm
 
 def product_list(request):
     """ A view to return the list of all products """
+    product_list = Product.objects.all().order_by('id')
+
+    # Set up paginator
     product_list = Product.objects.all()
     paginator = Product.objects.all()
     paginator = Paginator(product_list, 6)

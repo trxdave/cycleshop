@@ -1,103 +1,111 @@
-/* General body styling */
 body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
+    font-family: 'Arial', sans-serif;
+    background-color: #35393C;
+    color: #F0F0F0;
+    margin: 0;
+    padding: 0;
 }
 
-/* Container styling */
-.container {
+/* Container Styles */
+.container-checkout {
     max-width: 800px;
-    margin: auto;
-    padding: 20px;
-}
-
-/* Card styling */
-.card {
-    border: 1px solid #ddd;
+    margin: 50px auto;
+    background-color: #35393C; /* Background matching the body */
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+}
+
+/* Heading Styles */
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
     margin-bottom: 20px;
+    text-align: center;
+    color: #63CCCA; /* Primary accent color */
 }
 
-/* Order summary styling */
-.order-summary {
-    margin-bottom: 30px;
+/* Form Label Styles */
+.form-label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+    color: #F0F0F0;
 }
 
-/* Form styling */
+/* Form Control Styles */
 .form-control {
     height: 40px;
     padding: 10px;
-    border: 1px solid #ced4da;
+    border: 1px solid #5DA399;
     border-radius: 4px;
-    font-size: 16px;
-    color: #495057;
-    background-color: #fff;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.2s, box-shadow 0.2s;
+    background-color: #35393C;
+    color: #F0F0F0;
+    font-size: 14px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+    transition: border-color 0.3s;
 }
 
 .form-control:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    border-color: #63CCCA;
+    box-shadow: 0 0 5px rgba(99, 204, 202, 0.5);
     outline: none;
 }
 
-/* Stripe Elements styling */
+/* Stripe Elements Styles */
 #card-number-element,
 #card-expiry-element,
 #card-cvc-element {
     height: 40px;
     padding: 10px;
-    border: 1px solid #ced4da;
+    border: 1px solid #5DA399;
     border-radius: 4px;
+    background-color: #35393C;
+    color: #F0F0F0;
     font-size: 16px;
-    color: #495057;
-    box-sizing: border-box;
-    background-color: #fff;
 }
 
-.StripeElement--focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-/* Error message styling */
+/* Error Message Styles */
 #card-errors {
-    font-size: 14px;
     color: #dc3545;
+    font-size: 14px;
     margin-top: 10px;
 }
 
-/* Label styling */
-.form-label {
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 5px;
-    display: block;
-}
-
-/* Submit button styling */
+/* Button Styles */
 .btn-submit {
-    background-color: #42858c;
-    color: white;
-    border: none;
+    background-color: #63CCCA;
+    color: #35393C;
+    font-size: 16px;
     padding: 10px 20px;
+    border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    font-weight: bold;
 }
 
 .btn-submit:hover {
-    background-color: #63ccca;
+    background-color: #5DA399;
 }
 
-/* Responsive adjustments */
+/* Alert Styles */
+.alert {
+    font-size: 14px;
+    background-color: #dc3545;
+    color: #F0F0F0;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-    .container {
-        padding: 15px;
+    .container-checkout {
+        padding: 20px;
     }
 }

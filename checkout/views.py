@@ -12,32 +12,13 @@ def checkout_view(request):
         form = OrderForm(request.POST)
         if form.is_valid():
             order = form.save(commit=False)
-            if request.user.is_authenticated:
-                order.user = request.user
-            order.save()
-            # Redirect to a success page or initiate payment
-            return redirect('checkout_success')
-    else:
-        form = OrderForm()
-
-    context = {
-        'form': form,
-    }
-    return render(request, 'checkout/checkout.html', context)
-
-
-def checkout_view(request):
-    if request.method == 'POST':
-        form = OrderForm(request.POST)
-        if form.is_valid():
-            order = form.save(commit=False)
             order.user = request.user if request.user.is_authenticated else None
             order.save()
 
             # Create a Stripe PaymentIntent
             intent = stripe.PaymentIntent.create(
                 amount=int(order.total * 100),
-                currency='usd',
+                currency=settings.STRIPE_CURRENCY,
                 metadata={'order_id': order.id}
             )
 
