@@ -10,7 +10,7 @@ body {
 .container-checkout {
     max-width: 800px;
     margin: 50px auto;
-    background-color: #35393C; /* Background matching the body */
+    background-color: #35393C;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 30px;
