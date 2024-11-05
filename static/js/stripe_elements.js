@@ -6,61 +6,57 @@
     https://stripe.com/docs/stripe-js
 */
 
-var stripe_public_key = $('#id_stripe_public_key').text().slice(1, -1);
-var client_secret = $('#id_client_secret').text().slice(1, -1);
-var stripe = Stripe(stripe_public_key);
+// Initialize Stripe
+var stripe = Stripe('{{ stripe_public_key }}');
 var elements = stripe.elements();
-var card = elements.create('card');
-card.mount('#card-element');
 
-// Handle real-time validation errors on the card element
-card.addEventListener('change', function(event) {
+// Custom styling for the card element
+var style = {
+  base: {
+    color: '#32325d',
+    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+    fontSmoothing: 'antialiased',
+    fontSize: '16px',
+    '::placeholder': { color: '#aab7c4' }
+  },
+  invalid: { color: '#fa755a', iconColor: '#fa755a' }
+};
+
+// Create card elements
+var card = elements.create('card', { style: style });
+card.mount('#card-number-element');
+
+// Handle real-time validation errors
+card.on('change', function(event) {
   var errorDiv = document.getElementById('card-errors');
-
   if (event.error) {
-    var html = `
-      <span class="icon" role="alert">
-          <i class="fas fa-times"></i>
-      </span>
-      <span>${event.error.message}</span>
-    `;
-
-    // Use innerHTML to set the HTML content
-    errorDiv.innerHTML = html;
+    errorDiv.textContent = event.error.message;
   } else {
     errorDiv.textContent = '';
   }
 });
 
-// Handle form submit
+// Handle form submission
 var form = document.getElementById('payment-form');
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
 
-form.addEventListener('submit', function(ev) {
-  ev.preventDefault();
-  card.update({ 'disabled': true }); // Corrected syntax
-  $('#submit-button').attr('disabled', true);
-
-  stripe.confirmCardPayment(client_secret, {
+  stripe.confirmCardPayment('{{ client_secret }}', {
     payment_method: {
       card: card,
+      billing_details: {
+        name: document.getElementById('name-on-card').value
+      }
     }
   }).then(function(result) {
     if (result.error) {
+      // Display error message
       var errorDiv = document.getElementById('card-errors');
-      var html = `
-        <span class="icon" role="alert">
-            <i class="fas fa-times"></i>
-        </span>
-        <span>${result.error.message}</span>
-      `;
-
-      // Use innerHTML to set the error message
-      errorDiv.innerHTML = html;
-      card.update({ 'disabled': false });
-      $('#submit-button').attr('disabled', false);
+      errorDiv.textContent = result.error.message;
     } else {
-      if (result.paymentIntent && result.paymentIntent.status === 'succeeded') {
-        form.submit();
+      if (result.paymentIntent.status === 'succeeded') {
+        // Redirect to the success page
+        window.location.href = "{% url 'checkout_success %}";
       }
     }
   });

@@ -6,6 +6,7 @@ from django.http import JsonResponse
 import stripe
 from django.utils.formats import number_format
 from django.views.decorators.http import require_POST
+from checkout.forms import OrderForm
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY

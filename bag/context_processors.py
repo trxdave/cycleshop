@@ -1,9 +1,12 @@
 from decimal import Decimal
 from django.conf import settings
 
+from decimal import Decimal
+from django.conf import settings
+
 def bag_contents(request):
     """
-    The shopping bag's contents along with the Stripe public key
+    Context processor to add the shopping bag's contents to the context.
     """
     bag = request.session.get('bag', {})
     bag_total = 0
@@ -16,7 +19,6 @@ def bag_contents(request):
     context = {
         'bag_total': bag_total,
         'bag_items_count': bag_items_count,
-        'stripe_public_key': settings.STRIPE_PUBLIC_KEY
     }
 
     return context

@@ -6,62 +6,56 @@
     https://stripe.com/docs/stripe-js
 */
 
-var stripe_public_key = $('#id_stripe_public_key').text().slice(1, -1);
-var client_secret = $('#id_client_secret').text().slice(1, -1);
-var stripe = Stripe(stripe_public_key);
+var stripe = Stripe('{{ stripe_public_key }}');
 var elements = stripe.elements();
-var card = elements.create('card');
-card.mount('#card-element');
 
-// Handle real-time validation errors on the card element
-card.addEventListener('change', function(event) {
-  var errorDiv = document.getElementById('card-errors');
+// Custom styling for Stripe Elements
+var style = {
+    base: {
+        color: '#32325d',
+        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+        fontSmoothing: 'antialiased',
+        fontSize: '16px',
+        '::placeholder': {
+            color: '#aab7c4'
+        }
+    },
+    invalid: {
+        color: '#fa755a',
+        iconColor: '#fa755a'
+    }
+};
 
-  if (event.error) {
-    var html = `
-      <span class="icon" role="alert">
-          <i class="fas fa-times"></i>
-      </span>
-      <span>${event.error.message}</span>
-    `;
+// Create instances of the card elements
+var cardNumber = elements.create('cardNumber', { style: style });
+var cardExpiry = elements.create('cardExpiry', { style: style });
+var cardCvc = elements.create('cardCvc', { style: style });
 
-    // Use innerHTML to set the HTML content
-    errorDiv.innerHTML = html;
-  } else {
-    errorDiv.textContent = '';
-  }
-});
+// Mount the elements to their respective divs
+cardNumber.mount('#card-number-element');
+cardExpiry.mount('#card-expiry-element');
+cardCvc.mount('#card-cvc-element');
 
-// Handle form submit
+// Handle form submission
 var form = document.getElementById('payment-form');
-
 form.addEventListener('submit', function(ev) {
-  ev.preventDefault();
-  card.update({ 'disabled': true }); // Corrected syntax
-  $('#submit-button').attr('disabled', true);
-
-  stripe.confirmCardPayment(client_secret, {
-    payment_method: {
-      card: card,
-    }
-  }).then(function(result) {
-    if (result.error) {
-      var errorDiv = document.getElementById('card-errors');
-      var html = `
-        <span class="icon" role="alert">
-            <i class="fas fa-times"></i>
-        </span>
-        <span>${result.error.message}</span>
-      `;
-
-      // Use innerHTML to set the error message
-      errorDiv.innerHTML = html;
-      card.update({ 'disabled': false });
-      $('#submit-button').attr('disabled', false);
-    } else {
-      if (result.paymentIntent && result.paymentIntent.status === 'succeeded') {
-        form.submit();
-      }
-    }
-  });
+    ev.preventDefault();
+    stripe.confirmCardPayment('{{ client_secret }}', {
+        payment_method: {
+            card: cardNumber,
+            billing_details: {
+                name: document.getElementById('name-on-card').value
+            }
+        }
+    }).then(function(result) {
+        if (result.error) {
+            // Display error.message in your UI
+            document.getElementById('card-errors').textContent = result.error.message;
+        } else {
+            // The payment has been processed!
+            if (result.paymentIntent.status === 'succeeded') {
+                form.submit();
+            }
+        }
+    });
 });

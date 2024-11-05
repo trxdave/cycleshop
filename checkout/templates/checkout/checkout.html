@@ -2,92 +2,67 @@
 
 {% load static %}
 
-{% block title %}Checkout - CycleShop{% endblock %}
+{% block hero %}{% endblock %}
+
+{% block blockcss %}
+<link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+{% endblock %}
 
 {% block content %}
-<div class="container my-5">
+<div class="container-checkout my-5">
     <h1>Checkout</h1>
-    <p>Proceed to payment.</p>
 
-    {% if user.is_authenticated %}
-        <p>Hello, {{ user.username }}!</p>
-    {% else %}
+    <!-- Display sign in or sign up message for unauthenticated users -->
+    {% if not user.is_authenticated %}
         <div class="alert alert-info">
             Please <a href="{% url 'account_login' %}">log in</a> or <a href="{% url 'account_signup' %}">sign up</a> to save your details for future purchases.
         </div>
     {% endif %}
 
-    <!-- Order Summary -->
-    <div class="order-summary card shadow-lg p-4 mb-4">
-        <h4 class="card-title">Order Summary</h4>
-        <hr>
-        {% for item in bag_items %}
-        <div class="d-flex align-items-center mb-3">
-            <div class="order-image me-3">
-                {% if item.product.image %}
-                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="img-thumbnail" style="width: 80px; height: auto;">
-                {% else %}
-                    <img src="{% static 'images/default_product.jpg' %}" alt="Default Image" class="img-thumbnail" style="width: 80px; height: auto;">
-                {% endif %}
-            </div>
-            <div class="order-details flex-grow-1">
-                <p class="mb-1"><strong>{{ item.product.name }}</strong></p>
-                <p class="mb-1">Quantity: {{ item.quantity }}</p>
-                <p class="mb-0">€{{ item.product.price|floatformat:2 }}</p>
-            </div>
-        </div>
-        <hr>
-        {% endfor %}
-        <div class="d-flex align-items-center justify-content-between mb-3">
-            <p class="mb-0"><strong>Total:</strong></p>
-            <p class="mb-0 ms-auto text-end">€{{ total|floatformat:2 }}</p>
-        </div>
-        <hr>
-        <div class="d-flex align-items-center justify-content-between mb-3">
-            <p class="mb-0"><strong>Delivery:</strong></p>
-            <p class="mb-0 ms-auto text-end">
-                {% if delivery == 0 %}
-                    <span class="text-success">Free</span>
-                {% else %}
-                    €{{ delivery|floatformat:2 }}
-                {% endif %}
-            </p>
-        </div>
-        <hr>
-        <div class="d-flex align-items-center justify-content-between">
-            <p class="mb-0"><strong>Grand Total:</strong></p>
-            <p class="mb-0 ms-auto text-end"><strong>€{{ grand_total|floatformat:2 }}</strong></p>
-        </div>
-    </div>
+    <form id="payment-form" method="post">
+        {% csrf_token %}
 
-    <!-- Stripe Payment Form -->
-    <div class="card shadow-lg p-4">
-        <form id="payment-form">
-          {% csrf_token %}
-          <div class="mb-3">
+        <!-- Name, Email, Phone, and Address Fields -->
+        <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label">Phone Number</label>
+            <input type="tel" id="phone" name="phone" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <input type="text" id="address" name="address" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="city" class="form-label">City</label>
+            <input type="text" id="city" name="city" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="location" class="form-label">Country/Location</label>
+            <input type="text" id="location" name="location" class="form-control" required>
+        </div>
+
+        <!-- Stripe Elements Fields -->
+        <div class="mb-3">
             <label for="name-on-card" class="form-label">Name on Card</label>
             <input type="text" id="name-on-card" class="form-control" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label" for="card-number-element">Card Number</label>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Card Number</label>
             <div id="card-number-element" class="form-control"></div>
-          </div>
-          <div class="mb-3">
-            <label class="form-label" for="card-expiry-element">Expiry Date</label>
-            <div id="card-expiry-element" class="form-control"></div>
-          </div>
-          <div class="mb-3">
-            <label class="form-label" for="card-cvc-element">CVV</label>
-            <div id="card-cvc-element" class="form-control"></div>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit Payment</button>
-          <div id="card-errors" role="alert"></div>
-        </form>
-    </div>
-</div>
-{% endblock %}
+        </div>
 
-{% block postloadjs %}
+        <div id="card-errors" class="text-danger" role="alert"></div>
+        <button type="submit" class="btn-submit">Submit Payment</button>
+    </form>
+</div>
+
 <script src="https://js.stripe.com/v3/"></script>
 <script src="{% static 'js/stripe_elements.js' %}"></script>
 {% endblock %}
