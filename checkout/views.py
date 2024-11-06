@@ -64,6 +64,10 @@ def process_payment(request):
 
 
 def checkout_success(request):
+    # Clear the cart session after successful payment
+    request.session['bag'] = {}
+    request.session['bag_items_count'] = 0
+    
     messages.success(request, "Your payment was successful! Thank you for your order.")
     return render(request, 'checkout/checkout_success.html')
 
