@@ -516,8 +516,10 @@ This project uses Gmail to manage email communication, such as account verificat
 # Credits
 
 - Accordian - https://djangosnippets.org/snippets/10658/
-
 - Wishlist - https://pythongeeks.org/python-django-wishlist-project/
+- Elements Appearance API Stripe - https://docs.stripe.com/elements/appearance-api
+- Payment to test card - https://docs.stripe.com/testing
+- Accept a payment - https://docs.stripe.com/payments/accept-a-payment?platform=web&ui=stripe-hosted#prefill-customer-data
 
 - Perplexity - https://perplexity.ai
 
