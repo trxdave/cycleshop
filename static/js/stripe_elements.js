@@ -67,13 +67,24 @@ document.addEventListener('DOMContentLoaded', function() {
               }
           }
       }).then(function(result) {
-          if (result.error) {
-              window.location.href = "/checkout_failure/";
-          } else {
-              if (result.paymentIntent.status === 'succeeded') {
-                  window.location.href = "/checkout_success/";
-              }
-          }
+        var alertBox = document.createElement('div');
+        alertBox.className = 'alert';
+
+        if (result.error) {
+            // Payment failed
+            alertBox.classList.add('alert-danger');
+            alertBox.textContent = "Payment failed: " + result.error.message;
+        } else {
+            // Payment succeeded
+            if (result.paymentIntent.status === 'succeeded') {
+                alertBox.classList.add('alert-success');
+                alertBox.textContent = "Payment successful! Thank you for your order.";
+                form.reset();
+            }
+        }
+
+        // Insert the alert box at the top of the form
+        form.parentNode.insertBefore(alertBox, form);
       });
   });
 });
