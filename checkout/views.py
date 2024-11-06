@@ -51,9 +51,23 @@ def create_payment_intent(request):
         return JsonResponse({'error': str(e)}, status=400)
 
 
+def process_payment(request):
+    """ The payment and redirect to the appropriate page based on success or failure. """
+    payment_successful = True
+
+    if payment_successful:
+        messages.success(request, "Your payment was successful!")
+        return redirect(reverse('checkout_success'))
+    else:
+        messages.error(request, "There was an error with your payment.")
+        return redirect(reverse('checkout_failure'))
+
+
 def checkout_success(request):
     messages.success(request, "Your payment was successful! Thank you for your order.")
     return render(request, 'checkout/checkout_success.html')
+
+
 
 def checkout_failure(request):
     messages.error(request, "Your payment failed. Please try again or contact support.")
