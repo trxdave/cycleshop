@@ -75,6 +75,10 @@ def checkout_success(request):
     request.session['bag_items_count'] = 0
     
     messages.success(request, "Your payment was successful! Thank you for your order.")
+
+    storage = messages.get_messages(request)
+    storage.used = True
+    
     return render(request, 'checkout/checkout_success.html')
 
 

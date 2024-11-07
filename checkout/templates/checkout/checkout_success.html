@@ -1,8 +1,25 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block blockcss %}
+<link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+{% endblock %}
+
+{% block hero %}{% endblock %}
+{% block alert %}{% endblock %}
+
 {% block content %}
-<div class="alert alert-success">
-    <h1>Success</h1>
-    <p>Your payment was successful! Thank you for your order.</p>
-    <a href="{% url 'home' %}" class="btn btn-primary">Return to Home</a>
+<div class="checkout-success-container">
+    <div class="checkout-success-card card shadow">
+        <!-- Success Icon -->
+        <div class="checkout-success-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <!-- Success Message -->
+        <h2 class="card-title mb-3">Payment Successful!</h2>
+        <p class="card-text mb-4">Thank you for your purchase. Your order was successfully processed.</p>
+        <!-- Return to Home Button -->
+        <a href="{% url 'home' %}" class="btn btn-primary checkout-success-button">Return to Home</a>
+    </div>
 </div>
 {% endblock %}

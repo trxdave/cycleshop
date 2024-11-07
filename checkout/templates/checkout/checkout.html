@@ -16,8 +16,11 @@
     <span id="id_stripe_public_key" style="display:none;">{{ stripe_public_key }}</span>
     <span id="id_client_secret" style="display:none;">{{ client_secret }}</span>
 
-    <!-- Alert message placeholder -->
-    <div id="alert-message" class="my-3"></div>
+    <!-- Loading overlay -->
+    <div id="loading-overlay">
+        <div class="spinner"></div>
+        <p>Processing your payment, please wait...</p>
+    </div>
 
     {% if not user.is_authenticated %}
         <div class="alert alert-info">

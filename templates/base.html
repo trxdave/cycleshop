@@ -59,6 +59,7 @@
     </div>
 
     <!-- Flash Messages (Success, etc) -->
+    {% block alert %}
     {% if messages %}
     <div class="container mt-4">
         {% for message in messages %}
@@ -69,6 +70,7 @@
         {% endfor %}
     </div>
     {% endif %}
+    {% endblock %}
 
     <!-- Hero Section with Overlay Intro -->
     {% block hero %}
@@ -85,8 +87,8 @@
     {% endblock %}
 
     <main>
-            {% block content %}
-            {% endblock %}
+        {% block content %}
+        {% endblock %}
     </main>
 
     <footer class="footer bg-dark text-light py-5">
@@ -95,9 +97,10 @@
                 <!-- Column 1: Logo and Description -->
                 <div class="col-md-3">
                     <h5 class="fw-bold text-uppercase">CycleShop</h5>
-                    <p>Your one-stop shop for all cycling needs. Quality bikes, accessories, and top-tier customer support.</p>
+                    <p>Your one-stop shop for all cycling needs. Quality bikes, accessories, and top-tier customer
+                        support.</p>
                 </div>
-    
+
                 <!-- Column 2: My Account Links -->
                 <div class="col-md-3">
                     <h5 class="fw-bold text-uppercase">My Account</h5>
@@ -108,18 +111,20 @@
                         <li><a href="{% url 'products:wishlist' %}" class="text-light">Wishlist</a></li>
                     </ul>
                 </div>
-    
+
                 <!-- Column 3: Customer Services Links -->
                 <div class="col-md-3">
                     <h5 class="fw-bold text-uppercase">Customer Services</h5>
                     <ul class="list-unstyled">
                         <li><a href="{% url 'contact' %}" class="text-light">Contact Us</a></li>
-                        <li><a href="{% url 'products:shipping_information' %}" class="text-light">Shipping Information</a></li>
-                        <li><a href="{% url 'products:return_exchange' %}" class="text-light">Return & Exchanges</a></li>
+                        <li><a href="{% url 'products:shipping_information' %}" class="text-light">Shipping
+                                Information</a></li>
+                        <li><a href="{% url 'products:return_exchange' %}" class="text-light">Return & Exchanges</a>
+                        </li>
                         <li><a href="{% url 'products:faq' %}" class="text-light">FAQs</a></li>
                     </ul>
                 </div>
-    
+
                 <!-- Column 4: Social Media Links and Newsletter -->
                 <div class="col-md-3">
                     <h5 class="fw-bold text-uppercase">Follow Us</h5>
@@ -134,18 +139,19 @@
                             <i class="fa-brands fa-x-twitter fa-1x"></i>
                         </a>
                     </div>
-    
+
                     <h5 class="fw-bold text-uppercase">Subscribe to Our Newsletter</h5>
                     <form action="{% url 'subscribe_newsletter' %}" method="post">
                         {% csrf_token %}
                         <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Enter your email" name="email" required>
+                            <input type="email" class="form-control" placeholder="Enter your email" name="email"
+                                required>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Subscribe</button>
                     </form>
                 </div>
             </div>
-    
+
             <hr class="my-4">
             <div class="text-center">
                 <p>2024 CycleShop</p>
