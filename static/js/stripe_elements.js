@@ -72,29 +72,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         }).then(function(result) {
-            var alertBox = document.createElement('div');
-            alertBox.className = 'alert';
-
             if (result.error) {
-                // Hide the loading overlay with fade-out effect if there's an error
+                // Hide the loading overlay if there's an error
                 loadingOverlay.classList.remove('show');
 
-                alertBox.classList.add('alert-danger');
-                alertBox.textContent = "Payment failed: " + result.error.message;
+                // Redirect to failure page after short delay
+                setTimeout(function() {
+                    window.location.href = "/checkout/checkout_failure/";
+                }, 2000);
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
-                    alertBox.classList.add('alert-success');
-                    alertBox.textContent = "Payment successful! Thank you for your order.";
-                    form.reset();
-
-                    // Optionally, redirect to a success page here
+                    // Payment succeeded - hide overlay and redirect to success page
                     setTimeout(function() {
                         window.location.href = "/checkout/checkout_success/";
                     }, 2000);
                 }
             }
-
-            form.parentNode.insertBefore(alertBox, form);
         });
     });
 });

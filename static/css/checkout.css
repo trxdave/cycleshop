@@ -170,6 +170,33 @@ h1 {
     padding: 0.75rem 1.5rem;
 }
 
+/* Checkout Failure */
+.checkout-failure {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #dc3545;
+    background-color: #f8d7da;
+    color: #721c24;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.checkout-failure h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.checkout-failure p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.checkout-failure .btn-primary {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .container-checkout {

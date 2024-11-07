@@ -73,17 +73,14 @@ def checkout_success(request):
     # Clear the cart session after successful payment
     request.session['bag'] = {}
     request.session['bag_items_count'] = 0
-    
-    messages.success(request, "Your payment was successful! Thank you for your order.")
 
     storage = messages.get_messages(request)
     storage.used = True
-    
+
     return render(request, 'checkout/checkout_success.html')
 
 
 def checkout_failure(request):
-    messages.error(request, "Your payment failed. Please try again or contact support.")
     return render(request, 'checkout/checkout_failure.html')
 
 

@@ -1,8 +1,17 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block blockcss %}
+<link rel="stylesheet" href="{% static 'css/checkout_failure.css' %}">
+{% endblock %}
+
+{% block hero %}{% endblock hero %}
+{% block alert %}{% endblock %}
+
 {% block content %}
-<div class="alert alert-danger">
+<div class="container-failure">
     <h1>Payment Failed</h1>
-    <p>Your payment failed. Please try again or contact support.</p>
-    <a href="{% url 'checkout' %}" class="btn btn-warning">Try Again</a>
+    <p>Unfortunately, there was an issue processing your payment.</p>
+    <a href="{% url 'checkout' %}" class="btn btn-primary">Try Again</a>
 </div>
 {% endblock %}
