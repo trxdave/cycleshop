@@ -7,17 +7,18 @@
     <h1>My Order History</h1>
     
     {% if orders %}
-        <div class="list-group">
-            {% for order in orders %}
-                <a href="#" class="list-group-item list-group-item-action">
-                    <h5 class="mb-1">Order #{{ order.id }}</h5>
-                    <p class="mb-1">Total: €{{ order.get_total_order_price|floatformat:2 }}</p>
-                    <small>Ordered on: {{ order.created_at|date:"F j, Y, g:i a" }}</small>
-                </a>
-            {% endfor %}
-        </div>
-    {% else %}
-        <p>You have no order history.</p>
-    {% endif %}
+    <p>Orders found: {{ orders.count }}</p>
+    <div class="list-group">
+        {% for order in orders %}
+            <a href="#" class="list-group-item list-group-item-action">
+                <h5 class="mb-1">Order #{{ order.id }}</h5>
+                <p class="mb-1">Total: €{{ order.total|floatformat:2 }}</p>
+                <small>Ordered on: {{ order.date|date:"F j, Y, g:i a" }}</small>
+            </a>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No orders found.</p>
+{% endif %}
 </div>
 {% endblock %}

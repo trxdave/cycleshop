@@ -57,10 +57,10 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'crispy_forms',
     'crispy_bootstrap5',
+    'checkout.apps.CheckoutConfig',
     'cycleshop',
     'products',
     'bag',
-    'checkout',
 ]
 
 MIDDLEWARE = [

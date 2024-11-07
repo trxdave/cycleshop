@@ -5,9 +5,10 @@ from .models import Order
 from .forms import OrderForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+from django.urls import reverse
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
-
 
 def checkout_view(request):
     if request.method == 'POST':
@@ -15,11 +16,16 @@ def checkout_view(request):
         if form.is_valid():
             order = form.save(commit=False)
             order.user = request.user if request.user.is_authenticated else None
+            order.total = calculate_total(request)
+            order.status = "completed"
             order.save()
+            print(f"Order created: {order}, Status: {order.status}")
+
+            print(f"Order created: {order}")
 
             # Create a Stripe PaymentIntent
             intent = stripe.PaymentIntent.create(
-                amount=int(order.total * 100),
+                amount=int(order.total * 100),  # Total amount in cents
                 currency=settings.STRIPE_CURRENCY,
                 metadata={'order_id': order.id}
             )
@@ -40,7 +46,6 @@ def checkout_view(request):
     }
     return render(request, 'checkout/checkout.html', context)
 
-
 def create_payment_intent(request):
     try:
         intent = stripe.PaymentIntent.create(
@@ -51,9 +56,8 @@ def create_payment_intent(request):
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=400)
 
-
 def process_payment(request):
-    """ The payment and redirect to the appropriate page based on success or failure. """
+    """Handle payment and redirect based on success or failure."""
     payment_successful = True
 
     if payment_successful:
@@ -63,7 +67,6 @@ def process_payment(request):
         messages.error(request, "There was an error with your payment.")
         return redirect(reverse('checkout_failure'))
 
-
 def checkout_success(request):
     # Clear the cart session after successful payment
     request.session['bag'] = {}
@@ -72,14 +75,31 @@ def checkout_success(request):
     messages.success(request, "Your payment was successful! Thank you for your order.")
     return render(request, 'checkout/checkout_success.html')
 
-
 def checkout_failure(request):
     messages.error(request, "Your payment failed. Please try again or contact support.")
     return render(request, 'checkout/checkout_failure.html')
 
-
 @login_required
 def order_history(request):
-    orders = Order.objects.filter(user=request.user).order_by('-date')
+    orders = Order.objects.filter(user=request.user, status="completed").order_by('-date')
+    print("Retrieved orders:", orders)
     context = {'orders': orders}
     return render(request, 'checkout/order_history.html', context)
+
+
+def create_test_order(request):
+    # Replace 'yourusername' with an existing username
+    user = User.objects.get(username='yourusername')
+    Order.objects.create(
+        user=user,
+        full_name="Test User",
+        email="test@example.com",
+        phone_number="1234567890",
+        address="123 Test St",
+        city="Test City",
+        postal_code="12345",
+        country="Test Country",
+        total=100.00,
+        status="completed"
+    )
+    return redirect('checkout:order_history')
