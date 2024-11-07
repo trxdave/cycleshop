@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from .models import Order
 from .forms import OrderForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -75,3 +76,10 @@ def checkout_success(request):
 def checkout_failure(request):
     messages.error(request, "Your payment failed. Please try again or contact support.")
     return render(request, 'checkout/checkout_failure.html')
+
+
+@login_required
+def order_history(request):
+    orders = Order.objects.filter(user=request.user).order_by('-date')
+    context = {'orders': orders}
+    return render(request, 'checkout/order_history.html', context)

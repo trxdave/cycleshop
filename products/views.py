@@ -288,11 +288,4 @@ def toggle_wishlist(request, product_id):
     return redirect('products:product_detail', product_id=product_id)
 
 
-@login_required
-def order_history(request):
-    """ View to display the user's order history """
-    orders = Order.objects.filter(user=request.user).order_by('-created_at')
-    context = {
-        'orders': orders
-    }
-    return render(request, 'customer_services/order_history.html')
+

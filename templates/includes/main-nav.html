@@ -65,7 +65,7 @@
                             {% if user.is_superuser %}
                             <li><a class="dropdown-item" href="{% url 'products:manage_products' %}">Product Management</a></li>
                             {% endif %}
-                            <li><a class="dropdown-item" href="{% url 'products:order_history' %}">My Orders</a></li>
+                            <li><a class="dropdown-item" href="{% url 'checkout:order_history' %}">My Orders</a></li>
                             <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
                         </ul>
                     </div>
