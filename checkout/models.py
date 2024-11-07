@@ -1,8 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from products.models import Product
 
 class Order(models.Model):
+    """ Model representing an order """
     STATUS_CHOICES = [
         ('pending', 'Pending'),
         ('completed', 'Completed'),
@@ -21,4 +22,7 @@ class Order(models.Model):
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
 
     def __str__(self):
-        return f"Order {self.id} - {self.user}"
+        return f"Order {self.id} - {self.full_name}"
+
+    def get_total_order_price(self):
+        return sum(item.get_total_price() for item in self.bag_items.all())

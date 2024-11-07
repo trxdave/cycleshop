@@ -1,12 +1,14 @@
 import stripe
 from django.conf import settings
-from django.shortcuts import render, redirect
-from .models import Order
+from django.shortcuts import render, redirect, get_object_or_404
+from checkout.models import Order
 from .forms import OrderForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.urls import reverse
+from bag.models import BagItem
+from products.models import Product
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -92,5 +94,15 @@ def order_detail(request, order_id):
     order = get_object_or_404(Order, id=order_id, user=request.user)
     context = {
         'order': order,
+        'items': items,
     }
     return render(request, 'checkout/order_detail.html', context)
+
+
+def calculate_total(request):
+    bag = request.session.get('bag', {})
+    total = 0
+    for item_id, item_data in bag.items():
+        product = Product.objects.get(id=item_id)
+        total += product.price * item_data['quantity']
+    return total

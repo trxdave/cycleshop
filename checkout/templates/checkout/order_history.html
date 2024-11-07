@@ -24,7 +24,6 @@
                         <th>Total</th>
                         <th>Status</th>
                         <th>Order Date</th>
-                        <th>Details</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,8 +34,6 @@
                             <td>€{{ order.total }}</td>
                             <td>{{ order.status }}</td>
                             <td>{{ order.date|date:"F j, Y, g:i a" }}</td>
-                            <td>
-                                <a href="{% url 'checkout:order_detail' order.id %}">View Details</a>
                             </td>
                         </tr>
                     {% endfor %}

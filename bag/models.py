@@ -1,5 +1,6 @@
 from django.db import models
 from products.models import Product
+from checkout.models import Order
 from django.contrib.auth.models import User
 
 class Order(models.Model):
@@ -30,7 +31,6 @@ class Order(models.Model):
         return sum(item.get_total_price() for item in self.bag_items.all())
 
 class BagItem(models.Model):
-    """ Model representing an item in an order's bag """
     order = models.ForeignKey(Order, related_name='bag_items', on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField()
