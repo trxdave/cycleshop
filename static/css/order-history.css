@@ -1,0 +1,65 @@
+#order-history-page {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#order-history-page h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #63CCCA;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Table Styles */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #333;
+}
+
+.table thead th {
+    background-color: #63CCCA;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    text-align: left;
+}
+
+.table tbody td {
+    padding: 10px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #def3f9;
+}
+
+/* Additional Text Styling */
+.table tbody td {
+    color: #35393C;
+}
+
+.text-muted {
+    color: #555;
+    font-size: 0.875rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #order-history-page {
+        padding: 15px;
+    }
+
+    #order-history-page h1 {
+        font-size: 2rem;
+    }
+}

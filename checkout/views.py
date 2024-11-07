@@ -75,31 +75,22 @@ def checkout_success(request):
     messages.success(request, "Your payment was successful! Thank you for your order.")
     return render(request, 'checkout/checkout_success.html')
 
+
 def checkout_failure(request):
     messages.error(request, "Your payment failed. Please try again or contact support.")
     return render(request, 'checkout/checkout_failure.html')
 
+
 @login_required
 def order_history(request):
     orders = Order.objects.filter(user=request.user, status="completed").order_by('-date')
-    print("Retrieved orders:", orders)
     context = {'orders': orders}
     return render(request, 'checkout/order_history.html', context)
 
 
-def create_test_order(request):
-    # Replace 'yourusername' with an existing username
-    user = User.objects.get(username='yourusername')
-    Order.objects.create(
-        user=user,
-        full_name="Test User",
-        email="test@example.com",
-        phone_number="1234567890",
-        address="123 Test St",
-        city="Test City",
-        postal_code="12345",
-        country="Test Country",
-        total=100.00,
-        status="completed"
-    )
-    return redirect('checkout:order_history')
+def order_detail(request, order_id):
+    order = get_object_or_404(Order, id=order_id, user=request.user)
+    context = {
+        'order': order,
+    }
+    return render(request, 'checkout/order_detail.html', context)

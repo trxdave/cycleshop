@@ -1,0 +1,79 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #35393C;
+    color: #F0F0F0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Order History Container */
+.container-order {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading Style */
+.container-order h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #63CCCA;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Card Style */
+.card-order {
+    background-color: #def3f9;
+    border-radius: 8px;
+    border: 1px solid #5DA399;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 300px;
+    margin: 0 auto; /* Center the card within its column */
+}
+
+.card-order:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #35393C;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    color: #333;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+/* Additional Text Styling */
+.card-text strong {
+    color: #35393C;
+}
+
+.text-muted {
+    color: #555;
+    font-size: 0.875rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container-order {
+        padding: 20px;
+    }
+
+    .container-order h1 {
+        font-size: 2rem;
+    }
+}

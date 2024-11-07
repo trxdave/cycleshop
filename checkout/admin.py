@@ -10,7 +10,7 @@ class OrderAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Order Information', {
-            'fields': ('user', 'full_name', 'email', 'phone_number', 'total', 'status')  # Correct 'status' field
+            'fields': ('user', 'full_name', 'email', 'phone_number', 'total', 'status')
         }),
         ('Address Information', {
             'fields': ('address', 'city', 'postal_code', 'country')
