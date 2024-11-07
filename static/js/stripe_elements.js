@@ -72,17 +72,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         }).then(function(result) {
+            loadingOverlay.classList.remove('show');
+        
             if (result.error) {
-                // Hide the loading overlay if there's an error
-                loadingOverlay.classList.remove('show');
-
-                // Redirect to failure page after short delay
+                // Redirect to failure page after an error
                 setTimeout(function() {
                     window.location.href = "/checkout/checkout_failure/";
                 }, 2000);
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
-                    // Payment succeeded - hide overlay and redirect to success page
+                    // Redirect to success page after successful payment
                     setTimeout(function() {
                         window.location.href = "/checkout/checkout_success/";
                     }, 2000);

@@ -81,6 +81,7 @@ def checkout_success(request):
 
 
 def checkout_failure(request):
+    messages.error(request, "Your payment failed. Please try again or contact support.")
     return render(request, 'checkout/checkout_failure.html')
 
 
