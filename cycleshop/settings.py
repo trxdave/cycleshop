@@ -16,6 +16,7 @@ import dj_database_url
 
 if os.path.isfile('env.py'):
     import env
+import cloudinary
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', False)
 
 ALLOWED_HOSTS = [
     '8000-trxdave-cycleshop-3kco028sdex.ws.codeinstitute-ide.net',
@@ -39,6 +40,10 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.herokuapp.com",
     "https://*.codeinstitute-ide.net",
 ]
+host = os.environ.get('HOST')
+if host:
+    ALLOWED_HOSTS.append(host)
+    CSRF_TRUSTED_ORIGINS.append(f'https://{host}')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
@@ -51,6 +56,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storages',
+    'cloudinary',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -156,6 +163,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -207,3 +215,12 @@ else:
     EMAIL_HOST_USER = os.getenv('EMAIL_USER')
     EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
     DEFAULT_FROM_EMAIL = os.getenv('EMAIL_HOST_USER')
+
+
+# Cloudinary API values
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
+    'SECURE': True,
+}

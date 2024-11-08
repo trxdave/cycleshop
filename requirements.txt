@@ -1,8 +1,10 @@
 asgiref==3.8.1
+cloudinary==1.41.0
 crispy-bootstrap5==2024.2
 dj-database-url==2.2.0
 Django==5.1.1
 django-allauth==65.0.0
+django-cloudinary-storage==0.3.0
 django-crispy-forms==2.3
 gunicorn==23.0.0
 pillow==10.4.0
