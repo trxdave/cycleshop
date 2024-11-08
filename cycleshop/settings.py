@@ -31,7 +31,6 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.environ.get('DEBUG', False)
 
 ALLOWED_HOSTS = [
-    '8000-trxdave-cycleshop-3kco028sdex.ws.codeinstitute-ide.net',
     'cycleshop-b289044df6ec.herokuapp.com', 'localhost',
     ]
 
@@ -56,7 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cloudinary_storages',
+    'cloudinary_storage',
     'cloudinary',
     'django.contrib.sites',
     'allauth',
