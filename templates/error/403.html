@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<section>
+    <!-- Image Display Section -->
+    <div class="d-flex justify-content-center mb-4">
+        <!-- Display a image related to the 403 error -->
+        <img src="{% static 'images/403.png' %}" alt="cartoon" class="img-fluid mx-auto">
+    </div>
+    <!-- Text Content Section -->
+    <div class="text-center">
+        <!-- Heading indicating a 403 Forbidden error with a casual tone -->
+        <h1 class="h1403">403 Forbidden Oh well....</h1>
+        <!-- Explanation message for the user -->
+        <p class="p403">Sorry, you're not allowed in here. Please contact IT</p>
+        <!-- Button to return the user to the home page -->
+        <div class="wrapper">
+            <p><a class="btn btn-primary" href="{% url 'login' %}">Return to Home Page</a></p>
+        </div>
+    </div>
+</section>
+{% endblock %}

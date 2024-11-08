@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<section>
+    <!-- Image Display Section -->
+    <div class="d-flex justify-content-center mb-4">
+        <!-- Display a image related to the 404 error -->
+        <img src="{% static 'images/500.png' %}" alt="cartoon" class="img-fluid mx-auto">
+    </div>
+    <!-- Text Content Section -->
+    <div class="text-center">
+        <!-- Heading indicating a 500 Internal Server Error with a frustrated tone -->
+        <h1 class="h1500">500 Internal Server Error.....<br>AAARRRGGHHHH!</h1>
+        <!-- Explanation message for the user -->
+        <p class="p500">Sorry...It's not you. It's us.</p>
+        <!-- Button to return the user to the home page -->
+        <div class="wrapper">
+            <p><a class="btn btn-primary" href="{% url 'login' %}">Return to Home Page</a></p>
+        </div>
+    </div>
+</section>
+{% endblock %}
