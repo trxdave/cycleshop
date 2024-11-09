@@ -1,12 +1,14 @@
+/* Container Styles */
 .container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 1rem;
 }
 
 /* Heading Styles */
 h2 {
     font-size: 2rem;
-    color: #42858C;
+    color: #fff;
     text-align: center;
     margin-bottom: 20px;
 }
@@ -19,10 +21,12 @@ h2 {
     border-radius: 5px;
     color: #fff;
     transition: background-color 0.3s;
+    margin-bottom: 0.5rem;
+    width: 100%; /* Full width on mobile */
 }
 
 .btn-success {
-    background-color: #28a745;
+    background-color: #42858C;
 }
 
 .btn-warning {
@@ -34,8 +38,36 @@ h2 {
     background-color: #dc3545;
 }
 
+/* Specific Edit and Delete Button Styling */
+.btn-m-edit {
+    background-color: #ffc107; /* Yellow background for Edit */
+    color: #212529;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-m-edit:hover {
+    background-color: #e0a800; /* Darker yellow on hover */
+    color: #212529;
+}
+
+.btn-m-delete {
+    background-color: #dc3545; /* Red background for Delete */
+    color: #fff;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-m-delete:hover {
+    background-color: #c82333; /* Darker red on hover */
+    color: #fff;
+}
+
 .btn-outline-primary {
-    color: #42858C;
     border-color: #42858C;
 }
 
@@ -48,9 +80,11 @@ h2 {
 .table {
     width: 100%;
     border-collapse: collapse;
+    overflow-x: auto; /* Scrollable on smaller screens */
 }
 
-.table th, .table td {
+.table th,
+.table td {
     text-align: left;
     padding: 12px;
     border-top: 1px solid #ddd;
@@ -62,20 +96,95 @@ h2 {
 }
 
 /* Image Styles */
-img.img-thumbnail {
+.img-thumbnail {
     width: 70px;
     height: 70px;
     object-fit: contain;
     border: none;
+    max-width: 100px; /* Adjust for responsiveness */
 }
 
 /* Pagination Styles */
 .pagination {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     margin-top: 20px;
 }
 
 .pagination a {
     font-size: 0.9rem;
+    text-align: center;
+    width: auto;
+    margin: 0.2rem 0;
+}
+
+/* Responsive Adjustments for Mobile (Below 768px) */
+@media (max-width: 768px) {
+    /* Hide table headers and make rows block elements */
+    .table thead {
+        display: none;
+    }
+
+    .table tbody tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+        border: 1px solid #ddd;
+        padding: 1rem;
+        align-items: center;
+    }
+
+    .table tbody td {
+        display: flex;
+        width: 100%;
+        padding: 0.5rem 0;
+    }
+
+    /* Center the Edit and Delete buttons with space between */
+    .table tbody td:last-child {
+        display: flex;
+        justify-content: center;
+        gap: 1rem; /* Adds space between the Edit and Delete buttons */
+        align-items: center;
+        width: 100%;
+    }
+
+    /* Align text, price, and stock on the left */
+    .table tbody td:not(:first-child):not(:last-child) {
+        justify-content: flex-start;
+        text-align: left;
+        padding-left: 1rem;
+    }
+
+    /* Label each cell with attribute on smaller screens */
+    .table tbody td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-right: 0.5rem;
+        color: #555;
+    }
+
+    /* Image styling for smaller screens */
+    .img-thumbnail {
+        max-width: 80px;
+        height: auto;
+    }
+
+    /* Full-width button on mobile */
+    .btn-add {
+        font-size: 1rem;
+        width: 100%;
+    }
+
+    /* Stack pagination buttons vertically */
+    .pagination {
+        flex-direction: column;
+    }
+
+    .pagination a {
+        width: 100%;
+    }
 }

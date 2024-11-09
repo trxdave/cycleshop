@@ -395,6 +395,28 @@ header {
     color: #35393C;
 }
 
+/* Profile */
+.btn-profile {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #42858C;
+    color: #F0F0F0;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 120px;
+}
+
+/* Cart */
+.btn-cart {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #42858C;
+    color: #F0F0F0;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 120px;
+}
+
 /* Buttons */
 .btn {
     display: inline-block;
@@ -404,6 +426,7 @@ header {
     text-decoration: none;
     border-radius: 5px;
     width: 120px;
+    margin-top: 10px;
 }
 
 .btn:hover {
@@ -418,22 +441,40 @@ header {
     padding: 50px 0;
 }
 
-/* Wishlist */
+/* Wishlist Button */
 .btn-wishlist {
-    display: inline-block;
-    padding: 10px 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;
     background-color: #42858C;
     color: #F0F0F0;
     text-decoration: none;
     border-radius: 5px;
     text-align: center;
     font-weight: bold;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
+    position: relative;
+    font-size: 1rem;
 }
 
+/* Hover Effect for Wishlist Button */
 .btn-wishlist:hover {
     background-color: #63CCCA;
     color: #35393C;
+}
+
+/* Badge Styling for Wishlist Button */
+.btn-wishlist .badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #dc3545;
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 3px 6px;
+    border-radius: 50%;
+    font-weight: bold;
 }
 
 /* FAQ Page */
@@ -643,95 +684,96 @@ header {
     }
 }
 
-/* General Styles for Stripe Elements and Input Fields */
-.stripe-element,
-.form-control {
-    box-sizing: border-box;
-    height: 40px;
-    padding: 10px 12px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
+/* Card styling */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     background-color: #fff;
-    font-size: 16px;
-    color: #495057;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    transition: border-color 150ms ease, box-shadow 150ms ease;
-}
-
-/* Focus state for input fields */
-.stripe-element:focus,
-.form-control:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    outline: none;
-}
-
-/* Styling for Stripe Elements */
-#card-number-element,
-#card-expiry-element,
-#card-cvc-element {
-    height: 40px; /* Ensure consistent height */
-    padding: 10px; /* Match padding */
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    background-color: #fff;
-    font-size: 16px;
-    color: #495057;
-    box-sizing: border-box;
-}
-
-/* Error Message Styling */
-#card-errors {
-    font-size: 14px;
-    color: #dc3545;
-    margin-top: 10px;
-}
-
-/* Styling for Fieldset and Legend */
-fieldset {
-    border: 1px solid #ced4da;
-    border-radius: 4px;
     padding: 20px;
     margin-bottom: 20px;
 }
 
-.fieldset-label {
-    font-weight: bold;
-    font-size: 16px;
-    color: #333;
-    padding: 0 5px;
+/* Order summary styling */
+.order-summary {
+    margin-bottom: 30px;
 }
 
-/* Form Labels */
-.form-label {
-    font-size: 14px;
-    color: #333;
-    margin-bottom: 5px;
-    display: block;
+/* Responsive */
+.search-control {
+    width: auto;
 }
 
-/* Submit Button Styling */
-button.btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-    font-size: 16px;
-    padding: 10px 20px;
-    border-radius: 4px;
-    transition: background-color 150ms ease, border-color 150ms ease;
+.btn-profile, .btn-cart {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 40px;
+    padding: 0.375rem 0.75rem;
 }
 
-button.btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
+/* Medium to Large Screens (Tablets and Desktops) */
+@media (min-width: 992px) and (max-width: 1366px) {
+    /* Space between search, profile, and cart */
+    .d-flex.align-items-center {
+        gap: 1rem; /* Adds space between elements */
+    }
+    
+    /* Standard padding and alignment for Profile and Cart buttons */
+    .btn-profile, .btn-cart {
+        padding: 0.375rem 1rem;
+        min-width: auto;
+        vertical-align: middle;
+    }
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .container {
-        padding: 15px;
+/* Small to Medium Screens (Below 992px) */
+@media (max-width: 991px) {
+    /* Full-width search control on smaller screens */
+    .search-control {
+        width: 100%;
+        margin-bottom: 0.5rem;
     }
 
-    .order-summary {
-        margin-bottom: 20px;
+    /* Adjust Profile and Cart button styling */
+    .btn-profile, .btn-cart {
+        width: 80px;
+        height: 40px;
+    }
+
+    /* Add icon for "My Profile" on smaller screens */
+    .btn-profile::before {
+        content: '\f007'; /* Font Awesome user icon */
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        margin-right: 0.3rem;
+    }
+
+    /* Hide "My Profile" text on smaller screens */
+    .btn-profile-text {
+        display: none;
+    }
+}
+
+/* Extra Small Screens (Below 768px) */
+@media (max-width: 767px) {
+    /* Align and center profile and cart icons with consistent spacing */
+    .d-flex.align-items-center {
+        gap: 0.75rem;
+        flex-direction: column;
+    }
+
+    .btn-profile, .btn-cart {
+        width: 100%;
+        max-width: 150px;
+    }
+
+    /* Cart badge positioning */
+    .btn-cart .badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(50%, -50%);
     }
 }
