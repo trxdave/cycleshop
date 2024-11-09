@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block hero %}{% endblock %}
+
 {% block blockcss %}
 <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
 {% endblock %}
-
-{% block hero %}{% endblock %}
-{% block alert %}{% endblock %}
 
 {% block content %}
 <div class="checkout-success-container">
@@ -17,7 +16,13 @@
         </div>
         <!-- Success Message -->
         <h2 class="card-title mb-3">Payment Successful!</h2>
-        <p class="card-text mb-4">Thank you for your purchase. Your order was successfully processed.</p>
+        <p class="card-text mb-4">Thank you for your purchase. Your order (ID: {{ order.id }}) was successfully processed.</p>
+        <!-- Email Notification -->
+        <p class="card-text">A confirmation email has been sent to your email address.</p>
+        
+        <!-- View Order Details Button -->
+        <a href="{% url 'checkout:order_detail' order_id=order.id %}" class="btn btn-secondary checkout-success-button">View Order Details</a>
+
         <!-- Return to Home Button -->
         <a href="{% url 'home' %}" class="btn btn-primary checkout-success-button">Return to Home</a>
     </div>

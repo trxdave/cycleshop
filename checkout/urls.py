@@ -10,7 +10,7 @@ urlpatterns = [
 
     #Payment
     path('process/', views.process_payment, name='process_payment'),
-    path('checkout_success/', views.checkout_success, name='checkout_success'),
+    path('checkout_success/<int:order_id>/', views.checkout_success, name='checkout_success'),
     path('checkout_failure/', views.checkout_failure, name='checkout_failure'),
 
     # Order

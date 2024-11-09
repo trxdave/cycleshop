@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
-
 {% load static %}
+
+{% block hero %}{% endblock %}
 
 {% block blockcss %}
 <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
 {% endblock %}
-
-{% block hero %}{% endblock hero %}
 
 {% block content %}
 <div class="container-checkout my-5">
@@ -23,9 +22,10 @@
     </div>
 
     {% if not user.is_authenticated %}
-        <div class="alert alert-info">
-            Please <a href="{% url 'account_login' %}">log in</a> or <a href="{% url 'account_signup' %}">sign up</a> to save your details for future purchases.
-        </div>
+    <div class="alert alert-info">
+        Please <a href="{% url 'account_login' %}">log in</a> or <a href="{% url 'account_signup' %}">sign up</a> to
+        save your details for future purchases.
+    </div>
     {% endif %}
 
     <form id="payment-form" method="post">
@@ -34,27 +34,27 @@
         <!-- Full Name, Email, Phone, Address Fields -->
         <div class="mb-3">
             <label for="name" class="form-label">Full Name</label>
-            <input type="text" id="name" name="name" class="form-control" required>
+            <input type="text" id="name" name="name" class="form-control" autocomplete="name" required>
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Email Address</label>
-            <input type="email" id="email" name="email" class="form-control" required>
+            <input type="email" id="email" name="email" class="form-control" autocomplete="email" required>
         </div>
         <div class="mb-3">
             <label for="phone" class="form-label">Phone Number</label>
-            <input type="tel" id="phone" name="phone" class="form-control" required>
+            <input type="tel" id="phone" name="phone" class="form-control" autocomplete="tel" required>
         </div>
         <div class="mb-3">
             <label for="address" class="form-label">Address</label>
-            <input type="text" id="address" name="address" class="form-control" required>
+            <input type="text" id="address" name="address" class="form-control" autocomplete="street-address" required>
         </div>
         <div class="mb-3">
             <label for="city" class="form-label">City</label>
-            <input type="text" id="city" name="city" class="form-control" required>
+            <input type="text" id="city" name="city" class="form-control" autocomplete="address-level2" required>
         </div>
         <div class="mb-3">
             <label for="location" class="form-label">Country</label>
-            <select id="location" name="location" class="form-control" required>
+            <select id="location" name="location" class="form-control" autocomplete="country" required>
                 <option value="" disabled selected>Select your country</option>
                 <option value="IE">Ireland</option>
                 <option value="US">United States</option>
@@ -65,11 +65,12 @@
         <!-- Stripe Elements Fields -->
         <div class="mb-3">
             <label for="name-on-card" class="form-label">Name on Card</label>
-            <input type="text" id="name-on-card" class="form-control" required>
+            <input type="text" id="name-on-card" name="name_on_card" class="form-control" autocomplete="cc-name"
+                placeholder="Name on Card" required>
         </div>
         <div class="mb-3">
             <label class="form-label">Card Number</label>
-            <div id="card-number-element" class="form-control"></div>
+            <div id="card-number-element" class="form-control" aria-label="Card Number"></div>
         </div>
 
         <!-- Error display for Stripe Elements -->
@@ -79,8 +80,4 @@
         <button type="submit" class="btn-submit mt-3">Submit Payment</button>
     </form>
 </div>
-
-<!-- Stripe and Custom JS -->
-<script src="https://js.stripe.com/v3/"></script>
-<script src="{% static 'js/stripe_elements.js' %}"></script>
 {% endblock %}

@@ -12,6 +12,8 @@
 
     <title>{% block title %}CycleShop{% endblock %}</title>
 
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+
     {% load static %}
 
     {% block corecss %}
@@ -31,11 +33,14 @@
     {% block corejs %}
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/7ba55c86da.js" crossorigin="anonymous"></script>
-
+    <!-- Load jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Load Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <!-- Stripe Elements -->
+    <script src="{% static 'js/stripe_elements.js' %}"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Stripe -->
-    <script src="https://js.stripe.com/v3/"></script>
     {% endblock %}
 
 

@@ -6,87 +6,106 @@
     https://stripe.com/docs/stripe-js
 */
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Get Stripe keys and other necessary elements
-    var stripePublicKey = document.getElementById('id_stripe_public_key').textContent.trim();
-    var clientSecret = document.getElementById('id_client_secret').textContent.trim();
-    var stripe = Stripe(stripePublicKey);
-    var elements = stripe.elements();
-    var card = elements.create('card');
+document.addEventListener('DOMContentLoaded', function () {
+    const stripePublicKey = document.getElementById('id_stripe_public_key').textContent.trim();
+    const clientSecret = document.getElementById('id_client_secret').textContent.trim();
+    const orderId = "{{ order_id }}";  // Order ID from Django template
+    const stripe = Stripe(stripePublicKey);
+    const elements = stripe.elements();
+
+    // Define styles for Stripe Elements
+    const style = {
+        base: {
+            color: '#ffffff',
+            fontSize: '16px',
+            '::placeholder': {
+                color: '#cccccc',
+            },
+        },
+        invalid: {
+            color: '#dc3545',
+            iconColor: '#dc3545',
+        },
+    };
+
+    // Create Stripe Elements card field
+    const card = elements.create('card', { style: style });
     card.mount('#card-number-element');
 
-    var form = document.getElementById('payment-form');
-    var loadingOverlay = document.getElementById('loading-overlay');
+    card.on('change', function (event) {
+        const displayError = document.getElementById('card-errors');
+        displayError.textContent = event.error ? event.error.message : '';
+    });
 
-    // Submit event handler
-    form.addEventListener('submit', function(ev) {
+    const form = document.getElementById('payment-form');
+    const loadingOverlay = document.getElementById('loading-overlay');
+
+    form.addEventListener('submit', function (ev) {
         ev.preventDefault();
         
-        // Show loading overlay
         loadingOverlay.classList.add('show');
 
-        // Cache data before confirming payment
-        var saveInfo = Boolean(document.getElementById('id-save-info').checked);
-        var csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
-        var postData = {
-            'csrfmiddlewaretoken': csrfToken,
-            'client_secret': clientSecret,
-            'save_info': saveInfo,
+        const saveInfo = document.getElementById('id-save-info') ? document.getElementById('id-save-info').checked : false;
+        const csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+
+        const postData = {
+            csrfmiddlewaretoken: csrfToken,
+            client_secret: clientSecret,
+            save_info: saveInfo,
         };
 
-        // Post data to cache endpoint
-        var url = '/checkout/cache_checkout_data/';
-        $.post(url, postData).done(function () {
-            // Confirm payment with Stripe
+        const url = '/checkout/cache_checkout_data/';
+        
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify(postData),
+        })
+        .then(response => {
+            if (!response.ok) throw new Error(`Network response was not ok: ${response.statusText}`);
+            return response.json();
+        })
+        .then(data => {
             stripe.confirmCardPayment(clientSecret, {
                 payment_method: {
                     card: card,
                     billing_details: {
-                        name: document.getElementById('full_name').value.trim(),
-                        phone: document.getElementById('phone_number').value.trim(),
+                        name: document.getElementById('name').value.trim(),
                         email: document.getElementById('email').value.trim(),
+                        phone: document.getElementById('phone').value.trim(),
                         address: {
-                            line1: document.getElementById('street_address1').value.trim(),
-                            line2: document.getElementById('street_address2').value.trim(),
-                            city: document.getElementById('town_or_city').value.trim(),
-                            country: document.getElementById('country').value.trim(),
-                            state: document.getElementById('county').value.trim(),
-                        }
-                    }
+                            line1: document.getElementById('address').value.trim(),
+                            city: document.getElementById('city').value.trim(),
+                            country: document.getElementById('location').value.trim(),
+                        },
+                    },
                 },
                 shipping: {
-                    name: document.getElementById('full_name').value.trim(),
-                    phone: document.getElementById('phone_number').value.trim(),
+                    name: document.getElementById('name').value.trim(),
+                    phone: document.getElementById('phone').value.trim(),
                     address: {
-                        line1: document.getElementById('street_address1').value.trim(),
-                        line2: document.getElementById('street_address2').value.trim(),
-                        city: document.getElementById('town_or_city').value.trim(),
-                        country: document.getElementById('country').value.trim(),
-                        postal_code: document.getElementById('postcode').value.trim(),
-                        state: document.getElementById('county').value.trim(),
-                    }
-                }
-            }).then(function(result) {
-                loadingOverlay.classList.remove('show');  // Hide loading overlay
+                        line1: document.getElementById('address').value.trim(),
+                        city: document.getElementById('city').value.trim(),
+                        country: document.getElementById('location').value.trim(),
+                    },
+                },
+            }).then(function (result) {
+                loadingOverlay.classList.remove('show');
 
                 if (result.error) {
-                    // Handle error (display message or redirect to failure page)
-                    setTimeout(function() {
-                        window.location.href = "/checkout/checkout_failure/";
-                    }, 2000);
-                } else {
-                    if (result.paymentIntent.status === 'succeeded') {
-                        // Redirect to success page after successful payment
-                        setTimeout(function() {
-                            window.location.href = "/checkout/checkout_success/";
-                        }, 2000);
-                    }
+                    document.getElementById('card-errors').textContent = result.error.message;
+                } else if (result.paymentIntent && result.paymentIntent.status === 'succeeded') {
+                    window.location.href = `/checkout/checkout_success/${orderId}/`;
                 }
             });
-        }).fail(function() {
-            // Handle failure in caching checkout data
+        })
+        .catch(error => {
             loadingOverlay.classList.remove('show');
             alert("An error occurred while processing your payment. Please try again.");
+            console.error("Error:", error);
         });
     });
 });

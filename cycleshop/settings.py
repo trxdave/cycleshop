@@ -223,3 +223,11 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
     'SECURE': True,
 }
+
+# Use Lax or Strict for cross-site cookie compatibility
+SESSION_COOKIE_SAMESITE = 'Lax'  # or 'Strict'
+CSRF_COOKIE_SAMESITE = 'Lax'     # or 'Strict'
+
+# Use Secure if your site is HTTPS
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
