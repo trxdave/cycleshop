@@ -395,6 +395,28 @@ header {
     color: #35393C;
 }
 
+/* Profile */
+.btn-profile {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #42858C;
+    color: #F0F0F0;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 120px;
+}
+
+/* Cart */
+.btn-cart {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #42858C;
+    color: #F0F0F0;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 120px;
+}
+
 /* Buttons */
 .btn {
     display: inline-block;
@@ -404,6 +426,7 @@ header {
     text-decoration: none;
     border-radius: 5px;
     width: 120px;
+    margin-top: 10px;
 }
 
 .btn:hover {
@@ -656,4 +679,83 @@ header {
 /* Order summary styling */
 .order-summary {
     margin-bottom: 30px;
+}
+
+/* Responsive */
+.search-control {
+    width: auto;
+}
+
+.btn-profile, .btn-cart {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 40px;
+    padding: 0.375rem 0.75rem;
+}
+
+/* Medium to Large Screens (Tablets and Desktops) */
+@media (min-width: 992px) and (max-width: 1366px) {
+    /* Space between search, profile, and cart */
+    .d-flex.align-items-center {
+        gap: 1rem; /* Adds space between elements */
+    }
+    
+    /* Standard padding and alignment for Profile and Cart buttons */
+    .btn-profile, .btn-cart {
+        padding: 0.375rem 1rem;
+        min-width: auto;
+        vertical-align: middle;
+    }
+}
+
+/* Small to Medium Screens (Below 992px) */
+@media (max-width: 991px) {
+    /* Full-width search control on smaller screens */
+    .search-control {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Adjust Profile and Cart button styling */
+    .btn-profile, .btn-cart {
+        width: 80px;
+        height: 40px;
+    }
+
+    /* Add icon for "My Profile" on smaller screens */
+    .btn-profile::before {
+        content: '\f007'; /* Font Awesome user icon */
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        margin-right: 0.3rem;
+    }
+
+    /* Hide "My Profile" text on smaller screens */
+    .btn-profile-text {
+        display: none;
+    }
+}
+
+/* Extra Small Screens (Below 768px) */
+@media (max-width: 767px) {
+    /* Align and center profile and cart icons with consistent spacing */
+    .d-flex.align-items-center {
+        gap: 0.75rem;
+        flex-direction: column;
+    }
+
+    .btn-profile, .btn-cart {
+        width: 100%;
+        max-width: 150px;
+    }
+
+    /* Cart badge positioning */
+    .btn-cart .badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(50%, -50%);
+    }
 }
