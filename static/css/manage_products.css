@@ -21,8 +21,8 @@ h2 {
     border-radius: 5px;
     color: #fff;
     transition: background-color 0.3s;
-    width: 100%; /* Full width on mobile */
     margin-bottom: 0.5rem;
+    width: 100%; /* Full width on mobile */
 }
 
 .btn-success {
@@ -36,6 +36,35 @@ h2 {
 
 .btn-danger {
     background-color: #dc3545;
+}
+
+/* Specific Edit and Delete Button Styling */
+.btn-m-edit {
+    background-color: #ffc107; /* Yellow background for Edit */
+    color: #212529;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-m-edit:hover {
+    background-color: #e0a800; /* Darker yellow on hover */
+    color: #212529;
+}
+
+.btn-m-delete {
+    background-color: #dc3545; /* Red background for Delete */
+    color: #fff;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-m-delete:hover {
+    background-color: #c82333; /* Darker red on hover */
+    color: #fff;
 }
 
 .btn-outline-primary {
@@ -54,7 +83,8 @@ h2 {
     overflow-x: auto; /* Scrollable on smaller screens */
 }
 
-.table th, .table td {
+.table th,
+.table td {
     text-align: left;
     padding: 12px;
     border-top: 1px solid #ddd;
@@ -98,16 +128,34 @@ h2 {
     }
 
     .table tbody tr {
-        display: block;
+        display: flex;
+        flex-direction: column;
         margin-bottom: 1rem;
         border: 1px solid #ddd;
-        padding: 0.5rem;
+        padding: 1rem;
+        align-items: center;
     }
 
     .table tbody td {
         display: flex;
-        justify-content: space-between;
+        width: 100%;
         padding: 0.5rem 0;
+    }
+
+    /* Center the Edit and Delete buttons with space between */
+    .table tbody td:last-child {
+        display: flex;
+        justify-content: center;
+        gap: 1rem; /* Adds space between the Edit and Delete buttons */
+        align-items: center;
+        width: 100%;
+    }
+
+    /* Align text, price, and stock on the left */
+    .table tbody td:not(:first-child):not(:last-child) {
+        justify-content: flex-start;
+        text-align: left;
+        padding-left: 1rem;
     }
 
     /* Label each cell with attribute on smaller screens */
@@ -115,7 +163,8 @@ h2 {
         content: attr(data-label);
         font-weight: bold;
         text-transform: uppercase;
-        margin-right: 1rem;
+        margin-right: 0.5rem;
+        color: #555;
     }
 
     /* Image styling for smaller screens */
@@ -124,10 +173,10 @@ h2 {
         height: auto;
     }
 
-    /* Adjust the Add New Product button */
+    /* Full-width button on mobile */
     .btn-add {
         font-size: 1rem;
-        width: 100%; /* Full width on mobile */
+        width: 100%;
     }
 
     /* Stack pagination buttons vertically */

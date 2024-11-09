@@ -37,8 +37,8 @@
                 <td>€{{ product.price }}</td>
                 <td>{{ product.stock }}</td>
                 <td>
-                    <a href="{% url 'products:edit_product' product.id %}" class="btn btn-warning btn-sm">Edit</a>
-                    <a href="{% url 'products:delete_product' product.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                    <a href="{% url 'products:edit_product' product.id %}" class="btn-m-edit btn-warning btn-sm">Edit</a>
+                    <a href="{% url 'products:delete_product' product.id %}" class="btn-m-delete btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
                 </td>
             </tr>
             {% endfor %}
@@ -50,6 +50,15 @@
         {% if products.has_previous %}
             <a href="?page={{ products.previous_page_number }}" class="btn btn-outline-primary">Previous</a>
         {% endif %}
+    
+        {% for num in products.paginator.page_range %}
+            {% if products.number == num %}
+                <span class="btn-paginator btn-primary active">{{ num }}</span> <!-- Active page styling -->
+            {% else %}
+                <a href="?page={{ num }}" class="btn btn-outline-primary">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+    
         {% if products.has_next %}
             <a href="?page={{ products.next_page_number }}" class="btn btn-outline-primary">Next</a>
         {% endif %}
