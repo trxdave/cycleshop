@@ -72,8 +72,8 @@ def manage_products(request):
         messages.error(request, 'Sorry, only store owners can access this page.')
         return redirect('home')
 
-    # Define products_list correctly
-    products_list = Product.objects.all()
+    # Define products_list with ordering applied
+    products_list = Product.objects.all().order_by('name')
     
     # Setup pagination with 10 products per page
     paginator = Paginator(products_list, 10)
@@ -241,7 +241,9 @@ def shipping_information(request):
 @login_required
 def view_wishlist(request):
     """ View to display user's wishlist """
-    wishlist, created = Wishlist.objects.get_or_create(user=request.user)
+    wishlist = Wishlist.objects.filter(user=request.user).first()
+    if not wishlist:
+        wishlist = Wishlist.objects.create(user=request.user)
     return render(request, 'products/wishlist.html', {'wishlist': wishlist})
 
 
@@ -249,7 +251,10 @@ def view_wishlist(request):
 def add_to_wishlist(request, product_id):
     """ View to add a product to the wishlist """
     product = get_object_or_404(Product, id=product_id)
-    wishlist, created = Wishlist.objects.get_or_create(user=request.user)
+    wishlist = Wishlist.objects.filter(user=request.user).first()
+    if not wishlist:
+        wishlist = Wishlist.objects.create(user=request.user)
+
     if product not in wishlist.products.all():
         wishlist.products.add(product)
         messages.success(request, f'{product.name} added to your wishlist.')
@@ -262,11 +267,13 @@ def add_to_wishlist(request, product_id):
 def remove_from_wishlist(request, product_id):
     """ View to remove a product from the wishlist """
     product = get_object_or_404(Product, id=product_id)
-    wishlist, created = Wishlist.objects.get_or_create(user=request.user)
+    wishlist = Wishlist.objects.filter(user=request.user).first()
+    if not wishlist:
+        wishlist = Wishlist.objects.create(user=request.user)
+
     if product in wishlist.products.all():
         wishlist.products.remove(product)
-        messages.success(
-            request, f'{product.name} removed from your wishlist.')
+        messages.success(request, f'{product.name} removed from your wishlist.')
     else:
         messages.info(request, f'{product.name} is not in your wishlist.')
     return redirect('products:view_wishlist')
@@ -276,7 +283,9 @@ def remove_from_wishlist(request, product_id):
 def toggle_wishlist(request, product_id):
     """ Add or remove a product from the user's wishlist """
     product = get_object_or_404(Product, id=product_id)
-    wishlist, created = Wishlist.objects.get_or_create(user=request.user)
+    wishlist = Wishlist.objects.filter(user=request.user).first()
+    if not wishlist:
+        wishlist = Wishlist.objects.create(user=request.user)
 
     if product in wishlist.products.all():
         wishlist.products.remove(product)

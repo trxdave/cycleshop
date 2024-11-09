@@ -441,22 +441,40 @@ header {
     padding: 50px 0;
 }
 
-/* Wishlist */
+/* Wishlist Button */
 .btn-wishlist {
-    display: inline-block;
-    padding: 10px 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;
     background-color: #42858C;
     color: #F0F0F0;
     text-decoration: none;
     border-radius: 5px;
     text-align: center;
     font-weight: bold;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
+    position: relative;
+    font-size: 1rem;
 }
 
+/* Hover Effect for Wishlist Button */
 .btn-wishlist:hover {
     background-color: #63CCCA;
     color: #35393C;
+}
+
+/* Badge Styling for Wishlist Button */
+.btn-wishlist .badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #dc3545;
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 3px 6px;
+    border-radius: 50%;
+    font-weight: bold;
 }
 
 /* FAQ Page */
