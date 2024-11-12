@@ -25,21 +25,23 @@ def product_list(request):
 
 
 def product_category(request, category):
-    """ A view to return products filtered by category """
+    """A view to return products filtered by category with pagination."""
+    # Get the category object by slug
     category_obj = get_object_or_404(Category, slug=category)
-    products = Product.objects.filter(category=category_obj)
-
+    
+    # Retrieve products for the selected category, ordered by ID
     products = Product.objects.filter(category=category_obj).order_by('id')
-
-    paginator = Paginator(products_list, 6)
+    
+    # Set up the paginator with 6 products per page
+    paginator = Paginator(products, 6)
     page_number = request.GET.get('page')
-    products = paginator.get_page(page_number)
-
-    return render(
-        request, 'products/category_products.html', {
-            'products': page_obj,
-            'category': category_obj.name,
-        })
+    page_obj = paginator.get_page(page_number)
+    
+    # Pass the products and category name to the template
+    return render(request, 'products/category_products.html', {
+        'products': page_obj,
+        'category_name': category_obj.name,
+    })
 
 
 def product_detail(request, product_id):

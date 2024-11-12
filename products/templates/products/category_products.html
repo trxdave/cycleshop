@@ -6,6 +6,10 @@
 
 {% block hero %}{% endblock %}
 
+{% block blockcss %}
+<link rel="stylesheet" href="{% static 'css/category_products.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="container my-5">
     <h1 class="mb-4">{{ category_name }}</h1>
