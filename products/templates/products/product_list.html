@@ -18,9 +18,11 @@
                 <!-- Product Image -->
                 <a href="{% url 'products:product_detail' product.id %}">
                     {% if product.image %}
-                        <img src="{{ product.image.url }}" class="card-img-top img-fluid product-image" alt="{{ product.name }}">
+                    <img src="{{ product.image.url }}" class="card-img-top img-fluid product-image"
+                        alt="{{ product.name }}">
                     {% else %}
-                        <img src="{% static 'images/default_product.jpg' %}" class="card-img-top img-fluid product-image" alt="{{ product.name }}">
+                    <img src="{% static 'images/default_product.jpg' %}" class="card-img-top img-fluid product-image"
+                        alt="{{ product.name }}">
                     {% endif %}
                 </a>
 
@@ -31,7 +33,8 @@
                     <p class="card-text"><strong>Price: €{{ product.price }}</strong></p>
 
                     <!-- Button to View More Details or Add to Cart -->
-                    <a href="{% url 'products:product_detail' product.id %}" class="btn btn-primary mt-auto">View Product</a>
+                    <a href="{% url 'products:product_detail' product.id %}" class="btn btn-primary mt-auto">View
+                        Product</a>
                 </div>
             </div>
         </div>
@@ -39,12 +42,34 @@
     </div>
 
     <!-- Pagination Buttons -->
-    <div class="d-flex justify-content-between">
+    <div class="pagination d-flex justify-content-between align-items-center">
+        <!-- Previous Button -->
         {% if products.has_previous %}
-            <a href="?page={{ products.previous_page_number }}" class="btn btn-outline-primary">Previous</a>
+        <a href="?page={{ products.previous_page_number }}" class="btn btn-outline-primary">Previous</a>
+        {% else %}
+        <span class="btn btn-outline-secondary disabled">Previous</span>
         {% endif %}
+
+        <!-- Page Numbers -->
+        <div class="page-numbers mx-2">
+            {% for num in products.paginator.page_range %}
+            {% if products.number == num %}
+            <span class="btn btn-primary active">{{ num }}</span>
+            {% elif num > products.number|add:'-3' and num < products.number|add:'3' %} <a href="?page={{ num }}"
+                class="btn btn-outline-primary">{{ num }}</a>
+                {% elif num == 1 or num == products.paginator.num_pages %}
+                <a href="?page={{ num }}" class="btn btn-outline-primary">{{ num }}</a>
+                {% elif num == products.number|add:'-3' or num == products.number|add:'3' %}
+                <span class="dots">...</span>
+                {% endif %}
+                {% endfor %}
+        </div>
+
+        <!-- Next Button -->
         {% if products.has_next %}
-            <a href="?page={{ products.next_page_number }}" class="btn btn-outline-primary">Next</a>
+        <a href="?page={{ products.next_page_number }}" class="btn btn-outline-primary">Next</a>
+        {% else %}
+        <span class="btn btn-outline-secondary disabled">Next</span>
         {% endif %}
     </div>
 </div>

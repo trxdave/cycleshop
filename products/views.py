@@ -15,7 +15,7 @@ def product_list(request):
     # Set up paginator
     product_list = Product.objects.all()
     paginator = Product.objects.all()
-    paginator = Paginator(product_list, 6)
+    paginator = Paginator(product_list, 9)
     page_number = request.GET.get('page')
     products = paginator.get_page(page_number)
 
@@ -29,9 +29,11 @@ def product_category(request, category):
     category_obj = get_object_or_404(Category, slug=category)
     products = Product.objects.filter(category=category_obj)
 
-    paginator = Paginator(products, 8)
+    products = Product.objects.filter(category=category_obj).order_by('id')
+
+    paginator = Paginator(products_list, 6)
     page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    products = paginator.get_page(page_number)
 
     return render(
         request, 'products/category_products.html', {
@@ -48,19 +50,26 @@ def product_detail(request, product_id):
         form = RatingForm(request.POST)
         if form.is_valid():
             rating = form.cleaned_data['rating']
-            # Assuming you're updating the rating here.
+            # Update the product rating
             product.rating = rating
             product.save()
-
-            messages.success(
-                request, 'Your rating has been successfully submitted!')
+            messages.success(request, 'Your rating has been successfully submitted!')
             return redirect('products:product_detail', product_id=product.id)
     else:
         form = RatingForm()
 
+    # Query for related or similar products (adjust this query as needed)
+    related_products = Product.objects.filter(category=product.category).exclude(id=product.id)
+
+    # Set up pagination for related products
+    paginator = Paginator(related_products, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     context = {
         'product': product,
         'form': form,
+        'page_obj': page_obj,
     }
     return render(request, 'products/product_detail.html', context)
 

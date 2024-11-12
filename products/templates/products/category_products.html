@@ -42,6 +42,7 @@
     <!-- Pagination Controls -->
     <div class="pagination-container text-center mt-4">
         <ul class="pagination justify-content-center">
+            <!-- Previous Page Link -->
             {% if products.has_previous %}
             <li class="page-item">
                 <a class="page-link" href="?page={{ products.previous_page_number }}" aria-label="Previous">
@@ -49,15 +50,21 @@
                 </a>
             </li>
             {% endif %}
-
+    
+            <!-- Page Numbers -->
             {% for num in products.paginator.page_range %}
                 {% if products.number == num %}
-                <li class="page-item active"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                <li class="page-item active">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                </li>
                 {% else %}
-                <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                </li>
                 {% endif %}
             {% endfor %}
-
+    
+            <!-- Next Page Link -->
             {% if products.has_next %}
             <li class="page-item">
                 <a class="page-link" href="?page={{ products.next_page_number }}" aria-label="Next">
