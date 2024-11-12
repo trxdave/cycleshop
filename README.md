@@ -466,6 +466,14 @@ In this section, I outline the various tools and technologies that were essentia
 
 <hr>
 
+# Facebook Business Page
+
+- I created a Facebook Business Page for CycleShop. This page includes branded images,post and images.
+
+![alt text](static/images/facebook1.png)
+![alt text](static/images/facebook2.png)
+![alt text](static/images/facebook3.png)
+
 # Forking
 
 - Forking the GitHub repository allows you to make a copy of the original repository on your own GitHub account. This way, you can view, edit, or experiment with changes without impacting the original repository.
