@@ -17,19 +17,20 @@
             <div class="card mb-4 shadow-sm">
                 <!-- Product Image -->
                 <a href="{% url 'products:product_detail' product.id %}">
-                    {% if product.image %}
-                    <img src="{{ product.image.url }}" class="card-img-top img-fluid product-image"
-                        alt="{{ product.name }}">
-                    {% else %}
-                    <img src="{% static 'images/default_product.jpg' %}" class="card-img-top img-fluid product-image"
-                        alt="{{ product.name }}">
-                    {% endif %}
+                    <div class="product-image-container">
+                        {% if product.image %}
+                        <img src="{{ product.image.url }}" class="card-img-top img-fluid product-image"
+                            alt="{{ product.name }}">
+                        {% else %}
+                        <img src="{% static 'images/default_product.jpg' %}" class="card-img-top img-fluid product-image"
+                            alt="{{ product.name }}">
+                        {% endif %}
+                    </div>
                 </a>
 
                 <!-- Product Details -->
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{ product.name }}</h5>
-                    <!-- Hide description to keep cards uniform -->
                     <p class="card-text"><strong>Price: €{{ product.price }}</strong></p>
 
                     <!-- Button to View More Details or Add to Cart -->
@@ -55,14 +56,14 @@
             {% for num in products.paginator.page_range %}
             {% if products.number == num %}
             <span class="btn btn-primary active">{{ num }}</span>
-            {% elif num > products.number|add:'-3' and num < products.number|add:'3' %} <a href="?page={{ num }}"
-                class="btn btn-outline-primary">{{ num }}</a>
-                {% elif num == 1 or num == products.paginator.num_pages %}
-                <a href="?page={{ num }}" class="btn btn-outline-primary">{{ num }}</a>
-                {% elif num == products.number|add:'-3' or num == products.number|add:'3' %}
-                <span class="dots">...</span>
-                {% endif %}
-                {% endfor %}
+            {% elif num > products.number|add:'-3' and num < products.number|add:'3' %}
+            <a href="?page={{ num }}" class="btn btn-outline-primary">{{ num }}</a>
+            {% elif num == 1 or num == products.paginator.num_pages %}
+            <a href="?page={{ num }}" class="btn btn-outline-primary">{{ num }}</a>
+            {% elif num == products.number|add:'-3' or num == products.number|add:'3' %}
+            <span class="dots">...</span>
+            {% endif %}
+            {% endfor %}
         </div>
 
         <!-- Next Button -->
