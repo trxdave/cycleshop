@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -31,7 +32,7 @@ class Product(models.Model):
     rating = models.DecimalField(max_digits=3, decimal_places=2, default=0)
     total_ratings = models.IntegerField(default=0)
     rating_count = models.IntegerField(default=0)
-    image = models.ImageField(upload_to='products/', null=True, blank=True)
+    image = CloudinaryField('image', null=True, blank=True)
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
 
