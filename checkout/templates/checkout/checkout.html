@@ -7,13 +7,20 @@
 <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
 {% endblock %}
 
+{% block js %}
+    <!-- Stripe.js and custom Stripe Elements JavaScript -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="{% static 'js/stripe_elements.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 <div class="container-checkout my-5">
     <h1>Checkout</h1>
 
-    <!-- Stripe keys as hidden elements for use in JavaScript -->
+    <!-- Hidden elements to hold Stripe keys and order_id -->
     <span id="id_stripe_public_key" style="display:none;">{{ stripe_public_key }}</span>
     <span id="id_client_secret" style="display:none;">{{ client_secret }}</span>
+    <span id="id_order_id" style="display:none;" data-order-id="{{ order_id }}"></span>
 
     <!-- Loading overlay -->
     <div id="loading-overlay">
@@ -23,14 +30,12 @@
 
     {% if not user.is_authenticated %}
     <div class="alert alert-info">
-        Please <a href="{% url 'account_login' %}">log in</a> or <a href="{% url 'account_signup' %}">sign up</a> to
-        save your details for future purchases.
+        Please <a href="{% url 'account_login' %}">log in</a> or <a href="{% url 'account_signup' %}">sign up</a> to save your details for future purchases.
     </div>
     {% endif %}
 
     <form id="payment-form" method="post">
         {% csrf_token %}
-
         <!-- Full Name, Email, Phone, Address Fields -->
         <div class="mb-3">
             <label for="name" class="form-label">Full Name</label>
@@ -65,8 +70,7 @@
         <!-- Stripe Elements Fields -->
         <div class="mb-3">
             <label for="name-on-card" class="form-label">Name on Card</label>
-            <input type="text" id="name-on-card" name="name_on_card" class="form-control" autocomplete="cc-name"
-                placeholder="Name on Card" required>
+            <input type="text" id="name-on-card" name="name_on_card" class="form-control" autocomplete="cc-name" placeholder="Name on Card" required>
         </div>
         <div class="mb-3">
             <label class="form-label">Card Number</label>
@@ -80,4 +84,5 @@
         <button type="submit" class="btn-submit mt-3">Submit Payment</button>
     </form>
 </div>
+
 {% endblock %}
