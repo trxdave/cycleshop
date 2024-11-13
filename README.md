@@ -486,6 +486,20 @@ In this section, I outline the various tools and technologies that were essentia
 
 <hr>
 
+# Cloudinary
+
+- Specifically, when you set DEFAULT_FILE_STORAGE to use Cloudinary, all media files, including static files, might be uploaded to Cloudinary during the collectstatic process. This can cause unexpected behavior, especially if you intended to keep static files locally.
+
+1. To avoid issues: Temporarily Remove Cloudinary Storage: Before running python3 manage.py collectstatic, temporarily remove or comment out the DEFAULT_FILE_STORAGE setting.
+
+2. Run Collectstatic: Execute the collectstatic command to gather all static files locally.
+
+3. Re-enable Cloudinary: After collecting static files, re-enable the DEFAULT_FILE_STORAGE to Cloudinary if needed.
+
+- In the current configuration, I've added 'SECURE': True to the CLOUDINARY_STORAGE settings to ensure all media files are loaded over HTTPS, which enhances security.
+
+<hr>
+
 # API
 
 ## **Gmail API**
