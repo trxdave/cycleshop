@@ -463,6 +463,7 @@ In this section, I outline the various tools and technologies that were essentia
 - **AWS S3**: [Amazon S3](https://aws.amazon.com/s3/) is used for media storage, handling image uploads for products and other assets.
 - **Lucidchart**: [Lucidchart](https://www.lucidchart.com/pages)is used to design and visualize the database schema.
 - **Am I Responsive**: [Am I Responsive](https://ui.dev/amiresponsive) is used to test and showcase how the website looks on different devices.
+- **Cloudinary**: [Cloudinary](https://cloudinary.com/) is used for media storage, handling image uploads and optimizing assets.
 
 <hr>
 
@@ -497,6 +498,8 @@ In this section, I outline the various tools and technologies that were essentia
 3. Re-enable Cloudinary: After collecting static files, re-enable the DEFAULT_FILE_STORAGE to Cloudinary if needed.
 
 - In the current configuration, I've added 'SECURE': True to the CLOUDINARY_STORAGE settings to ensure all media files are loaded over HTTPS, which enhances security.
+
+![alt text](documentation/image/cloudinary.png)
 
 <hr>
 
