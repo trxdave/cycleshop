@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const loadingOverlay = document.getElementById('loading-overlay');
 
     form.addEventListener('submit', function (ev) {
-        ev.preventDefault();
+        //ev.preventDefault();
         
         loadingOverlay.classList.add('show');
 

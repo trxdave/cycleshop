@@ -1,7 +1,7 @@
 import stripe
 from django.conf import settings
 from django.core.mail import send_mail
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.template.loader import render_to_string
 from django.contrib import messages
 from django.http import JsonResponse
@@ -20,8 +20,10 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 def checkout_view(request):
     if request.method == 'POST':
+        print("formispost")
         form = OrderForm(request.POST)
         if form.is_valid():
+            print("formisvalid")
             # Create the order with user info if available
             order = form.save(commit=False)
             order.user = request.user if request.user.is_authenticated else None
@@ -43,7 +45,10 @@ def checkout_view(request):
                 'client_secret': intent.client_secret,
                 'order_id': order.id,
             }
-            return render(request, 'checkout/checkout.html', context)
+            redirect(
+                reverse("checkout_success", args=[order.id])
+            )
+            return render(request, 'checkout/checkout_success.html', context)
     else:
         form = OrderForm()
 
