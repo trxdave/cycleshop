@@ -122,3 +122,24 @@ def create_checkout_session(request):
         return JsonResponse({'sessionId': session.id})
     except Exception as e:
         return JsonResponse({'error': str(e)})
+
+def checkout(request):
+    """View to handle the checkout process."""
+    bag = request.session.get('bag', {})
+    total, delivery, grand_total = calculate_totals(bag)
+    form = OrderForm()
+    # Create Stripe PaymentIntent
+    intent = stripe.PaymentIntent.create(
+        amount=int(grand_total * 100),  # amount in cents
+        currency=settings.STRIPE_CURRENCY,
+    )
+    context = {
+        'form': form,
+        'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
+        'client_secret': intent.client_secret,
+        'total': number_format(total, decimal_pos=2, use_l10n=True),
+        'delivery': number_format(delivery, decimal_pos=2, use_l10n=True),
+        'grand_total': number_format(grand_total, decimal_pos=2, use_l10n=True),
+    }
+    return render(request, 'checkout/checkout.html', context)
+    return JsonResponse({'error': str(e)})

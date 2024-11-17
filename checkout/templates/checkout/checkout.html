@@ -38,7 +38,7 @@
         {% csrf_token %}
         <!-- Full Name, Email, Phone, Address Fields -->
         <div class="mb-3">
-            <label for="name" class="form-label">Full Name</label>
+            <label for="full_name" class="form-label">Full Name</label>
             <input type="text" id="full_name" name="full_name" class="form-control" autocomplete="name" required>
         </div>
         <div class="mb-3">
@@ -46,7 +46,7 @@
             <input type="email" id="email" name="email" class="form-control" autocomplete="email" required>
         </div>
         <div class="mb-3">
-            <label for="phone" class="form-label">Phone Number</label>
+            <label for="phone_number" class="form-label">Phone Number</label>
             <input type="tel" id="phone_number" name="phone_number" class="form-control" autocomplete="tel" required>
         </div>
         <div class="mb-3">
@@ -57,13 +57,13 @@
             <label for="city" class="form-label">City</label>
             <input type="text" id="city" name="city" class="form-control" autocomplete="address-level2" required>
         </div>
-        <div class="mb-3"></div>
-            <label for="postal_code" class="form-label">City</label>
-            <input type="text" id="postal_code" name="postal_code" class="form-control" autocomplete="address-level2" required>
+        <div class="mb-3">
+            <label for="postal_code" class="form-label">Postal Code</label>
+            <input type="text" id="postal_code" name="postal_code" class="form-control" autocomplete="postal-code" required>
         </div>
         <div class="mb-3">
-            <label for="location" class="form-label">Country</label>
-            <select id="location" name="location" class="form-control" autocomplete="country" required>
+            <label for="country" class="form-label">Country</label>
+            <select id="country" name="country" class="form-control" autocomplete="country" required>
                 <option value="" disabled selected>Select your country</option>
                 <option value="IE">Ireland</option>
                 <option value="US">United States</option>
@@ -74,11 +74,11 @@
         <!-- Stripe Elements Fields -->
         <div class="mb-3">
             <label for="name-on-card" class="form-label">Name on Card</label>
-            <input type="text" id="name-on-card" name="name_on_card" class="form-control" autocomplete="cc-name" placeholder="Name on Card" required>
+            <input type="text" id="name-on-card" name="name_on_card" class="form-control" autocomplete="cc-name" required>
         </div>
         <div class="mb-3">
             <label class="form-label">Card Number</label>
-            <div id="card-number-element" class="form-control" aria-label="Card Number"></div>
+            <div id="card-number-element" class="form-control"></div>
         </div>
 
         <!-- Error display for Stripe Elements -->
