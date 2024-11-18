@@ -15,6 +15,7 @@ import json
 from checkout.models import Order
 from products.models import Product
 from .forms import OrderForm
+from django.http import Http404
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -80,8 +81,11 @@ def process_payment(request):
 @login_required
 def checkout_success(request, order_id):
     """View to handle successful checkouts, send a confirmation email, and clear the cart."""
-    # Retrieve the completed order by ID
-    order = get_object_or_404(Order, id=order_id, user=request.user, status="completed")
+    try:
+        order = get_object_or_404(Order, id=order_id, user=request.user, status="completed")
+    except Http404:
+        messages.error(request, "No matching order found.")
+        return redirect('checkout:checkout')
 
     # Send confirmation email if applicable
     user_email = request.user.email
@@ -107,7 +111,7 @@ def checkout_success(request, order_id):
     request.session['bag'] = {}
     request.session['bag_items_count'] = 0
 
-    return redirect('checkout:checkout_success', order_id=order.id)
+    return render(request, 'checkout/checkout_success.html', {'order': order})
 
 # View for failed checkout
 def checkout_failure(request):

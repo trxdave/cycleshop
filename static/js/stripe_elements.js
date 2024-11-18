@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const loadingOverlay = document.getElementById('loading-overlay');
 
     form.addEventListener('submit', function (ev) {
-        //ev.preventDefault();
+        ev.preventDefault();
         
         loadingOverlay.classList.add('show');
 
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         const url = '/checkout/cache_checkout_data/';
-        
+
         fetch(url, {
             method: 'POST',
             headers: {
@@ -66,6 +66,12 @@ document.addEventListener('DOMContentLoaded', function () {
             return response.json();
         })
         .then(data => {
+            const orderId = data.order_id;
+
+            if (!orderId) {
+                throw new Error('Order ID is not defined');
+            }
+
             stripe.confirmCardPayment(clientSecret, {
                 payment_method: {
                     card: card,
@@ -101,8 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => {
             loadingOverlay.classList.remove('show');
-            alert("An error occurred while processing your payment. Please try again.");
-            console.error("Error:", error);
+            document.getElementById('card-errors').textContent = "Error: " + error.message;
         });
     });
 });
