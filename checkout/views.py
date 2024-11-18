@@ -82,7 +82,6 @@ def process_payment(request):
 # View for successful checkout
 @login_required
 def checkout_success(request, order_id):
-    """View to handle successful checkouts, send a confirmation email, and clear the cart."""
     try:
         order = get_object_or_404(Order, id=order_id, user=request.user)
         if order.status != "completed":
@@ -92,7 +91,6 @@ def checkout_success(request, order_id):
         messages.error(request, "No matching order found.")
         return redirect('checkout:checkout')
 
-    # Send confirmation email if applicable
     user_email = request.user.email
     subject = 'Your Order Confirmation - CycleShop'
     message = render_to_string('checkout/order_confirmation_email.html', {
@@ -112,7 +110,6 @@ def checkout_success(request, order_id):
     except Exception:
         messages.error(request, "Your order was successful, but we couldn't send the confirmation email.")
 
-    # Clear the cart session after successful payment
     request.session['bag'] = {}
     request.session['bag_items_count'] = 0
 
@@ -150,7 +147,9 @@ def calculate_total(request):
 def cache_checkout_data(request):
     try:
         data = json.loads(request.body)
-        order_id = create_order()
+
+        order_id = create_order(request)
+        
         request.session['checkout_data'] = {
             'client_secret': data.get('client_secret'),
             'save_info': data.get('save_info'),

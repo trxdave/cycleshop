@@ -9,14 +9,12 @@
 document.addEventListener('DOMContentLoaded', function () {
     const stripePublicKey = document.getElementById('id_stripe_public_key').textContent.trim();
     const clientSecret = document.getElementById('id_client_secret').textContent.trim();
-    const orderId = "{{ order_id }}";  // Order ID from Django template
     const stripe = Stripe(stripePublicKey);
     const elements = stripe.elements();
 
-    // Define styles for Stripe Elements
     const style = {
         base: {
-            color: '#ffffff',
+            color: '#000000',
             fontSize: '16px',
             '::placeholder': {
                 color: '#cccccc',
@@ -28,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
         },
     };
 
-    // Create Stripe Elements card field
     const card = elements.create('card', { style: style });
     card.mount('#card-number-element');
 
@@ -55,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         const url = '/checkout/cache_checkout_data/';
-        
+
         fetch(url, {
             method: 'POST',
             headers: {
@@ -69,27 +66,45 @@ document.addEventListener('DOMContentLoaded', function () {
             return response.json();
         })
         .then(data => {
+            const orderId = data.order_id;
+
+            if (!orderId) {
+                throw new Error('Order ID is not defined');
+            }
+
+            const nameElement = document.getElementById('full_name');
+            const emailElement = document.getElementById('email');
+            const phoneElement = document.getElementById('phone_number');
+            const addressElement = document.getElementById('address');
+            const cityElement = document.getElementById('city');
+            const countryElement = document.getElementById('country');
+
+            if (!nameElement || !emailElement || !phoneElement || !addressElement || !cityElement || !countryElement) {
+                document.getElementById('card-errors').textContent = "Error: Required form elements are missing.";
+                return;
+            }
+
             stripe.confirmCardPayment(clientSecret, {
                 payment_method: {
                     card: card,
                     billing_details: {
-                        name: document.getElementById('name').value.trim(),
-                        email: document.getElementById('email').value.trim(),
-                        phone: document.getElementById('phone').value.trim(),
+                        name: nameElement.value.trim(),
+                        email: emailElement.value.trim(),
+                        phone: phoneElement.value.trim(),
                         address: {
-                            line1: document.getElementById('address').value.trim(),
-                            city: document.getElementById('city').value.trim(),
-                            country: document.getElementById('location').value.trim(),
+                            line1: addressElement.value.trim(),
+                            city: cityElement.value.trim(),
+                            country: countryElement.value.trim(),
                         },
                     },
                 },
                 shipping: {
-                    name: document.getElementById('name').value.trim(),
-                    phone: document.getElementById('phone').value.trim(),
+                    name: nameElement.value.trim(),
+                    phone: phoneElement.value.trim(),
                     address: {
-                        line1: document.getElementById('address').value.trim(),
-                        city: document.getElementById('city').value.trim(),
-                        country: document.getElementById('location').value.trim(),
+                        line1: addressElement.value.trim(),
+                        city: cityElement.value.trim(),
+                        country: countryElement.value.trim(),
                     },
                 },
             }).then(function (result) {
@@ -104,8 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => {
             loadingOverlay.classList.remove('show');
-            alert("An error occurred while processing your payment. Please try again.");
-            console.error("Error:", error);
+            document.getElementById('card-errors').textContent = "Error: " + error.message;
         });
     });
 });
