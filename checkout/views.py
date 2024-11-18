@@ -145,11 +145,13 @@ def calculate_total(request):
 def cache_checkout_data(request):
     try:
         data = json.loads(request.body)
+        order_id = create_order()
         request.session['checkout_data'] = {
             'client_secret': data.get('client_secret'),
             'save_info': data.get('save_info'),
+            'order_id': order_id,
         }
-        return JsonResponse({'status': 'success'})
+        return JsonResponse({'status': 'success', 'order_id': order_id})
     except json.JSONDecodeError:
         return JsonResponse({'status': 'error', 'message': 'Invalid JSON data'}, status=400)
     except Exception as e:
