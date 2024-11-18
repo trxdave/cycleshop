@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (result.error) {
                     document.getElementById('card-errors').textContent = result.error.message;
                 } else if (result.paymentIntent && result.paymentIntent.status === 'succeeded') {
-                    window.location.href = `/checkout/checkout_success/`;
+                    window.location.href = `/checkout/checkout_success/${orderId}/`;
                 }
             });
         })
