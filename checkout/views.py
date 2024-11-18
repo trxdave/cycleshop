@@ -42,7 +42,7 @@ def checkout_view(request):
                 'client_secret': intent.client_secret,
                 'order_id': order.id,
             }
-            return redirect(reverse("checkout_success", args=[order.id]))
+            return redirect(reverse("checkout:checkout_success", args=[order.id]))
     else:
         form = OrderForm()
 
@@ -77,6 +77,7 @@ def process_payment(request):
         return redirect(reverse('checkout_failure'))
 
 # View for successful checkout
+@login_required
 def checkout_success(request, order_id):
     """View to handle successful checkouts, send a confirmation email, and clear the cart."""
     # Retrieve the completed order by ID
@@ -106,7 +107,7 @@ def checkout_success(request, order_id):
     request.session['bag'] = {}
     request.session['bag_items_count'] = 0
 
-    return redirect(reverse("checkout:checkout_success", args=[order.id]))
+    return redirect('checkout:checkout_success', order_id=order.id)
 
 # View for failed checkout
 def checkout_failure(request):
