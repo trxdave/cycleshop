@@ -83,22 +83,27 @@ def process_payment(request):
 @login_required
 def checkout_success(request, order_id):
     try:
+        # Fetch the order and ensure it belongs to the current user
         order = get_object_or_404(Order, id=order_id, user=request.user)
+        
+        # Update the status if not already completed
         if order.status != "completed":
             order.status = "completed"
             order.save()
     except Http404:
+        # If the order is not found, redirect to the checkout page with an error message
         messages.error(request, "No matching order found.")
         return redirect('checkout:checkout')
 
-    user_email = request.user.email
-    subject = 'Your Order Confirmation - CycleShop'
-    message = render_to_string('checkout/order_confirmation_email.html', {
-        'order': order,
-        'user': request.user,
-    })
-
+    # Send the confirmation email
     try:
+        user_email = request.user.email
+        subject = 'Your Order Confirmation - CycleShop'
+        message = render_to_string('checkout/order_confirmation_email.html', {
+            'order': order,
+            'user': request.user,
+        })
+
         send_mail(
             subject,
             message,
@@ -107,12 +112,15 @@ def checkout_success(request, order_id):
             fail_silently=False,
         )
         messages.success(request, "Thank you! A confirmation email has been sent to your address.")
-    except Exception:
+    except Exception as e:
+        # Log or handle email errors
         messages.error(request, "Your order was successful, but we couldn't send the confirmation email.")
 
+    # Clear the user's shopping bag
     request.session['bag'] = {}
     request.session['bag_items_count'] = 0
 
+    # Render the success template with the order details
     return render(request, 'checkout/checkout_success.html', {'order': order})
 
 # View for failed checkout
@@ -149,7 +157,7 @@ def cache_checkout_data(request):
         data = json.loads(request.body)
 
         order_id = create_order(request)
-        
+
         request.session['checkout_data'] = {
             'client_secret': data.get('client_secret'),
             'save_info': data.get('save_info'),
@@ -177,16 +185,27 @@ def create_order():
     order.save()
     return order.id
 
-def order_create_view(request):
-    if request.method == 'POST':
-        form = OrderForm(request.POST)
-        if form.is_valid():
-            order = form.save(commit=False)
-            order.user = request.user if request.user.is_authenticated else None
-            order.total = 100  # Example fixed total
-            order.status = 'pending'
-            order.save()
-            return redirect('order_success_view')
-    else:
-        form = OrderForm()
-    return render(request, 'checkout/order_form.html', {'form': form})
+def create_order(request):
+    try:
+        # Parse JSON data from the request body
+        data = json.loads(request.body)
+
+        # Extract data to create the order
+        order = Order(
+            user=request.user if request.user.is_authenticated else None,
+            full_name=data.get('full_name', 'Guest User'),
+            email=data.get('email', ''),
+            phone_number=data.get('phone_number', ''),
+            address=data.get('address', ''),
+            city=data.get('city', ''),
+            postal_code=data.get('postal_code', ''),
+            country=data.get('country', ''),
+            total=calculate_total(request),  # Ensure this function works
+            status="pending",
+        )
+        order.save()
+
+        return order.id
+
+    except Exception as e:
+        raise ValueError(f"Failed to create order: {str(e)}")

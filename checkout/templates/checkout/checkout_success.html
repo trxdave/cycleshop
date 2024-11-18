@@ -14,17 +14,29 @@
         <div class="checkout-success-icon">
             <i class="fas fa-check-circle"></i>
         </div>
+
         <!-- Success Message -->
         <h2 class="card-title mb-3">Payment Successful!</h2>
-        <p class="card-text mb-4">Thank you for your purchase. Your order (ID: {{ order.id }}) was successfully processed.</p>
+        <p class="card-text mb-4">
+            Thank you for your purchase. Your order (ID: <strong>{{ order.id }}</strong>) was successfully processed.
+        </p>
+
         <!-- Email Notification -->
-        <p class="card-text">A confirmation email has been sent to your email address.</p>
-        
+        <p class="card-text">
+            A confirmation email has been sent to your email address: <strong>{{ user.email }}</strong>.
+        </p>
+
         <!-- View Order Details Button -->
-        <a href="{% url 'checkout:order_detail' order_id=order.id %}" class="btn btn-secondary checkout-success-button">View Order Details</a>
+        <a href="{% url 'checkout:order_detail' order_id=order.id %}" 
+           class="btn btn-secondary checkout-success-button">
+           View Order Details
+        </a>
 
         <!-- Return to Home Button -->
-        <a href="{% url 'home' %}" class="btn btn-primary checkout-success-button">Return to Home</a>
+        <a href="{% url 'home' %}" 
+           class="btn btn-primary checkout-success-button">
+           Return to Home
+        </a>
     </div>
 </div>
 {% endblock %}

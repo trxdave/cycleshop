@@ -76,9 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
             country: document.getElementById('country').value.trim(),
         };
 
-        const url = '/checkout/cache_checkout_data/';
-
-        fetch(url, {
+        fetch('/checkout/cache_checkout_data/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
