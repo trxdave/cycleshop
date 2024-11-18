@@ -72,27 +72,39 @@ document.addEventListener('DOMContentLoaded', function () {
                 throw new Error('Order ID is not defined');
             }
 
+            const nameElement = document.getElementById('full_name');
+            const emailElement = document.getElementById('email');
+            const phoneElement = document.getElementById('phone_number');
+            const addressElement = document.getElementById('address');
+            const cityElement = document.getElementById('city');
+            const countryElement = document.getElementById('country');
+
+            if (!nameElement || !emailElement || !phoneElement || !addressElement || !cityElement || !countryElement) {
+                document.getElementById('card-errors').textContent = "Error: Required form elements are missing.";
+                return;
+            }
+
             stripe.confirmCardPayment(clientSecret, {
                 payment_method: {
                     card: card,
                     billing_details: {
-                        name: document.getElementById('name').value.trim(),
-                        email: document.getElementById('email').value.trim(),
-                        phone: document.getElementById('phone').value.trim(),
+                        name: nameElement.value.trim(),
+                        email: emailElement.value.trim(),
+                        phone: phoneElement.value.trim(),
                         address: {
-                            line1: document.getElementById('address').value.trim(),
-                            city: document.getElementById('city').value.trim(),
-                            country: document.getElementById('location').value.trim(),
+                            line1: addressElement.value.trim(),
+                            city: cityElement.value.trim(),
+                            country: countryElement.value.trim(),
                         },
                     },
                 },
                 shipping: {
-                    name: document.getElementById('name').value.trim(),
-                    phone: document.getElementById('phone').value.trim(),
+                    name: nameElement.value.trim(),
+                    phone: phoneElement.value.trim(),
                     address: {
-                        line1: document.getElementById('address').value.trim(),
-                        city: document.getElementById('city').value.trim(),
-                        country: document.getElementById('location').value.trim(),
+                        line1: addressElement.value.trim(),
+                        city: cityElement.value.trim(),
+                        country: countryElement.value.trim(),
                     },
                 },
             }).then(function (result) {

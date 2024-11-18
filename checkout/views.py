@@ -31,7 +31,7 @@ def checkout_view(request):
 
             # Create Stripe PaymentIntent for the total amount
             intent = stripe.PaymentIntent.create(
-                amount=int(order.total * 100),  # Stripe requires amount in cents
+                amount=int(order.total * 100),
                 currency=settings.STRIPE_CURRENCY,
                 metadata={'order_id': order.id}
             )
@@ -43,7 +43,7 @@ def checkout_view(request):
                 'client_secret': intent.client_secret,
                 'order_id': order.id,
             }
-            return redirect(reverse("checkout:checkout_success", args=[order.id]))
+            return render(request, 'checkout/checkout.html', context)
     else:
         form = OrderForm()
 
@@ -54,6 +54,8 @@ def checkout_view(request):
         'client_secret': None,
     }
     return render(request, 'checkout/checkout.html', context)
+
+
 
 # View to create a PaymentIntent
 def create_payment_intent(request):
@@ -82,7 +84,10 @@ def process_payment(request):
 def checkout_success(request, order_id):
     """View to handle successful checkouts, send a confirmation email, and clear the cart."""
     try:
-        order = get_object_or_404(Order, id=order_id, user=request.user, status="completed")
+        order = get_object_or_404(Order, id=order_id, user=request.user)
+        if order.status != "completed":
+            order.status = "completed"
+            order.save()
     except Http404:
         messages.error(request, "No matching order found.")
         return redirect('checkout:checkout')
@@ -156,3 +161,33 @@ def cache_checkout_data(request):
         return JsonResponse({'status': 'error', 'message': 'Invalid JSON data'}, status=400)
     except Exception as e:
         return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
+
+def create_order():
+    # Example function to create an order, modify as needed
+    order = Order(
+        full_name="Test User",
+        email="test@example.com",
+        phone_number="1234567890",
+        address="123 Test St",
+        city="Test City",
+        postal_code="12345",
+        country="Test Country",
+        total=100.00,
+        status="pending"
+    )
+    order.save()
+    return order.id
+
+def order_create_view(request):
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            order = form.save(commit=False)
+            order.user = request.user if request.user.is_authenticated else None
+            order.total = 100  # Example fixed total
+            order.status = 'pending'
+            order.save()
+            return redirect('order_success_view')
+    else:
+        form = OrderForm()
+    return render(request, 'checkout/order_form.html', {'form': form})
