@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <h1>Thank You for Your Order, {{ order.full_name }}!</h1>
+    <p>We’re excited to let you know that your order (Order ID: <strong>{{ order.id }}</strong>) has been received and is now being processed.</p>
+
+    <h2>Order Details:</h2>
+    <ul>
+        <li><strong>Order Date:</strong> {{ order.date | date:"F d, Y" }}</li>
+        <li><strong>Total:</strong> ${{ order.total }}</li>
+    </ul>
+
+    <h3>Items Ordered:</h3>
+    <ul>
+        {% for item in order.line_items.all %}
+            <li>
+                <strong>{{ item.product.name }}</strong> - 
+                Quantity: {{ item.quantity }} - 
+                Subtotal: ${{ item.subtotal }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Delivery Information:</h2>
+    <ul>
+        <li><strong>Address:</strong> {{ order.address }}</li>
+        <li><strong>City:</strong> {{ order.city }}</li>
+        <li><strong>Postal Code:</strong> {{ order.postal_code }}</li>
+        <li><strong>Country:</strong> {{ order.country }}</li>
+    </ul>
+
+    <p>If you have any questions about your order, please feel free to contact <a href="{% url 'contact' %}" class="text-primary">customer support</a>.</p>
+
+    <p>Thanks for shopping with CycleShop!</p>
+    <p>Best regards,<br>CycleShop Team</p>
+</div>
+{% endblock %}

@@ -39,8 +39,11 @@ document.addEventListener('DOMContentLoaded', function () {
     card.mount('#card-number-element');
 
     card.on('change', function (event) {
+        const cardErrorsElement = document.getElementById('card-errors');
         if (cardErrorsElement) {
             cardErrorsElement.textContent = event.error ? event.error.message : '';
+        } else {
+            console.error("Element with ID 'card-errors' is missing in the DOM.");
         }
     });
 

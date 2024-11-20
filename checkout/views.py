@@ -2,6 +2,7 @@ import stripe
 import json
 from django.conf import settings
 from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.http import JsonResponse, HttpResponse
@@ -13,10 +14,11 @@ from products.models import Product
 from .forms import OrderForm
 import logging
 
+# Initialize Stripe
 stripe.api_key = settings.STRIPE_SECRET_KEY
 logger = logging.getLogger(__name__)
 
-# Helper Function: Calculate Total
+# Helper: Calculate Total
 def calculate_total(request):
     bag = request.session.get('bag', {})
     total = 0
@@ -25,13 +27,11 @@ def calculate_total(request):
         total += product.price * item_data['quantity']
     return total
 
-# Helper Function: Send Confirmation Email
+# Helper: Send Confirmation Email
 def send_confirmation_email(order, user_email):
     try:
         subject = 'Your Order Confirmation - CycleShop'
-        message = render_to_string('checkout/order_confirmation_email.html', {
-            'order': order,
-        })
+        message = render_to_string('checkout/order_confirmation_email.html', {'order': order})
         send_mail(
             subject,
             message,
@@ -39,30 +39,29 @@ def send_confirmation_email(order, user_email):
             [user_email],
             fail_silently=False,
         )
+        logger.info(f"Order confirmation email sent to {user_email}.")
     except Exception as e:
-        # Handle or log email errors
-        pass
+        logger.error(f"Failed to send order confirmation email: {e}")
 
 # Checkout View
 def checkout_view(request):
-    if request.method == 'POST':
-        form = OrderForm(request.POST)
-        if form.is_valid():
+    form = OrderForm(request.POST or None)
+    if request.method == 'POST' and form.is_valid():
+        try:
             order = form.save(commit=False)
             order.user = request.user if request.user.is_authenticated else None
             order.total = calculate_total(request)
             order.status = "pending"
             order.save()
 
-            # Create Stripe PaymentIntent
+            # Stripe PaymentIntent
             intent = stripe.PaymentIntent.create(
                 amount=int(order.total * 100),
                 currency=settings.STRIPE_CURRENCY,
                 metadata={'order_id': order.id}
             )
-            print(f"Stripe PaymentIntent Metadata: {intent.metadata}")
+            logger.info(f"PaymentIntent created for order ID {order.id}")
 
-            # Pass data to the template
             context = {
                 'form': form,
                 'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
@@ -70,8 +69,10 @@ def checkout_view(request):
                 'order_id': order.id,
             }
             return render(request, 'checkout/checkout.html', context)
-    else:
-        form = OrderForm()
+        except Exception as e:
+            logger.error(f"Error during checkout: {e}")
+            messages.error(request, "An error occurred during checkout. Please try again.")
+            return redirect('checkout:checkout')
 
     # For GET requests
     context = {
@@ -86,7 +87,6 @@ def checkout_view(request):
 def checkout_success(request, order_id):
     try:
         order = get_object_or_404(Order, id=order_id, user=request.user)
-
         if order.status != "completed":
             order.status = "completed"
             order.save()
@@ -98,10 +98,11 @@ def checkout_success(request, order_id):
         request.session['bag'] = {}
         request.session['bag_items_count'] = 0
 
-        messages.success(request, "Thank you! Your order was successful and a confirmation email has been sent.")
+        messages.success(request, "Thank you! Your order was successful.")
         return render(request, 'checkout/checkout_success.html', {'order': order})
-    except Exception:
-        messages.error(request, "No matching order found.")
+    except Exception as e:
+        logger.error(f"Error in checkout success view: {e}")
+        messages.error(request, "An error occurred while processing your order.")
         return redirect('checkout:checkout')
 
 # Checkout Failure View
@@ -117,14 +118,13 @@ def order_history(request):
 
 # Order Detail View
 @login_required
-@login_required
 def order_detail(request, order_id):
     try:
         order = get_object_or_404(Order, id=order_id, user=request.user)
-        logger.info(f"Order retrieved: {order}")
+        logger.info(f"Order detail retrieved for order ID {order.id}")
         return render(request, 'checkout/order_detail.html', {'order': order})
     except Exception as e:
-        logger.error(f"Error retrieving order: {e}")
+        logger.error(f"Error retrieving order detail: {e}")
         messages.error(request, "Order not found.")
         return redirect('checkout:order_history')
 
@@ -134,60 +134,63 @@ def order_detail(request, order_id):
 def cache_checkout_data(request):
     try:
         data = json.loads(request.body)
-
-        # Create and save the order
         order_id = create_order(request)
-        print(f"Order ID created and sent: {order_id}")
-
-        # Return the order_id to the frontend
+        logger.info(f"Order ID {order_id} cached successfully.")
         return JsonResponse({'status': 'success', 'order_id': order_id})
     except Exception as e:
+        logger.error(f"Error caching checkout data: {e}")
         return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
 
 # Create Order Function
 def create_order(request):
     try:
         data = json.loads(request.body)
+        required_fields = ['full_name', 'email', 'address', 'city', 'postal_code', 'country']
+        for field in required_fields:
+            if not data.get(field):
+                raise ValueError(f"Missing required field: {field}")
+
         order = Order(
             user=request.user if request.user.is_authenticated else None,
-            full_name=data.get('full_name', 'Guest User'),
-            email=data.get('email', ''),
+            full_name=data['full_name'],
+            email=data['email'],
             phone_number=data.get('phone_number', ''),
-            address=data.get('address', ''),
-            city=data.get('city', ''),
-            postal_code=data.get('postal_code', ''),
-            country=data.get('country', ''),
+            address=data['address'],
+            city=data['city'],
+            postal_code=data['postal_code'],
+            country=data['country'],
             total=calculate_total(request),
             status="pending",
         )
         order.save()
         return order.id
     except Exception as e:
-        raise ValueError(f"Failed to create order: {str(e)}")
+        logger.error(f"Error creating order: {e}")
+        raise ValueError(f"Failed to create order: {e}")
 
+# Stripe Webhook
 @csrf_exempt
 def stripe_webhook(request):
     payload = request.body
-    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+    sig_header = request.META.get('HTTP_STRIPE_SIGNATURE', '')
     endpoint_secret = settings.STRIPE_WEBHOOK_SECRET
 
     try:
-        event = stripe.Webhook.construct_event(
-            payload, sig_header, endpoint_secret
-        )
+        event = stripe.Webhook.construct_event(payload, sig_header, endpoint_secret)
     except ValueError as e:
-        # Invalid payload
+        logger.error(f"Invalid payload: {e}")
         return HttpResponse(status=400)
     except stripe.error.SignatureVerificationError as e:
-        # Invalid signature
+        logger.error(f"Invalid signature: {e}")
         return HttpResponse(status=400)
 
-    # Handle the event
     if event['type'] == 'payment_intent.succeeded':
         payment_intent = event['data']['object']
-        # Fulfill the purchase or update order status
+        logger.info(f"Payment succeeded: {payment_intent['id']}")
     elif event['type'] == 'payment_intent.payment_failed':
-        # Handle the failure
-        pass
+        payment_intent = event['data']['object']
+        logger.warning(f"Payment failed: {payment_intent['id']}")
+    else:
+        logger.info(f"Unhandled event type: {event['type']}")
 
     return HttpResponse(status=200)
