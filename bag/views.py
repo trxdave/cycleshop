@@ -130,7 +130,7 @@ def checkout(request):
     form = OrderForm()
     # Create Stripe PaymentIntent
     intent = stripe.PaymentIntent.create(
-        amount=int(grand_total * 100),  # amount in cents
+        amount=int(grand_total * 100),
         currency=settings.STRIPE_CURRENCY,
     )
     context = {
