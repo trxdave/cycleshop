@@ -11,8 +11,10 @@ from django.contrib.auth.decorators import login_required
 from checkout.models import Order
 from products.models import Product
 from .forms import OrderForm
+import logging
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
+logger = logging.getLogger(__name__)
 
 # Helper Function: Calculate Total
 def calculate_total(request):
