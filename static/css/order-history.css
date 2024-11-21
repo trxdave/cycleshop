@@ -1,10 +1,11 @@
 #order-history-page {
     max-width: 900px;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 20px;
     background-color: #F0F0F0;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
 /* Heading Styling */
@@ -18,11 +19,16 @@
 
 /* Table Styling */
 .table {
+    margin: 0 auto;
     color: #333;
     background-color: #FFFFFF;
-    border-collapse: separate;
+    border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .table thead th {
@@ -30,13 +36,10 @@
     color: #FFFFFF;
     font-weight: bold;
     padding: 12px;
-    text-align: left;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
 }
 
 .table tbody tr {
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .table tbody tr:hover {
@@ -46,16 +49,15 @@
 .table tbody td {
     padding: 12px;
     border-top: 1px solid #DDDDDD;
+    text-align: center;
+    vertical-align: middle;
 }
 
+/* Specific Columns Styling */
 .table tbody td:nth-child(1),
 .table tbody td:nth-child(3),
 .table tbody td:nth-child(5) {
     font-weight: bold;
-}
-
-.table tbody td:last-child {
-    text-align: right;
 }
 
 /* Responsive Adjustments */
@@ -64,29 +66,57 @@
         font-size: 2rem;
     }
 
+    .table {
+        display: block;
+        width: 100%;
+    }
+
     .table thead {
         display: none;
     }
 
-    .table tbody td {
-        display: block;
+    .table tbody {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .table tbody tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+        border: 1px solid #DDDDDD;
+        border-radius: 8px;
         padding: 10px;
-        text-align: right;
-        position: relative;
+        background-color: #FFFFFF;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .table tbody td {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        text-align: left;
+        border: none;
+        width: 100%;
     }
 
     .table tbody td::before {
         content: attr(data-label);
-        position: absolute;
-        left: 10px;
         font-weight: bold;
-        text-align: left;
+        color: #63CCCA;
+        flex-basis: 40%;
     }
+}
 
-    .table tbody tr {
-        display: block;
-        margin-bottom: 10px;
-        border: 1px solid #DDDDDD;
-        border-radius: 8px;
-    }
+/* Hover Effects */
+.order-link {
+    color: #63CCCA;
+    text-decoration: none;
+}
+
+.order-link:hover {
+    color: #5DA399;
+    text-decoration: underline;
 }
