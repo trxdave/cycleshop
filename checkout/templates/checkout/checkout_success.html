@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block hero %}{% endblock %}
+{% block alert %}{% endblock %}
 
 {% block blockcss %}
 <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
@@ -28,13 +29,13 @@
 
         <!-- View Order Details Button -->
         <a href="{% url 'checkout:order_detail' order_id=order.id %}" 
-           class="btn btn-secondary checkout-success-button">
+           class="btn-checkout-success btn-secondary checkout-success-button">
            View Order Details
         </a>
 
         <!-- Return to Home Button -->
         <a href="{% url 'home' %}" 
-           class="btn btn-primary checkout-success-button">
+           class="btn-checkout-success btn-primary checkout-success-button">
            Return to Home
         </a>
     </div>

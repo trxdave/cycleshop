@@ -3,20 +3,29 @@
 {% load static %}
 
 {% block hero %}{% endblock %}
+{% block alert %}{% endblock %}
+
+{% block blockcss %}
+<link rel="stylesheet" href="{% static 'css/order_detail.css' %}">
+{% endblock %}
 
 {% block title %}
 Order Detail
 {% endblock %}
 
 {% block content %}
-<h1>Order Detail</h1>
-{% if order %}
-    <p><strong>Order ID:</strong> {{ order.id }}</p>
-    <p><strong>Total:</strong> {{ order.total }}</p>
-    <p><strong>Status:</strong> {{ order.status }}</p>
-    <p><strong>Order Date:</strong> {{ order.date }}</p>
-    <p>Order Debug: {{ order|default:"No order found" }}</p>
-{% else %}
-    <p>Order not found.</p>
-{% endif %}
+<div class="order-detail-container">
+    <h1>Order Detail</h1>
+    {% if order %}
+        <p><strong>Order ID:</strong> {{ order.id }}</p>
+        <p><strong>Total:</strong> {{ order.total }}</p>
+        <p><strong>Status:</strong> {{ order.status }}</p>
+        <p><strong>Order Date:</strong> {{ order.date }}</p>
+        <div class="order-debug">
+            <p>Order Debug: {{ order|default:"No order found" }}</p>
+        </div>
+    {% else %}
+        <p>Order not found.</p>
+    {% endif %}
+</div>
 {% endblock %}
