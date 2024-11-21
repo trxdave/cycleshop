@@ -1,0 +1,67 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #35393C;
+    color: #F0F0F0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Order Detail Container */
+.order-detail-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    color: #35393C;
+}
+
+/* Heading Styling */
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: #63CCCA;
+    margin-bottom: 20px;
+}
+
+/* Order Details Paragraphs */
+.order-detail-container p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #333333;
+}
+
+/* Emphasized Text Styling */
+.order-detail-container p strong {
+    color: #63CCCA;
+}
+
+/* Order Debug Information */
+.order-debug {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    display: none; /* Hidden by default */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .order-detail-container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .order-detail-container p {
+        font-size: 1rem;
+    }
+}
