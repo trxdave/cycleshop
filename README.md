@@ -502,11 +502,31 @@ After implementing the above fixes, the checkout process:
 
 # Entity-Relationship Diagram (ERD)
 
-- **User and Profile**: A one-to-one relationship where each user has an associated profile, storing additional details.
-- **Profile and Wishlist**: The Profile table has an optional one-to-one link to Wishlist.
-- **Product and Category**: Products belong to categories, allowing for product classification.
-- **Wishlist and Products**: A many-to-many relationship through the WishlistProducts table, allowing users to add multiple products to their wishlist.
-- **Order and BagItem**: An order can contain multiple BagItems, with each item linked to a specific product and quantity.
+**1. User**: 
+- Attributes user_id, username, email, password, etc.
+**2. Profile**: 
+- Attributes: profile_id, user_id(foreign key), full_name, address, phone_number, etc.
+- Relationships: One-to-one with User
+**3. Product**:
+- Attributes: product_id, name, description, price, stock, category_id(foreign key), etc.
+- Relationships: Many-to-one with Category
+**4. Category**:
+- Attributes: category_id, name, description, etc.
+**5. Order**:
+- Attributes: order_id, user_id (foreign key), total, status, creation_date, etc.
+- Relationships: Many-to-one with User
+**6. OrderItem**:
+- Attributes: order_item_id, order_id (foreign key), product_id (foreign key), quantity, price, etc.
+- Relationships: Many-to-one with Order, Many-to-one with Product
+**7. ShoppingBag**:
+- Attributes: bag_id, user_id (foreign key), total, etc.
+- Relationships: One-to-one with User
+**8. BagItem**:
+- Attributes: bag_item_id, bag_id (foreign key), product_id (foreign key), quantity, price, etc.
+- Relationships: Many-to-one with ShoppingBag, Many-to-one with Product
+**9. Payment**:
+- Attributes: payment_id, order_id (foreign key), amount, payment_date, status, etc.
+- Relationships: One-to-one with Order
 
 ![alt text](documentation/erd/database-erdiagram-cycleshop-1.png)
 
