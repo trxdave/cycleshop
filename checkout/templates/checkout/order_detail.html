@@ -15,17 +15,41 @@ Order Detail
 
 {% block content %}
 <div class="order-detail-container">
-    <h1>Order Detail</h1>
+    <h1 class="order-detail-title">Order Details</h1>
     {% if order %}
-        <p><strong>Order ID:</strong> {{ order.id }}</p>
-        <p><strong>Total:</strong> {{ order.total }}</p>
-        <p><strong>Status:</strong> {{ order.status }}</p>
-        <p><strong>Order Date:</strong> {{ order.date }}</p>
-        <div class="order-debug">
-            <p>Order Debug: {{ order|default:"No order found" }}</p>
+        <div class="order-info">
+            <p><strong>Order ID:</strong> {{ order.id }}</p>
+            <p><strong>Total:</strong> ${{ order.total }}</p>
+            <p><strong>Status:</strong> {{ order.status }}</p>
+            <p><strong>Order Date:</strong> {{ order.date|date:"F j, Y, g:i a" }}</p>
+        </div>
+
+        <h2 class="order-items-title">Items in Your Order</h2>
+        <div class="order-items">
+            {% for item in order.items.all %}
+            <div class="order-item">
+                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="order-item-image">
+                <div class="order-item-details">
+                    <p><strong>Product:</strong> {{ item.product.name }}</p>
+                    <p><strong>Quantity:</strong> {{ item.quantity }}</p>
+                    <p><strong>Price:</strong> ${{ item.price }}</p>
+                    <p><strong>Subtotal:</strong> ${{ item.quantity|multiply:item.price }}</p>
+                </div>
+            </div>
+            {% empty %}
+            <p>No items found in this order.</p>
+            {% endfor %}
         </div>
     {% else %}
-        <p>Order not found.</p>
+        <div class="order-not-found">
+            <p>Order not found.</p>
+        </div>
     {% endif %}
+
+    <!-- Navigation Buttons -->
+    <div class="order-navigation">
+        <a href="javascript:history.back()" class="btn btn-secondary">Back</a>
+        <a href="{% url 'home' %}" class="btn btn-primary">Return to Home</a>
+    </div>
 </div>
 {% endblock %}
