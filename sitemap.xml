@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/bag/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/road-bikes/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/mountain-bikes/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/electric-bikes/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/kids-bikes/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/clothing/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/accessories/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/contact/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/faq/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/accounts/login/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/accounts/signup/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/accounts/login/?next=/products/wishlist/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/accounts/login/?next=/checkout/order-history/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/shipping-information/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/return-exchange/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/22/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/23/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/24/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/25/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/26/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/27/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/?page=2</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/?page=3</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/?page=5</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/20/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/21/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/28/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/29/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/30/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/31/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/33/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/32/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/34/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/35/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/36/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/42/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/40/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/41/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/47/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/44/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/46/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/39/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/43/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/45/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/accounts/signup/?next=%2Fproducts%2Fwishlist%2F</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/accounts/signup/?next=%2Fcheckout%2Forder-history%2F</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/?page=1</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/?page=4</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/37/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/products/38/</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/accounts/login/?next=%2Fproducts%2Fwishlist%2F</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://cycleshop-b289044df6ec.herokuapp.com/accounts/login/?next=%2Fcheckout%2Forder-history%2F</loc>
+  <lastmod>2024-11-21T15:25:02+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>

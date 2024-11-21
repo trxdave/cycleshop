@@ -1,0 +1,28 @@
+# Allow all user agents to crawl the site
+User-agent: *
+
+# Allow individual product pages
+Allow: /products/
+
+# Block access to sensitive directories
+Disallow: /admin/
+Disallow: /checkout/
+Disallow: /bag/
+
+# Block access to login and registration pages
+Disallow: /accounts/login/
+Disallow: /accounts/signup/
+
+# Block search results pages (optional)
+Disallow: /search/
+
+# Allow CSS, JS, and image files for proper rendering
+Allow: /static/
+
+# Block sensitive files
+Disallow: /env.py
+Disallow: /.env
+Disallow: /README.md
+
+# Sitemap location
+Sitemap: https://cycleshop-b289044df6ec.herokuapp.com/sitemap.xml
