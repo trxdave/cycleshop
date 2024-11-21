@@ -330,6 +330,71 @@ I have implemented a custom newsletter sign-up feature within my Django applicat
 
 <hr>
 
+# Debugging the Checkout Process
+
+## Issuues Encountered
+
+1. Missing Required Elements in the DOM
+    - Error: One or more required elements are missing in the DOM.
+    - Cause: The id_stripe_public_key, id_client_secret, or card-errors elements were either missing or incorrectly defined in checkout.html.
+
+### Solution:
+
+- Ensured all required elements were present in checkout.html:
+    <span id="id_stripe_public_key" style="display: none;">{{ stripe_public_key }}</span>
+    <span id="id_client_secret" style="display: none;">{{ client_secret }}</span>
+    <div id="card-errors" role="alert"></div>
+- Verified the corresponding JavaScript (stripe_elements.js) was correctly fetching these elements.
+
+2. 404 Error on Checkout Success
+    - Error: GET /checkout/checkout_success/pi_3QNYAMG7B7DsBSyt12O5u9YE/ HTTP/1.1 404
+    - Cause: The Stripe PaymentIntent ID was being passed instead of the order_id.
+
+### Solution:
+
+- Adjusted the JavaScript to correctly retrieve the order_id from the backend and redirect appropriately:
+    window.location.href = `/checkout/checkout_success/${result.paymentIntent.metadata.order_id}/`;
+
+3. JavaScript Logic Fixes
+    - Error: TypeError: Cannot read properties of undefined (reading 'order_id)
+    - Cause: order_id was not correctly passed from the backend to the JavaScript.
+
+### Solution:
+
+- Ensured the order_id was included in the context of checkout.html:
+    <span id="id_order_id" style="display: none;">{{ order_id }}</span>
+
+- Updated JavaScript to retrieve the order_id:
+    const orderId = document.getElementById('id_order_id')?.textContent.trim();
+
+## Steps Taken
+
+1. ## Console Logging
+    - Added console.log statements in stripe_elements.js to verify DOM elements and debug payment flow.
+2. ## Server Logs
+    - Used Django server logs to identify backend issues like missing data in cache_checkout_data.
+3. ## Code Refactoring
+    - Separated concerns by moving models from forms.py to models.py
+    - Ensured frontend elements matched backend requirements.
+4. ## Database Migrations
+    - Ran makemigrations and migrate commands after modifying models to keep the database schema updated.
+
+## Outcome
+
+After implementing the above fixes, the checkout process:
+    - Successfully initializes Stripe elements and processes payments.
+    - Correctly redirects to the checkout success page with the appropriate order_id.
+    - Display order details, including product images and purchase information.
+    - Includes responsive and user-friendly layout adjustments.
+
+## Lessons Learned
+
+    - Simplified Data Models: Keeping the Order model as the sole source of the truth for order data reduced complexity.
+    - Dynamic Debugging: Thorough debugging of session-based shopping bag functionality ensured reliable order processing.
+    - Stripe API Integration: Learned how to securely handle payments and integrate metadata for tracking orders.
+
+<hr>
+
 # Wireframes
 
 - Wireframes were created to visualize the layout and design of the CycleShop.
@@ -426,6 +491,12 @@ I have implemented a custom newsletter sign-up feature within my Django applicat
 
 14. Customized Product Recommendations:
 - Leverage specifications like material and size to make more personalized recommendations based on user preferences.
+
+15. Save the Shopping Bag:
+- Add a feature to save the shopping bag for logged-in users.
+
+16. Error handling and logging:
+- Improve error handling and logging for better debugging.
 
 <hr>
 
