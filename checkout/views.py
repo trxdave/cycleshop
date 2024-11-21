@@ -134,6 +134,8 @@ def order_detail(request, order_id):
 def cache_checkout_data(request):
     try:
         data = json.loads(request.body)
+        logger.debug(f"Cache checkout data received: {data}")
+
         order_id = create_order(request)
         logger.info(f"Order ID {order_id} cached successfully.")
         return JsonResponse({'status': 'success', 'order_id': order_id})
