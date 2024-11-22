@@ -398,12 +398,11 @@ header {
     display: flex;
     justify-content: center;
     align-items: stretch;
-    margin-bottom: 30px;
 }
 
 .card .btn {
     margin-top: auto;
-    background-color: #42858C;
+    background-color: #11666f;
     color: #F0F0F0;
     width: 100%;
 }

@@ -11,17 +11,11 @@ from .forms import ProductForm, RatingForm
 def product_list(request):
     """ A view to return the list of all products """
     product_list = Product.objects.all().order_by('id')
-
-    # Set up paginator
-    product_list = Product.objects.all()
-    paginator = Product.objects.all()
     paginator = Paginator(product_list, 6)
     page_number = request.GET.get('page')
     products = paginator.get_page(page_number)
 
-    return render(
-        request, 'products/product_list.html', {'products': products}
-    )
+    return render(request, 'products/product_list.html', {'products': products})
 
 
 def product_category(request, category):

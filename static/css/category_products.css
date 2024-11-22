@@ -11,10 +11,6 @@
     overflow: hidden;
 }
 
-.product-card:hover {
-    transform: scale(1.03);
-}
-
 /* Image Container for Products */
 .product-image-container {
     width: 100%;
@@ -52,7 +48,7 @@
 }
 
 .btn-primary {
-    background-color: #42858C;
+    background-color: #11666f;
     border: none;
     padding: 10px 20px;
     font-size: 1rem;
