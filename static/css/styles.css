@@ -203,7 +203,7 @@ header {
     align-items: center;
     color: white;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.29);
 }
 
 .hero-overlay .intro h2 {
@@ -263,8 +263,7 @@ header {
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    background-color: rgba(4, 4, 4, 0.6);
-    padding: 10px 20px;
+
     border-radius: 5px;
     width: calc(100% - 20px);
     text-align: center;
@@ -441,7 +440,6 @@ header {
     color: #F0F0F0;
     text-decoration: none;
     border-radius: 5px;
-    width: 120px;
 }
 
 .btn:hover {
