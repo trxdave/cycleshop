@@ -388,9 +388,10 @@ After implementing the above fixes, the checkout process:<br>
     - Includes responsive and user-friendly layout adjustments.
 
 ## Lessons Learned
-    - Simplified Data Models: Keeping the Order model as the sole source of the truth for order data reduced complexity.
-    - Dynamic Debugging: Thorough debugging of session-based shopping bag functionality ensured reliable order processing.
-    - Stripe API Integration: Learned how to securely handle payments and integrate metadata for tracking orders.
+
+- Simplitied Data Models: Keeping the Order model as the sole source of the truth for order data reduced complexity.
+- Dynamic Debugging: Thorought debugging of session-based shopping bag functionality ensured reliable order processing.
+- Stripe API Integration: Learned how to securely handle payments and integrate metadata for tracking orders.
 
 <hr>
 
