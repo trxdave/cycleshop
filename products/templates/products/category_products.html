@@ -22,61 +22,59 @@
                 <!-- Product Image -->
                 <a href="{% url 'products:product_detail' product.id %}">
                     {% if product.image %}
-                        <div class="product-image-container">
-                            <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.name }}">
-                        </div>
+                    <div class="product-image-container">
+                        <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.name }}">
+                    </div>
                     {% else %}
-                        <div class="product-image-container">
-                            <img src="{% static 'images/default_product.jpg' %}" class="card-img-top img-fluid" alt="{{ product.name }}">
-                        </div>
+                    <div class="product-image-container">
+                        <img src="{% static 'images/default_product.jpg' %}" class="card-img-top img-fluid"
+                            alt="{{ product.name }}">
+                    </div>
                     {% endif %}
                 </a>
-    
+
                 <!-- Product Details -->
                 <div class="card-body text-center">
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p class="card-text"><strong>€{{ product.price }}</strong></p>
-                    <a href="{% url 'products:product_detail' product.id %}" class="btn btn-primary mt-auto">View Product</a>
+                    <a href="{% url 'products:product_detail' product.id %}" class="btn btn-primary mt-auto">View
+                        Product</a>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
 
-    <!-- Pagination Controls -->
-    <div class="pagination-container text-center mt-4">
-        <ul class="pagination justify-content-center">
-            <!-- Previous Page Link -->
-            {% if products.has_previous %}
-            <li class="page-item">
-                <a class="page-link" href="?page={{ products.previous_page_number }}" aria-label="Previous">
-                    <span aria-hidden="true">&laquo; Previous</span>
-                </a>
-            </li>
-            {% endif %}
-    
-            <!-- Page Numbers -->
+    <!-- Pagination Buttons -->
+    <div class="pagination d-flex justify-content-between align-items-center">
+        <!-- Previous Button -->
+        {% if products.has_previous %}
+        <a href="?page={{ products.previous_page_number }}" class="btn btn-outline-primary">Previous</a>
+        {% else %}
+        <span class="btn btn-outline-secondary disabled">Previous</span>
+        {% endif %}
+
+        <!-- Page Numbers -->
+        <div class="page-numbers mx-2">
             {% for num in products.paginator.page_range %}
-                {% if products.number == num %}
-                <li class="page-item active">
-                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
-                </li>
-                {% else %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
-                </li>
+            {% if products.number == num %}
+            <span class="btn btn-primary active">{{ num }}</span>
+            {% elif num > products.number|add:'-3' and num < products.number|add:'3' %} <a href="?page={{ num }}"
+                class="btn btn-outline-primary">{{ num }}</a>
+                {% elif num == 1 or num == products.paginator.num_pages %}
+                <a href="?page={{ num }}" class="btn btn-outline-primary">{{ num }}</a>
+                {% elif num == products.number|add:'-3' or num == products.number|add:'3' %}
+                <span class="dots">...</span>
                 {% endif %}
-            {% endfor %}
-    
-            <!-- Next Page Link -->
-            {% if products.has_next %}
-            <li class="page-item">
-                <a class="page-link" href="?page={{ products.next_page_number }}" aria-label="Next">
-                    <span aria-hidden="true">Next &raquo;</span>
-                </a>
-            </li>
-            {% endif %}
-        </ul>
+                {% endfor %}
+        </div>
+
+        <!-- Next Button -->
+        {% if products.has_next %}
+        <a href="?page={{ products.next_page_number }}" class="btn btn-outline-primary">Next</a>
+        {% else %}
+        <span class="btn btn-outline-secondary disabled">Next</span>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

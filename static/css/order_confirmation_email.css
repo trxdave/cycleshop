@@ -1,0 +1,94 @@
+.email-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #e3e3e3;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    color: #35393C;
+}
+
+/* Header Styling */
+.email-header h1 {
+    font-size: 2rem;
+    color: #397367;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.email-header p {
+    font-size: 1.2rem;
+    text-align: center;
+    color: #42858C;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #63CCCA;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Order Details and Delivery Info */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0 20px;
+}
+
+ul li {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: #555555;
+}
+
+ul li strong {
+    color: #35393C;
+}
+
+/* Link Styling */
+.text-primary {
+    color: #63CCCA;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.text-primary:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+.email-container p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.email-container p:last-child {
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: #35393C;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .email-container {
+        padding: 15px;
+    }
+
+    .email-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .section-title {
+        font-size: 1.3rem;
+    }
+
+    ul li {
+        font-size: 0.9rem;
+    }
+}

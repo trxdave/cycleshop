@@ -42,7 +42,7 @@ header {
 /* Navbar Brand */
 .navbar-brand {
     font-size: 1.5rem;
-    color: #63CCCA;
+    color: #11666f;
     text-transform: uppercase;
     font-weight: bold;
     display: flex;
@@ -71,7 +71,7 @@ header {
 /* Toggler Button */
 .navbar-toggler {
     border: none;
-    background-color: #42858C;
+    background-color: #11666f;
     color: #F0F0F0;
     padding: 8px 10px;
     border-radius: 5px;
@@ -150,7 +150,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #42858C;
+    background-color: #11666f;
     color: #F0F0F0;
     border: none;
     border-radius: 0.25rem;
@@ -164,7 +164,7 @@ header {
 
 /* Free Delivery Banner */
 .free-delivery-banner {
-    background-color: #42858C;
+    background-color: #11666f;
     color: white;
     font-size: 1.1rem;
     font-weight: bold;
@@ -221,7 +221,7 @@ header {
 .hero-overlay .intro .btn {
     font-size: 1.2rem;
     padding: 10px 30px;
-    background-color: #42858C;
+    background-color: #11666f;
     color: white;
     border: none;
     border-radius: 5px;
@@ -263,7 +263,7 @@ header {
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(4, 4, 4, 0.6);
     padding: 10px 20px;
     border-radius: 5px;
     width: calc(100% - 20px);
@@ -297,7 +297,6 @@ header {
     width: 100%;
     height: auto;
     object-fit: cover;
-    max-height: 250px;
 }
 
 .product-card-body {
@@ -418,7 +417,7 @@ header {
 .btn-profile {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #42858C;
+    background-color: #11666f;
     color: #F0F0F0;
     text-decoration: none;
     border-radius: 5px;
@@ -429,7 +428,7 @@ header {
 .btn-cart {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #42858C;
+    background-color: #11666f;
     color: #F0F0F0;
     text-decoration: none;
     border-radius: 5px;
@@ -440,7 +439,7 @@ header {
 .btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #42858C;
+    background-color: #11666f;
     color: #F0F0F0;
     text-decoration: none;
     border-radius: 5px;
@@ -480,7 +479,7 @@ header {
     align-items: center;
     justify-content: center;
     padding: 12px 16px;
-    background-color: #42858C;
+    background-color: #11666f;
     color: #F0F0F0;
     text-decoration: none;
     border-radius: 5px;
@@ -656,7 +655,7 @@ header {
 }
 
 .footer input[type="email"] {
-    background-color: #5DA399;
+    background-color: #11666f;
     color: #F0F0F0;
     border: none;
     padding: 10px;
@@ -683,6 +682,22 @@ header {
 
 .footer hr {
     border-top: 1px solid #5DA399;
+}
+
+/* Footer Privacy Policy & Sitemap */
+.footer-link {
+    text-decoration: none;
+    color: #63CCCA;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+    color: #5DA399;
+}
+
+.footer-divider {
+    color: #63CCCA;
+    padding: 0 5px;
 }
 
 /* Social Media Icons Styling */
