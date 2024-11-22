@@ -381,14 +381,13 @@ I have implemented a custom newsletter sign-up feature within my Django applicat
 
 ## Outcome
 
-After implementing the above fixes, the checkout process:
-    - Successfully initializes Stripe elements and processes payments.
-    - Correctly redirects to the checkout success page with the appropriate order_id.
-    - Display order details, including product images and purchase information.
+After implementing the above fixes, the checkout process:<br>
+    - Successfully initializes Stripe elements and processes payments.<br>
+    - Correctly redirects to the checkout success page with the appropriate order_id.<br>
+    - Display order details, including product images and purchase information.<br>
     - Includes responsive and user-friendly layout adjustments.
 
 ## Lessons Learned
-
     - Simplified Data Models: Keeping the Order model as the sole source of the truth for order data reduced complexity.
     - Dynamic Debugging: Thorough debugging of session-based shopping bag functionality ensured reliable order processing.
     - Stripe API Integration: Learned how to securely handle payments and integrate metadata for tracking orders.
