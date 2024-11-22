@@ -338,7 +338,7 @@ header {
 .btn-add {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #42858C;
+    background-color: #11666f;
     color: #F0F0F0;
     text-decoration: none;
     border-radius: 5px;
@@ -437,7 +437,6 @@ header {
 /* Buttons */
 .btn {
     display: inline-block;
-    padding: 10px 20px;
     background-color: #11666f;
     color: #F0F0F0;
     text-decoration: none;

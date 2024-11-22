@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Product, Category, Wishlist
 from bag.models import Order
 from .forms import ProductForm, RatingForm
@@ -11,32 +11,43 @@ from .forms import ProductForm, RatingForm
 def product_list(request):
     """ A view to return the list of all products """
     product_list = Product.objects.all().order_by('id')
+
+    # Set up paginator
     paginator = Paginator(product_list, 6)
     page_number = request.GET.get('page')
     products = paginator.get_page(page_number)
 
-    return render(request, 'products/product_list.html', {'products': products})
+    return render(
+        request, 'products/product_list.html', {'products': products}
+    )
 
 
 def product_category(request, category):
-    """A view to return products filtered by category with pagination."""
-    # Get the category object by slug
+    """
+    A view to return products filtered by category with pagination.
+    """
+    # Get the category object
     category_obj = get_object_or_404(Category, slug=category)
-    
-    # Retrieve products for the selected category, ordered by ID
-    products = Product.objects.filter(category=category_obj).order_by('id')
-    
+
+    # Retrieve products for the selected category and explicitly order by 'id'
+    products_queryset = Product.objects.filter(category=category_obj).order_by('id')
+
     # Set up the paginator with 6 products per page
-    paginator = Paginator(products, 6)
+    paginator = Paginator(products_queryset, 6)
     page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    
-    # Pass the products and category name to the template
+
+    try:
+        products = paginator.get_page(page_number)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+
+    # Pass the paginated products and category name to the template
     return render(request, 'products/category_products.html', {
-        'products': page_obj,
+        'products': products,
         'category_name': category_obj.name,
     })
-
 
 def product_detail(request, product_id):
     """ A view to return the details of a single product """
