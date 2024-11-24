@@ -41,7 +41,22 @@ header {
 
 /* Navbar Brand */
 .navbar-brand {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    color: #11666f;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img {
+    margin-right: 10px;
+    max-height: 40px;
+}
+
+/* Navbar Brand */
+.navbar-brand {
+    font-size: 1.8rem;
     color: #11666f;
     text-transform: uppercase;
     font-weight: bold;
@@ -66,6 +81,13 @@ header {
 
 .nav-link:hover {
     color: #63CCCA !important;
+}
+
+@media (max-width: 992px) {
+    /* Adjust navbar links for tablets */
+    .navbar-nav .nav-item {
+        margin-bottom: 10px;
+    }
 }
 
 /* Toggler Button */
@@ -162,6 +184,19 @@ header {
     color: #35393C;
 }
 
+/* Visually Hidden */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    white-space: nowrap;
+}
+
 /* Free Delivery Banner */
 .free-delivery-banner {
     background-color: #11666f;
@@ -255,6 +290,7 @@ header {
     object-fit: cover;
     border-radius: 5px;
     transition: transform 0.3s ease;
+    opacity: 0.7;
 }
 
 .category-text {
@@ -507,13 +543,23 @@ header {
 
 /* FAQ Page */
 
+.faq-section {
+    margin-top: 20px;
+}
+
+.faq-section h1 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: #35393C;
+}
+
 .accordion-item {
     border: none;
     border-bottom: 1px solid #ccc;
 }
 
 .accordion-header button {
-    background-color: #397367;
+    background-color: #11666f;
     color: white;
     font-size: 1.2rem;
     font-weight: bold;
@@ -522,12 +568,15 @@ header {
     transition: background-color 0.3s ease;
 }
 
-.accordion-header button:hover {
-    background-color: #63CCCA;
+.accordion-button:not(.collapsed) {
+    background-color: #11666f;
+    color: #ffffff;
+    box-shadow: none;
 }
 
 .accordion-button::after {
     font-size: 1.3rem;
+    color: #fff;
 }
 
 .accordion-body {
@@ -539,18 +588,31 @@ header {
     transition: background-color 0.3s ease;
 }
 
-.accordion-button:not(.collapsed) {
-    background-color: #5DA399;
-    color: #ffffff;
-    box-shadow: none;
+.accordion-body:hover {
+    background-color: #e8f5e9;
 }
 
 .accordion-collapse {
     transition: all 0.3s ease;
 }
 
-.accordion-button::after {
-    color: #fff;
+/* Contact Us Link */
+.contact-link {
+    color: #63CCCA;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-link:hover,
+.contact-link:focus {
+    color: #5DA399;
+    text-decoration: underline;
+    outline: none;
+}
+
+.contact-link:active {
+    color: #42858C;
 }
 
 /* bag */
@@ -625,88 +687,105 @@ header {
 
 /* Footer */
 .footer {
-    background-color: #35393C;
-    color: #F0F0F0;
+    background-color: #35393C; /* Dark background for high contrast */
+    color: #F0F0F0; /* Light text for readability */
+    padding: 40px 20px; /* Adds spacing for better layout */
 }
 
-.footer h5 {
-    color: #63CCCA;
+.footer h2,
+.footer h3 {
+    color: #42858C; /* Highlights section headers */
+    font-size: 1.2rem;
+    margin-bottom: 20px; /* Adds space below headings */
+    text-transform: uppercase; /* Ensures consistency across headers */
 }
 
 .footer ul {
+    list-style: none; /* Removes default bullets */
     padding: 0;
 }
 
 .footer ul li {
-    margin-bottom: 10px;
+    margin-bottom: 10px; /* Spacing between list items */
 }
 
 .footer ul li a {
-    color: #F0F0F0;
-    text-decoration: none;
+    color: #F0F0F0; /* Matches footer text color */
+    text-decoration: none; /* Removes underline for clean look */
+    transition: color 0.3s ease; /* Smooth hover effect */
 }
 
 .footer ul li a:hover {
-    color: #63CCCA;
+    color: #63CCCA; /* Brighter teal for hover */
 }
 
 .footer input[type="email"] {
-    background-color: #11666f;
-    color: #F0F0F0;
-    border: none;
-    padding: 10px;
-    margin-bottom: 10px;
+    background-color: #11666f; /* Dark teal for input field */
+    color: #F0F0F0; /* Light text for contrast */
+    border: none; /* Removes default border */
+    border-radius: 5px; /* Rounded corners for aesthetics */
+    padding: 10px; /* Adds inner spacing */
+    margin-bottom: 10px; /* Space below input */
+    width: 100%; /* Ensures full-width for responsive design */
+    font-size: 1rem; /* Matches overall text size */
 }
 
 .footer input[type="email"]::placeholder {
-    color: #F0F0F0;
+    color: #F0F0F0; /* Placeholder matches text for consistency */
+    opacity: 0.8; /* Slightly dimmed placeholder */
 }
 
 .footer button[type="submit"] {
-    background-color: #63CCCA;
-    border: none;
-    padding: 10px;
-    color: #35393C;
-    text-transform: uppercase;
-    font-weight: bold;
+    background-color: #63CCCA; /* Matches hover link color */
+    border: none; /* Removes border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Adds spacing */
+    color: #35393C; /* Contrasts with button background */
+    text-transform: uppercase; /* Consistent styling */
+    font-weight: bold; /* Makes text stand out */
+    width: 100%; /* Full-width button for responsiveness */
+    cursor: pointer; /* Indicates interactivity */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover */
 }
 
 .footer button[type="submit"]:hover {
-    background-color: #42858C;
-    color: #F0F0F0;
+    background-color: #42858C; /* Darker teal for hover */
+    color: #F0F0F0; /* Light text for contrast */
 }
 
 .footer hr {
-    border-top: 1px solid #5DA399;
+    border-top: 1px solid #5DA399; /* Subtle line separator */
+    margin: 20px 0; /* Adds spacing */
 }
 
-/* Footer Privacy Policy & Sitemap */
+/* Footer Privacy Policy & Sitemap Links */
 .footer-link {
-    text-decoration: none;
-    color: #63CCCA;
+    text-decoration: none; /* Removes underline for clean look */
+    color: #63CCCA; /* Matches hover link color */
+    transition: color 0.3s ease; /* Smooth hover */
 }
 
 .footer-link:hover {
-    text-decoration: underline;
-    color: #5DA399;
+    text-decoration: underline; /* Adds underline for hover */
+    color: #5DA399; /* Subtle contrast change */
 }
 
 .footer-divider {
-    color: #63CCCA;
-    padding: 0 5px;
+    color: #63CCCA; /* Matches link color */
+    padding: 0 5px; /* Spacing between links */
 }
 
 /* Social Media Icons Styling */
 .footer .social-icons a {
-    font-size: 1.8rem;
-    margin-right: 15px;
-    color: #f0f0f0;
-    transition: color 0.3s;
-    text-decoration: none;
+    font-size: 1.8rem; /* Larger icons for visibility */
+    margin-right: 15px; /* Spacing between icons */
+    color: #F0F0F0; /* Matches footer text color */
+    transition: color 0.3s ease; /* Smooth hover effect */
+    text-decoration: none; /* Removes default underline */
 }
 
-.social-icons a:hover {
-    color: #63CCCA;
+.footer .social-icons a:hover {
+    color: #63CCCA; /* Matches link hover color */
 }
 
 /* For small devices, adjust padding/margins */
@@ -831,7 +910,7 @@ header {
     }
 
     .navbar-brand {
-        font-size: 1.2rem;
+        font-size: 1.8rem;
         justify-content: center;
         margin-bottom: 10px;
     }

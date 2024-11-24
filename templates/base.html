@@ -106,14 +106,13 @@
             <div class="row">
                 <!-- Column 1: Logo and Description -->
                 <div class="col-md-3">
-                    <h5 class="fw-bold text-uppercase">CycleShop</h5>
-                    <p>Your one-stop shop for all cycling needs. Quality bikes, accessories, and top-tier customer
-                        support.</p>
+                    <h2 class="fw-bold text-uppercase">CycleShop</h2>
+                    <p>Your one-stop shop for all cycling needs. Quality bikes, accessories, and top-tier customer support.</p>
                 </div>
-
+    
                 <!-- Column 2: My Account Links -->
                 <div class="col-md-3">
-                    <h5 class="fw-bold text-uppercase">My Account</h5>
+                    <h3 class="fw-bold text-uppercase">My Account</h3>
                     <ul class="list-unstyled">
                         <li><a href="{% url 'account_login' %}" class="text-light">Login</a></li>
                         <li><a href="{% url 'account_signup' %}" class="text-light">Register</a></li>
@@ -121,23 +120,21 @@
                         <li><a href="{% url 'products:wishlist' %}" class="text-light">Wishlist</a></li>
                     </ul>
                 </div>
-
+    
                 <!-- Column 3: Customer Services Links -->
                 <div class="col-md-3">
-                    <h5 class="fw-bold text-uppercase">Customer Services</h5>
+                    <h3 class="fw-bold text-uppercase">Customer Services</h3>
                     <ul class="list-unstyled">
                         <li><a href="{% url 'contact' %}" class="text-light">Contact Us</a></li>
-                        <li><a href="{% url 'products:shipping_information' %}" class="text-light">Shipping
-                                Information</a></li>
-                        <li><a href="{% url 'products:return_exchange' %}" class="text-light">Return & Exchanges</a>
-                        </li>
+                        <li><a href="{% url 'products:shipping_information' %}" class="text-light">Shipping Information</a></li>
+                        <li><a href="{% url 'products:return_exchange' %}" class="text-light">Return & Exchanges</a></li>
                         <li><a href="{% url 'products:faq' %}" class="text-light">FAQs</a></li>
                     </ul>
                 </div>
-
+    
                 <!-- Column 4: Social Media Links and Newsletter -->
                 <div class="col-md-3">
-                    <h5 class="fw-bold text-uppercase">Follow Us</h5>
+                    <h3 class="fw-bold text-uppercase">Follow Us</h3>
                     <div class="mb-3 social-icons">
                         <a href="https://www.facebook.com/profile.php?id=61568493575482" target="_blank"
                             rel="nofollow noreferrer" class="text-light me-3">
@@ -151,19 +148,18 @@
                             <i class="fa-brands fa-x-twitter fa-1x"></i>
                         </a>
                     </div>
-
-                    <h5 class="fw-bold text-uppercase">Subscribe to Our Newsletter</h5>
+    
+                    <h3 class="fw-bold text-uppercase">Subscribe to Our Newsletter</h3>
                     <form action="{% url 'subscribe_newsletter' %}" method="post">
                         {% csrf_token %}
                         <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Enter your email" name="email"
-                                required>
+                            <input type="email" class="form-control" placeholder="Enter your email" name="email" required>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Subscribe</button>
                     </form>
                 </div>
             </div>
-
+    
             <hr class="my-4">
             <div class="text-center">
                 <p>2024 CycleShop</p>
@@ -174,6 +170,7 @@
                     <a href="/sitemap.xml" class="text-light footer-link">Sitemap</a>
                 </div>
             </div>
+        </div>
     </footer>
 </body>
 
