@@ -45,7 +45,7 @@
                 {% endif %}
             </form>
             {% else %}
-            <p>You need to <a href="{% url 'account_login' %}">log in</a> to add this product to your wishlist.</p>
+            <p>You need to <a href="{% url 'account_login' %}" class="login-link">Log in</a> to add this product to your wishlist.</p>
             {% endif %}
 
             <hr>
@@ -59,7 +59,7 @@
                 <button type="submit" class="btn-rating">Submit Rating</button>
             </form>
             {% else %}
-            <p>You need to <a href="{% url 'account_login' %}">log in</a> to rate this product.</p>
+            <p>You need to <a href="{% url 'account_login' %}" class="login-link">Log in</a> to rate this product.</p>
             {% endif %}
 
             <hr>

@@ -447,6 +447,19 @@ header {
     color: #35393C;
 }
 
+.login-link {
+    color: #63CCCA;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.login-link:hover,
+.login-link:focus {
+    color: #11666F;
+    text-decoration: underline;
+}
+
 /* Profile */
 .btn-profile {
     display: inline-block;

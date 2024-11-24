@@ -107,70 +107,85 @@
                 <!-- Column 1: Logo and Description -->
                 <div class="col-md-3">
                     <h2 class="fw-bold text-uppercase">CycleShop</h2>
-                    <p>Your one-stop shop for all cycling needs. Quality bikes, accessories, and top-tier customer support.</p>
+                    <p>Your one-stop shop for all cycling needs. Quality bikes, accessories, and top-tier customer
+                        support.</p>
                 </div>
-    
+
                 <!-- Column 2: My Account Links -->
                 <div class="col-md-3">
                     <h3 class="fw-bold text-uppercase">My Account</h3>
                     <ul class="list-unstyled">
-                        <li><a href="{% url 'account_login' %}" class="text-light">Login</a></li>
-                        <li><a href="{% url 'account_signup' %}" class="text-light">Register</a></li>
-                        <li><a href="{% url 'checkout:order_history' %}" class="text-light">My Orders</a></li>
-                        <li><a href="{% url 'products:wishlist' %}" class="text-light">Wishlist</a></li>
+                        <li><a href="{% url 'account_login' %}" class="text-light"
+                                aria-label="Login to your account">Login</a></li>
+                        <li><a href="{% url 'account_signup' %}" class="text-light"
+                                aria-label="Register a new account">Register</a></li>
+                        <li><a href="{% url 'checkout:order_history' %}" class="text-light"
+                                aria-label="View your order history">My Orders</a></li>
+                        <li><a href="{% url 'products:wishlist' %}" class="text-light"
+                                aria-label="View your wishlist">Wishlist</a></li>
                     </ul>
                 </div>
-    
+
                 <!-- Column 3: Customer Services Links -->
                 <div class="col-md-3">
                     <h3 class="fw-bold text-uppercase">Customer Services</h3>
                     <ul class="list-unstyled">
-                        <li><a href="{% url 'contact' %}" class="text-light">Contact Us</a></li>
-                        <li><a href="{% url 'products:shipping_information' %}" class="text-light">Shipping Information</a></li>
-                        <li><a href="{% url 'products:return_exchange' %}" class="text-light">Return & Exchanges</a></li>
-                        <li><a href="{% url 'products:faq' %}" class="text-light">FAQs</a></li>
+                        <li><a href="{% url 'contact' %}" class="text-light"
+                                aria-label="Contact CycleShop customer service">Contact Us</a></li>
+                        <li><a href="{% url 'products:shipping_information' %}" class="text-light"
+                                aria-label="Learn about shipping information">Shipping Information</a></li>
+                        <li><a href="{% url 'products:return_exchange' %}" class="text-light"
+                                aria-label="View return and exchange policies">Return & Exchanges</a></li>
+                        <li><a href="{% url 'products:faq' %}" class="text-light"
+                                aria-label="Read frequently asked questions">FAQs</a></li>
                     </ul>
                 </div>
-    
+
                 <!-- Column 4: Social Media Links and Newsletter -->
                 <div class="col-md-3">
                     <h3 class="fw-bold text-uppercase">Follow Us</h3>
                     <div class="mb-3 social-icons">
                         <a href="https://www.facebook.com/profile.php?id=61568493575482" target="_blank"
-                            rel="nofollow noreferrer" class="text-light me-3">
-                            <i class="fa-brands fa-facebook fa-1x"></i>
+                            rel="nofollow noreferrer" class="text-light me-3" aria-label="Visit CycleShop on Facebook">
+                            <i class="fa-brands fa-facebook fa-1x" aria-hidden="true"></i>
+                            <span class="visually-hidden">Facebook</span>
                         </a>
                         <a href="https://www.instagram.com" target="_blank" rel="nofollow noreferrer"
-                            class="text-light me-3">
-                            <i class="fa-brands fa-instagram fa-1x"></i>
+                            class="text-light me-3" aria-label="Visit CycleShop on Instagram">
+                            <i class="fa-brands fa-instagram fa-1x" aria-hidden="true"></i>
+                            <span class="visually-hidden">Instagram</span>
                         </a>
-                        <a href="https://www.twitter.com" target="_blank" rel="nofollow noreferrer" class="text-light">
-                            <i class="fa-brands fa-x-twitter fa-1x"></i>
+                        <a href="https://www.twitter.com" target="_blank" rel="nofollow noreferrer" class="text-light"
+                            aria-label="Visit CycleShop on Twitter">
+                            <i class="fa-brands fa-x-twitter fa-1x" aria-hidden="true"></i>
+                            <span class="visually-hidden">Twitter</span>
                         </a>
                     </div>
-    
+
                     <h3 class="fw-bold text-uppercase">Subscribe to Our Newsletter</h3>
                     <form action="{% url 'subscribe_newsletter' %}" method="post">
                         {% csrf_token %}
                         <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Enter your email" name="email" required>
+                            <input type="email" class="form-control" placeholder="Enter your email" name="email"
+                                aria-label="Enter your email to subscribe" required>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+                        <button type="submit" class="btn btn-primary w-100"
+                            aria-label="Subscribe to the CycleShop newsletter">Subscribe</button>
                     </form>
                 </div>
             </div>
-    
+
             <hr class="my-4">
             <div class="text-center">
                 <p>2024 CycleShop</p>
                 <div class="col-12">
                     <a href="https://www.termsfeed.com/live/94496300-f704-4d98-bf8e-74e606c14b7b" target="_blank"
-                        class="text-light footer-link">Privacy Policy</a>
+                        class="text-light footer-link" aria-label="Read the CycleShop privacy policy">Privacy Policy</a>
                     <span class="footer-divider"> | </span>
-                    <a href="/sitemap.xml" class="text-light footer-link">Sitemap</a>
+                    <a href="/sitemap.xml" class="text-light footer-link"
+                        aria-label="View the CycleShop sitemap">Sitemap</a>
                 </div>
             </div>
-        </div>
     </footer>
 </body>
 
