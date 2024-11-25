@@ -22,7 +22,10 @@ def calculate_delivery(total):
 
 def calculate_totals(bag):
     """Calculate the total, delivery, and grand total for the bag."""
-    total = sum(item['price'] * item['quantity'] for item in bag.values())
+    total = sum(
+        item['price'] * item['quantity']
+        for item in bag.values()
+    )
     delivery = calculate_delivery(total)
     grand_total = total + delivery
     return total, delivery, grand_total
@@ -57,9 +60,15 @@ def view_bag(request):
 
     context = {
         'bag': bag_items,
-        'total': number_format(total, decimal_pos=2, use_l10n=True),
-        'delivery': number_format(delivery, decimal_pos=2, use_l10n=True),
-        'grand_total': number_format(grand_total, decimal_pos=2, use_l10n=True),
+        'total': number_format(
+            total, decimal_pos=2, use_l10n=True
+        ),
+        'delivery': number_format(
+            delivery, decimal_pos=2, use_l10n=True
+        ),
+        'grand_total': number_format(
+            grand_total, decimal_pos=2, use_l10n=True
+        ),
         'bag_items_count': bag_items_count,
     }
     return render(request, 'bag/bag.html', context)
@@ -73,27 +82,19 @@ def add_to_bag(request, product_id):
 
     if str(product_id) in bag:
         bag[str(product_id)]['quantity'] += quantity
-        messages.info(request, f"Updated {product.name} quantity in your bag.")
+        messages.info(
+            request,
+            f"Updated {product.name} quantity in your bag."
+        )
     else:
-        bag[str(product_id)] = {'price': float(product.price), 'quantity': quantity}
-        messages.success(request, f"Added {product.name} to your bag.")
-
-    save_bag(request, bag)
-    return redirect('bag:view_bag')
-
-
-def update_quantity(request, product_id):
-    """View to update the quantity of a specific item in the bag."""
-    quantity = int(request.POST.get('quantity'))
-    bag = get_bag(request)
-
-    if str(product_id) in bag:
-        if quantity > 0:
-            bag[str(product_id)]['quantity'] = quantity
-            messages.info(request, "Quantity updated.")
-        else:
-            del bag[str(product_id)]
-            messages.info(request, f"Removed {product_id} from your bag.")
+        bag[str(product_id)] = {
+            'price': float(product.price),
+            'quantity': quantity,
+        }
+        messages.success(
+            request,
+            f"Added {product.name} to your bag."
+        )
 
     save_bag(request, bag)
     return redirect('bag:view_bag')
@@ -106,9 +107,15 @@ def remove_from_bag(request, product_id):
 
     if str(product_id) in bag:
         del bag[str(product_id)]
-        messages.success(request, f"{product.name} removed from your bag.")
+        messages.success(
+            request,
+            f"{product.name} removed from your bag."
+        )
     else:
-        messages.warning(request, "Product not found in your bag.")
+        messages.warning(
+            request,
+            "Product not found in your bag."
+        )
 
     save_bag(request, bag)
     return redirect('bag:view_bag')
@@ -147,7 +154,10 @@ def checkout(request):
     """View to handle the checkout process."""
     bag = get_bag(request)
     if not bag:
-        messages.error(request, "Your bag is empty. Add items before proceeding to checkout.")
+        messages.error(
+            request,
+            "Your bag is empty. Add items before proceeding to checkout."
+        )
         return redirect('bag:view_bag')
 
     total, delivery, grand_total = calculate_totals(bag)
@@ -166,9 +176,13 @@ def checkout(request):
             'client_secret': intent.client_secret,
             'total': number_format(total, decimal_pos=2, use_l10n=True),
             'delivery': number_format(delivery, decimal_pos=2, use_l10n=True),
-            'grand_total': number_format(grand_total, decimal_pos=2, use_l10n=True),
+            'grand_total': number_format
+            (grand_total, decimal_pos=2, use_l10n=True),
         }
         return render(request, 'checkout/checkout.html', context)
     except Exception as e:
-        messages.error(request, "An error occurred while processing your payment. Please try again.")
+        messages.error(
+            request,
+            "An error occurred while processing your payment.Please try again."
+        )
         return redirect('bag:view_bag')

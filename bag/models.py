@@ -3,14 +3,15 @@ from products.models import Product
 from checkout.models import Order
 from django.contrib.auth.models import User
 
+
 class Order(models.Model):
-    """ Model representing an order """
+    """Model representing an order."""
     id = models.BigAutoField(primary_key=True)
     user = models.ForeignKey(
-        User, 
-        on_delete=models.SET_NULL, 
-        null=True, 
-        blank=True, 
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
         related_name='bag_orders'
     )
     full_name = models.CharField(max_length=100)
@@ -30,8 +31,14 @@ class Order(models.Model):
     def get_total_order_price(self):
         return sum(item.get_total_price() for item in self.bag_items.all())
 
+
 class BagItem(models.Model):
-    order = models.ForeignKey(Order, related_name='bag_items', on_delete=models.CASCADE)
+    """Model representing an item in the bag."""
+    order = models.ForeignKey(
+        Order,
+        related_name='bag_items',
+        on_delete=models.CASCADE
+    )
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField()
 

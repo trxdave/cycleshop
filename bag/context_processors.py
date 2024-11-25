@@ -1,8 +1,6 @@
 from decimal import Decimal
 from django.conf import settings
 
-from decimal import Decimal
-from django.conf import settings
 
 def bag_contents(request):
     """
