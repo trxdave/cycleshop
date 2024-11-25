@@ -30,7 +30,7 @@
 
                 <!-- Product Details -->
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">{{ product.name }}</h5>
+                    <h2 class="card-title">{{ product.name }}</h2>
                     <p class="card-text"><strong>Price: €{{ product.price }}</strong></p>
 
                     <!-- Button to View More Details or Add to Cart -->
@@ -43,33 +43,33 @@
     </div>
 
     <!-- Pagination Buttons -->
-    <div class="pagination d-flex justify-content-center align-items-center mt-4">
+    <nav class="pagination d-flex justify-content-center align-items-center mt-4" aria-label="Products Pagination">
         <!-- Previous Button -->
         {% if products.has_previous %}
-        <a href="?page={{ products.previous_page_number }}" class="btn btn-outline-primary me-2">Previous</a>
+        <a href="?page={{ products.previous_page_number }}" class="btn btn-outline-primary me-2" aria-label="Previous page">Previous</a>
         {% else %}
-        <span class="btn btn-outline-secondary disabled me-2">Previous</span>
+        <span class="btn btn-outline-secondary disabled me-2" aria-hidden="true">Previous</span>
         {% endif %}
     
         <!-- Page Numbers -->
         {% for num in products.paginator.page_range %}
             {% if num == products.number %}
-            <span class="btn btn-primary active mx-1">{{ num }}</span>
+            <span class="btn btn-primary active mx-1" aria-current="page">{{ num }}</span>
             {% elif num > products.number|add:'-3' and num < products.number|add:'3' %}
-            <a href="?page={{ num }}" class="btn btn-outline-primary mx-1">{{ num }}</a>
+            <a href="?page={{ num }}" class="btn btn-outline-primary mx-1" aria-label="Go to page {{ num }}">{{ num }}</a>
             {% elif num == 1 or num == products.paginator.num_pages %}
-            <a href="?page={{ num }}" class="btn btn-outline-primary mx-1">{{ num }}</a>
+            <a href="?page={{ num }}" class="btn btn-outline-primary mx-1" aria-label="Go to page {{ num }}">{{ num }}</a>
             {% elif num == products.number|add:'-3' or num == products.number|add:'3' %}
-            <span class="dots mx-1">...</span>
+            <span class="dots mx-1" aria-hidden="true">...</span>
             {% endif %}
         {% endfor %}
     
         <!-- Next Button -->
         {% if products.has_next %}
-        <a href="?page={{ products.next_page_number }}" class="btn btn-outline-primary ms-2">Next</a>
+        <a href="?page={{ products.next_page_number }}" class="btn btn-outline-primary ms-2" aria-label="Next page">Next</a>
         {% else %}
-        <span class="btn btn-outline-secondary disabled ms-2">Next</span>
+        <span class="btn btn-outline-secondary disabled ms-2" aria-hidden="true">Next</span>
         {% endif %}
-    </div>
+    </nav>
 </div>
 {% endblock %}
