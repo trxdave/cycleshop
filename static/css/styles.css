@@ -369,6 +369,56 @@ header {
     color: #35393C;
 }
 
+.improved-contrast {
+    color: #F0F0F0;
+    background-color: #42858C;
+    border-color: #5DA399;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover State */
+.improved-contrast:hover {
+    background-color: #63CCCA;
+    color: #35393C;
+}
+
+/* Focus State */
+.improved-contrast:focus {
+    outline: 2px solid #5DA399;
+    outline-offset: 2px;
+}
+
+/* Disabled Button Styles */
+.improved-contrast.disabled {
+    color: #A0A0A0;
+    background-color: transparent;
+    border-color: #A0A0A0;
+    opacity: 1;
+    cursor: not-allowed;
+}
+
+/* Active State */
+.improved-contrast:active {
+    background-color: #11666f;
+    color: #F0F0F0;
+}
+
+/* Disabled Button Styles */
+span.btn.btn-outline-secondary.disabled.improved-contrast {
+    color: #F0F0F0; /* Light text for contrast */
+    background-color: transparent; /* Blend with page background */
+    border-color: #5DA399; /* High-contrast border */
+    cursor: not-allowed; /* Indicate disabled state */
+    opacity: 1; /* Ensure full visibility */
+}
+
+/* Focused or Active States for Consistency */
+span.btn.btn-outline-secondary.disabled.improved-contrast:focus {
+    outline: 2px solid #5DA399; /* High-contrast focus outline */
+    outline-offset: 2px;
+}
+
+
 /* Product Details */
 .btn-add {
     display: inline-block;

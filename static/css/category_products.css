@@ -37,11 +37,6 @@
     justify-content: space-between;
 }
 
-.card-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
 .card-text {
     margin-bottom: 15px;
     font-size: 1rem;

@@ -46,9 +46,9 @@
     <nav class="pagination d-flex justify-content-center align-items-center mt-4" aria-label="Products Pagination">
         <!-- Previous Button -->
         {% if products.has_previous %}
-        <a href="?page={{ products.previous_page_number }}" class="btn btn-outline-primary me-2" aria-label="Previous page">Previous</a>
+        <a href="?page={{ products.previous_page_number }}" class="btn btn-outline-primary me-2 improved-contrast" aria-label="Previous page">Previous</a>
         {% else %}
-        <span class="btn btn-outline-secondary disabled me-2" aria-hidden="true">Previous</span>
+        <span class="btn btn-outline-secondary disabled me-2 improved-contrast" aria-hidden="true">Previous</span>
         {% endif %}
     
         <!-- Page Numbers -->
