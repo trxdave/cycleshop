@@ -9,16 +9,17 @@ from .forms import ProductForm, RatingForm
 
 
 def product_list(request):
-    """ A view to return the list of all products """
+    """A view to return the list of all products."""
     product_list = Product.objects.all().order_by('id')
 
-    # Set up paginator
     paginator = Paginator(product_list, 6)
     page_number = request.GET.get('page')
     products = paginator.get_page(page_number)
 
     return render(
-        request, 'products/product_list.html', {'products': products}
+        request,
+        'products/product_list.html',
+        {'products': products}
     )
 
 
@@ -26,13 +27,11 @@ def product_category(request, category):
     """
     A view to return products filtered by category with pagination.
     """
-    # Get the category object
     category_obj = get_object_or_404(Category, slug=category)
+    products_queryset = Product.objects.filter(
+        category=category_obj
+    ).order_by('id')
 
-    # Retrieve products for the selected category and explicitly order by 'id'
-    products_queryset = Product.objects.filter(category=category_obj).order_by('id')
-
-    # Set up the paginator with 6 products per page
     paginator = Paginator(products_queryset, 6)
     page_number = request.GET.get('page')
 
@@ -43,32 +42,34 @@ def product_category(request, category):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
 
-    # Pass the paginated products and category name to the template
-    return render(request, 'products/category_products.html', {
-        'products': products,
-        'category_name': category_obj.name,
-    })
+    return render(
+        request,
+        'products/category_products.html',
+        {'products': products, 'category_name': category_obj.name}
+    )
+
 
 def product_detail(request, product_id):
-    """ A view to return the details of a single product """
+    """A view to return the details of a single product."""
     product = get_object_or_404(Product, id=product_id)
 
     if request.method == 'POST':
         form = RatingForm(request.POST)
         if form.is_valid():
             rating = form.cleaned_data['rating']
-            # Update the product rating
             product.rating = rating
             product.save()
-            messages.success(request, 'Your rating has been successfully submitted!')
+            messages.success(
+                request, 'Your rating has been successfully submitted!'
+            )
             return redirect('products:product_detail', product_id=product.id)
     else:
         form = RatingForm()
 
-    # Query for related or similar products (adjust this query as needed)
-    related_products = Product.objects.filter(category=product.category).exclude(id=product.id)
+    related_products = Product.objects.filter(
+        category=product.category
+    ).exclude(id=product.id)
 
-    # Set up pagination for related products
     paginator = Paginator(related_products, 6)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -83,25 +84,27 @@ def product_detail(request, product_id):
 
 @login_required
 def manage_products(request):
-    """ A view to manage all products with pagination """
+    """A view to manage all products with pagination."""
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owners can access this page.')
+        messages.error(
+            request, 'Sorry, only store owners can access this page.'
+        )
         return redirect('home')
 
-    # Define products_list with ordering applied
     products_list = Product.objects.all().order_by('name')
-    
-    # Setup pagination with 10 products per page
+
     paginator = Paginator(products_list, 10)
     page_number = request.GET.get('page')
     products = paginator.get_page(page_number)
 
-    return render(request, 'products/manage_products.html', {'products': products})
+    return render(
+        request, 'products/manage_products.html', {'products': products}
+    )
 
 
 @login_required
 def add_product(request):
-    """ A view to add a new product, accessible only to superusers """
+    """A view to add a new product, accessible only to superusers."""
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
@@ -132,7 +135,7 @@ def add_product(request):
 
 @login_required
 def edit_product(request, product_id):
-    """ A view to edit an existing product, accessible only to superusers """
+    """A view to edit an existing product, accessible only to superusers."""
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
@@ -168,7 +171,7 @@ def edit_product(request, product_id):
 
 @login_required
 def delete_product(request, product_id):
-    """ A view to delete a product, accessible only to superusers """
+    """A view to delete a product, accessible only to superusers."""
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
@@ -180,7 +183,7 @@ def delete_product(request, product_id):
 
 
 def road_bikes(request):
-    """ A view to return all Road Bikes products with pagination """
+    """A view to return all Road Bikes products with pagination."""
     products = Product.objects.filter(category__name='Road Bikes')
     paginator = Paginator(products, 6)
     page_number = request.GET.get('page')
@@ -194,7 +197,7 @@ def road_bikes(request):
 
 
 def mountain_bikes(request):
-    """ A view to return all Mountain Bikes products """
+    """A view to return all Mountain Bikes products."""
     products = Product.objects.filter(category__name='Mountain Bikes')
     paginator = Paginator(products, 6)
     page_number = request.GET.get('page')
@@ -208,7 +211,7 @@ def mountain_bikes(request):
 
 
 def electric_bikes(request):
-    """ A view to return all Electric Bikes products """
+    """A view to return all Electric Bikes products."""
     products = Product.objects.filter(category__name='Electric Bikes')
     paginator = Paginator(products, 6)
     page_number = request.GET.get('page')
@@ -222,7 +225,7 @@ def electric_bikes(request):
 
 
 def kids_bikes(request):
-    """ A view to return all Kids Bikes products """
+    """A view to return all Kids Bikes products."""
     products = Product.objects.filter(category__name='Kids Bikes')
     paginator = Paginator(products, 6)
     page_number = request.GET.get('page')
@@ -236,7 +239,7 @@ def kids_bikes(request):
 
 
 def clothing(request):
-    """ A view to return all Clothing products """
+    """A view to return all Clothing products."""
     products = Product.objects.filter(category__name='Clothing')
     paginator = Paginator(products, 6)
     page_number = request.GET.get('page')
@@ -250,7 +253,7 @@ def clothing(request):
 
 
 def accessories(request):
-    """ A view to return all Accessories products """
+    """A view to return all Accessories products."""
     products = Product.objects.filter(category__name='Accessories')
     paginator = Paginator(products, 6)
     page_number = request.GET.get('page')
@@ -264,23 +267,23 @@ def accessories(request):
 
 
 def faq(request):
-    """ A view to return the FAQ page """
+    """A view to return the FAQ page."""
     return render(request, 'customer_services/faq.html')
 
 
 def return_exchange(request):
-    """ A view to return the Return & Exchanges page """
+    """A view to return the Return & Exchanges page."""
     return render(request, 'customer_services/return_exchange.html')
 
 
 def shipping_information(request):
-    """ A view to return the Shipping Information page """
+    """A view to return the Shipping Information page."""
     return render(request, 'customer_services/shipping_information.html')
 
 
 @login_required
 def view_wishlist(request):
-    """ View to display user's wishlist """
+    """View to display user's wishlist."""
     wishlist = Wishlist.objects.filter(user=request.user).first()
     if not wishlist:
         wishlist = Wishlist.objects.create(user=request.user)
@@ -289,7 +292,7 @@ def view_wishlist(request):
 
 @login_required
 def add_to_wishlist(request, product_id):
-    """ View to add a product to the wishlist """
+    """View to add a product to the wishlist."""
     product = get_object_or_404(Product, id=product_id)
     wishlist = Wishlist.objects.filter(user=request.user).first()
     if not wishlist:
@@ -305,7 +308,7 @@ def add_to_wishlist(request, product_id):
 
 @login_required
 def remove_from_wishlist(request, product_id):
-    """ View to remove a product from the wishlist """
+    """View to remove a product from the wishlist."""
     product = get_object_or_404(Product, id=product_id)
     wishlist = Wishlist.objects.filter(user=request.user).first()
     if not wishlist:
@@ -313,7 +316,9 @@ def remove_from_wishlist(request, product_id):
 
     if product in wishlist.products.all():
         wishlist.products.remove(product)
-        messages.success(request, f'{product.name} removed from your wishlist.')
+        messages.success(
+            request, f'{product.name} removed from your wishlist.'
+        )
     else:
         messages.info(request, f'{product.name} is not in your wishlist.')
     return redirect('products:view_wishlist')
@@ -321,7 +326,7 @@ def remove_from_wishlist(request, product_id):
 
 @login_required
 def toggle_wishlist(request, product_id):
-    """ Add or remove a product from the user's wishlist """
+    """Add or remove a product from the user's wishlist."""
     product = get_object_or_404(Product, id=product_id)
     wishlist = Wishlist.objects.filter(user=request.user).first()
     if not wishlist:
@@ -335,6 +340,3 @@ def toggle_wishlist(request, product_id):
         messages.success(request, f"{product.name} added to your wishlist.")
 
     return redirect('products:product_detail', product_id=product_id)
-
-
-

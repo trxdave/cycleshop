@@ -3,26 +3,26 @@ from django.contrib.auth.models import User
 from django.utils.text import slugify
 from cloudinary.models import CloudinaryField
 
-# Create your models here.
 
 class Category(models.Model):
-    """ Model representing a product category """
+    """Model representing a product category."""
     name = models.CharField(max_length=200, unique=True)
-    description = models. TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
     slug = models.SlugField(unique=True, blank=True)
 
     def save(self, *args, **kwargs):
-        """ Automatically generate a slug based on the category name if not provided """
+        """Automatically a slug based on the category name if not provided."""
         if not self.slug:
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
 
     def __str__(self):
-        """ String representation of the Category model, returns the name of the category """
+        """String representation of the Category model."""
         return self.name
 
+
 class Product(models.Model):
-    """ Model representing a product """
+    """Model representing a product."""
     name = models.CharField(max_length=200)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -33,11 +33,12 @@ class Product(models.Model):
     total_ratings = models.IntegerField(default=0)
     rating_count = models.IntegerField(default=0)
     image = CloudinaryField('image', null=True, blank=True)
-
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
+    category = models.ForeignKey(
+        Category, on_delete=models.CASCADE, related_name='products'
+    )
 
     def update_rating(self, new_rating):
-        """ Update the average rating when a new rating is submitted """
+        """Update the average rating when a new rating is submitted."""
         self.total_ratings += new_rating
         self.rating_count += 1
         self.rating = self.total_ratings / self.rating_count
@@ -48,10 +49,10 @@ class Product(models.Model):
 
 
 class Wishlist(models.Model):
-    """ Model representing a user's wishlist """
+    """Model representing a user's wishlist."""
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     products = models.ManyToManyField(Product, blank=True)
 
     def __str__(self):
-        """ String representation of the Wishlist model, returns the user's wishlist """
+        """String representation of the Wishlist model."""
         return f"{self.user.username}'s Wishlist"

@@ -581,24 +581,22 @@ ll pages were validated, and the code was pasted in. A filter was applied to rem
 ### Cycleshop
 | **Tested** | **Result** | **View Result** | **Pass** |
 --- | --- | --- | :---:
-|admin.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|apps.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|forms.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|models.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|signals.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|urls.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|views.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|admin.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/cycleshop/checkout-admin.png)</details>| :white_check_mark:|
+|forms.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/cycleshop/checkout-forms.png)</details>| :white_check_mark:|
+|models.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/cycleshop/checkout-models.png)</details>| :white_check_mark:|
+|sitemaps.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/cycleshop/checkout-sitemaps.png)</details>| :white_check_mark:|
+|urls.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/cycleshop/checkout-urls.png)</details>| :white_check_mark:|
+|views.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/cycleshop/checkout-views.png)</details>| :white_check_mark:|
 
 ### Products
 | **Tested** | **Result** | **View Result** | **Pass** |
 --- | --- | --- | :---:
-|admin.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|apps.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|forms.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|models.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|signals.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|urls.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|views.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|admin.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/product/product-admin.png)</details>| :white_check_mark:|
+|apps.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/product/product-apps.png)</details>| :white_check_mark:|
+|forms.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/product/product-forms.png)</details>| :white_check_mark:|
+|models.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/product/product-models.png)</details>| :white_check_mark:|
+|urls.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/product/product-urls.png)</details>| :white_check_mark:|
+|views.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/product/product-views.png)</details>| :white_check_mark:|
 
 ## JShint
 
@@ -711,8 +709,4 @@ This project uses Gmail to manage email communication, such as account verificat
 - Payment to test card - https://docs.stripe.com/testing
 - Accept a payment - https://docs.stripe.com/payments/accept-a-payment?platform=web&ui=stripe-hosted#prefill-customer-data
 - WAVE - https://wave.webaim.org/
-
 - Perplexity - https://perplexity.ai
-
-
-

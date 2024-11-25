@@ -5,7 +5,6 @@ from django.contrib import messages
 from .models import Profile, NewsletterSubscriber
 from products.models import Product
 
-# Create your views here.
 
 def home(request):
     """A view to return the home page."""
@@ -13,15 +12,22 @@ def home(request):
 
 
 def contact(request):
-    """A view to handle the contact form submission and display the contact page."""
+    """ A view to handle the contact form submission. """
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
             # Actions like sending an email or saving the form data
-            messages.success(request, 'Your message has been successfully sent. We will get back to you soon!')
+            messages.success(
+                request,
+                'Your message has been successfully sent. '
+                'We will get back to you soon!'
+            )
             return render(request, 'cycleshop/contact.html')
         else:
-            messages.error(request, 'There was an error with your submission. Please try again.')
+            messages.error(
+                request,
+                'There was an error with your submission. Please try again.'
+            )
     else:
         form = ContactForm()
 
@@ -41,13 +47,13 @@ def search_request(request):
         'products': products,
         'query': query,
     }
-    
+
     return render(request, 'cycleshop/search_results.html', context)
 
 
 @login_required
 def view_profile(request):
-    """ View the user's profile """
+    """View the user's profile."""
     profile = request.user.profile
     wishlist = profile.wishlist if profile.wishlist else None
 
@@ -69,17 +75,21 @@ def edit_profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success(request, 'Your profile was successfully updated!')
+            messages.success(
+                request,
+                'Your profile was successfully updated!'
+            )
             return redirect('view_profile')
-            messages.error(request, 'Please correct the error below.')
+        messages.error(request, 'Please correct the error below.')
     else:
         user_form = UserForm(instance=request.user)
         profile_form = ProfileForm(instance=profile)
 
-    return render(request, 'profile/edit_profile.html', {
-        'user_form': user_form,
-        'profile_form': profile_form
-    })
+    return render(
+        request,
+        'profile/edit_profile.html',
+        {'user_form': user_form, 'profile_form': profile_form}
+    )
 
 
 @login_required
@@ -87,28 +97,40 @@ def delete_profile(request):
     """View to delete the user's profile."""
     if request.method == 'POST':
         request.user.delete()
-        messages.success(request, 'Your profile has been deleted successfully.')
+        messages.success(
+            request,
+            'Your profile has been deleted successfully.'
+        )
         return redirect('home')
 
     return render(request, 'profile/delete_profile.html')
 
 
 def subscribe_newsletter(request):
-    """ View to handle newsletter subscriptions. """
+    """View to handle newsletter subscriptions."""
     if request.method == 'POST':
         email = request.POST.get('email')
-        
+
         # Check if the email is already subscribed
         if not NewsletterSubscriber.objects.filter(email=email).exists():
             # Create a new subscription
             NewsletterSubscriber.objects.create(email=email)
-            messages.success(request, 'You have successfully subscribed to our newsletter.')
-            
+            messages.success(
+                request,
+                'You have successfully subscribed to our newsletter.'
+            )
+
             # Redirect to a confirmation page after successful subscription
-            return render(request, 'newsletter/newsletter_subscribe_success.html')
+            return render(
+                request,
+                'newsletter/newsletter_subscribe_success.html'
+            )
         else:
             # Inform the user they are already subscribed
-            messages.info(request, 'You are already subscribed to our newsletter.')
-    
-    # If the request method is GET or invalid POST data, redirect to home or subscription form
+            messages.info(
+                request,
+                'You are already subscribed to our newsletter.'
+            )
+
+    # If the request method is GET or invalid POST data, redirect to home
     return redirect('home')

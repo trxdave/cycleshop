@@ -40,8 +40,21 @@ urlpatterns = [
     path('profile/', views.view_profile, name='view_profile'),
     path('profile/edit/', views.edit_profile, name='edit_profile'),
     path('profile/delete/', views.delete_profile, name='delete_profile'),
-    path('subscribe', subscribe_newsletter, name='subscribe_newsletter'),
-    path('checkout/', include('checkout.urls', namespace='checkout')),
-    path('sitemap.xml', TemplateView.as_view(template_name="sitemap.xml", content_type="application/xml"), name='sitemap'),
-
+    path(
+        'subscribe',
+        subscribe_newsletter,
+        name='subscribe_newsletter'
+    ),
+    path(
+        'checkout/',
+        include('checkout.urls', namespace='checkout')
+    ),
+    path(
+        'sitemap.xml',
+        TemplateView.as_view(
+            template_name="sitemap.xml",
+            content_type="application/xml"
+        ),
+        name='sitemap'
+    ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
