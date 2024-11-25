@@ -180,8 +180,12 @@ def delete_product(request, product_id):
 
 
 def road_bikes(request):
-    """ A view to return all Road Bikes products """
+    """ A view to return all Road Bikes products with pagination """
     products = Product.objects.filter(category__name='Road Bikes')
+    paginator = Paginator(products, 6)
+    page_number = request.GET.get('page')
+    products = paginator.get_page(page_number)
+
     return render(
         request,
         'products/category_products.html',
@@ -192,6 +196,10 @@ def road_bikes(request):
 def mountain_bikes(request):
     """ A view to return all Mountain Bikes products """
     products = Product.objects.filter(category__name='Mountain Bikes')
+    paginator = Paginator(products, 6)
+    page_number = request.GET.get('page')
+    products = paginator.get_page(page_number)
+
     return render(
         request,
         'products/category_products.html',
@@ -202,6 +210,10 @@ def mountain_bikes(request):
 def electric_bikes(request):
     """ A view to return all Electric Bikes products """
     products = Product.objects.filter(category__name='Electric Bikes')
+    paginator = Paginator(products, 6)
+    page_number = request.GET.get('page')
+    products = paginator.get_page(page_number)
+
     return render(
         request,
         'products/category_products.html',
@@ -212,6 +224,10 @@ def electric_bikes(request):
 def kids_bikes(request):
     """ A view to return all Kids Bikes products """
     products = Product.objects.filter(category__name='Kids Bikes')
+    paginator = Paginator(products, 6)
+    page_number = request.GET.get('page')
+    products = paginator.get_page(page_number)
+
     return render(
         request,
         'products/category_products.html',
@@ -222,6 +238,10 @@ def kids_bikes(request):
 def clothing(request):
     """ A view to return all Clothing products """
     products = Product.objects.filter(category__name='Clothing')
+    paginator = Paginator(products, 6)
+    page_number = request.GET.get('page')
+    products = paginator.get_page(page_number)
+
     return render(
         request,
         'products/category_products.html',
@@ -232,6 +252,10 @@ def clothing(request):
 def accessories(request):
     """ A view to return all Accessories products """
     products = Product.objects.filter(category__name='Accessories')
+    paginator = Paginator(products, 6)
+    page_number = request.GET.get('page')
+    products = paginator.get_page(page_number)
+
     return render(
         request,
         'products/category_products.html',
