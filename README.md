@@ -29,11 +29,17 @@ Here's deployed site: [Am I Responsive](https://ui.dev/amiresponsive?url=https:/
 
 import os
 
+- #Debug
+os.environ['DEBUG']='True'
+
 - #Secret Key
 os.environ['SECRET_KEY'] = 'Put secret Key here'
 
 - #Database URL
 os.environ['DATABASE_URL'] = 'Put Postgres Key here'
+
+- #Host
+os.environ['HOST'] = 'put host link here'
 
 - #Email
 os.environ['EMAIL_USER'] = 'Put email address here'
@@ -42,6 +48,12 @@ os.environ['EMAIL_PASSWORD'] = 'Put email password here'
 - #Stripe Keys
 os.environ['STRIPE_PUBLIC_KEY'] = 'Put Public Key here'
 os.environ['STRIPE_SECRET_KEY'] = 'Put Secret Key here'
+os.environ['STRIPE_WEBHOOK_SECRET'] = 'Put Webhook Key here'
+
+- #Cloudinary
+os.environ['CLOUDINARY_CLOUD_NAME'] = 'Put Cloud name here'
+os.environ['CLOUDINARY_API_KEY'] = 'Put API Key'
+os.environ['CLOUDINARY_API_SECRET'] = 'Put API Secret Key here'
 
 ### Run Migrations:
 
@@ -604,6 +616,8 @@ ll pages were validated, and the code was pasted in. A filter was applied to rem
 --- | --- | --- | :---:
 |stripe_elements.js| One errors (could not fix) | <details><summary>Screenshot of result</summary>![Result](documentation/js/stripe_element.png)</details>| :white_check_mark:|
 
+<hr>
+
 # Technologies Used
 
 In this section, I outline the various tools and technologies that were essential in the development of CycleShop. Each technology played a specific role, from enabling efficient back-end development to ensuring an intuitive and responsive user interface.
@@ -629,6 +643,11 @@ In this section, I outline the various tools and technologies that were essentia
 - **Cloudinary**: [Cloudinary](https://cloudinary.com/) is used for media storage, handling image uploads and optimizing assets.
 
 <hr>
+
+# Stripe
+
+- Use a test card number designed to successful in Strip, such as 4242 4242 4242 4242 (this card will always test if successful).
+- Use a test card number designed to simulate failure in Stripe, such as 4000 0000 0000 9995 (this card will always fail).
 
 # Facebook Business Page
 
