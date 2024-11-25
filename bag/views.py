@@ -186,3 +186,34 @@ def checkout(request):
             "An error occurred while processing your payment.Please try again."
         )
         return redirect('bag:view_bag')
+
+
+def update_quantity(request, product_id):
+    """View to update the quantity of a specific item in the bag."""
+    if request.method == "POST":
+        quantity = int(request.POST.get('quantity', 0))
+        bag = get_bag(request)
+
+        if str(product_id) in bag:
+            if quantity > 0:
+                bag[str(product_id)]['quantity'] = quantity
+                product_name = get_object_or_404(Product, id=product_id).name
+                messages.info(
+                    request,
+                    f"Updated {product_name} quantity to {quantity}."
+                )
+            else:
+                del bag[str(product_id)]
+                product_name = get_object_or_404(Product, id=product_id).name
+                messages.info(
+                    request,
+                    f"Removed {product_name} from your bag."
+                )
+        else:
+            messages.error(request, "Product not found in your bag.")
+
+        save_bag(request, bag)
+        return redirect('bag:view_bag')
+    else:
+        messages.error(request, "Invalid request method.")
+        return redirect('bag:view_bag')
