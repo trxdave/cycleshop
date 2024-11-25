@@ -405,16 +405,16 @@ header {
 
 /* Disabled Button Styles */
 span.btn.btn-outline-secondary.disabled.improved-contrast {
-    color: #F0F0F0; /* Light text for contrast */
-    background-color: transparent; /* Blend with page background */
-    border-color: #5DA399; /* High-contrast border */
-    cursor: not-allowed; /* Indicate disabled state */
-    opacity: 1; /* Ensure full visibility */
+    color: #F0F0F0;
+    background-color: transparent;
+    border-color: #5DA399;
+    cursor: not-allowed;
+    opacity: 1;
 }
 
 /* Focused or Active States for Consistency */
 span.btn.btn-outline-secondary.disabled.improved-contrast:focus {
-    outline: 2px solid #5DA399; /* High-contrast focus outline */
+    outline: 2px solid #5DA399;
     outline-offset: 2px;
 }
 
@@ -750,105 +750,105 @@ span.btn.btn-outline-secondary.disabled.improved-contrast:focus {
 
 /* Footer */
 .footer {
-    background-color: #35393C; /* Dark background for high contrast */
-    color: #F0F0F0; /* Light text for readability */
-    padding: 40px 20px; /* Adds spacing for better layout */
+    background-color: #35393C;
+    color: #F0F0F0;
+    padding: 40px 20px;
 }
 
 .footer h2,
 .footer h3 {
-    color: #42858C; /* Highlights section headers */
+    color: #42858C;
     font-size: 1.2rem;
-    margin-bottom: 20px; /* Adds space below headings */
-    text-transform: uppercase; /* Ensures consistency across headers */
+    margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
 .footer ul {
-    list-style: none; /* Removes default bullets */
+    list-style: none;
     padding: 0;
 }
 
 .footer ul li {
-    margin-bottom: 10px; /* Spacing between list items */
+    margin-bottom: 10px;
 }
 
 .footer ul li a {
-    color: #F0F0F0; /* Matches footer text color */
-    text-decoration: none; /* Removes underline for clean look */
-    transition: color 0.3s ease; /* Smooth hover effect */
+    color: #F0F0F0;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .footer ul li a:hover {
-    color: #63CCCA; /* Brighter teal for hover */
+    color: #63CCCA;
 }
 
 .footer input[type="email"] {
-    background-color: #11666f; /* Dark teal for input field */
-    color: #F0F0F0; /* Light text for contrast */
-    border: none; /* Removes default border */
-    border-radius: 5px; /* Rounded corners for aesthetics */
-    padding: 10px; /* Adds inner spacing */
-    margin-bottom: 10px; /* Space below input */
-    width: 100%; /* Ensures full-width for responsive design */
-    font-size: 1rem; /* Matches overall text size */
+    background-color: #11666f;
+    color: #F0F0F0;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    font-size: 1rem;
 }
 
 .footer input[type="email"]::placeholder {
-    color: #F0F0F0; /* Placeholder matches text for consistency */
-    opacity: 0.8; /* Slightly dimmed placeholder */
+    color: #F0F0F0;
+    opacity: 0.8;
 }
 
 .footer button[type="submit"] {
-    background-color: #63CCCA; /* Matches hover link color */
-    border: none; /* Removes border */
-    border-radius: 5px; /* Rounded corners */
-    padding: 10px; /* Adds spacing */
-    color: #35393C; /* Contrasts with button background */
-    text-transform: uppercase; /* Consistent styling */
-    font-weight: bold; /* Makes text stand out */
-    width: 100%; /* Full-width button for responsiveness */
-    cursor: pointer; /* Indicates interactivity */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover */
+    background-color: #63CCCA;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    color: #35393C;
+    text-transform: uppercase;
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .footer button[type="submit"]:hover {
-    background-color: #42858C; /* Darker teal for hover */
-    color: #F0F0F0; /* Light text for contrast */
+    background-color: #42858C;
+    color: #F0F0F0;
 }
 
 .footer hr {
-    border-top: 1px solid #5DA399; /* Subtle line separator */
-    margin: 20px 0; /* Adds spacing */
+    border-top: 1px solid #5DA399;
+    margin: 20px 0;
 }
 
 /* Footer Privacy Policy & Sitemap Links */
 .footer-link {
-    text-decoration: none; /* Removes underline for clean look */
-    color: #63CCCA; /* Matches hover link color */
-    transition: color 0.3s ease; /* Smooth hover */
+    text-decoration: none;
+    color: #63CCCA;
+    transition: color 0.3s ease;
 }
 
 .footer-link:hover {
-    text-decoration: underline; /* Adds underline for hover */
-    color: #5DA399; /* Subtle contrast change */
+    text-decoration: underline;
+    color: #5DA399;
 }
 
 .footer-divider {
-    color: #63CCCA; /* Matches link color */
-    padding: 0 5px; /* Spacing between links */
+    color: #63CCCA;
+    padding: 0 5px;
 }
 
 /* Social Media Icons Styling */
 .footer .social-icons a {
-    font-size: 1.8rem; /* Larger icons for visibility */
-    margin-right: 15px; /* Spacing between icons */
-    color: #F0F0F0; /* Matches footer text color */
-    transition: color 0.3s ease; /* Smooth hover effect */
-    text-decoration: none; /* Removes default underline */
+    font-size: 1.8rem;
+    margin-right: 15px;
+    color: #F0F0F0;
+    transition: color 0.3s ease;
+    text-decoration: none;
 }
 
 .footer .social-icons a:hover {
-    color: #63CCCA; /* Matches link hover color */
+    color: #63CCCA;
 }
 
 /* For small devices, adjust padding/margins */
@@ -904,7 +904,7 @@ span.btn.btn-outline-secondary.disabled.improved-contrast:focus {
 @media (min-width: 992px) and (max-width: 1366px) {
     /* Space between search, profile, and cart */
     .d-flex.align-items-center {
-        gap: 1rem; /* Adds space between elements */
+        gap: 1rem;
     }
     
     /* Standard padding and alignment for Profile and Cart buttons */
@@ -931,7 +931,7 @@ span.btn.btn-outline-secondary.disabled.improved-contrast:focus {
 
     /* Add icon for "My Profile" on smaller screens */
     .btn-profile::before {
-        content: '\f007'; /* Font Awesome user icon */
+        content: '\f007';
         font-family: "Font Awesome 5 Free";
         font-weight: 900;
         margin-right: 0.3rem;

@@ -22,7 +22,7 @@ h2 {
     color: #fff;
     transition: background-color 0.3s;
     margin-bottom: 0.5rem;
-    width: 100%; /* Full width on mobile */
+    width: 100%;
 }
 
 .btn-success {
@@ -40,7 +40,7 @@ h2 {
 
 /* Specific Edit and Delete Button Styling */
 .btn-m-edit {
-    background-color: #ffc107; /* Yellow background for Edit */
+    background-color: #ffc107;
     color: #212529;
     font-weight: bold;
     padding: 8px 16px;
@@ -49,12 +49,12 @@ h2 {
 }
 
 .btn-m-edit:hover {
-    background-color: #e0a800; /* Darker yellow on hover */
+    background-color: #e0a800;
     color: #212529;
 }
 
 .btn-m-delete {
-    background-color: #dc3545; /* Red background for Delete */
+    background-color: #dc3545;
     color: #fff;
     font-weight: bold;
     padding: 8px 16px;
@@ -63,7 +63,7 @@ h2 {
 }
 
 .btn-m-delete:hover {
-    background-color: #c82333; /* Darker red on hover */
+    background-color: #c82333;
     color: #fff;
 }
 
@@ -80,7 +80,7 @@ h2 {
 .table {
     width: 100%;
     border-collapse: collapse;
-    overflow-x: auto; /* Scrollable on smaller screens */
+    overflow-x: auto;
 }
 
 .table th,
@@ -101,7 +101,7 @@ h2 {
     height: 70px;
     object-fit: contain;
     border: none;
-    max-width: 100px; /* Adjust for responsiveness */
+    max-width: 100px;
 }
 
 /* Pagination Styles */
@@ -146,7 +146,7 @@ h2 {
     .table tbody td:last-child {
         display: flex;
         justify-content: center;
-        gap: 1rem; /* Adds space between the Edit and Delete buttons */
+        gap: 1rem;
         align-items: center;
         width: 100%;
     }
