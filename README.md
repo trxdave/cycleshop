@@ -532,6 +532,34 @@ After implementing the above fixes, the checkout process:<br>
 
 <hr>
 
+# Testing
+
+## Validator Testing
+
+### HTML Validation
+ll pages were validated, and the code was pasted in. A filter was applied to remove issues related to the Django templating system.
+
+
+
+### CSS Validation
+
+| **Tested** | **Result** | **View Result** | **Pass** |
+--- | --- | --- | :---:
+|styles.css | No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/styles.png)</details>| :white_check_mark:|
+|category_products.css | No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/category-products.png)</details>| :white_check_mark:|
+|manage_products.css | No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/manage-products.png)</details>| :white_check_mark:|
+|newletter.css | No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/newsletter.png)</details>| :white_check_mark:|
+|order_confirmation_email.css | No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/order-confirmation-email.png)</details>| :white_check_mark:|
+|order_detail.css | No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/order-detail.png)</details>| :white_check_mark:|
+|order_history.css | No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/order-history.png)</details>| :white_check_mark:|
+|checkout.css | No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/checkout.png)</details>| :white_check_mark:|
+
+JShint
+
+| **Tested** | **Result** | **View Result** | **Pass** |
+--- | --- | --- | :---:
+|stripe_elements.js| One errors | <details><summary>Screenshot of result</summary>![Result](documentation/js/stripe_element.png)</details>| :white_check_mark:|
+
 # Technologies Used
 
 In this section, I outline the various tools and technologies that were essential in the development of CycleShop. Each technology played a specific role, from enabling efficient back-end development to ensuring an intuitive and responsive user interface.

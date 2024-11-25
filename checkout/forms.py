@@ -1,7 +1,10 @@
 from django import forms
 from .models import Order
 
+
 class OrderForm(forms.ModelForm):
+    """Form for creating and editing orders."""
+
     class Meta:
         model = Order
         fields = (
@@ -32,6 +35,8 @@ class OrderForm(forms.ModelForm):
             field = self.fields.get(field_name)
             if field:
                 required = field.required
-                field.widget.attrs['placeholder'] = f'{placeholder_text}{" *" if required else ""}'
+                field.widget.attrs['placeholder'] = (
+                    f"{placeholder_text}{' *' if required else ''}"
+                )
                 field.widget.attrs['class'] = 'form-control'
                 field.label = False

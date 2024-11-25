@@ -14,9 +14,11 @@ from products.models import Product
 from .forms import OrderForm
 import logging
 
+
 # Initialize Stripe
 stripe.api_key = settings.STRIPE_SECRET_KEY
 logger = logging.getLogger(__name__)
+
 
 # Helper: Calculate Total
 def calculate_total(request):
@@ -27,11 +29,15 @@ def calculate_total(request):
         total += product.price * item_data['quantity']
     return total
 
+
 # Helper: Send Confirmation Email
 def send_confirmation_email(order, user_email):
     try:
         subject = 'Your Order Confirmation - CycleShop'
-        message = render_to_string('checkout/order_confirmation_email.html', {'order': order})
+        message = render_to_string(
+            'checkout/order_confirmation_email.html',
+            {'order': order},
+        )
         send_mail(
             subject,
             message,
@@ -43,13 +49,14 @@ def send_confirmation_email(order, user_email):
     except Exception as e:
         logger.error(f"Failed to send order confirmation email: {e}")
 
+
 # Checkout View
 def checkout_view(request):
     form = OrderForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
         try:
             order = form.save(commit=False)
-            order.user = request.user if request.user.is_authenticated else None
+            order.user = request.user if request.user.is_authenticated else None #noqa
             order.total = calculate_total(request)
             order.status = "pending"
             order.save()
@@ -58,7 +65,7 @@ def checkout_view(request):
             intent = stripe.PaymentIntent.create(
                 amount=int(order.total * 100),
                 currency=settings.STRIPE_CURRENCY,
-                metadata={'order_id': order.id}
+                metadata={'order_id': order.id},
             )
             logger.info(f"PaymentIntent created for order ID {order.id}")
 
@@ -71,7 +78,9 @@ def checkout_view(request):
             return render(request, 'checkout/checkout.html', context)
         except Exception as e:
             logger.error(f"Error during checkout: {e}")
-            messages.error(request, "An error occurred during checkout. Please try again.")
+            messages.error(
+                request, "An error occurred during checkout. Please try again."
+            )
             return redirect('checkout:checkout')
 
     # For GET requests
@@ -81,6 +90,7 @@ def checkout_view(request):
         'client_secret': None,
     }
     return render(request, 'checkout/checkout.html', context)
+
 
 # Checkout Success View
 @login_required
@@ -99,22 +109,35 @@ def checkout_success(request, order_id):
         request.session['bag_items_count'] = 0
 
         messages.success(request, "Thank you! Your order was successful.")
-        return render(request, 'checkout/checkout_success.html', {'order': order})
+        return render(
+            request,
+            'checkout/checkout_success.html',
+            {'order': order},
+        )
     except Exception as e:
         logger.error(f"Error in checkout success view: {e}")
-        messages.error(request, "An error occurred while processing your order.")
+        messages.error(
+            request, "An error occurred while processing your order."
+        )
         return redirect('checkout:checkout')
+
 
 # Checkout Failure View
 def checkout_failure(request):
-    messages.error(request, "Your payment failed. Please try again or contact support.")
+    messages.error(
+        request, "Your payment failed. Please try again or contact support."
+    )
     return render(request, 'checkout/checkout_failure.html')
+
 
 # Order History View
 @login_required
 def order_history(request):
-    orders = Order.objects.filter(user=request.user, status="completed").order_by('-date')
+    orders = Order.objects.filter(
+        user=request.user, status="completed"
+    ).order_by('-date')
     return render(request, 'checkout/order_history.html', {'orders': orders})
+
 
 # Order Detail View
 @login_required
@@ -122,11 +145,14 @@ def order_detail(request, order_id):
     try:
         order = get_object_or_404(Order, id=order_id, user=request.user)
         logger.info(f"Order detail retrieved for order ID {order.id}")
-        return render(request, 'checkout/order_detail.html', {'order': order})
+        return render(
+            request, 'checkout/order_detail.html', {'order': order}
+        )
     except Exception as e:
         logger.error(f"Error retrieving order detail: {e}")
         messages.error(request, "Order not found.")
         return redirect('checkout:order_history')
+
 
 # Cache Checkout Data
 @require_POST
@@ -143,11 +169,14 @@ def cache_checkout_data(request):
         logger.error(f"Error caching checkout data: {e}")
         return JsonResponse({'status': 'error', 'message': str(e)}, status=400)
 
+
 # Create Order Function
 def create_order(request):
     try:
         data = json.loads(request.body)
-        required_fields = ['full_name', 'email', 'address', 'city', 'postal_code', 'country']
+        required_fields = [
+            'full_name', 'email', 'address', 'city', 'postal_code', 'country'
+        ]
         for field in required_fields:
             if not data.get(field):
                 raise ValueError(f"Missing required field: {field}")
@@ -170,6 +199,7 @@ def create_order(request):
         logger.error(f"Error creating order: {e}")
         raise ValueError(f"Failed to create order: {e}")
 
+
 # Stripe Webhook
 @csrf_exempt
 def stripe_webhook(request):
@@ -178,7 +208,9 @@ def stripe_webhook(request):
     endpoint_secret = settings.STRIPE_WEBHOOK_SECRET
 
     try:
-        event = stripe.Webhook.construct_event(payload, sig_header, endpoint_secret)
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, endpoint_secret
+        )
     except ValueError as e:
         logger.error(f"Invalid payload: {e}")
         return HttpResponse(status=400)
