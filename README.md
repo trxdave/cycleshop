@@ -616,6 +616,46 @@ ll pages were validated, and the code was pasted in. A filter was applied to rem
 --- | --- | --- | :---:
 |stripe_elements.js| One errors (could not fix) | <details><summary>Screenshot of result</summary>![Result](documentation/js/stripe_element.png)</details>| :white_check_mark:|
 
+# Lighthouse Accessibility Report
+Accessibility is a crucial aspect of web development, ensuring that all users, including those with disabilities, can interact with the application effectively. To evaluate the accessibility of this project, a Lighthouse audit was conducted, providing insights and metrics to improve user experience.
+
+## Accessibility Highlights:
+- Proper Heading Structure: Semantic headings are used across the application, ensuring a clear and logical structure. This helps assistive technologies like screen readers to navigate and interpret the content.
+
+- Color Contrast: The application adheres to WCAG AA standards for text and background color contrast. Elements with low contrast were identified and corrected to ensure readability.
+
+- Keyboard Navigation: All interactive elements (e.g., buttons, links, forms) are accessible via keyboard navigation. Proper focus management and tabindex values were used to improve usability.
+
+- ARIA Roles and Labels: Accessible Rich Internet Applications (ARIA) roles and labels were implemented where necessary. This includes ARIA labels for custom elements and navigation landmarks to aid screen reader users.
+
+- Alternative Text for Images: Meaningful and descriptive alt attributes are provided for all non-decorative images. This ensures that users relying on screen readers can understand the context of the visuals.
+
+- Responsive Design: The application is fully responsive and maintains accessibility across various screen sizes and devices.
+
+- Audit Results:
+
+- Accessibility Score: The Lighthouse Accessibility audit achieved a score of XX/100 (replace with your actual score). This score reflects a strong commitment to inclusivity and adherence to web accessibility standards.
+
+- Identified Issues:
+Resolved low contrast issues in buttons and text.
+Added ARIA roles to improve semantic meaning for assistive technologies.
+Adjusted heading levels to maintain proper semantic order without skipping levels.
+Improved focus states for better visibility during keyboard navigation.
+
+- Continuous Improvements:
+
+Accessibility is an ongoing process. This project will continue to:
+
+Monitor accessibility through regular Lighthouse audits.
+Conduct manual testing with assistive technologies (e.g., screen readers like NVDA or VoiceOver).
+Stay updated with the latest WCAG standards to enhance inclusivity.
+For more details on how Lighthouse evaluates accessibility, visit Lighthouse Accessibility Documentation.
+
+| **Tested** | **Result** | **View Result** | **Pass** |
+--- | --- | --- | :---:
+|Homepages| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/homepage-desktop.png)</details>| :white_check_mark:|
+
+
 <hr>
 
 # Technologies Used

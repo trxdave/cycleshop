@@ -12,7 +12,7 @@
 #order-history-page h1 {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #63CCCA;
+    color: #11666f;
     text-align: center;
     margin-bottom: 30px;
 }
@@ -32,7 +32,7 @@
 }
 
 .table thead th {
-    background-color: #63CCCA;
+    background-color: #11666f;
     color: #FFFFFF;
     font-weight: bold;
     padding: 12px;
@@ -105,7 +105,7 @@
     .table tbody td::before {
         content: attr(data-label);
         font-weight: bold;
-        color: #63CCCA;
+        color: #11666f;
         flex-basis: 40%;
     }
 }

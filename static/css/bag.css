@@ -1,0 +1,142 @@
+.table {
+    margin-top: 1rem;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.table th,
+.table td {
+    text-align: left;
+    padding: 12px;
+    vertical-align: middle;
+}
+
+.table th {
+    background-color: #11666f;
+    color: #fff;
+    font-weight: bold;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Buttons */
+.btn-bag {
+    background-color: #0056b3;
+    color: #ffffff;
+    border: 1px solid #0056b3;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+.btn-bag:hover {
+    background-color: #003f8c;
+    border-color: #003f8c;
+    color: #ffffff;
+}
+
+.btn-bag:focus {
+    outline: 2px solid #ffcc00;
+    outline-offset: 2px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #a71d2a;
+    border-color: #a71d2a;
+}
+
+.btn-success {
+    background-color: #11666f;
+    border-color: white;
+    color: #fff;
+}
+
+.btn-success:hover {
+    background-color: #63CCCA;
+    border-color: #5DA399;
+}
+
+/* Responsive Table Styling */
+@media (max-width: 767px) {
+    .table {
+        width: 100%;
+        font-size: 0.9rem;
+    }
+
+    .table th,
+    .table td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    .quantity {
+        width: 60px;
+    }
+
+    .btn-bag,
+    .btn-danger,
+    .btn-success {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .btn-bag:hover {
+        background-color: #003f8c;
+        border-color: #003f8c;
+        color: #fff;
+    }
+
+    .btn-danger:hover {
+        background-color: #a71d2a;
+        border-color: #a71d2a;
+    }
+
+    .btn-success:hover {
+        background-color: #63CCCA;
+        border-color: #5DA399;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .table {
+        width: 100%;
+        font-size: 0.95rem;
+    }
+
+    .quantity {
+        width: 70px;
+    }
+
+    .btn-bag {
+        font-size: 0.95rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .table {
+        font-size: 1rem;
+    }
+
+    .quantity {
+        width: 80px;
+    }
+
+    .btn-bag {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+    }
+}

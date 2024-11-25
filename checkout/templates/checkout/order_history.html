@@ -29,11 +29,7 @@
                 <tbody>
                     {% for order in orders %}
                         <tr>
-                            <td data-label="Order ID">
-                                <a href="{% url 'checkout:order_detail' order_id=order.id %}" class="order-link">
-                                    {{ order.id }}
-                                </a>
-                            </td>
+                            <td data-label="Order ID">{{ order.id }}</td>
                             <td data-label="Name">{{ order.full_name }}</td>
                             <td data-label="Total">€{{ order.total }}</td>
                             <td data-label="Status">{{ order.status }}</td>
