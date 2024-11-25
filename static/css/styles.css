@@ -548,8 +548,8 @@ span.btn.btn-outline-secondary.disabled.improved-contrast:focus {
 
 .btn-delete {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #42858C;
+    padding: 0.5rem 1rem;
+    background-color: #11666F;
     color: #F0F0F0;
     text-decoration: none;
     border-radius: 5px;

@@ -28,56 +28,107 @@ body {
 /* Header and Navbar */
 header {
     background-color: #397367;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .navbar {
     background-color: #397367;
+    padding: 0.75rem 1rem;
 }
 
+/* Navbar Brand */
 .navbar-brand {
-    font-size: 1.5rem;
-    color: #63CCCA;
+    font-size: 1.8rem;
+    color: #11666f;
     text-transform: uppercase;
-    margin-left: 30px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
 }
 
 .navbar-brand img {
     margin-right: 10px;
+    max-height: 40px;
 }
 
+/* Navbar Brand */
+.navbar-brand {
+    font-size: 1.8rem;
+    color: #11666f;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img {
+    margin-right: 10px;
+    max-height: 40px;
+}
+
+/* Navbar Links */
 .nav-link {
     color: #0a0a0a !important;
-    font-size: 1.1rem;
-    text-align: right;
-    margin-right: 30px;
-}
-
-.navbar-nav .form-control {
-    max-width: 150px;
-    margin-right: 1rem;
+    font-size: 1rem;
+    margin: 0 10px;
+    text-transform: capitalize;
+    text-align: center;
+    transition: color 0.3s ease;
 }
 
 .nav-link:hover {
     color: #63CCCA !important;
 }
 
-/* Mobile Navbar Button Styles (Mobile Navbar) */
-.navbar-nav .nav-link.btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white !important;
-    background-color: #42858C !important;
-    border: 1px solid #42858C !important;
-    transition: background-color 0.3s, color 0.3s;
+@media (max-width: 992px) {
+    /* Adjust navbar links for tablets */
+    .navbar-nav .nav-item {
+        margin-bottom: 10px;
+    }
 }
 
-.navbar-nav .nav-link.btn:hover {
-    background-color: #63CCCA !important;
-    color: #35393C !important;
+/* Toggler Button */
+.navbar-toggler {
+    border: none;
+    background-color: #11666f;
+    color: #F0F0F0;
+    padding: 8px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Primary Button Styling */
+.navbar-toggler:hover {
+    background-color: #63CCCA;
+    color: #35393C;
+}
+
+.navbar-toggler-icon {
+    filter: invert(100%);
+}
+
+/* Dropdown Menu */
+.navbar-nav .dropdown-menu {
+    background-color: #F8F9FA;
+    border: 1px solid #42858C;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-nav .dropdown-item {
+    font-size: 1rem;
+    color: #35393C;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-nav .dropdown-item:hover {
+    background-color: #63CCCA;
+    color: #fff;
+}
+
+/* Buttons */
 .btn-primary {
     background-color: #42858C;
     border: none;
@@ -86,17 +137,20 @@ header {
     padding: 0.5rem 1rem;
     border-radius: 5px;
     text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btn-primary:hover {
     background-color: #63CCCA;
+    color: #35393C;
 }
 
 .navbar-btn {
     min-width: 100px;
+    margin: 5px 0;
 }
 
-/* Search bar and Buttons */
+/* Search Bar */
 .search-control {
     padding: 0.375rem 0.75rem;
     height: 40px;
@@ -118,7 +172,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #42858C;
+    background-color: #11666f;
     color: #F0F0F0;
     border: none;
     border-radius: 0.25rem;
@@ -130,28 +184,28 @@ header {
     color: #35393C;
 }
 
-/* Input Group Text Styling (Search Button) */
-.input-group-text {
-    padding: 0.25rem;
-    font-size: 0.9rem;
-    border-radius: 0.25rem;
-    background-color: #42858C;
-    color: #F0F0F0;
-    border: none;
-    transition: background-color 0.3s;
-}
-
-.input-group-text:hover {
-    background-color: #63CCCA;
-    color: #35393C;
+/* Visually Hidden */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    white-space: nowrap;
 }
 
 /* Free Delivery Banner */
 .free-delivery-banner {
-    background-color: #42858C;
+    background-color: #11666f;
     color: white;
     font-size: 1.1rem;
     font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .free-delivery-banner p {
@@ -184,7 +238,7 @@ header {
     align-items: center;
     color: white;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.29);
 }
 
 .hero-overlay .intro h2 {
@@ -202,7 +256,7 @@ header {
 .hero-overlay .intro .btn {
     font-size: 1.2rem;
     padding: 10px 30px;
-    background-color: #42858C;
+    background-color: #11666f;
     color: white;
     border: none;
     border-radius: 5px;
@@ -236,6 +290,7 @@ header {
     object-fit: cover;
     border-radius: 5px;
     transition: transform 0.3s ease;
+    opacity: 0.7;
 }
 
 .category-text {
@@ -244,8 +299,7 @@ header {
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 10px 20px;
+
     border-radius: 5px;
     width: calc(100% - 20px);
     text-align: center;
@@ -278,7 +332,6 @@ header {
     width: 100%;
     height: auto;
     object-fit: cover;
-    max-height: 250px;
 }
 
 .product-card-body {
@@ -316,11 +369,61 @@ header {
     color: #35393C;
 }
 
+.improved-contrast {
+    color: #F0F0F0;
+    background-color: #42858C;
+    border-color: #5DA399;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover State */
+.improved-contrast:hover {
+    background-color: #63CCCA;
+    color: #35393C;
+}
+
+/* Focus State */
+.improved-contrast:focus {
+    outline: 2px solid #5DA399;
+    outline-offset: 2px;
+}
+
+/* Disabled Button Styles */
+.improved-contrast.disabled {
+    color: #A0A0A0;
+    background-color: transparent;
+    border-color: #A0A0A0;
+    opacity: 1;
+    cursor: not-allowed;
+}
+
+/* Active State */
+.improved-contrast:active {
+    background-color: #11666f;
+    color: #F0F0F0;
+}
+
+/* Disabled Button Styles */
+span.btn.btn-outline-secondary.disabled.improved-contrast {
+    color: #F0F0F0; /* Light text for contrast */
+    background-color: transparent; /* Blend with page background */
+    border-color: #5DA399; /* High-contrast border */
+    cursor: not-allowed; /* Indicate disabled state */
+    opacity: 1; /* Ensure full visibility */
+}
+
+/* Focused or Active States for Consistency */
+span.btn.btn-outline-secondary.disabled.improved-contrast:focus {
+    outline: 2px solid #5DA399; /* High-contrast focus outline */
+    outline-offset: 2px;
+}
+
+
 /* Product Details */
 .btn-add {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #42858C;
+    background-color: #11666f;
     color: #F0F0F0;
     text-decoration: none;
     border-radius: 5px;
@@ -380,12 +483,11 @@ header {
     display: flex;
     justify-content: center;
     align-items: stretch;
-    margin-bottom: 30px;
 }
 
 .card .btn {
     margin-top: auto;
-    background-color: #42858C;
+    background-color: #11666f;
     color: #F0F0F0;
     width: 100%;
 }
@@ -395,11 +497,24 @@ header {
     color: #35393C;
 }
 
+.login-link {
+    color: #63CCCA;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.login-link:hover,
+.login-link:focus {
+    color: #11666F;
+    text-decoration: underline;
+}
+
 /* Profile */
 .btn-profile {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #42858C;
+    background-color: #11666f;
     color: #F0F0F0;
     text-decoration: none;
     border-radius: 5px;
@@ -410,7 +525,7 @@ header {
 .btn-cart {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #42858C;
+    background-color: #11666f;
     color: #F0F0F0;
     text-decoration: none;
     border-radius: 5px;
@@ -420,15 +535,28 @@ header {
 /* Buttons */
 .btn {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #42858C;
+    background-color: #11666f;
     color: #F0F0F0;
     text-decoration: none;
     border-radius: 5px;
-    width: 120px;
 }
 
 .btn:hover {
+    background-color: #63CCCA;
+    color: #35393C;
+}
+
+.btn-delete {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #11666F;
+    color: #F0F0F0;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 140px;
+}
+
+.btn-delete:hover {
     background-color: #63CCCA;
     color: #35393C;
 }
@@ -446,7 +574,7 @@ header {
     align-items: center;
     justify-content: center;
     padding: 12px 16px;
-    background-color: #42858C;
+    background-color: #11666f;
     color: #F0F0F0;
     text-decoration: none;
     border-radius: 5px;
@@ -478,13 +606,23 @@ header {
 
 /* FAQ Page */
 
+.faq-section {
+    margin-top: 20px;
+}
+
+.faq-section h1 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: #35393C;
+}
+
 .accordion-item {
     border: none;
     border-bottom: 1px solid #ccc;
 }
 
 .accordion-header button {
-    background-color: #397367;
+    background-color: #11666f;
     color: white;
     font-size: 1.2rem;
     font-weight: bold;
@@ -493,12 +631,15 @@ header {
     transition: background-color 0.3s ease;
 }
 
-.accordion-header button:hover {
-    background-color: #63CCCA;
+.accordion-button:not(.collapsed) {
+    background-color: #11666f;
+    color: #ffffff;
+    box-shadow: none;
 }
 
 .accordion-button::after {
     font-size: 1.3rem;
+    color: #fff;
 }
 
 .accordion-body {
@@ -510,18 +651,31 @@ header {
     transition: background-color 0.3s ease;
 }
 
-.accordion-button:not(.collapsed) {
-    background-color: #5DA399;
-    color: #ffffff;
-    box-shadow: none;
+.accordion-body:hover {
+    background-color: #e8f5e9;
 }
 
 .accordion-collapse {
     transition: all 0.3s ease;
 }
 
-.accordion-button::after {
-    color: #fff;
+/* Contact Us Link */
+.contact-link {
+    color: #63CCCA;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-link:hover,
+.contact-link:focus {
+    color: #5DA399;
+    text-decoration: underline;
+    outline: none;
+}
+
+.contact-link:active {
+    color: #42858C;
 }
 
 /* bag */
@@ -567,7 +721,8 @@ header {
     color: #F0F0F0;
     text-decoration: none;
     border-radius: 5px;
-    width: 100%;
+    width: auto;
+    margin-bottom: 50px;
 }
 
 /* Return & Exchange */
@@ -595,72 +750,105 @@ header {
 
 /* Footer */
 .footer {
-    background-color: #35393C;
-    color: #F0F0F0;
+    background-color: #35393C; /* Dark background for high contrast */
+    color: #F0F0F0; /* Light text for readability */
+    padding: 40px 20px; /* Adds spacing for better layout */
 }
 
-.footer h5 {
-    color: #63CCCA;
+.footer h2,
+.footer h3 {
+    color: #42858C; /* Highlights section headers */
+    font-size: 1.2rem;
+    margin-bottom: 20px; /* Adds space below headings */
+    text-transform: uppercase; /* Ensures consistency across headers */
 }
 
 .footer ul {
+    list-style: none; /* Removes default bullets */
     padding: 0;
 }
 
 .footer ul li {
-    margin-bottom: 10px;
+    margin-bottom: 10px; /* Spacing between list items */
 }
 
 .footer ul li a {
-    color: #F0F0F0;
-    text-decoration: none;
+    color: #F0F0F0; /* Matches footer text color */
+    text-decoration: none; /* Removes underline for clean look */
+    transition: color 0.3s ease; /* Smooth hover effect */
 }
 
 .footer ul li a:hover {
-    color: #63CCCA;
+    color: #63CCCA; /* Brighter teal for hover */
 }
 
 .footer input[type="email"] {
-    background-color: #5DA399;
-    color: #F0F0F0;
-    border: none;
-    padding: 10px;
-    margin-bottom: 10px;
+    background-color: #11666f; /* Dark teal for input field */
+    color: #F0F0F0; /* Light text for contrast */
+    border: none; /* Removes default border */
+    border-radius: 5px; /* Rounded corners for aesthetics */
+    padding: 10px; /* Adds inner spacing */
+    margin-bottom: 10px; /* Space below input */
+    width: 100%; /* Ensures full-width for responsive design */
+    font-size: 1rem; /* Matches overall text size */
 }
 
 .footer input[type="email"]::placeholder {
-    color: #F0F0F0;
+    color: #F0F0F0; /* Placeholder matches text for consistency */
+    opacity: 0.8; /* Slightly dimmed placeholder */
 }
 
 .footer button[type="submit"] {
-    background-color: #63CCCA;
-    border: none;
-    padding: 10px;
-    color: #35393C;
-    text-transform: uppercase;
-    font-weight: bold;
+    background-color: #63CCCA; /* Matches hover link color */
+    border: none; /* Removes border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Adds spacing */
+    color: #35393C; /* Contrasts with button background */
+    text-transform: uppercase; /* Consistent styling */
+    font-weight: bold; /* Makes text stand out */
+    width: 100%; /* Full-width button for responsiveness */
+    cursor: pointer; /* Indicates interactivity */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover */
 }
 
 .footer button[type="submit"]:hover {
-    background-color: #42858C;
-    color: #F0F0F0;
+    background-color: #42858C; /* Darker teal for hover */
+    color: #F0F0F0; /* Light text for contrast */
 }
 
 .footer hr {
-    border-top: 1px solid #5DA399;
+    border-top: 1px solid #5DA399; /* Subtle line separator */
+    margin: 20px 0; /* Adds spacing */
+}
+
+/* Footer Privacy Policy & Sitemap Links */
+.footer-link {
+    text-decoration: none; /* Removes underline for clean look */
+    color: #63CCCA; /* Matches hover link color */
+    transition: color 0.3s ease; /* Smooth hover */
+}
+
+.footer-link:hover {
+    text-decoration: underline; /* Adds underline for hover */
+    color: #5DA399; /* Subtle contrast change */
+}
+
+.footer-divider {
+    color: #63CCCA; /* Matches link color */
+    padding: 0 5px; /* Spacing between links */
 }
 
 /* Social Media Icons Styling */
 .footer .social-icons a {
-    font-size: 1.8rem;
-    margin-right: 15px;
-    color: #f0f0f0;
-    transition: color 0.3s;
-    text-decoration: none;
+    font-size: 1.8rem; /* Larger icons for visibility */
+    margin-right: 15px; /* Spacing between icons */
+    color: #F0F0F0; /* Matches footer text color */
+    transition: color 0.3s ease; /* Smooth hover effect */
+    text-decoration: none; /* Removes default underline */
 }
 
-.social-icons a:hover {
-    color: #63CCCA;
+.footer .social-icons a:hover {
+    color: #63CCCA; /* Matches link hover color */
 }
 
 /* For small devices, adjust padding/margins */
@@ -774,5 +962,80 @@ header {
         top: 0;
         right: 0;
         transform: translate(50%, -50%);
+    }
+}
+
+/* Nav Bar */
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap;
+    }
+
+    .navbar-brand {
+        font-size: 1.8rem;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .navbar-collapse {
+        text-align: center;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 0.9rem;
+        margin: 5px 0;
+    }
+
+    .btn-primary {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* Tablet and Small Laptops (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 0.5rem 1rem;
+    }
+
+    .navbar-nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .navbar-nav .nav-link {
+        margin: 10px;
+    }
+}
+
+/* Large Screens (min-width: 1025px) */
+@media (min-width: 1025px) {
+    .navbar-nav {
+        justify-content: space-between;
+    }
+
+    .navbar-nav .nav-link {
+        margin-right: 15px;
+    }
+}
+
+/* TV and Extra Large Screens (min-width: 1440px) */
+@media (min-width: 1440px) {
+    .navbar {
+        padding: 1rem 2rem;
+    }
+
+    .navbar-nav {
+        justify-content: center;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 1.2rem;
+    }
+
+    .btn-primary {
+        font-size: 1.1rem;
     }
 }
