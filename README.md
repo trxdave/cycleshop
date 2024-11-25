@@ -554,11 +554,57 @@ ll pages were validated, and the code was pasted in. A filter was applied to rem
 |order_history.css | No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/order-history.png)</details>| :white_check_mark:|
 |checkout.css | No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/checkout.png)</details>| :white_check_mark:|
 
-JShint
+## Python linter (PEP8)
+
+### Bag
+| **Tested** | **Result** | **View Result** | **Pass** |
+--- | --- | --- | :---:
+|apps.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/bag/bag-apps.png)</details>| :white_check_mark:|
+|context-processors.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/bag/bag-context-processors.png)</details>| :white_check_mark:|
+|models.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/bag/bag-models.png)</details>| :white_check_mark:|
+|urls.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/bag/bag-urls.png)</details>| :white_check_mark:|
+|views.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/bag/bag-views.png)</details>| :white_check_mark:|
+
+### Checkout
+| **Tested** | **Result** | **View Result** | **Pass** |
+--- | --- | --- | :---:
+|admin.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/checkout/checkout-admin.png)</details>| :white_check_mark:|
+|apps.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/checkout/checkout-apps.png)</details>| :white_check_mark:|
+|forms.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/checkout/checkout-forms.png)</details>| :white_check_mark:|
+|models.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/checkout/checkout-model.png)</details>| :white_check_mark:|
+|signals.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/checkout/checkout-signals.png)</details>| :white_check_mark:|
+|urls.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/checkout/checkout-urls.png)</details>| :white_check_mark:|
+|views.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/checkout/checkout-views.png)</details>| :white_check_mark:|
+|webhook.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/checkout/checkout-webhook.png)</details>| :white_check_mark:|
+|webhookhandler.py| No errors | <details><summary>Screenshot of result</summary>![Result](documentation/pep8/checkout/checkout-webhookhandler.png)</details>| :white_check_mark:|
+
+### Cycleshop
+| **Tested** | **Result** | **View Result** | **Pass** |
+--- | --- | --- | :---:
+|admin.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|apps.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|forms.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|models.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|signals.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|urls.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|views.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+
+### Products
+| **Tested** | **Result** | **View Result** | **Pass** |
+--- | --- | --- | :---:
+|admin.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|apps.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|forms.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|models.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|signals.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|urls.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|views.py| No errors | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+
+## JShint
 
 | **Tested** | **Result** | **View Result** | **Pass** |
 --- | --- | --- | :---:
-|stripe_elements.js| One errors | <details><summary>Screenshot of result</summary>![Result](documentation/js/stripe_element.png)</details>| :white_check_mark:|
+|stripe_elements.js| One errors (could not fix) | <details><summary>Screenshot of result</summary>![Result](documentation/js/stripe_element.png)</details>| :white_check_mark:|
 
 # Technologies Used
 
