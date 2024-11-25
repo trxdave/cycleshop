@@ -14,13 +14,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
-from .models import Profile
 from .views import subscribe_newsletter
+from django.contrib.sitemaps.views import sitemap
+from cycleshop.sitemaps import StaticViewSitemap
+from django.views.generic import TemplateView
+
+sitemaps = {
+    'static': StaticViewSitemap,
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,7 +42,6 @@ urlpatterns = [
     path('profile/delete/', views.delete_profile, name='delete_profile'),
     path('subscribe', subscribe_newsletter, name='subscribe_newsletter'),
     path('checkout/', include('checkout.urls', namespace='checkout')),
+    path('sitemap.xml', TemplateView.as_view(template_name="sitemap.xml", content_type="application/xml"), name='sitemap'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-

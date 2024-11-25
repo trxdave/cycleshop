@@ -636,6 +636,7 @@ This project uses Gmail to manage email communication, such as account verificat
 - Elements Appearance API Stripe - https://docs.stripe.com/elements/appearance-api
 - Payment to test card - https://docs.stripe.com/testing
 - Accept a payment - https://docs.stripe.com/payments/accept-a-payment?platform=web&ui=stripe-hosted#prefill-customer-data
+- WAVE - https://wave.webaim.org/
 
 - Perplexity - https://perplexity.ai
 
