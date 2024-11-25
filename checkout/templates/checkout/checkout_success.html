@@ -27,12 +27,6 @@
             A confirmation email has been sent to your email address: <strong>{{ user.email }}</strong>.
         </p>
 
-        <!-- View Order Details Button -->
-        <a href="{% url 'checkout:order_detail' order_id=order.id %}" 
-           class="btn-checkout-success btn-secondary checkout-success-button">
-           View Order Details
-        </a>
-
         <!-- Return to Home Button -->
         <a href="{% url 'home' %}" 
            class="btn-checkout-success btn-primary checkout-success-button">
