@@ -13,6 +13,8 @@ from checkout.models import Order
 from products.models import Product
 from .forms import OrderForm
 import logging
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
 
 
 # Initialize Stripe
@@ -30,21 +32,23 @@ def calculate_total(request):
     return total
 
 
-# Helper: Send Confirmation Email
+# Send Confirmation Email
 def send_confirmation_email(order, user_email):
     try:
         subject = 'Your Order Confirmation - CycleShop'
-        message = render_to_string(
-            'checkout/order_confirmation_email.html',
-            {'order': order},
+
+        text_content = f"Thank you for your order, {order.full_name}!\nYour order ID is {order.id}."
+        html_content = render_to_string('checkout/order_confirmation_email.html', {'order': order})
+
+        # Create the email
+        email = EmailMultiAlternatives(
+            subject=subject,
+            body=text_content,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[user_email],
         )
-        send_mail(
-            subject,
-            message,
-            settings.DEFAULT_FROM_EMAIL,
-            [user_email],
-            fail_silently=False,
-        )
+        email.attach_alternative(html_content, "text/html")
+        email.send()
         logger.info(f"Order confirmation email sent to {user_email}.")
     except Exception as e:
         logger.error(f"Failed to send order confirmation email: {e}")
@@ -221,6 +225,26 @@ def stripe_webhook(request):
     if event['type'] == 'payment_intent.succeeded':
         payment_intent = event['data']['object']
         logger.info(f"Payment succeeded: {payment_intent['id']}")
+
+        # Extract metadata (order_id, email, etc.)
+        metadata = payment_intent.get('metadata', {})
+        order_id = metadata.get('order_id')
+        email = metadata.get('email')
+
+        # Send confirmation email
+        if email and order_id:
+            try:
+                send_mail(
+                    subject="Order Confirmation",
+                    message=f"Thank you for your order! Your order ID is {order_id}.",
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[email],
+                    fail_silently=False,
+                )
+                logger.info(f"Confirmation email sent to {email}")
+            except Exception as e:
+                logger.error(f"Error sending email: {e}")
+
     elif event['type'] == 'payment_intent.payment_failed':
         payment_intent = event['data']['object']
         logger.warning(f"Payment failed: {payment_intent['id']}")
