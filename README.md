@@ -552,7 +552,7 @@ After implementing the above fixes, the checkout process:<br>
 
 ### HTML Validation
 ll pages were validated, and the code was pasted in. A filter was applied to remove issues related to the Django templating system.
-
+|bag.css | No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/bag.png)</details>| :white_check_mark:|
 
 
 ### CSS Validation
