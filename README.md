@@ -660,6 +660,7 @@ Accessibility is an ongoing process. This project will continue to:
 |Kids Bikes| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/kids-bikes.png)</details>| :white_check_mark:|
 |Mountain Bikes| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/mountain-bikes.png)</details>| :white_check_mark:|
 |Order History| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/order-history.png)</details>| :white_check_mark:|
+|Product Management| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/productmanagement.png)</details>| :white_check_mark:|
 |Return Exchange| 98 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/return-exchange.png)</details>| :white_check_mark:|
 |Road Bikes| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/road-bike.png)</details>| :white_check_mark:|
 |Shipping Information| 98 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/shipping-information.png)</details>| :white_check_mark:|
@@ -673,24 +674,25 @@ Accessibility is an ongoing process. This project will continue to:
 
 | **Tested** | **Result** | **View Result** | **Pass** |
 --- | --- | --- | :---:
-|Accessories| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|All Products| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|Clothing| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|Contact Us| 96 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|Electric Bikes| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|FAQ| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|Home| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|Kids Bikes| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|Mountain Bikes| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|Order History| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|Return Exchange| 98 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|Road Bikes| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|Shipping Information| 98 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|Sign In| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|Sign up| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|View Product| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|View Profile| 98 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-|Wishlist| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|Accessories| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/accessories.png)</details>| :white_check_mark:|
+|All Products| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/product-list.png)</details>| :white_check_mark:|
+|Clothing| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/clothing.png)</details>| :white_check_mark:|
+|Contact Us| 96 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/contactus.png)</details>| :white_check_mark:|
+|Electric Bikes| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/electric-bikes.png)</details>| :white_check_mark:|
+|FAQ| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/faq.png)</details>| :white_check_mark:|
+|Home| 96 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/home.png)</details>| :white_check_mark:|
+|Kids Bikes| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/kids-bikes.png)</details>| :white_check_mark:|
+|Mountain Bikes| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/mountain-bikes.png)</details>| :white_check_mark:|
+|Order History| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/orderhistory.png)</details>| :white_check_mark:|
+|Product Management| 96 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/productmanagement.png)</details>| :white_check_mark:|
+|Return Exchange| 98 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/return-exchange.png)</details>| :white_check_mark:|
+|Road Bikes| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/road-bikes.png)</details>| :white_check_mark:|
+|Shipping Information| 98 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/shippinginfo.png)</details>| :white_check_mark:|
+|Sign In| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/login.png)</details>| :white_check_mark:|
+|Sign up| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/signup.png)</details>| :white_check_mark:|
+|View Product| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/profiledetail.png)</details>| :white_check_mark:|
+|View Profile| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/profileview.png)</details>| :white_check_mark:|
+|Wishlist| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/wishlist.png)</details>| :white_check_mark:|
 
 <hr>
 
