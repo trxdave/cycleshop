@@ -1,0 +1,43 @@
+/* Return & Exchange */
+.return-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+
+.return-card-body {
+    padding: 20px;
+}
+
+.return-card-title {
+    color: #397367;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.return-text {
+    color: black;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Links inside the text */
+.return-text a {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.return-text a:hover {
+    color: #003d7a;
+}
+
+a.text-primary-dark-bg {
+    color: #66c2ff;
+    text-decoration: underline;
+}
+
+a.text-primary-dark-bg:hover {
+    color: #99d6ff;
+}

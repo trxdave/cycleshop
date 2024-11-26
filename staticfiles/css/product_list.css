@@ -1,0 +1,50 @@
+/* Pagination Container */
+.pagination-container {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+/* Pagination Buttons */
+.pagination-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.page-numbers {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+/* Button Adjustments for Touch Screens */
+.pagination-container .btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    border-radius: 4px;
+}
+
+/* Dots for Ellipsis */
+.pagination-container .dots {
+    display: inline-block;
+    padding: 0.5rem;
+    color: #6c757d;
+}
+
+/* Disabled Button */
+.btn-outline-secondary.disabled {
+    background-color: #35393C;
+    color: #ffffff;
+    border-color: #ffffff;
+    opacity: 0.8;
+    cursor: not-allowed; 
+}
+
+.btn-outline-secondary.disabled:hover {
+    color: #ffffff;
+    background-color: #35393C;
+    border-color: #ffffff;
+}

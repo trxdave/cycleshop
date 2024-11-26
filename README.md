@@ -24,7 +24,6 @@ Here's deployed site: [Am I Responsive](https://ui.dev/amiresponsive?url=https:/
 
 ## Set up Environment Variables
 
-
 - Create an env.py file (touch env.py) in the project root with the following contents:
 
 import os
@@ -96,7 +95,7 @@ I used [coolors.co](https://coolors.co/) to generate my color palette.
 
 | **Color Name** | **Hex Code** | **Usage** | **Color** |
 | --- | --- | --- | --- |
-| Dark Teal | #397367 | Primary color for buttons, links, and headers | ![alt text](documentation/image/397367.png) |
+| Teal Shade | #11666f | Primary color for buttons, links, and headers | ![alt text](documentation/image/11666f.png) |
 | Light Aqua | #63CCCA | Accent color for interactive elements like hover effects | ![alt text](documentation/image/63CCCA.png) |
 | Muted Green | #5DA399 | Background hightlights and icons | ![alt text](documentation/image/5DA399.png) |
 | Steel Blue | #42858C | Subtle color accents for secondary buttons and cards | ![alt text](documentation/image/42858C.png) |
@@ -186,13 +185,7 @@ The CycleShop project is designed to offer a streamlined and engaging user exper
 4. **SEO Optimization**:
 - Basic SEO practices are implemented, such as meta tags and alt text for images, to improve the site's discoverability on search engines.
 
-5. **Google Analytics Integration**:
-- 
-
-6. **Cross-Browser Compatibility**:
-- Tested across major browsers (Chrome, Firefox, Safari) to ensure consistent performance and visual experience.
-
-7. **Accessibility Features**:
+5. **Accessibility Features**:
 - Designed with accessibility in mind, including ARIA labels and color contrasts that comply with WCAG standards, ensuring that CycleShop is accessible to all users.
 
 <hr>
@@ -305,12 +298,21 @@ Furthermore, GitHub Issues facilitated the iterative development process by alig
 <hr>
 
 # Ecommerce Business Model
-This site operates under a Business to Customer (B2C) model, where it sells cycling goods directly to individual customers. The focus is on straightforward individual transactions, without the need for subscription-based models such as monthly or annual plans.
+This site operates under a Business to Customer (B2C) model, selling cycling goods directly to individual customers. The emphasis is on straightforward transactions tailored to the needs of individual buyers.
 
 Despite being in the early stages of development, the site already includes features such as a newsletter and links for social media marketing. These tools lay the groundwork for growing the business's online presence and fostering customer engagement.
 
 - **Social Media Marketing**: Leveraging large platforms like Facebook can help build a community around the business, increase brand awareness, and drive traffic to the site.
 - **Newsletter**: The email subscription feature allows the business to share regular updates with users, such as special offers, new product launches, changes to business hours, event notifications, and more.
+- **User-Friendly Shopping Experience**:
+The platform prioritizes accessibility and ease of use, with features such as:
+
+- Responsive design for seamless browsing on mobile, tablet, and desktop.
+- Intuitive navigation to quickly locate products and complete transactions.
+- A shopping bag feature that includes clear itemized details and real-time price updates.
+
+- **Customer Reviews and Ratings**:
+The ability for users to leave feedback on products (if enabled) fosters transparency and trust in the brand.
 
 <hr>
 
@@ -631,8 +633,6 @@ Accessibility is a crucial aspect of web development, ensuring that all users, i
 - Alternative Text for Images: Meaningful and descriptive alt attributes are provided for all non-decorative images. This ensures that users relying on screen readers can understand the context of the visuals.
 
 - Responsive Design: The application is fully responsive and maintains accessibility across various screen sizes and devices.
-
-- Audit Results:
 
 - Accessibility Score: The Lighthouse Accessibility audit achieved a score of XX/100. This score reflects a strong commitment to inclusivity and adherence to web accessibility standards.
 
