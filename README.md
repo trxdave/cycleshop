@@ -553,6 +553,8 @@ After implementing the above fixes, the checkout process:<br>
 ### HTML Validation
 33 pages were validated, and the code was pasted in. A filter was applied to remove issues related to the Django templating system.
 
+| **Tested** | **Result** | **View Result** | **Pass** |
+| --- | --- | --- | :---: |
 |accessories| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/accessories.png)</details>| :white_check_mark:|
 |add product| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/add-product.png)</details>| :white_check_mark:|
 |bag| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/bag.png)</details>| :white_check_mark:|
