@@ -558,14 +558,18 @@ ll pages were validated, and the code was pasted in. A filter was applied to rem
 ### CSS Validation
 
 | **Tested** | **Result** | **View Result** | **Pass** |
---- | --- | --- | :---:
+--- | --- | --- | :---: |
+|bag.css | No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/bag.png)</details>| :white_check_mark:|
 |styles.css | No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/styles.png)</details>| :white_check_mark:|
 |category_products.css | No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/category-products.png)</details>| :white_check_mark:|
 |manage_products.css | No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/manage-products.png)</details>| :white_check_mark:|
+|mobile.css | No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/mobile.png)</details>| :white_check_mark:|
 |newletter.css | No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/newsletter.png)</details>| :white_check_mark:|
 |order_confirmation_email.css | No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/order-confirmation-email.png)</details>| :white_check_mark:|
 |order_detail.css | No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/order-detail.png)</details>| :white_check_mark:|
 |order_history.css | No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/order-history.png)</details>| :white_check_mark:|
+|product_list.css | No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/productlist.png)</details>| :white_check_mark:|
+|return_exchange.css | No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/returnexchange.png)</details>| :white_check_mark:|
 |checkout.css | No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/checkout.png)</details>| :white_check_mark:|
 
 ## Python linter (PEP8)
