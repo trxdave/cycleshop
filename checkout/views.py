@@ -40,8 +40,13 @@ def send_confirmation_email(order, user_email):
 
     try:
         subject = 'Your Order Confirmation - CycleShop'
-        text_content = f"Thank you for your order, {order.full_name}!\nYour order ID is {order.id}."
-        html_content = render_to_string('checkout/order_confirmation_email.html', {'order': order})
+        text_content = (
+            f"Thank you for your order, {order.full_name}!\n"
+            f"Your order ID is {order.id}."
+        )
+        html_content = render_to_string(
+            'checkout/order_confirmation_email.html', {'order': order}
+        )
 
         email = EmailMultiAlternatives(
             subject=subject,
@@ -53,7 +58,7 @@ def send_confirmation_email(order, user_email):
         email.send()
 
         order.email_sent = True
-        order.save()
+        order.save(update_fields=['email_sent'])
         logger.info(f"Order confirmation email sent to {user_email}.")
     except Exception as e:
         logger.error(f"Failed to send order confirmation email: {e}")
@@ -65,12 +70,13 @@ def checkout_view(request):
     if request.method == 'POST' and form.is_valid():
         try:
             order = form.save(commit=False)
-            order.user = request.user if request.user.is_authenticated else None #noqa
+            order.user = (
+                request.user if request.user.is_authenticated else None
+            )
             order.total = calculate_total(request)
             order.status = "pending"
             order.save()
 
-            # Stripe PaymentIntent
             intent = stripe.PaymentIntent.create(
                 amount=int(order.total * 100),
                 currency=settings.STRIPE_CURRENCY,
@@ -92,7 +98,6 @@ def checkout_view(request):
             )
             return redirect('checkout:checkout')
 
-    # For GET requests
     context = {
         'form': form,
         'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
