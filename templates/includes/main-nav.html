@@ -25,8 +25,10 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url 'products:product_list' %}">All Products</a></li>
                             <li><a class="dropdown-item" href="{% url 'products:road_bikes' %}">Road Bikes</a></li>
-                            <li><a class="dropdown-item" href="{% url 'products:mountain_bikes' %}">Mountain Bikes</a></li>
-                            <li><a class="dropdown-item" href="{% url 'products:electric_bikes' %}">Electric Bikes</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products:mountain_bikes' %}">Mountain Bikes</a>
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'products:electric_bikes' %}">Electric Bikes</a>
+                            </li>
                             <li><a class="dropdown-item" href="{% url 'products:kids_bikes' %}">Kids Bikes</a></li>
                             <li><a class="dropdown-item" href="{% url 'products:clothing' %}">Clothing</a></li>
                             <li><a class="dropdown-item" href="{% url 'products:accessories' %}">Accessories</a></li>
@@ -45,7 +47,8 @@
                     <!-- Search Form -->
                     <form class="d-flex me-2 mb-2 mb-lg-0" method="GET" action="{% url 'search_results' %}">
                         <div class="input-group">
-                            <input class="search-control" type="search" placeholder="Search" aria-label="Search" name="q">
+                            <input class="search-control" type="search" placeholder="Search" aria-label="Search"
+                                name="q">
                             <button class="btn-search-custom" type="submit" aria-label="Search">
                                 <i class="fas fa-search" aria-hidden="true"></i>
                                 <span class="visually-hidden">Search</span>
@@ -63,7 +66,8 @@
                         <ul class="dropdown-menu" aria-labelledby="profileDropdown">
                             <li><a class="dropdown-item" href="{% url 'view_profile' %}">View Profile</a></li>
                             {% if user.is_superuser %}
-                            <li><a class="dropdown-item" href="{% url 'products:manage_products' %}">Product Management</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products:manage_products' %}">Product
+                                    Management</a></li>
                             {% endif %}
                             <li><a class="dropdown-item" href="{% url 'checkout:order_history' %}">My Orders</a></li>
                             <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
@@ -75,12 +79,14 @@
                     {% endif %}
 
                     <!-- Wishlist Button -->
-                    <a href="{% url 'products:view_wishlist' %}" class="btn-wishlist btn-primary position-relative mb-2 mb-lg-0 me-2"
-                        aria-label="View your wishlist">
+                    <a href="{% url 'products:view_wishlist' %}"
+                        class="btn-wishlist btn-primary position-relative mb-2 mb-lg-0 me-2"
+                        aria-labelledby="wishlist-label wishlist-count" aria-live="polite">
                         <i class="fas fa-heart" aria-hidden="true"></i>
+                        <span id="wishlist-label" class="visually-hidden">Wishlist</span>
                         {% if wishlist_items_count > 0 %}
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                            aria-label="Wishlist contains {{ wishlist_items_count }} items" aria-live="polite">
+                        <span id="wishlist-count"
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             {{ wishlist_items_count }}
                         </span>
                         {% endif %}
@@ -88,11 +94,12 @@
 
                     <!-- Shopping Cart Button -->
                     <a href="{% url 'bag:view_bag' %}" class="btn-cart btn-primary position-relative mb-2 mb-lg-0"
-                        aria-label="View your shopping cart">
+                        aria-labelledby="cart-label cart-count" aria-live="polite">
                         <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                        <span id="cart-label" class="visually-hidden">Shopping Cart</span>
                         {% if bag_items_count > 0 %}
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                            aria-label="Your cart contains {{ bag_items_count }} items" aria-live="polite">
+                        <span id="cart-count"
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             {{ bag_items_count }}
                         </span>
                         {% endif %}

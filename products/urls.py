@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -34,6 +34,10 @@ urlpatterns = [
         name='shipping_information'
     ),
     path('wishlist/', views.view_wishlist, name='wishlist'),
+    path(
+        'add-to-wishlist/<int:product_id>/',
+        views.toggle_wishlist, name='toggle_wishlist'
+    ),
     path('faq/', views.faq, name='faq'),
 
     # Product Management

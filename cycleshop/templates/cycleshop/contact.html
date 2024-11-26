@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 
 {% load crispy_forms_tags %}
-
-{% block hero %}{% endblock %}
 {% load static %}
 
 {% block title %}Contact Us - CycleShop{% endblock %}
@@ -14,7 +12,7 @@
             <h1 class="my-5 text-center">Contact Us</h1>
 
             <!-- Contact Form -->
-            <form method="post" action="">
+            <form method="post" action=".">
                 {% csrf_token %}
                 {{ form|crispy }}
                 <button type="submit" class="btn-contact btn-primary">Send Message</button>
