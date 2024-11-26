@@ -634,7 +634,7 @@ Accessibility is a crucial aspect of web development, ensuring that all users, i
 
 - Audit Results:
 
-- Accessibility Score: The Lighthouse Accessibility audit achieved a score of XX/100 (replace with your actual score). This score reflects a strong commitment to inclusivity and adherence to web accessibility standards.
+- Accessibility Score: The Lighthouse Accessibility audit achieved a score of XX/100. This score reflects a strong commitment to inclusivity and adherence to web accessibility standards.
 
 - Identified Issues:
 Resolved low contrast issues in buttons and text.
@@ -646,15 +646,51 @@ Improved focus states for better visibility during keyboard navigation.
 
 Accessibility is an ongoing process. This project will continue to:
 
-Monitor accessibility through regular Lighthouse audits.
-Conduct manual testing with assistive technologies (e.g., screen readers like NVDA or VoiceOver).
-Stay updated with the latest WCAG standards to enhance inclusivity.
-For more details on how Lighthouse evaluates accessibility, visit Lighthouse Accessibility Documentation.
+## Desktop
 
 | **Tested** | **Result** | **View Result** | **Pass** |
 --- | --- | --- | :---:
-|Homepages| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/homepage-desktop.png)</details>| :white_check_mark:|
+|Accessories| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/accessories.png)</details>| :white_check_mark:|
+|All Products| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/all-products.png)</details>| :white_check_mark:|
+|Clothing| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/clothing.png)</details>| :white_check_mark:|
+|Contact Us| 96 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/contact-us.png)</details>| :white_check_mark:|
+|Electric Bikes| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/electric-bikes.png)</details>| :white_check_mark:|
+|FAQ| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/faq.png)</details>| :white_check_mark:|
+|Home| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/home.png)</details>| :white_check_mark:|
+|Kids Bikes| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/kids-bikes.png)</details>| :white_check_mark:|
+|Mountain Bikes| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/mountain-bikes.png)</details>| :white_check_mark:|
+|Order History| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/order-history.png)</details>| :white_check_mark:|
+|Return Exchange| 98 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/return-exchange.png)</details>| :white_check_mark:|
+|Road Bikes| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/road-bike.png)</details>| :white_check_mark:|
+|Shipping Information| 98 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/shipping-information.png)</details>| :white_check_mark:|
+|Sign In| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/signin.png)</details>| :white_check_mark:|
+|Sign up| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/signup.png)</details>| :white_check_mark:|
+|View Product| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/view-product.png)</details>| :white_check_mark:|
+|View Profile| 98 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/view-profile.png)</details>| :white_check_mark:|
+|Wishlist| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/wishlist.png)</details>| :white_check_mark:|
 
+## Mobile
+
+| **Tested** | **Result** | **View Result** | **Pass** |
+--- | --- | --- | :---:
+|Accessories| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|All Products| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|Clothing| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|Contact Us| 96 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|Electric Bikes| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|FAQ| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|Home| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|Kids Bikes| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|Mountain Bikes| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|Order History| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|Return Exchange| 98 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|Road Bikes| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|Shipping Information| 98 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|Sign In| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|Sign up| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|View Product| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|View Profile| 98 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+|Wishlist| 100 | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
 
 <hr>
 

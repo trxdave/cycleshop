@@ -4,13 +4,17 @@
 
 {% block title %}Return & Exchanges | CycleShop{% endblock %}
 
+{% block blockcss %}
+<link rel="stylesheet" href="{% static 'css/return_exchange.css' %}">
+{% endblock %}
+
 {% block hero %}{% endblock %}
 
 {% block content %}
 <div class="container my-5">
     <h1 class="mb-4">Return & Exchanges</h1>
     
-    <div class="return-card shadow-sm mb-5">
+    <div class="return-card">
         <div class="return-card-body">
             <h3 class="return-card-title">Our Return Policy</h3>
             <p class="return-text">At CycleShop, we prioritize customer satisfaction. If you're not happy with your purchase, you can return or exchange the item within <strong>30 days</strong> of delivery.</p>
@@ -23,11 +27,11 @@
         </div>
     </div>
 
-    <div class="return-card shadow-sm mb-5">
+    <div class="return-card">
         <div class="return-card-body">
             <h3 class="return-card-title">Return Process</h3>
             <ol class="list-unstyled mb-4">
-                <li class="return-text">1. Contact our <a href="{% url 'contact' %}" class="text-primary">customer support</a> to initiate the return.</li>
+                <li class="return-text">1. Contact our <a href="{% url 'contact' %}">customer support</a> to initiate the return.</li>
                 <li class="return-text">2. You will receive a return authorization and shipping label via email.</li>
                 <li class="return-text">3. Package the item securely with the original receipt and return label.</li>
                 <li class="return-text">4. Ship the item back to us. We will process your refund within 5-7 business days after receiving the return.</li>
@@ -35,7 +39,7 @@
         </div>
     </div>
 
-    <div class="return-card shadow-sm">
+    <div class="return-card">
         <div class="return-card-body">
             <h3 class="return-card-title">Exchange Process</h3>
             <ol class="list-unstyled mb-4">
@@ -47,7 +51,7 @@
     </div>
 
     <div class="mt-4">
-        <p>If you have any questions or concerns, please <a href="{% url 'contact' %}" class="text-primary">contact our support team</a>. We're here to help!</p>
+        <p>If you have any questions or concerns, please <a href="{% url 'contact' %}" class="text-primary-dark-bg">contact our support team</a>. We're here to help!</p>
     </div>
 </div>
 {% endblock %}

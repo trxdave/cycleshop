@@ -1,0 +1,43 @@
+/* Return & Exchange */
+.return-card {
+    background-color: #f9f9f9; /* Light gray for contrast */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    padding: 20px; /* Adds spacing inside the card */
+    margin-bottom: 20px; /* Space between cards */
+    border: 1px solid #ddd; /* Subtle border for definition */
+}
+
+.return-card-body {
+    padding: 20px; /* Inner padding for card content */
+}
+
+.return-card-title {
+    color: #397367; /* Matches your CycleShop color scheme */
+    font-size: 1.5rem; /* Slightly larger font for titles */
+    font-weight: bold; /* Emphasizes card titles */
+}
+
+.return-text {
+    color: black; /* Ensures high contrast for readability */
+    font-size: 1rem; /* Consistent font size */
+    line-height: 1.6; /* Improves text readability */
+}
+
+/* Links inside the text */
+.return-text a {
+    color: #0056b3; /* Accessible blue for links */
+    text-decoration: underline; /* Adds clarity for clickable items */
+}
+
+.return-text a:hover {
+    color: #003d7a; /* Darker blue on hover for better visibility */
+}
+
+a.text-primary-dark-bg {
+    color: #66c2ff; /* High-contrast color for dark backgrounds */
+    text-decoration: underline;
+}
+
+a.text-primary-dark-bg:hover {
+    color: #99d6ff;
+}
