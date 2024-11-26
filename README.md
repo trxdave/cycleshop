@@ -844,3 +844,9 @@ This project uses Gmail to manage email communication, such as account verificat
 - Accept a payment - https://docs.stripe.com/payments/accept-a-payment?platform=web&ui=stripe-hosted#prefill-customer-data
 - WAVE - https://wave.webaim.org/
 - Perplexity - https://perplexity.ai
+- CI Python Linter - https://pep8ci.herokuapp.com/
+- https://alicecampkin.medium.com/django-testing-for-beginners-146bd285a178
+- https://jshint.com/
+- https://validator.w3.org/
+- https://jigsaw.w3.org/css-validator/
+- 
