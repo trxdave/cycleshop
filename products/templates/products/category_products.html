@@ -65,18 +65,18 @@
                 {% for num in products.paginator.page_range %}
                 {% if num == products.number %}
                 <span class="btn active mx-1" aria-current="page">{{ num }}</span>
-                {% elif num > products.number|add:'-3' and num < products.number|add:'3' %} <a href="?page={{ num }}"
-                    class="btn btn-outline-primary mx-1" aria-label="Go to page {{ num }}">
+                {% elif num > products.number|add:'-3' and num < products.number|add:'3' %}
+                <a href="?page={{ num }}" class="btn btn-outline-primary mx-1" aria-label="Go to page {{ num }}">
                     {{ num }}
-                    </a>
-                    {% elif num == 1 or num == products.paginator.num_pages %}
-                    <a href="?page={{ num }}" class="btn btn-outline-primary mx-1" aria-label="Go to page {{ num }}">
-                        {{ num }}
-                    </a>
-                    {% elif num == products.number|add:'-3' or num == products.number|add:'3' %}
-                    <span class="dots mx-1" aria-hidden="true">...</span>
-                    {% endif %}
-                    {% endfor %}
+                </a>
+                {% elif num == 1 or num == products.paginator.num_pages %}
+                <a href="?page={{ num }}" class="btn btn-outline-primary mx-1" aria-label="Go to page {{ num }}">
+                    {{ num }}
+                </a>
+                {% elif num == products.number|add:'-3' or num == products.number|add:'3' %}
+                <span class="dots mx-1" aria-hidden="true">...</span>
+                {% endif %}
+                {% endfor %}
             </div>
 
             <!-- Next Button -->
@@ -89,6 +89,7 @@
                 Next
             </span>
             {% endif %}
-    </div>
+        </div>
+    </nav>
 </div>
 {% endblock %}
