@@ -154,31 +154,103 @@ The CycleShop project is designed to offer a streamlined and engaging user exper
 
 # Features
 
-## Current Features:
+## Home Page
 
-- **Product Listing**: Users can view a list of products, including product names, descriptions, prices, and stock availability.
+- Welcoming landing page with a hero image and quick navigation links.
+- Displays featured products and free delivery banners.
 
-- **Product Details**: Users can click on individual products to view more detailed information.
+![alt text](documentation/features/home1.png)
+![alt text](documentation/features/home2.png)
 
-- **Admin Panel**: Site administrators can add, edit, and delete products from the catalog using Django's admin interface.
+## User Profile Management
+- Registered users can manage their personal information through a profile page.
+    - Update personal details such as name, email, and delivery address.
+    - Access and manage saved **Shipping Information** for faster checkouts.
+    - View order history with details like order ID, items purchased, and total costs.
 
-- **Responsive Design**: The site is fully responsive, built using Bootstrap for an optimal experience on all devices.
+![alt text](documentation/features/profile1.png)
+![alt text](documentation/features/profile2.png)
 
-- **Product Categories**: Products are categorized into Road Bikes, Mountain Bikes, Electric Bikes, Kids Bikes, Clothing, and Accessories.
+## Wishlist
+- Users can save favorite products for future reference or purchase.
+- Accessible via a dedicated **Wishlist** page under their account.
 
-- **Shopping Cart**: Add items to a cart and track them throughout the session.
+![alt text](documentation/features/wishlist.png)
 
-- **User Authentication**: Users can register, log in, and manage their accounts.
+![alt text](documentation/features/wishlist2.png)
 
-- **Search Functionality**: Users can search for products using the search bar.
+## Shipping Information
+- Provides users with clear details about shipping options, costs, and estimated delivery times.
+- Automatically calculates shipping costs during checkout based on the user's location.
 
-- **Wishlist**: Users can save items to their wishlist for future purchase consideration.
+![alt text](documentation/features/shipping1.png)
+![alt text](documentation/features/shipping2.png)
 
-- **Responsive Design**: Fully responsive layout using Bootstrap.
+## Return & Exchange
+- Details the return and exchange policy on a dedicated page.
+- Registered users can initiate return or exchange requests directly from their order history.
 
-- **Free Delivery Banner**: Offers free delivery for orders over €500.
+![alt text](documentation/features/return1.png)
+![alt text](documentation/features/return2.png)
 
-- **Newsletter Subscription**: Users can subscribe to the newsletter.
+## Authentication (Login, Register, Sign Up)
+- **Login & Logout**:
+    - Secure login system with a "Remember Me" option.
+    - Logout button is always visible in the navigation bar for quick access.
+
+![alt text](documentation/features/signin1.png)
+
+![alt text](documentation/features/success-signin.png)
+
+- **Sign Up & Registration**:
+    - New users can register with their email and set up an account securely.
+    - Password recovery and reset options available.
+
+![alt text](documentation/features/signup.png)
+
+## Product Listings & Management
+- Products are categorized for easy navigation (e.g., Mountain Bikes, Electric Bikes, etc).
+- Feature include:
+    - Pagination for browsing larger catalogs.
+
+![alt text](documentation/features/paginator.png)
+
+- **Admin Product Management**:
+    - Admins can add, update and delete products.
+    - Includes fields for name, description, price, images, and stock quanity.
+    - Uses Cloudinary to manage product images.
+
+![alt text](documentation/features/productm1.png)
+![alt text](documentation/features/productm2.png)
+
+## Checkout
+- Secure Payment Processing:
+    - Integration with Stripe for credit card payments.
+    - Order summary shows a detailed breakdown of items, shipping costs.
+    - Flash messages confirm successful transactions or flag issues during checkout.
+
+
+
+## FAQ
+- Comprehensive FAQ section to address common customer questions, such as:
+    - Payment methods.
+    - Shipping times,
+    - Return and exchange policies.
+
+## Contact
+- Dedicated **Contact Us** page with a form for users to send inquireies.
+- Includes store email and phone number for additional support.
+
+## Social Media Integration
+- Social media links are prominently displayed in the footer.
+
+## Newsletter Subscription
+- Users can subscribe to the newletter for updates on new products, promotions, and events.
+- Flash message confirmation of successful subscription.
+
+## Wishlist
+- Save and manage a list of favorite products for future purchases.
+- Helps customers track items they interested in without adding them to the cart.
 
 <hr>
 

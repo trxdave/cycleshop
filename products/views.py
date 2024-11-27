@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Product, Category, Wishlist
+from .models import Product, Category, Wishlist, Rating
 from .forms import ProductForm, RatingForm
 
 
@@ -263,6 +263,34 @@ def accessories(request):
         'products/category_products.html',
         {'products': products, 'category_name': 'Accessories'}
     )
+
+
+def rate_product(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    if request.method == "POST":
+        form = RatingForm(request.POST)
+        if form.is_valid():
+            # Check if user has already rated this product
+            existing_rating = Rating.objects.filter(product=product, user=request.user).first()
+            if existing_rating:
+                existing_rating.rating = form.cleaned_data['rating']
+                existing_rating.save()
+                messages.success(request, "Your rating has been updated.")
+            else:
+                rating = form.save(commit=False)
+                rating.product = product
+                rating.user = request.user
+                rating.save()
+                messages.success(request, "Thank you for rating this product!")
+            product.update_rating()
+            return redirect('products:product_detail', product_id=product.id)
+    else:
+        form = RatingForm()
+
+    return render(request, 'products/product_detail.html', {
+        'product': product,
+        'form': form,
+    })
 
 
 def faq(request):

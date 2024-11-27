@@ -21,6 +21,7 @@ urlpatterns = [
     path('kids-bikes/', views.kids_bikes, name='kids_bikes'),
     path('clothing/', views.clothing, name='clothing'),
     path('accessories/', views.accessories, name='accessories'),
+    path('rate/<int:product_id>/', views.rate_product, name='rate_product'),
 
     # Information pages
     path(

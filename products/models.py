@@ -34,14 +34,18 @@ class Product(models.Model):
     rating_count = models.IntegerField(default=0)
     image = CloudinaryField('image', null=True, blank=True)
     category = models.ForeignKey(
-        Category, on_delete=models.CASCADE, related_name='products'
+        'Category', on_delete=models.CASCADE, related_name='products'
     )
 
-    def update_rating(self, new_rating):
-        """Update the average rating when a new rating is submitted."""
-        self.total_ratings += new_rating
-        self.rating_count += 1
-        self.rating = self.total_ratings / self.rating_count
+    def update_rating(self):
+        """Recalculate and update the average rating."""
+        ratings = self.ratings.all()
+        if ratings.exists():
+            self.rating = sum(r.rating for r in ratings) / ratings.count()
+            self.rating_count = ratings.count()
+        else:
+            self.rating = 0
+            self.rating_count = 0
         self.save()
 
     def __str__(self):
@@ -56,3 +60,18 @@ class Wishlist(models.Model):
     def __str__(self):
         """String representation of the Wishlist model."""
         return f"{self.user.username}'s Wishlist"
+
+
+class Rating(models.Model):
+    product = models.ForeignKey(
+        'Product', on_delete=models.CASCADE, related_name='ratings'
+    )
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    rating = models.PositiveIntegerField()  # e.g., 1 to 5
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('product', 'user')
+
+    def __str__(self):
+        return f"Rating {self.rating} for {self.product.name} by {self.user.username}"
