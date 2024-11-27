@@ -139,6 +139,17 @@ The CycleShop project is designed to offer a streamlined and engaging user exper
 - **The footer serves as and essential guide**, offering users access to account management, customer services links, and company information. The **My Account** and **Customer Services** sections support quick navigation to key pages like **login**, **Wishlist**, **Contact Us**, and **FAQ**.
 - User can subscribe to the CycleShop newsletter directly from the footer, enhancing engagement with on going updates and promotions.
 
+8. ## Error Pages in CycleShop
+- Cycleshop includes custom error pages to provide a user-friendly experience even when issues occur. Thes pages ensure clear communication with users, offering helpful guidance and navigation options during unexpected situations. The custom error pages include:
+
+- **400 Bad Request**: This page is displayed when the server cannot process the request due to a client-side error, such as a malformed request. It provides a simple explanation and includes a link to navigate back to the homepage.
+
+- **403 Forbidden**: This page appears when a user attempts to access a resource they do not have permission to view. It explains the issue clearly and advises the user to contact the site administrator if they believe this is an error.
+
+- **404 Not Found**: This page is shown when a user tries to access a page that doesn't exist. It provides a friendly message, suggesting the user might have mistyped the URL or followed a broken link. The page also includes a button to redirect users back to the homepage.
+
+- **500 Internal Server Error**: In the case of a server-side issue, this page informs the user that something went wrong on the server. It advises them to try again later and provides a link to return to the homepage.
+
 <hr>
 
 # Features
