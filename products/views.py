@@ -4,7 +4,6 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Product, Category, Wishlist
-from bag.models import Order
 from .forms import ProductForm, RatingForm
 
 
