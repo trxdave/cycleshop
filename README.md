@@ -227,9 +227,14 @@ The CycleShop project is designed to offer a streamlined and engaging user exper
 - Secure Payment Processing:
     - Integration with Stripe for credit card payments.
     - Order summary shows a detailed breakdown of items, shipping costs.
-    - Flash messages confirm successful transactions or flag issues during checkout.
+    - Messages confirm successful transactions or flag issues during checkout.
 
+![alt text](documentation/features/shoppingbag.png)
 
+![alt text](documentation/features/checkout1.png)
+![alt text](documentation/features/checkout2.png)
+
+![alt text](documentation/features/paymentsuccess.png)
 
 ## FAQ
 - Comprehensive FAQ section to address common customer questions, such as:
@@ -237,20 +242,26 @@ The CycleShop project is designed to offer a streamlined and engaging user exper
     - Shipping times,
     - Return and exchange policies.
 
-## Contact
+![alt text](documentation/features/faq.png)
+
+## Contact Us
 - Dedicated **Contact Us** page with a form for users to send inquireies.
-- Includes store email and phone number for additional support.
+
+![alt text](documentation/features/contactus.png)
 
 ## Social Media Integration
 - Social media links are prominently displayed in the footer.
 
+![alt text](documentation/features/social.png)
+
 ## Newsletter Subscription
 - Users can subscribe to the newletter for updates on new products, promotions, and events.
-- Flash message confirmation of successful subscription.
+- Message confirmation of successful subscription.
 
-## Wishlist
-- Save and manage a list of favorite products for future purchases.
-- Helps customers track items they interested in without adding them to the cart.
+![alt text](documentation/features/newletter1.png)
+
+![alt text](documentation/features/newletter2.png)
+
 
 <hr>
 
