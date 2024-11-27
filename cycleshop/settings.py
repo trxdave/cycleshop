@@ -32,6 +32,7 @@ DEBUG = os.environ.get('DEBUG', False)
 
 ALLOWED_HOSTS = [
     'cycleshop-b289044df6ec.herokuapp.com', 'localhost',
+    '8000-trxdave-cycleshop-jz6a44rqeqh.ws.codeinstitute-ide.net/'
     ]
 
 CSRF_TRUSTED_ORIGINS = [
