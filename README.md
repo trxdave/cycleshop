@@ -853,6 +853,8 @@ In this section, I outline the various tools and technologies that were essentia
 - **Lucidchart**: [Lucidchart](https://www.lucidchart.com/pages)is used to design and visualize the database schema.
 - **Am I Responsive**: [Am I Responsive](https://ui.dev/amiresponsive) is used to test and showcase how the website looks on different devices.
 - **Cloudinary**: [Cloudinary](https://cloudinary.com/) is used for media storage, handling image uploads and optimizing assets.
+- **Google Image**: used for bikes image.
+- **Grammerly**: [Grammerly](https://app.grammarly.com/) Ensured the project's documentation was clear and professional.
 
 <hr>
 
@@ -932,6 +934,27 @@ This project uses Gmail to manage email communication, such as account verificat
 - EMAIL_HOST_USER: Your Gmail email address.
 - EMAIL_HOST_PASS: The 16-character app password.
 
+# requirements.txt list
+
+This requirements.txt file lists the essential Python packages required for the CycleShop project. Each package serves a specific purpose:
+
+- **asgiref**: Provides ASGI (Asynchronous Server Gateway Interface) reference tools for Django's async capabilities.
+- **cloudinary**: Handles media file storage and management via the Cloudinary platform.
+- **crispy-bootstrap5**: Integrates the Crispy Forms library with Bootstrap 5 for better form styling.
+- **dj-database-url**: Simplifies database configuration using a URL-based approach.
+- **Django**: The primary web framework used for building the CycleShop application.
+- **django-allauth**: Provides robust user authentication and social account management.
+- **django-cloudinary-storage**: Enables integration with Cloudinary for managing static and media files.
+- **django-crispy-forms**: Enhances form rendering with customizable layouts and templates.
+- **gunicorn**: A WSGI HTTP server for deploying the Django app in production environments.
+- **pillow**: A powerful imaging library used for handling image uploads.
+- **psycopg2**: A PostgreSQL database adapter for Python.
+- **python-dotenv**: Loads environment variables from .env files for configuration management.
+- **sqlparse**: A SQL parser utility used internally by Django for database query handling.
+- **stripe**: Provides API integration for managing online payments via Stripe.
+- **whitenoise**: Simplifies static file serving in production.
+
+
 # Credits
 
 - Accordian - https://djangosnippets.org/snippets/10658/
@@ -943,7 +966,15 @@ This project uses Gmail to manage email communication, such as account verificat
 - Perplexity - https://perplexity.ai
 - CI Python Linter - https://pep8ci.herokuapp.com/
 - https://alicecampkin.medium.com/django-testing-for-beginners-146bd285a178
-- https://jshint.com/
-- https://validator.w3.org/
-- https://jigsaw.w3.org/css-validator/
-- 
+- JS testing - https://jshint.com/
+- Validator HTML Testing - https://validator.w3.org/
+- Validator CSS Testing - https://jigsaw.w3.org/css-validator/
+
+# Hackathon
+- * [Hackathon](https://hackathon.codeinstitute.net/teams/474/): Participating in this event sharpened my coding skills and provided an opportunity to work in a team environment, ultimately earning 2nd place (Silver).
+
+# Acknowledgements
+
+* I would like to express my sincere gratitude to the Hackathon team for the incredible learning experience. The challenges and teamwork during the event significantly enhanced my skills in Django, and I'm proud to have achieved 2nd place (Silver).
+
+* Special thanks to Paul Thomas O'Riordan, Kristyna, my Cohort Facilitator, Rory Patrick Sheridan, my Code Institute Mentor, and Tim Nelson, my second Mentor, for their guidance and support throughout this journey. Your encouragement has been invaluable to my growth as a developer.
