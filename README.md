@@ -388,6 +388,9 @@ Furthermore, GitHub Issues facilitated the iterative development process by alig
 ![alt text](documentation/image/issues2.png)
 
 - Closed Issues
+One left is not done yet for Moderate Customer Reviews
+
+![alt text](documentation/image/issues.png)
 
 <hr>
 
