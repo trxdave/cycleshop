@@ -21,9 +21,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 from .views import subscribe_newsletter
-from django.contrib.sitemaps.views import sitemap
-from cycleshop.sitemaps import StaticViewSitemap
 from django.views.generic import TemplateView
+from cycleshop.sitemaps import StaticViewSitemap
 
 sitemaps = {
     'static': StaticViewSitemap,
@@ -58,3 +57,10 @@ urlpatterns = [
         name='sitemap'
     ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+# Error handlers
+handler400 = 'cycleshop.views.handler400'
+handler403 = 'cycleshop.views.handler403'
+handler404 = 'cycleshop.views.handler404'
+handler500 = 'cycleshop.views.handler500'
