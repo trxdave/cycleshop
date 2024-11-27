@@ -271,7 +271,10 @@ def rate_product(request, product_id):
         form = RatingForm(request.POST)
         if form.is_valid():
             # Check if user has already rated this product
-            existing_rating = Rating.objects.filter(product=product, user=request.user).first()
+            existing_rating = Rating.objects.filter(
+                product=product,
+                user=request.user
+            ).first()
             if existing_rating:
                 existing_rating.rating = form.cleaned_data['rating']
                 existing_rating.save()

@@ -1,6 +1,5 @@
 from django import forms
-from .models import Product
-from .models import Rating
+from .models import Product, Rating
 
 
 class ProductForm(forms.ModelForm):
@@ -11,10 +10,11 @@ class ProductForm(forms.ModelForm):
             'sku', 'rating', 'image', 'category'
         ]
 
+
 class RatingForm(forms.ModelForm):
     class Meta:
         model = Rating
-        fields = ['rating']  # Only allow the rating field
+        fields = ['rating']
 
     RATING_CHOICES = [
         (1, '1 - Very Poor'),
