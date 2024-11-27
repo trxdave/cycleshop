@@ -57,10 +57,3 @@ urlpatterns = [
         name='sitemap'
     ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
-# Error handlers
-handler400 = 'cycleshop.views.handler400'
-handler403 = 'cycleshop.views.handler403'
-handler404 = 'cycleshop.views.handler404'
-handler500 = 'cycleshop.views.handler500'

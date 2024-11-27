@@ -28,11 +28,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', False)
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'cycleshop-b289044df6ec.herokuapp.com', 'localhost',
-    '8000-trxdave-cycleshop-jz6a44rqeqh.ws.codeinstitute-ide.net/'
     ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -60,6 +59,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'cloudinary',
     'django.contrib.sites',
+    'django.contrib.redirects',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -75,6 +75,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -100,7 +101,6 @@ TEMPLATES = [
                 'bag.context_processors.bag_contents',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'bag.context_processors.bag_contents',
             ],
         },
     },
