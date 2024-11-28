@@ -948,7 +948,6 @@ span.btn.btn-outline-secondary.disabled.improved-contrast:focus {
     /* Align and center profile and cart icons with consistent spacing */
     .d-flex.align-items-center {
         gap: 0.75rem;
-        flex-direction: column;
     }
 
     .btn-profile, .btn-cart {

@@ -18,6 +18,8 @@ Here's deployed site: [Am I Responsive](https://ui.dev/amiresponsive?url=https:/
 1. **Chrome Extension**: Install Igorne X-Frame headers for chrome to bypass this security restrisction temporarily. Then reload the responsive preview page to view site across devices.
 2. **Gitpod Solution**: Run project in Gitpod and, once active, navigate to the Ports tab. Make port 8000 public by clicking the padlock icon, then use the live preview URL in the responsive tool for an accurate preview.
 
+![alt text](documentation/image/ignorex.png)
+
 <hr>
 
 # Setup Instructions
@@ -162,6 +164,79 @@ The CycleShop project is designed to offer a streamlined and engaging user exper
 ![alt text](documentation/features/home1.png)
 ![alt text](documentation/features/home2.png)
 
+## Main Navigation
+- **Accessible and User-Friendly**: The main navigation bar is prominently placed at the top of every page, ensuring easy to key sections.
+- **Dynamic Links**:
+    - Home
+    - Product Categories: Mountain Bikes, Electric Bikes, Kids Bikes, Clothing, Accessories
+    - Wishlist(visable only to logged-in users)
+    - User Account Options: Login, Sign Up, Profile
+    - Admin Controls (only visible to superusers)
+
+- **Responsive Design**: Adjust seamlessly to screen size, providing a consistent user experience on larger devices.
+- **Search Functionality**: Includes a search bar for quick product discovery.
+
+![alt text](documentation/features/main-nav.png)
+
+## Mobile Navigation
+- **Branding**: Displays the CycleShop logo prominently for clear visibility.
+- **Shopping Cart Access**:
+    - Cart icon allows users to quickly view and manage their shopping bag.
+- **Wishlist Button**:
+    - A heart icon provides a direct link to the Wishlist.
+    - Displays the total number of wishlist items dynamically using a badge for real-time updates.
+- **Collapsible Navbar**:
+    - The menu provides easy access to key links like:
+        - Home
+        - Product Categories: All Products, Mountain Bikes, Electric Bikes, Kids Bikes, Clothing, Accessories
+        - Contact Page and FAQ
+
+### User-Specific Links
+    - **Authenticated Users**:
+        - Access their Profile to view and manage account details.
+        - Logout securely with a single click.
+    - **Unauthenticated Users**:
+        - Quick links to Login or Signup to access account features.
+
+### Search Functionality
+    - A built-in search bar enables users to find products effortlessly.
+
+[text](templates/includes/mobile-top-header.html)
+
+## Wishlist
+The Wishlist in CycleShop allows users to save and manage their favorite products for future reference.
+
+- **Key Features**:
+    1. **View Saved Products**:
+        - Users can view all products they have added to their wishlist on a dedicated page.
+        - Each product displays:
+            - **Image**: Displays the product's image or a default placeholder if no image is available.
+            - **Details**: Includes the product name, price, and a short description.
+            - **Actions**:
+                - View more details about the product.
+                - Remove the product from the wishlist.
+    2. **Responsive Design**:
+        - The wishlist page is fully responsive, ensuring usability on all devices sizes.
+    3. **Dynamic Management**:
+        - Users can seamlessly add and remove products from their wishlist.
+        - Feedback messages (e.g., success or error alerts) are displayed dynamically using Django's messaging framework.
+    4. **Empty Wishlist Handling**:
+       - If the wishlist is empty, a message is displayed along with a link to browse products.
+
+- **How It Works**:
+    - **Adding Products**:
+        - Users can add products to their wishlist directly from product detail pages.
+    - **Removing Products**:
+        - Users can remove products from their wishlist by clicking the "Remove from Wishlist" button.
+    - **Navigation**:
+        - Wishlist access is available through the main navigation and mobile navigation.
+
+![alt text](documentation/features/main-nav.png)
+
+![alt text](documentation/features/wishlist.png)
+
+![alt text](documentation/features/wishlist2.png)
+
 ## User Profile Management
 - Registered users can manage their personal information through a profile page.
     - Update personal details such as name, email, and delivery address.
@@ -171,13 +246,6 @@ The CycleShop project is designed to offer a streamlined and engaging user exper
 ![alt text](documentation/features/profile1.png)
 ![alt text](documentation/features/profile2.png)
 
-## Wishlist
-- Users can save favorite products for future reference or purchase.
-- Accessible via a dedicated **Wishlist** page under their account.
-
-![alt text](documentation/features/wishlist.png)
-
-![alt text](documentation/features/wishlist2.png)
 
 ## Shipping Information
 - Provides users with clear details about shipping options, costs, and estimated delivery times.

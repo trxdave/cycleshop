@@ -10,6 +10,20 @@
             <a class="navbar-brand fw-bold fs-1 mb-2" href="{% url 'home' %}">CycleShop</a>
 
             <div class="d-flex align-items-center">
+                <!-- Wishlist Button -->
+                <a href="{% url 'products:view_wishlist' %}"
+                    class="btn-menu position-relative me-3"
+                    aria-labelledby="wishlist-label wishlist-count" aria-live="polite">
+                    <i class="fas fa-heart" aria-hidden="true"></i>
+                    <span id="wishlist-label" class="visually-hidden">Wishlist</span>
+                    {% if wishlist_items_count > 0 %}
+                    <span id="wishlist-count"
+                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        {{ wishlist_items_count }}
+                    </span>
+                    {% endif %}
+                </a>
+
                 <!-- Shopping Cart Icon -->
                 <a href="{% url 'bag:view_bag' %}" class="btn-menu me-3" aria-label="View shopping cart">
                     <i class="fas fa-shopping-cart"></i>
@@ -52,6 +66,27 @@
                             <li><a class="dropdown-item" href="{% url 'products:accessories' %}">Accessories</a></li>
                         </ul>
                     </li>
+
+                    <!-- Conditional User Links -->
+                    {% if user.is_authenticated %}
+                        <!-- Profile Button -->
+                        <li class="nav-item">
+                            <a class="btn-menu btn btn-outline-primary my-1" href="{% url 'profile' %}">Profile</a>
+                        </li>
+                        <!-- Logout Button -->
+                        <li class="nav-item">
+                            <a class="btn-menu btn btn-outline-danger my-1" href="{% url 'account_logout' %}">Logout</a>
+                        </li>
+                    {% else %}
+                        <!-- Login Button -->
+                        <li class="nav-item">
+                            <a class="btn-menu btn btn-outline-primary my-1" href="{% url 'account_login' %}">Login</a>
+                        </li>
+                        <!-- Signup Button -->
+                        <li class="nav-item">
+                            <a class="btn-menu btn btn-outline-primary my-1" href="{% url 'account_signup' %}">Signup</a>
+                        </li>
+                    {% endif %}
 
                     <!-- Contact Button -->
                     <li class="nav-item">

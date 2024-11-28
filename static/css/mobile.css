@@ -1,5 +1,5 @@
 .btn-menu {
-    width: 90%;
+    width: 100%;
     max-width: 300px;
     text-align: center;
     padding: 12px;
@@ -9,7 +9,6 @@
     border: 1px solid #11666f;
     border-radius: 8px;
     transition: background-color 0.3s ease, color 0.3s ease;
-    margin-bottom: 10px;
 }
 
 /* Hover and Focus States for .btn-menu */
@@ -43,11 +42,6 @@
 /* Mobile-Specific Button Styling */
 .btn-mobile {
     margin-right: 16px;
-}
-
-/* Navbar Toggle Button */
-.navbar-toggle-btn {
-    margin-left: 8px;
 }
 
 /* Dropdown Menu Styling */
