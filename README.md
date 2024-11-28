@@ -332,13 +332,43 @@ The Product Managment feature allows administrators to efficiently manage the pr
 ![alt text](documentation/features/productm1.png)
 ![alt text](documentation/features/productm2.png)
 
+## Shopping Bag
+1. **Add to Bag**:
+    - Users can add products directly to their shopping bag from the product listing or product detail pages.
+    - A confirmation alert notifies the user of successful addition.
+
+2. **Update Quantity**:
+    - Users can easily adjust the quantity of items in their shopping bag using a quantity input box.
+    - Update button ensures the changes are saved, with instant feedback displayed on the page.
+
+3. **Remove Items**:
+    - Remove button allows users to delete products from their shopping bag.
+    - Confirmation alert contirms the action for a seamless user experience.
+
+4. **Dynamic Total Price Calculation**:
+    - Total price dyncamically updates based on the quantity of items in the bag, giving users an accurate summary at all times.
+
+5. **Proceed to Checkout**:
+    - Users can proceed directly to the checkout page to complete their purchase.
+    - Proceed to Checkout button ensures easy navigation.
+
+6. **Fully Responsive Design**:
+    - **Desktop, Laptop, and Tablet**:
+        - Traditional table layout displays products, prices, quantities, totals, and actions for optimal readability.
+    - **Mobile Devices**:
+        - Card design makes the shopping bag visually appealing and user-friendly on smaller screens.
+        - Key details like product name, price, total, and quantity are displayed clearly, with update and remove buttons filly responsive.
+
+7. **Product Image and Details**:
+    - Each item in the bag includes a product name and other essential details, providing clarity to the user.
+
+
+
 ## Checkout
 - Secure Payment Processing:
     - Integration with Stripe for credit card payments.
     - Order summary shows a detailed breakdown of items, shipping costs.
     - Messages confirm successful transactions or flag issues during checkout.
-
-![alt text](documentation/features/shoppingbag.png)
 
 ![alt text](documentation/features/checkout1.png)
 ![alt text](documentation/features/checkout2.png)
@@ -895,6 +925,7 @@ Accessibility is an ongoing process. This project will continue to:
 --- | --- | --- | :---:
 |Accessories| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/accessories.png)</details>| :white_check_mark:|
 |All Products| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/all-products.png)</details>| :white_check_mark:|
+|Shopping Bag| 96 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/bag.png)</details>| :white_check_mark:|
 |Clothing| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/clothing.png)</details>| :white_check_mark:|
 |Contact Us| 96 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/contact-us.png)</details>| :white_check_mark:|
 |Electric Bikes| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/desktop/electric-bikes.png)</details>| :white_check_mark:|
@@ -919,6 +950,7 @@ Accessibility is an ongoing process. This project will continue to:
 --- | --- | --- | :---:
 |Accessories| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/accessories.png)</details>| :white_check_mark:|
 |All Products| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/product-list.png)</details>| :white_check_mark:|
+|Shopping Bag| 96 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/bag.png)</details>| :white_check_mark:|
 |Clothing| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/clothing.png)</details>| :white_check_mark:|
 |Contact Us| 96 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/contactus.png)</details>| :white_check_mark:|
 |Electric Bikes| 100 | <details><summary>Screenshot of result</summary>![Result](documentation/accessibility/mobile/electric-bikes.png)</details>| :white_check_mark:|
@@ -1074,7 +1106,7 @@ This requirements.txt file lists the essential Python packages required for the 
 - WAVE - https://wave.webaim.org/
 - Perplexity - https://perplexity.ai
 - CI Python Linter - https://pep8ci.herokuapp.com/
-- https://alicecampkin.medium.com/django-testing-for-beginners-146bd285a178
+- Beginners Testing - https://alicecampkin.medium.com/django-testing-for-beginners-146bd285a178
 - JS testing - https://jshint.com/
 - Validator HTML Testing - https://validator.w3.org/
 - Validator CSS Testing - https://jigsaw.w3.org/css-validator/
