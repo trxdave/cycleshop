@@ -2,7 +2,7 @@
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
 }
 
 /* Heading Styles */
@@ -13,16 +13,16 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* Button Styles */
+/* General Button Styles */
 .btn {
     font-size: 0.9rem;
     font-weight: bold;
     padding: 8px 16px;
     border-radius: 5px;
-    color: #fff;
     transition: background-color 0.3s;
     margin-bottom: 0.5rem;
-    width: 100%;
+    color: #fff;
+    min-height: 40px;
 }
 
 .btn-success {
@@ -34,37 +34,16 @@ h2 {
     color: #212529;
 }
 
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
 .btn-danger {
     background-color: #dc3545;
 }
 
-/* Specific Edit and Delete Button Styling */
-.btn-m-edit {
-    background-color: #ffc107;
-    color: #212529;
-    font-weight: bold;
-    padding: 8px 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.btn-m-edit:hover {
-    background-color: #e0a800;
-    color: #212529;
-}
-
-.btn-m-delete {
-    background-color: #dc3545;
-    color: #fff;
-    font-weight: bold;
-    padding: 8px 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.btn-m-delete:hover {
+.btn-danger:hover {
     background-color: #c82333;
-    color: #fff;
 }
 
 .btn-outline-primary {
@@ -74,6 +53,51 @@ h2 {
 .btn-outline-primary:hover {
     background-color: #42858C;
     color: white;
+}
+
+/* Edit and Delete Button Styling */
+.btn-m-edit {
+    background-color: #ffc107; /* Yellow for Edit */
+    color: #212529; /* Dark text for readability */
+    font-weight: bold;
+    padding: 8px 12px; /* Compact padding */
+    border-radius: 4px; /* Slightly rounded corners */
+    border: none; /* Remove default border */
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: inline-block;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.btn-m-edit:hover {
+    background-color: #e0a800; /* Darker yellow for hover */
+    color: #212529; /* Maintain text color */
+}
+
+.btn-m-delete {
+    background-color: #dc3545; /* Red for Delete */
+    color: white; /* White text for contrast */
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: none;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: inline-block;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.btn-m-delete:hover {
+    background-color: #c82333; /* Darker red for hover */
+    color: white;
+}
+
+/* Adjust Button Spacing */
+.table td .btn-m-edit,
+.table td .btn-m-delete {
+    margin-right: 5px; /* Space between buttons */
 }
 
 /* Table Styles */
@@ -108,16 +132,34 @@ h2 {
 .pagination {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    flex-wrap: wrap; /* Allow wrapping for very small screens */
+    gap: 0.5rem; /* Spacing between buttons */
     margin-top: 20px;
 }
 
-.pagination a {
+.pagination a,
+.pagination span { /* Ensure both links and active spans are styled consistently */
     font-size: 0.9rem;
     text-align: center;
-    width: auto;
-    margin: 0.2rem 0;
+    padding: 8px 16px;
+    border: 1px solid #42858C;
+    border-radius: 5px;
+    color: #42858C;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-width: 40px; /* Ensures consistent button size */
+}
+
+.pagination a:hover {
+    background-color: #42858C;
+    color: white;
+}
+
+.pagination .active { /* Styling for the active page */
+    background-color: #42858C;
+    color: white;
+    cursor: default;
+    border-color: #42858C;
 }
 
 /* Responsive Adjustments for Mobile (Below 768px) */
@@ -146,9 +188,16 @@ h2 {
     .table tbody td:last-child {
         display: flex;
         justify-content: center;
-        gap: 1rem;
+        gap: 10px; /* Increased gap for better spacing */
         align-items: center;
-        width: 100%;
+    }
+
+    .btn-m-edit,
+    .btn-m-delete {
+        width: 100%; /* Full-width buttons on smaller screens */
+        text-align: center;
+        padding: 10px; /* Larger padding for better touch targets */
+        font-size: 1rem;
     }
 
     /* Align text, price, and stock on the left */
@@ -165,6 +214,9 @@ h2 {
         text-transform: uppercase;
         margin-right: 0.5rem;
         color: #555;
+        display: inline-block;
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
     }
 
     /* Image styling for smaller screens */
@@ -173,18 +225,14 @@ h2 {
         height: auto;
     }
 
-    /* Full-width button on mobile */
-    .btn-add {
-        font-size: 1rem;
-        width: 100%;
-    }
-
-    /* Stack pagination buttons vertically */
+    /* Consistent Pagination Button Sizes */
     .pagination {
-        flex-direction: column;
+        justify-content: center;
     }
 
-    .pagination a {
-        width: 100%;
+    .pagination a,
+    .pagination span {
+        min-width: 40px; /* Ensure buttons maintain a consistent width */
+        padding: 8px 16px; /* Maintain same padding across devices */
     }
 }

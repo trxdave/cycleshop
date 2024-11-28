@@ -195,9 +195,10 @@ The CycleShop project is designed to offer a streamlined and engaging user exper
 
 
 ### Search Functionality
-    - A built-in search bar enables users to find products effortlessly.
+- A built-in search bar allows users to quickly and effortlessly find products by name, description or category.
+- The search functionality is responsive and delivers accurate results, improving the overall user experience and navigation efficiency.
 
-[text](templates/includes/mobile-top-header.html)
+![alt text](documentation/features/main-nav.png)
 
 ## Wishlist
 The Wishlist in CycleShop allows users to save and manage their favorite products for future reference.
@@ -280,9 +281,35 @@ The Wishlist in CycleShop allows users to save and manage their favorite product
 ![alt text](documentation/features/paginator.png)
 
 - **Admin Product Management**:
-    - Admins can add, update and delete products.
-    - Includes fields for name, description, price, images, and stock quanity.
-    - Uses Cloudinary to manage product images.
+The Product Managment feature allows administrators to efficiently manage the product catalog directly from the website's interface.
+
+1. **Add New Products**:
+    - Admins can add new products using the Add New Product button.
+    - Includes input fields for product details such as name, description, price, stock, and image upload.
+
+2. **Edit Products**:
+    - Each product row includes an Edit button, allowing admins to update product details easily.
+    - Updates can include adjusting prices, editing description, stock, or changing product images.
+
+3. **Delete Products**:
+    - Admins can delete products using the Delete button, with a confirmation prompt to avoid accidental deletions.
+
+4. **Image Display**:
+    - Thumbnail of the product image for easy identification.
+    - Defaults to a Placeholder image if no image is uploaded
+
+5. **Paginated Table View**:
+    - Products are listed in a paginated table for streamlined navigation.
+    - Each row includes:
+        - Image
+        - Name
+        - Price
+        - Stock
+        - Action Buttons
+
+6. **Responsive Design**:
+
+- Fully responsive layout ensures usability across devicces of all screen sizes.
 
 ![alt text](documentation/features/productm1.png)
 ![alt text](documentation/features/productm2.png)

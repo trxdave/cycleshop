@@ -28,17 +28,19 @@
             <tr>
                 <td>
                     {% if product.image %}
-                        <img src="{{ product.image.url }}" class="img-thumbnail" alt="{{ product.name }}">
+                    <img src="{{ product.image.url }}" class="img-thumbnail" alt="{{ product.name }}">
                     {% else %}
-                        <img src="{% static 'images/default_product.jpg' %}" class="img-thumbnail" alt="{{ product.name }}">
+                    <img src="{% static 'images/default_product.jpg' %}" class="img-thumbnail" alt="{{ product.name }}">
                     {% endif %}
                 </td>
                 <td>{{ product.name }}</td>
                 <td>€{{ product.price }}</td>
                 <td>{{ product.stock }}</td>
                 <td>
-                    <a href="{% url 'products:edit_product' product.id %}" class="btn-m-edit btn-warning btn-sm">Edit</a>
-                    <a href="{% url 'products:delete_product' product.id %}" class="btn-m-delete btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                    <a href="{% url 'products:edit_product' product.id %}"
+                        class="btn-m-edit btn-warning btn-sm">Edit</a>
+                    <a href="{% url 'products:delete_product' product.id %}" class="btn-m-delete btn-danger btn-sm"
+                        onclick="return confirm('Are you sure?')">Delete</a>
                 </td>
             </tr>
             {% endfor %}
@@ -48,19 +50,19 @@
     <!-- Pagination Buttons -->
     <div class="pagination">
         {% if products.has_previous %}
-            <a href="?page={{ products.previous_page_number }}" class="btn btn-outline-primary">Previous</a>
+        <a href="?page={{ products.previous_page_number }}" class="btn-paginator">Previous</a>
         {% endif %}
-    
+
         {% for num in products.paginator.page_range %}
-            {% if products.number == num %}
-                <span class="btn-paginator btn-primary active">{{ num }}</span> <!-- Active page styling -->
-            {% else %}
-                <a href="?page={{ num }}" class="btn btn-outline-primary">{{ num }}</a>
-            {% endif %}
+        {% if products.number == num %}
+        <span class="btn-paginator active">{{ num }}</span>
+        {% else %}
+        <a href="?page={{ num }}" class="btn-paginator">{{ num }}</a>
+        {% endif %}
         {% endfor %}
-    
+
         {% if products.has_next %}
-            <a href="?page={{ products.next_page_number }}" class="btn btn-outline-primary">Next</a>
+        <a href="?page={{ products.next_page_number }}" class="btn-paginator">Next</a>
         {% endif %}
     </div>
 </div>
