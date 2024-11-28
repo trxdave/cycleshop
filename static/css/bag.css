@@ -9,14 +9,14 @@
 
 /* Quantity Box for Desktop, Laptop, and Tablet */
 .quantity-desktop {
-    display: block; /* Show by default */
+    display: block;
     width: 60px;
     height: 35px;
 }
 
 /* Quantity Box for Mobile */
 .quantity-mobile {
-    display: none; /* Hidden by default */
+    display: none;
     width: 50px;
     height: 30px;
     font-size: 0.8rem;
@@ -88,7 +88,7 @@
 /* Mobile-Specific Layout (Below 768px) */
 @media (max-width: 767px) {
     .table {
-        display: none; /* Hide the table layout for mobile */
+        display: none;
     }
 
     .bag-item-card {
@@ -100,7 +100,7 @@
         padding: 1.5rem;
         color: #000;
         margin-bottom: 1rem;
-        text-align: center; /* Aligns all elements to the center */
+        text-align: center;
     }
 
     .card-header {
@@ -118,18 +118,18 @@
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
-        text-align: center; /* Center aligns row content */
+        text-align: center;
     }
 
     .btn-update,
     .btn-remove {
-        width: 100%; /* Full-width buttons for mobile */
-        margin-top: 10px; /* Add spacing above/below buttons */
+        width: 100%;
+        margin-top: 10px;
     }
 
     .quantity-mobile {
-        display: block; /* Show mobile quantity box */
-        margin: 0 auto; /* Center horizontally */
+        display: block;
+        margin: 0 auto;
         width: 50px;
         height: 30px;
         font-size: 0.8rem;
@@ -137,28 +137,28 @@
     }
 
     .quantity-desktop {
-        display: none; /* Hide desktop quantity box */
+        display: none;
     }
 }
 
 /* Tablet and Larger Screens (Above 768px) */
 @media (min-width: 768px) {
     .bag-item-card {
-        display: none; /* Hide card layout for larger screens */
+        display: none;
     }
 
     .table {
-        display: table; /* Show table layout for larger screens */
+        display: table;
     }
 
     .quantity-desktop {
-        display: block; /* Show desktop quantity box */
+        display: block;
         width: 60px;
         height: 35px;
         text-align: center;
     }
 
     .quantity-mobile {
-        display: none; /* Hide mobile quantity box */
+        display: none;
     }
 }

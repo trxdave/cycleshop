@@ -666,11 +666,14 @@ After implementing the above fixes, the checkout process:<br>
 | FAQ | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/faqs.png)</details>| :white_check_mark:|
 | Login | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/sign-in.png)</details>| :white_check_mark:|
 | Register | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/sign-up.png)</details>| :white_check_mark:|
-| My Orders | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Wishlist | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| My Orders | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/order-history.png)</details>| :white_check_mark:|
+| Wishlist | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/my-wishlist.png)</details>| :white_check_mark:|
 | Shipping Information | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/shipping-information.png)</details>| :white_check_mark:|
 | Return & Exchanges | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/return-exchanges.png)</details>| :white_check_mark:|
 | Your Shopping Bag | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/your-shopping-bag.png)</details>| :white_check_mark:|
+| Checkout | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/Checkout.png)</details>| :white_check_mark:|
+| Checkout Success | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/checkout_success.html.png)</details>| :white_check_mark:|
+| View Profile | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/view-profile.png)</details>| :white_check_mark:|
 
 
 ## Mobile Wireframes
