@@ -235,10 +235,28 @@ The Wishlist in CycleShop allows users to save and manage their favorite product
 ![alt text](documentation/features/wishlist2.png)
 
 ## User Profile Management
-- Registered users can manage their personal information through a profile page.
-    - Update personal details such as name, email, and delivery address.
-    - Access and manage saved **Shipping Information** for faster checkouts.
-    - View order history with details like order ID, items purchased, and total costs.
+The User Profile Management feature allows registered users to view and manage their personal information, access saved data, and track activity within the platform.
+
+- **Key Features**:
+    1. **View Profile Details:
+        - Users can view their personal details, inclucding:
+            - Username
+            - Email
+            - Location
+            - Birth Date
+            - Bio
+    2. **Manage Wishlist**:
+        - Users can view products saved in the wishlist directly from the profile page.
+        - Each wishlist item includes:
+            - Product image, name, and price.
+            - A View Product button for easy navigation to product details.
+            - A Remove from Wishlist button to delete items as needed.
+    3. **Edit Profile**:
+        - Users can update their personal information (Name, email, bio) via the Edit Profile button.
+    4. **Delete Profile**:
+        - Delete Profile button allows users to permanently delete their profile and associated data.
+    5. **Wishlist Fallback**:
+        - If the wishlist is empty, users are notified with a encouragin them to explore and save products.
 
 ![alt text](documentation/features/profile1.png)
 ![alt text](documentation/features/profile2.png)
@@ -275,7 +293,7 @@ The Wishlist in CycleShop allows users to save and manage their favorite product
 
 ## Product Listings & Management
 - Products are categorized for easy navigation (e.g., Mountain Bikes, Electric Bikes, etc).
-- Feature include:
+- **Feature include**:
     - Pagination for browsing larger catalogs.
 
 ![alt text](documentation/features/paginator.png)

@@ -1,17 +1,44 @@
+/* General Quantity Box Styling */
+.quantity {
+    text-align: center;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 8px;
+}
+
+/* Quantity Box for Desktop, Laptop, and Tablet */
+.quantity-desktop {
+    display: block; /* Show by default */
+    width: 60px;
+    height: 35px;
+}
+
+/* Quantity Box for Mobile */
+.quantity-mobile {
+    display: none; /* Hidden by default */
+    width: 50px;
+    height: 30px;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+/* General Table Styling for Desktop, Laptop, and Tablet */
 .table {
     margin-top: 1rem;
     border-collapse: collapse;
     width: 100%;
-    background-color: #fff;
     border-radius: 5px;
     overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
 }
 
 .table th,
 .table td {
-    text-align: left;
     padding: 12px;
     vertical-align: middle;
+    font-size: 1rem;
 }
 
 .table th {
@@ -24,119 +51,114 @@
     background-color: #f2f2f2;
 }
 
+.table tr:hover {
+    background-color: #e6f7f8;
+    transition: background-color 0.3s ease;
+}
+
 /* Buttons */
-.btn-bag {
-    background-color: #0056b3;
-    color: #ffffff;
-    border: 1px solid #0056b3;
+.btn-update,
+.btn-remove {
+    font-size: 0.9rem;
     padding: 0.5rem 1rem;
-    font-size: 1rem;
     border-radius: 5px;
     transition: all 0.3s ease;
 }
 
-/* Hover Effect */
-.btn-bag:hover {
+.btn-update {
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+}
+
+.btn-update:hover {
     background-color: #003f8c;
-    border-color: #003f8c;
-    color: #ffffff;
 }
 
-.btn-bag:focus {
-    outline: 2px solid #ffcc00;
-    outline-offset: 2px;
-}
-
-.btn-danger {
+.btn-remove {
     background-color: #dc3545;
-    border-color: #dc3545;
     color: #fff;
+    border: none;
 }
 
-.btn-danger:hover {
+.btn-remove:hover {
     background-color: #a71d2a;
-    border-color: #a71d2a;
 }
 
-.btn-success {
-    background-color: #11666f;
-    border-color: white;
-    color: #fff;
-}
-
-.btn-success:hover {
-    background-color: #63CCCA;
-    border-color: #5DA399;
-}
-
-/* Responsive Table Styling */
+/* Mobile-Specific Layout (Below 768px) */
 @media (max-width: 767px) {
     .table {
-        width: 100%;
-        font-size: 0.9rem;
+        display: none; /* Hide the table layout for mobile */
     }
 
-    .table th,
-    .table td {
-        text-align: left;
-        padding: 8px;
+    .bag-item-card {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        padding: 1.5rem;
+        color: #000;
+        margin-bottom: 1rem;
+        text-align: center; /* Aligns all elements to the center */
     }
 
-    .quantity {
-        width: 60px;
-    }
-
-    .btn-bag,
-    .btn-danger,
-    .btn-success {
-        font-size: 0.9rem;
-        padding: 0.4rem 0.8rem;
-    }
-
-    .btn-bag:hover {
-        background-color: #003f8c;
-        border-color: #003f8c;
+    .card-header {
+        background-color: #11666f;
         color: #fff;
+        padding: 0.75rem 1rem;
+        font-weight: bold;
     }
 
-    .btn-danger:hover {
-        background-color: #a71d2a;
-        border-color: #a71d2a;
+    .card-body {
+        padding: 1.5rem;
     }
 
-    .btn-success:hover {
-        background-color: #63CCCA;
-        border-color: #5DA399;
+    .card-body .row {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center; /* Center aligns row content */
+    }
+
+    .btn-update,
+    .btn-remove {
+        width: 100%; /* Full-width buttons for mobile */
+        margin-top: 10px; /* Add spacing above/below buttons */
+    }
+
+    .quantity-mobile {
+        display: block; /* Show mobile quantity box */
+        margin: 0 auto; /* Center horizontally */
+        width: 50px;
+        height: 30px;
+        font-size: 0.8rem;
+        text-align: center;
+    }
+
+    .quantity-desktop {
+        display: none; /* Hide desktop quantity box */
     }
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
+/* Tablet and Larger Screens (Above 768px) */
+@media (min-width: 768px) {
+    .bag-item-card {
+        display: none; /* Hide card layout for larger screens */
+    }
+
     .table {
-        width: 100%;
-        font-size: 0.95rem;
+        display: table; /* Show table layout for larger screens */
     }
 
-    .quantity {
-        width: 70px;
+    .quantity-desktop {
+        display: block; /* Show desktop quantity box */
+        width: 60px;
+        height: 35px;
+        text-align: center;
     }
 
-    .btn-bag {
-        font-size: 0.95rem;
-        padding: 0.5rem 1rem;
-    }
-}
-
-@media (min-width: 992px) {
-    .table {
-        font-size: 1rem;
-    }
-
-    .quantity {
-        width: 80px;
-    }
-
-    .btn-bag {
-        font-size: 1rem;
-        padding: 0.6rem 1.2rem;
+    .quantity-mobile {
+        display: none; /* Hide mobile quantity box */
     }
 }

@@ -57,12 +57,12 @@ h2 {
 
 /* Edit and Delete Button Styling */
 .btn-m-edit {
-    background-color: #ffc107; /* Yellow for Edit */
-    color: #212529; /* Dark text for readability */
+    background-color: #ffc107;
+    color: #212529;
     font-weight: bold;
-    padding: 8px 12px; /* Compact padding */
-    border-radius: 4px; /* Slightly rounded corners */
-    border: none; /* Remove default border */
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: none;
     text-align: center;
     transition: background-color 0.3s ease, color 0.3s ease;
     display: inline-block;
@@ -71,13 +71,13 @@ h2 {
 }
 
 .btn-m-edit:hover {
-    background-color: #e0a800; /* Darker yellow for hover */
-    color: #212529; /* Maintain text color */
+    background-color: #e0a800;
+    color: #212529;
 }
 
 .btn-m-delete {
-    background-color: #dc3545; /* Red for Delete */
-    color: white; /* White text for contrast */
+    background-color: #dc3545;
+    color: white;
     font-weight: bold;
     padding: 8px 12px;
     border-radius: 4px;
@@ -90,14 +90,14 @@ h2 {
 }
 
 .btn-m-delete:hover {
-    background-color: #c82333; /* Darker red for hover */
+    background-color: #c82333;
     color: white;
 }
 
 /* Adjust Button Spacing */
 .table td .btn-m-edit,
 .table td .btn-m-delete {
-    margin-right: 5px; /* Space between buttons */
+    margin-right: 5px;
 }
 
 /* Table Styles */
@@ -132,13 +132,13 @@ h2 {
 .pagination {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Allow wrapping for very small screens */
-    gap: 0.5rem; /* Spacing between buttons */
+    flex-wrap: wrap;
+    gap: 0.5rem;
     margin-top: 20px;
 }
 
 .pagination a,
-.pagination span { /* Ensure both links and active spans are styled consistently */
+.pagination span {
     font-size: 0.9rem;
     text-align: center;
     padding: 8px 16px;
@@ -147,7 +147,7 @@ h2 {
     color: #42858C;
     text-decoration: none;
     transition: background-color 0.3s ease, color 0.3s ease;
-    min-width: 40px; /* Ensures consistent button size */
+    min-width: 40px;
 }
 
 .pagination a:hover {
@@ -155,7 +155,7 @@ h2 {
     color: white;
 }
 
-.pagination .active { /* Styling for the active page */
+.pagination .active {
     background-color: #42858C;
     color: white;
     cursor: default;
@@ -188,15 +188,15 @@ h2 {
     .table tbody td:last-child {
         display: flex;
         justify-content: center;
-        gap: 10px; /* Increased gap for better spacing */
+        gap: 10px;
         align-items: center;
     }
 
     .btn-m-edit,
     .btn-m-delete {
-        width: 100%; /* Full-width buttons on smaller screens */
+        width: 100%;
         text-align: center;
-        padding: 10px; /* Larger padding for better touch targets */
+        padding: 10px;
         font-size: 1rem;
     }
 
@@ -232,7 +232,7 @@ h2 {
 
     .pagination a,
     .pagination span {
-        min-width: 40px; /* Ensure buttons maintain a consistent width */
-        padding: 8px 16px; /* Maintain same padding across devices */
+        min-width: 40px;
+        padding: 8px 16px;
     }
 }
