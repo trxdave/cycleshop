@@ -191,12 +191,8 @@ The CycleShop project is designed to offer a streamlined and engaging user exper
         - Product Categories: All Products, Mountain Bikes, Electric Bikes, Kids Bikes, Clothing, Accessories
         - Contact Page and FAQ
 
-### User-Specific Links
-    - **Authenticated Users**:
-        - Access their Profile to view and manage account details.
-        - Logout securely with a single click.
-    - **Unauthenticated Users**:
-        - Quick links to Login or Signup to access account features.
+![alt text](documentation/features/mobile-main-nav.png)
+
 
 ### Search Functionality
     - A built-in search bar enables users to find products effortlessly.
@@ -336,19 +332,19 @@ The Wishlist in CycleShop allows users to save and manage their favorite product
 # Miscellaneous
 
 1. **Automated Alert Messages**:
-- Integrated alert messages for actions like adding to cart, updating quantity, and deleting items. This improves the UX by confirming users actions in real-time.
+- Integrated real-time alert messages for actions such as adding to the cart, updating quantities, and deleting items. These notifications enhance the user experience by confirming actions instantly.
 
 2. **Footer with Essential Link**:
-- The footer includes links for quick access to important sections like account management, customer service, and newsletter subscription. It provides easy navigation and enhances user engagement.
+- The footer provides quick access to important sections such as account management, customer service, and newsletter subscription. This improves navigation and boosts user engagement.
 
 3. **Image Optimization for Faster Loading**:
-- All images are optimized to ensure faster loading times, which contributes to a smoother user experience, particularly on mobile.
+- All product and site images are optimized to reduce load times, ensuring a smoother browsing experience, especially on mobile devices.
 
 4. **SEO Optimization**:
-- Basic SEO practices are implemented, such as meta tags and alt text for images, to improve the site's discoverability on search engines.
+- Basic SEO practices, such as meta tags, descriptive alt text for images, and clean URLs, are implemented to enhance the site's visibility and discoverability on search engines.
 
 5. **Accessibility Features**:
-- Designed with accessibility in mind, including ARIA labels and color contrasts that comply with WCAG standards, ensuring that CycleShop is accessible to all users.
+- Designed with accessibility in mind, CycleShop includes features such as ARIA labels, proper heading structures, and color contrasts that adhere to WCAG standards. This ensures the site is inclusive and usable by all visitors.
 
 <hr>
 
