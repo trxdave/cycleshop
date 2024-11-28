@@ -752,6 +752,18 @@ After implementing the above fixes, the checkout process:<br>
 16. Error handling and logging:
 - Improve error handling and logging for better debugging.
 
+17. Automatic Stock Deduction:
+- After a successful payment, the purchased product's stock quantity will automatically decrease in the system. This ensures real-time inventory updates and prevents discrepancies.
+
+18. Stock Availability Validation:
+- Before confirming a purchase, the system will validate that sufficient stock is available to fulfill the order, preventing overselling.
+
+19. Integration with Order History:
+- Stock updates will be integrated with the order processing logic to ensure that each completed transaction reflects accurately in both stock levels and the user's order history.
+
+20. Future Implementation Plan:
+- Introduce backend logic to deduct the purchased quantity from the stock during the checkout success process or via a post-payment webhook.
+
 <hr>
 
 # Entity-Relationship Diagram (ERD)
