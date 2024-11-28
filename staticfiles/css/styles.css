@@ -717,7 +717,7 @@ span.btn.btn-outline-secondary.disabled.improved-contrast:focus {
 .btn-contact {
     display: inline;
     padding: 10px 20px;
-    background-color: #42858C;
+    background-color: #11666F;
     color: #F0F0F0;
     text-decoration: none;
     border-radius: 5px;
@@ -948,7 +948,6 @@ span.btn.btn-outline-secondary.disabled.improved-contrast:focus {
     /* Align and center profile and cart icons with consistent spacing */
     .d-flex.align-items-center {
         gap: 0.75rem;
-        flex-direction: column;
     }
 
     .btn-profile, .btn-cart {

@@ -680,24 +680,25 @@ After implementing the above fixes, the checkout process:<br>
 
 | **Page** | **Wireframes** | **Pass** |
 | --- | --- | :---: |
-| Home | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Product | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Contact | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| FAQ | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Login | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Register | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| My Orders | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Wishlist | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Shipping Information | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Return & Exchanges | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Road Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Mountain Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Electric Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Kids Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Clothing | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Accessories | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Your Shopping Bag | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
-| Road Bikes | <details><summary>Screenshot of result</summary>![Result]()</details>| :white_check_mark:|
+| Home | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/mobile/homepage.png)</details>| :white_check_mark:|
+| Product | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/mobile/all-products.png)</details>| :white_check_mark:|
+| Contact | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/mobile/contact-us.png)</details>| :white_check_mark:|
+| FAQ | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/mobile/faqs.png)</details>| :white_check_mark:|
+| Login | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/mobile/sign-in.png)</details>| :white_check_mark:|
+| Register | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/mobile/sign-up.png)</details>| :white_check_mark:|
+| My Orders | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/mobile/order-history.png)</details>| :white_check_mark:|
+| Wishlist | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/mobile/my-wishlist.png)</details>| :white_check_mark:|
+| Shipping Information | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/mobile/shipping-information.png)</details>| :white_check_mark:|
+| Return & Exchanges | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/mobile/return-exchanges.png)</details>| :white_check_mark:|
+| Road Bikes | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/mobile/road-bikes.png)</details>| :white_check_mark:|
+| Mountain Bikes | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/mobile/mountain-bikes.png)</details>| :white_check_mark:|
+| Electric Bikes | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/mobile/electric-bikes.png)</details>| :white_check_mark:|
+| Kids Bikes | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/mobile/kid-bikes.png)</details>| :white_check_mark:|
+| Clothing | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/mobile/clothing.png)</details>| :white_check_mark:|
+| Accessories | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/mobile/accessories.png)</details>| :white_check_mark:|
+| Your Shopping Bag | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/mobile/your-shopping-bag.png)</details>| :white_check_mark:|
+| View Product | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/mobile/view-product.png)</details>| :white_check_mark:|
+| View Profile | <details><summary>Screenshot of result</summary>![Result](documentation/wireframes/mobile/view-profile.png)</details>| :white_check_mark:|
 
 <hr>
 
