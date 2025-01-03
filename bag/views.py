@@ -180,10 +180,11 @@ def checkout(request):
             (grand_total, decimal_pos=2, use_l10n=True),
         }
         return render(request, 'checkout/checkout.html', context)
-    except Exception as e:
+    except Exception:
         messages.error(
             request,
-            "An error occurred while processing your payment.Please try again."
+            "An error occurred while processing your payment."
+            "Please try again."
         )
         return redirect('bag:view_bag')
 
