@@ -1,8 +1,6 @@
 import stripe
 import json
 from django.conf import settings
-from django.core.mail import send_mail
-from django.template.loader import render_to_string
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.http import JsonResponse, HttpResponse
@@ -15,7 +13,6 @@ from .forms import OrderForm
 import logging
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
-
 
 # Initialize Stripe
 stripe.api_key = settings.STRIPE_SECRET_KEY
