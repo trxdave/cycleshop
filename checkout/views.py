@@ -65,6 +65,7 @@ def send_confirmation_email(order, user_email):
 
 
 # Checkout View
+@login_required
 def checkout_view(request):
     form = OrderForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
