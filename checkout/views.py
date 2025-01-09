@@ -113,21 +113,24 @@ def checkout_success(request, order_id):
             order.status = "completed"
             order.save()
 
-        # Clear the shopping bag
-        request.session['bag'] = {}
-        request.session['bag_items_count'] = 0
+            # Update stock for each product in the bag
+            for item_id, item_data in request.session.get('bag', {}).items():
+                product = get_object_or_404(Product, id=item_id)
+                if product.stock >= item_data['quantity']:
+                    product.stock -= item_data['quantity']
+                    product.save()
+                else:
+                    logger.warning(f"Stock mismatch for product {product.name}")
+
+            # Clear the shopping bag
+            request.session['bag'] = {}
+            request.session['bag_items_count'] = 0
 
         messages.success(request, "Thank you! Your order was successful.")
-        return render(
-            request,
-            'checkout/checkout_success.html',
-            {'order': order},
-        )
+        return render(request, 'checkout/checkout_success.html', {'order': order})
     except Exception as e:
         logger.error(f"Error in checkout success view: {e}")
-        messages.error(
-            request, "An error occurred while processing your order."
-        )
+        messages.error(request, "An error occurred while processing your order.")
         return redirect('checkout:checkout')
 
 

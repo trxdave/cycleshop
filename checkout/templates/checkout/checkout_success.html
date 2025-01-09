@@ -8,6 +8,10 @@
 <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
 {% endblock %}
 
+{% block head_title %}
+    Order Successful - CycleShop
+{% endblock %}
+
 {% block content %}
 <div class="checkout-success-container">
     <div class="checkout-success-card card shadow">
@@ -24,7 +28,16 @@
 
         <!-- Email Notification -->
         <p class="card-text">
-            A confirmation email has been sent to your email address: <strong>{{ user.email }}</strong>.
+            {% if user.email %}
+                A confirmation email has been sent to your email address: <strong>{{ user.email }}</strong>.
+            {% else %}
+                No email address available. Please check your account settings.
+            {% endif %}
+        </p>
+
+        <!-- Order Details Link -->
+        <p class="card-text">
+            View your order details <a href="{% url 'checkout:order_detail' order.id %}">here</a>.
         </p>
 
         <!-- Return to Home Button -->
