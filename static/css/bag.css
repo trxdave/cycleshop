@@ -85,6 +85,14 @@
     background-color: #a71d2a;
 }
 
+.quantity.form-control {
+    width: 50px;
+    height: 30px;
+    padding: 2px;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
 /* Mobile-Specific Layout (Below 768px) */
 @media (max-width: 767px) {
     .table {

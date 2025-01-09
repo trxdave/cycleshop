@@ -14,6 +14,7 @@
 <div class="container my-5">
     <h1 class="mb-4">Your Shopping Bag</h1>
 
+    {% if bag %}
     <!-- Table Layout for Desktop, Laptop, and Tablet -->
     <table class="table">
         <thead>
@@ -33,11 +34,7 @@
                 <td>
                     <form method="post" action="{% url 'bag:update_quantity' item.product.id %}">
                         {% csrf_token %}
-                        <!-- Desktop/Laptop/Tablet Quantity Box -->
-                        <input type="number" name="quantity" class="quantity quantity-desktop"
-                            value="{{ item.quantity }}" min="1">
-                        <!-- Mobile Quantity Box -->
-                        <input type="number" name="quantity" class="quantity quantity-mobile"
+                        <input type="number" name="quantity" class="quantity form-control"
                             value="{{ item.quantity }}" min="1">
                         <button type="submit" class="btn btn-primary btn-update">
                             <i class="fas fa-sync-alt"></i> Update
@@ -59,42 +56,30 @@
     </table>
 
     <!-- Card Layout for Mobile -->
-    <div class="bag-items">
+    <div class="bag-items d-md-none">
         {% for item in bag %}
         <div class="bag-item-card">
             <div class="card-header">
                 <strong>Product:</strong> {{ item.product.name }}
             </div>
             <div class="card-body">
-                <div class="row">
-                    <div><strong>Price:</strong> €{{ item.price|floatformat:2 }}</div>
-                    <div><strong>Total:</strong> €{{ item.subtotal|floatformat:2 }}</div>
-                </div>
-                <div class="row">
-                    <div>
-                        <form method="post" action="{% url 'bag:update_quantity' item.product.id %}">
-                            {% csrf_token %}
-                            <label for="quantity-{{ item.product.id }}"><strong>Quantity:</strong></label>
-                            <!-- Desktop/Laptop/Tablet Quantity Box -->
-                            <input type="number" name="quantity" id="quantity-{{ item.product.id }}"
-                                class="quantity quantity-desktop" value="{{ item.quantity }}" min="1">
-                            <!-- Mobile Quantity Box -->
-                            <input type="number" name="quantity" id="quantity-mobile-{{ item.product.id }}"
-                                class="quantity quantity-mobile" value="{{ item.quantity }}" min="1">
-                            <button type="submit" class="btn btn-primary btn-update">
-                                <i class="fas fa-sync-alt"></i> Update
-                            </button>
-                        </form>
-                    </div>
-                    <div>
-                        <form method="post" action="{% url 'bag:remove_from_bag' item.product.id %}">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-danger btn-remove">
-                                <i class="fas fa-trash"></i> Remove
-                            </button>
-                        </form>
-                    </div>
-                </div>
+                <p><strong>Price:</strong> €{{ item.price|floatformat:2 }}</p>
+                <p><strong>Total:</strong> €{{ item.subtotal|floatformat:2 }}</p>
+                <form method="post" action="{% url 'bag:update_quantity' item.product.id %}" class="mb-3">
+                    {% csrf_token %}
+                    <label for="quantity-{{ item.product.id }}" class="form-label"><strong>Quantity:</strong></label>
+                    <input type="number" name="quantity" id="quantity-{{ item.product.id }}"
+                        class="quantity form-control" value="{{ item.quantity }}" min="1">
+                    <button type="submit" class="btn btn-primary btn-update mt-2">
+                        <i class="fas fa-sync-alt"></i> Update
+                    </button>
+                </form>
+                <form method="post" action="{% url 'bag:remove_from_bag' item.product.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-remove">
+                        <i class="fas fa-trash"></i> Remove
+                    </button>
+                </form>
             </div>
         </div>
         {% endfor %}
@@ -104,5 +89,10 @@
         <h2>Total Price: €{{ total|floatformat:2 }}</h2>
         <a href="{% url 'bag:checkout' %}" class="btn btn-success">Proceed to Checkout</a>
     </div>
+
+    {% else %}
+    <p>Your shopping bag is currently empty.</p>
+    <a href="{% url 'products:product_list' %}" class="btn btn-secondary">Continue Shopping</a>
+    {% endif %}
 </div>
 {% endblock %}

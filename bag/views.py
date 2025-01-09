@@ -77,19 +77,39 @@ def view_bag(request):
 def add_to_bag(request, product_id):
     """View to add a product to the shopping bag."""
     product = get_object_or_404(Product, id=product_id)
-    quantity = int(request.POST.get('quantity', 1))
+    requested_quantity = int(request.POST.get('quantity', 1))
     bag = get_bag(request)
 
+    if requested_quantity <= 0:
+        messages.error(request, "Invalid quantity. Must be 1 or more.")
+        return redirect('bag:view_bag')
+
+    if requested_quantity > product.stock:
+        messages.error(
+            request,
+            f"Only {product.stock} of {product.name} are available."
+        )
+        return redirect('bag:view_bag')
+
     if str(product_id) in bag:
-        bag[str(product_id)]['quantity'] += quantity
+        current_quantity = bag[str(product_id)]['quantity']
+        new_quantity = current_quantity + requested_quantity
+        if new_quantity > product.stock:
+            messages.error(
+                request,
+                f"Adding {requested_quantity} exceeds stock. Only {product.stock} available."
+            )
+            return redirect('bag:view_bag')
+
+        bag[str(product_id)]['quantity'] = new_quantity
         messages.info(
             request,
-            f"Updated {product.name} quantity in your bag."
+            f"Updated {product.name} quantity in your bag to {new_quantity}."
         )
     else:
         bag[str(product_id)] = {
             'price': float(product.price),
-            'quantity': quantity,
+            'quantity': requested_quantity,
         }
         messages.success(
             request,
@@ -195,21 +215,25 @@ def update_quantity(request, product_id):
         quantity = int(request.POST.get('quantity', 0))
         bag = get_bag(request)
 
+        if quantity <= 0:
+            messages.error(request, "Invalid quantity. Must be 1 or more.")
+            return redirect('bag:view_bag')
+
+        product = get_object_or_404(Product, id=product_id)
+
+        if quantity > product.stock:
+            messages.error(
+                request,
+                f"Only {product.stock} of {product.name} are available."
+            )
+            return redirect('bag:view_bag')
+
         if str(product_id) in bag:
-            if quantity > 0:
-                bag[str(product_id)]['quantity'] = quantity
-                product_name = get_object_or_404(Product, id=product_id).name
-                messages.info(
-                    request,
-                    f"Updated {product_name} quantity to {quantity}."
-                )
-            else:
-                del bag[str(product_id)]
-                product_name = get_object_or_404(Product, id=product_id).name
-                messages.info(
-                    request,
-                    f"Removed {product_name} from your bag."
-                )
+            bag[str(product_id)]['quantity'] = quantity
+            messages.info(
+                request,
+                f"Updated {product.name} quantity to {quantity}."
+            )
         else:
             messages.error(request, "Product not found in your bag.")
 
