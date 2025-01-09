@@ -62,25 +62,28 @@ def send_confirmation_email(order, user_email):
 
 
 # Checkout View
-@login_required
 def checkout_view(request):
+    """View to handle the checkout process."""
     form = OrderForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
         try:
             order = form.save(commit=False)
-            order.user = (
-                request.user if request.user.is_authenticated else None
-            )
+            # Set user if logged in, otherwise handle as guest
+            order.user = request.user if request.user.is_authenticated else None
             order.total = calculate_total(request)
             order.status = "pending"
             order.save()
 
+            # Create Stripe PaymentIntent
             intent = stripe.PaymentIntent.create(
                 amount=int(order.total * 100),
                 currency=settings.STRIPE_CURRENCY,
                 metadata={'order_id': order.id},
             )
             logger.info(f"PaymentIntent created for order ID {order.id}")
+
+            # Send confirmation email to user or guest
+            send_confirmation_email(order, order.email)
 
             context = {
                 'form': form,
@@ -105,22 +108,23 @@ def checkout_view(request):
 
 
 # Checkout Success View
-@login_required
 def checkout_success(request, order_id):
+    """Handle successful checkouts."""
     try:
-        order = get_object_or_404(Order, id=order_id, user=request.user)
+        order = get_object_or_404(Order, id=order_id)
         if order.status != "completed":
             order.status = "completed"
             order.save()
 
             # Update stock for each product in the bag
-            for item_id, item_data in request.session.get('bag', {}).items():
+            bag = request.session.get('bag', {})
+            for item_id, item_data in bag.items():
                 product = get_object_or_404(Product, id=item_id)
                 if product.stock >= item_data['quantity']:
                     product.stock -= item_data['quantity']
                     product.save()
                 else:
-                    logger.warning(f"Stock mismatch for product {product.name}")
+                    logger.warning(f"Stock mismatch for product {product.name}. Skipping update.")
 
             # Clear the shopping bag
             request.session['bag'] = {}
@@ -128,6 +132,10 @@ def checkout_success(request, order_id):
 
         messages.success(request, "Thank you! Your order was successful.")
         return render(request, 'checkout/checkout_success.html', {'order': order})
+    except Product.DoesNotExist as e:
+        logger.error(f"Product not found during stock update: {e}")
+        messages.error(request, "One or more products in your order could not be found.")
+        return redirect('checkout:checkout')
     except Exception as e:
         logger.error(f"Error in checkout success view: {e}")
         messages.error(request, "An error occurred while processing your order.")
