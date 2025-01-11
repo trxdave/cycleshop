@@ -25,10 +25,8 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url 'products:product_list' %}">All Products</a></li>
                             <li><a class="dropdown-item" href="{% url 'products:road_bikes' %}">Road Bikes</a></li>
-                            <li><a class="dropdown-item" href="{% url 'products:mountain_bikes' %}">Mountain Bikes</a>
-                            </li>
-                            <li><a class="dropdown-item" href="{% url 'products:electric_bikes' %}">Electric Bikes</a>
-                            </li>
+                            <li><a class="dropdown-item" href="{% url 'products:mountain_bikes' %}">Mountain Bikes</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products:electric_bikes' %}">Electric Bikes</a></li>
                             <li><a class="dropdown-item" href="{% url 'products:kids_bikes' %}">Kids Bikes</a></li>
                             <li><a class="dropdown-item" href="{% url 'products:clothing' %}">Clothing</a></li>
                             <li><a class="dropdown-item" href="{% url 'products:accessories' %}">Accessories</a></li>
@@ -81,7 +79,8 @@
                     <!-- Wishlist Button -->
                     <a href="{% url 'products:view_wishlist' %}"
                         class="btn-wishlist btn-primary position-relative mb-2 mb-lg-0 me-2"
-                        aria-labelledby="wishlist-label wishlist-count" aria-live="polite">
+                        aria-labelledby="wishlist-label wishlist-count"
+                        aria-live="polite">
                         <i class="fas fa-heart" aria-hidden="true"></i>
                         <span id="wishlist-label" class="visually-hidden">Wishlist</span>
                         {% if wishlist_items_count > 0 %}
@@ -93,8 +92,10 @@
                     </a>
 
                     <!-- Shopping Cart Button -->
-                    <a href="{% url 'bag:view_bag' %}" class="btn-cart btn-primary position-relative mb-2 mb-lg-0"
-                        aria-labelledby="cart-label cart-count" aria-live="polite">
+                    <a href="{% url 'bag:view_bag' %}"
+                        class="btn-cart btn-primary position-relative mb-2 mb-lg-0"
+                        aria-labelledby="cart-label cart-count"
+                        aria-live="polite">
                         <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                         <span id="cart-label" class="visually-hidden">Shopping Cart</span>
                         {% if bag_items_count > 0 %}
