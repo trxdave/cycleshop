@@ -23,6 +23,8 @@
                         class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                         {{ wishlist_items_count }}
                     </span>
+                    {% else %}
+                    <span id="wishlist-count-mobile" class="visually-hidden">0 items</span>
                     {% endif %}
                 </a>
 
