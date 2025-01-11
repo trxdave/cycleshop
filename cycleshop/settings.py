@@ -186,7 +186,7 @@ ACCOUNT_USERNAME_MIN_LENGTH = 4
 
 # Login Settings
 LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/checkout/'
+LOGIN_REDIRECT_URL = '/'
 
 # Email verification options (optional)
 ACCOUNT_EMAIL_REQUIRED = True
