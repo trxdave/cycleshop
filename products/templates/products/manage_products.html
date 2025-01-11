@@ -26,6 +26,7 @@
         <tbody>
             {% for product in products %}
             <tr>
+                <!-- Product Image -->
                 <td>
                     {% if product.image %}
                     <img src="{{ product.image.url }}" class="img-thumbnail" alt="{{ product.name }}">
@@ -33,15 +34,20 @@
                     <img src="{% static 'images/default_product.jpg' %}" class="img-thumbnail" alt="{{ product.name }}">
                     {% endif %}
                 </td>
+                <!-- Product Details -->
                 <td>{{ product.name }}</td>
                 <td>€{{ product.price }}</td>
                 <td>{{ product.stock }}</td>
+                <!-- Action Buttons -->
                 <td>
-                    <a href="{% url 'products:edit_product' product.id %}"
-                        class="btn-m-edit btn-warning btn-sm">Edit</a>
-                    <a href="{% url 'products:delete_product' product.id %}" class="btn-m-delete btn-danger btn-sm"
+                    <a href="{% url 'products:edit_product' product.id %}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{% url 'products:delete_product' product.id %}" class="btn btn-danger btn-sm"
                         onclick="return confirm('Are you sure?')">Delete</a>
                 </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center">No products available.</td>
             </tr>
             {% endfor %}
         </tbody>
