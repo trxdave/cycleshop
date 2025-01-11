@@ -79,30 +79,22 @@
                     {% endif %}
 
                     <!-- Wishlist Button -->
-                    <a href="/products/wishlist/" class="btn-menu position-relative me-3"
-                        aria-labelledby="wishlist-label wishlist-count" aria-live="polite">
+                    <a href="/products/wishlist/" class="btn-menu position-relative me-3" aria-live="polite">
                         <i class="fas fa-heart" aria-hidden="true"></i>
-                        <!-- Label for Wishlist -->
-                        <span id="wishlist-label" class="visually-hidden">Wishlist</span>
-                        <!-- Dynamic Wishlist Count -->
+                        <span class="visually-hidden">Wishlist</span>
                         {% if wishlist_items_count > 0 %}
-                        <span id="wishlist-count"
-                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             {{ wishlist_items_count }}
                         </span>
                         {% endif %}
                     </a>
 
                     <!-- Shopping Cart Button -->
-                    <a href="/bag/" class="btn-cart btn-primary position-relative mb-2 mb-lg-0"
-                        aria-labelledby="cart-label cart-count" aria-live="polite">
+                    <a href="/bag/" class="btn-cart btn-primary position-relative mb-2 mb-lg-0" aria-live="polite">
                         <i class="fas fa-shopping-cart" aria-hidden="true"></i>
-                        <!-- Label for Cart -->
-                        <span id="cart-label" class="visually-hidden">Shopping Cart</span>
-                        <!-- Dynamic Cart Count -->
+                        <span class="visually-hidden">Shopping Cart</span>
                         {% if bag_items_count > 0 %}
-                        <span id="cart-count"
-                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             {{ bag_items_count }}
                         </span>
                         {% endif %}
