@@ -79,10 +79,10 @@
                     <!-- Wishlist Button -->
                     <a href="{% url 'products:view_wishlist' %}"
                         class="btn-wishlist btn-primary position-relative mb-2 mb-lg-0 me-2"
-                        aria-labelledby="wishlist-label wishlist-count"
+                        aria-labelledby="wishlist-label-1 wishlist-count"
                         aria-live="polite">
                         <i class="fas fa-heart" aria-hidden="true"></i>
-                        <span id="wishlist-label" class="visually-hidden">Wishlist</span>
+                        <span id="wishlist-label-1" class="visually-hidden">Wishlist</span>
                         {% if wishlist_items_count > 0 %}
                         <span id="wishlist-count"
                             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
