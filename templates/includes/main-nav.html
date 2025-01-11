@@ -79,9 +79,10 @@
                     {% endif %}
 
                     <!-- Wishlist Button -->
-                    <a href="/products/wishlist/" class="btn-menu position-relative me-3" aria-live="polite">
+                    <a href="{% url 'products:view_wishlist' %}"
+                        class="btn-wishlist btn-primary position-relative mb-2 mb-lg-0 me-2"
+                        aria-label="Wishlist" aria-live="polite">
                         <i class="fas fa-heart" aria-hidden="true"></i>
-                        <span class="visually-hidden">Wishlist</span>
                         {% if wishlist_items_count > 0 %}
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             {{ wishlist_items_count }}
@@ -90,9 +91,9 @@
                     </a>
 
                     <!-- Shopping Cart Button -->
-                    <a href="/bag/" class="btn-cart btn-primary position-relative mb-2 mb-lg-0" aria-live="polite">
+                    <a href="{% url 'bag:view_bag' %}" class="btn-cart btn-primary position-relative mb-2 mb-lg-0"
+                        aria-label="Shopping Cart" aria-live="polite">
                         <i class="fas fa-shopping-cart" aria-hidden="true"></i>
-                        <span class="visually-hidden">Shopping Cart</span>
                         {% if bag_items_count > 0 %}
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             {{ bag_items_count }}
