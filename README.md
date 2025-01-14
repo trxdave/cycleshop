@@ -815,27 +815,29 @@ After implementing the above fixes, the checkout process:<br>
 |checkout succuess| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/checkout-success.png)</details>| :white_check_mark:|
 |checkout| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/checkout.png)</details>| :white_check_mark:|
 |clothing| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/clothing.png)</details>| :white_check_mark:|
-|contact us| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/contactus.png)</details>| :white_check_mark:|
+|contact us| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/contact.png)</details>| :white_check_mark:|
 |delete product| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/delete-product.png)</details>| :white_check_mark:|
 |edit product| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/edit-product.png)</details>| :white_check_mark:|
 |edit profile| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/edit-profile.png)</details>| :white_check_mark:|
 |electric bikes| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/eletricbikes.png)</details>| :white_check_mark:|
 |faq| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/faq.png)</details>| :white_check_mark:|
-|home| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/home.png)</details>| :white_check_mark:|
-|kids bikes| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/kidsbikes.png)</details>| :white_check_mark:|
+|home| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/homepage.png)</details>| :white_check_mark:|
+|kids bikes| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/kids-bikes.png)</details>| :white_check_mark:|
+|login| errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/login1.png) ![Result](documentation/validator/login2.png) ![Result](documentation/validator/login3.png) ![Result](documentation/validator/login4.png) ![Result](documentation/validator/login5.png) ![Result](documentation/validator/login5.png) ![Result](documentation/validator/login6.png) ![Result](documentation/validator/login7.png) ![Result](documentation/validator/login8.png)</details>| :white_check_mark:|
 |main nav| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/main-nav.png)</details>| :white_check_mark:|
 |mobile navbar| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/mobile-navbar.png)</details>| :white_check_mark:|
-|mountain bikes| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/mountainbikes.png)</details>| :white_check_mark:|
+|mountain bikes| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/mountain-bikes.png)</details>| :white_check_mark:|
 |newletter| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/newletter.png)</details>| :white_check_mark:|
 |order confirmation| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/order-confirmation.png)</details>| :white_check_mark:|
 |order detail| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/order-detail.png)</details>| :white_check_mark:|
-|our products| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/ourproducts.png)</details>| :white_check_mark:|
+|our products| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/products.png)</details>| :white_check_mark:|
 |product detail| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/product-detail.png)</details>| :white_check_mark:|
 |product management| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/product-management.png)</details>| :white_check_mark:|
 |return exchange| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/return-exchange.png)</details>| :white_check_mark:|
-|road bikes| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/roadbikes.png)</details>| :white_check_mark:|
-|search results| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/search-results.png)</details>| :white_check_mark:|
-|shipping information| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/shipping-info.png)</details>| :white_check_mark:|
+|road bikes| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/road-bikes.png)</details>| :white_check_mark:|
+|signup| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/signup.png)</details>| :white_check_mark:|
+|search results| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/search.png)</details>| :white_check_mark:|
+|shipping information| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/shipping-information.png)</details>| :white_check_mark:|
 |view product| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/viewproduct.png)</details>| :white_check_mark:|
 |view profile| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/viewprofile.png)</details>| :white_check_mark:|
 |wishlist| No errors |<details><summary>Screenshot of result</summary>![Result](documentation/validator/html/wishlist.png)</details>| :white_check_mark:|
