@@ -32,9 +32,9 @@
                 <td>{{ item.product.name }}</td>
                 <td>€{{ item.price|floatformat:2 }}</td>
                 <td>
-                    <form method="post" action="{% url 'bag:update_quantity' item.product.id %}">
+                    <form method="post" action="{% url 'bag:update_quantity' item.product.id %}" class="d-flex align-items-center">
                         {% csrf_token %}
-                        <input type="number" name="quantity" class="quantity form-control"
+                        <input type="number" name="quantity" class="quantity form-control quantity-small me-2"
                             value="{{ item.quantity }}" min="1">
                         <button type="submit" class="btn btn-primary btn-update">
                             <i class="fas fa-sync-alt"></i> Update
@@ -65,12 +65,11 @@
             <div class="card-body">
                 <p><strong>Price:</strong> €{{ item.price|floatformat:2 }}</p>
                 <p><strong>Total:</strong> €{{ item.subtotal|floatformat:2 }}</p>
-                <form method="post" action="{% url 'bag:update_quantity' item.product.id %}" class="mb-3">
+                <form method="post" action="{% url 'bag:update_quantity' item.product.id %}" class="d-flex align-items-center mb-3">
                     {% csrf_token %}
-                    <label for="quantity-{{ item.product.id }}" class="form-label"><strong>Quantity:</strong></label>
                     <input type="number" name="quantity" id="quantity-{{ item.product.id }}"
-                        class="quantity form-control" value="{{ item.quantity }}" min="1">
-                    <button type="submit" class="btn btn-primary btn-update mt-2">
+                        class="quantity form-control quantity-small me-2" value="{{ item.quantity }}" min="1">
+                    <button type="submit" class="btn btn-primary btn-update">
                         <i class="fas fa-sync-alt"></i> Update
                     </button>
                 </form>
