@@ -85,10 +85,14 @@ def checkout_view(request):
                 currency=settings.STRIPE_CURRENCY,
                 metadata={'order_id': order.id},
             )
-            logger.info(f"PaymentIntent created for order ID {order.id}")
+            logger.info(
+                "PaymentIntent created for order ID "
+                f"{order.id}"
+            )
 
             # Send confirmation email to user or guest
-            send_confirmation_email(order, order.email)
+            if not order.email_sent:
+                send_confirmation_email(order, order.email)
 
             context = {
                 'form': form,
@@ -269,9 +273,13 @@ def stripe_webhook(request):
         if order_id:
             try:
                 order = Order.objects.get(id=order_id)
-                order.status = "completed"
-                order.save()
-                logger.info(f"Order {order_id} marked as completed")
+                if not order.email_sent:
+                    send_confirmation_email(order, order.email)
+                    order.email_sent = True
+                    order.save(update_fields=['email_sent'])
+                    logger.info(
+                        f"Order {order_id} marked as completed and email sent"
+                        )
             except Order.DoesNotExist:
                 logger.error(f"Order with ID {order_id} does not exist")
 
