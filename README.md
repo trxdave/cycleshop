@@ -1094,6 +1094,35 @@ This project uses Gmail to manage email communication, such as account verificat
 - EMAIL_HOST_USER: Your Gmail email address.
 - EMAIL_HOST_PASS: The 16-character app password.
 
+# Heroku Deployment
+
+This project uses [Heroku](https://www.heroku.com), a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
+
+Deployment steps are as follows, after account setup:
+
+- Select **New** in the top-right corner of your Heroku Dashboard, and select **Create new app** from the dropdown menu.
+- Your app name must be unique, and then choose a region closest to you (EU or USA), and finally, select **Create App**.
+- From the new app **Settings**, click **Reveal Config Vars**, and set the value of KEY to `PORT`, and the value to `8000` then select *add*.
+- Further down, to support dependencies, select **Add Buildpack**.
+- The order of the buildpacks is important, select `Python` first, then `Node.js` second. (if they are not in this order, you can drag them to rearrange them)
+
+Heroku needs three additional files in order to deploy properly.
+
+- requirements.txt
+- Procfile
+
+You can install this project's **requirements** (where applicable) using:
+
+- `pip3 install requirements.txt`
+
+If you have your own packages that have been installed, then the requirements file needs updated using:
+
+- `pip3 freeze > requirements.txt`
+
+The **Procfile** can be created with the following command:
+
+- `echo web: node index.js > Procfile`
+
 # requirements.txt list
 
 This requirements.txt file lists the essential Python packages required for the CycleShop project. Each package serves a specific purpose:
