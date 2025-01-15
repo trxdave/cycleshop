@@ -1,7 +1,3 @@
-from decimal import Decimal
-from django.conf import settings
-
-
 def bag_contents(request):
     """
     Context processor to add the shopping bag's contents to the context.
