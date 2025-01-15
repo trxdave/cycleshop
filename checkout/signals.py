@@ -5,8 +5,10 @@ from django.conf import settings
 from .models import Order
 import logging
 
+
 # Set up logger
 logger = logging.getLogger(__name__)
+
 
 @receiver(post_save, sender=Order)
 def order_created(sender, instance, created, **kwargs):

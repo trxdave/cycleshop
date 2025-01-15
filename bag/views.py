@@ -97,7 +97,8 @@ def add_to_bag(request, product_id):
         if new_quantity > product.stock:
             messages.error(
                 request,
-                f"Adding {requested_quantity} exceeds stock. Only {product.stock} available."
+                f"Adding {requested_quantity} exceeds stock. "
+                f"Only {product.stock} available."
             )
             return redirect('bag:view_bag')
 
@@ -180,6 +181,17 @@ def checkout(request):
         )
         return redirect('bag:view_bag')
 
+    # Stock validation before checkout
+    for product_id, item in bag.items():
+        product = get_object_or_404(Product, id=product_id)
+        if product.stock < item['quantity']:
+            messages.error(
+                request,
+                f"Only {product.stock} of {product.name} are available. "
+                "Please adjust your bag and try again."
+            )
+            return redirect('bag:view_bag')
+
     total, delivery, grand_total = calculate_totals(bag)
     form = OrderForm()
 
@@ -196,14 +208,15 @@ def checkout(request):
             'client_secret': intent.client_secret,
             'total': number_format(total, decimal_pos=2, use_l10n=True),
             'delivery': number_format(delivery, decimal_pos=2, use_l10n=True),
-            'grand_total': number_format
-            (grand_total, decimal_pos=2, use_l10n=True),
+            'grand_total': number_format(
+                grand_total, decimal_pos=2, use_l10n=True
+            ),
         }
         return render(request, 'checkout/checkout.html', context)
     except Exception:
         messages.error(
             request,
-            "An error occurred while processing your payment."
+            "An error occurred while processing your payment. "
             "Please try again."
         )
         return redirect('bag:view_bag')

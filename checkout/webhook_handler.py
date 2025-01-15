@@ -3,8 +3,10 @@ from django.core.mail import send_mail
 from django.conf import settings
 import logging
 
+
 # Set up logger
 logger = logging.getLogger(__name__)
+
 
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
@@ -45,7 +47,10 @@ class StripeWH_Handler:
             try:
                 send_mail(
                     subject="Order Confirmation",
-                    message=f"Thank you for your order! Your order ID is {order_id}.",
+                    message=(
+                        f"Thank you for your order! "
+                        f"Your order ID is {order_id}."
+                    ),
                     from_email=settings.DEFAULT_FROM_EMAIL,
                     recipient_list=[email],
                 )

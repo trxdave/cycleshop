@@ -20,6 +20,7 @@ logger = logging.getLogger(__name__)
 
 
 # Helper: Calculate Total
+
 def calculate_total(request):
     bag = request.session.get('bag', {})
     total = 0
@@ -30,6 +31,7 @@ def calculate_total(request):
 
 
 # Send Confirmation Email
+
 def send_confirmation_email(order, user_email):
     if order.email_sent:
         logger.info(f"Email already sent for Order {order.id}")
@@ -62,6 +64,7 @@ def send_confirmation_email(order, user_email):
 
 
 # Checkout View
+
 def checkout_view(request):
     """View to handle the checkout process."""
     form = OrderForm(request.POST or None)
@@ -69,7 +72,9 @@ def checkout_view(request):
         try:
             order = form.save(commit=False)
             # Set user if logged in, otherwise handle as guest
-            order.user = request.user if request.user.is_authenticated else None
+            order.user = (
+                request.user if request.user.is_authenticated else None
+            )
             order.total = calculate_total(request)
             order.status = "pending"
             order.save()
@@ -108,6 +113,7 @@ def checkout_view(request):
 
 
 # Checkout Success View
+
 def checkout_success(request, order_id):
     """Handle successful checkouts."""
     try:
@@ -124,25 +130,35 @@ def checkout_success(request, order_id):
                     product.stock -= item_data['quantity']
                     product.save()
                 else:
-                    logger.warning(f"Stock mismatch for product {product.name}. Skipping update.")
+                    logger.warning(
+                        f"Stock mismatch for product {product.name}. "
+                        "Skipping update."
+                    )
 
             # Clear the shopping bag
             request.session['bag'] = {}
             request.session['bag_items_count'] = 0
 
         messages.success(request, "Thank you! Your order was successful.")
-        return render(request, 'checkout/checkout_success.html', {'order': order})
+        return render(
+            request, 'checkout/checkout_success.html', {'order': order}
+        )
     except Product.DoesNotExist as e:
         logger.error(f"Product not found during stock update: {e}")
-        messages.error(request, "One or more products in your order could not be found.")
+        messages.error(
+            request, "One or more products in your order could not be found."
+        )
         return redirect('checkout:checkout')
     except Exception as e:
         logger.error(f"Error in checkout success view: {e}")
-        messages.error(request, "An error occurred while processing your order.")
+        messages.error(
+            request, "An error occurred while processing your order."
+        )
         return redirect('checkout:checkout')
 
 
 # Checkout Failure View
+
 def checkout_failure(request):
     messages.error(
         request, "Your payment failed. Please try again or contact support."
@@ -151,6 +167,7 @@ def checkout_failure(request):
 
 
 # Order History View
+
 @login_required
 def order_history(request):
     orders = Order.objects.filter(
@@ -160,6 +177,7 @@ def order_history(request):
 
 
 # Order Detail View
+
 @login_required
 def order_detail(request, order_id):
     try:
@@ -175,6 +193,7 @@ def order_detail(request, order_id):
 
 
 # Cache Checkout Data
+
 @require_POST
 @csrf_exempt
 def cache_checkout_data(request):
@@ -191,6 +210,7 @@ def cache_checkout_data(request):
 
 
 # Create Order Function
+
 def create_order(request):
     try:
         data = json.loads(request.body)
@@ -221,6 +241,7 @@ def create_order(request):
 
 
 # Stripe Webhook
+
 @csrf_exempt
 def stripe_webhook(request):
     payload = request.body
@@ -242,11 +263,9 @@ def stripe_webhook(request):
         payment_intent = event['data']['object']
         logger.info(f"Payment succeeded: {payment_intent['id']}")
 
-        # Extract metadata (order_id, email, etc.)
         metadata = payment_intent.get('metadata', {})
         order_id = metadata.get('order_id')
 
-        # Update order status
         if order_id:
             try:
                 order = Order.objects.get(id=order_id)
